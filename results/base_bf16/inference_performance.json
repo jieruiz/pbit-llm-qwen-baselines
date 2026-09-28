@@ -1,0 +1,63 @@
+{
+  "test": "inference_performance",
+  "model_path": "<PBIT_LLM_ROOT>/models/Qwen2.5-0.5B",
+  "seed": 0,
+  "repeats": 5,
+  "prefill": [
+    {
+      "sequence_length": 128,
+      "median_seconds": 0.011367639061063528,
+      "tokens_per_second": 11260.033795269414,
+      "peak_memory_bytes": 1124294144,
+      "samples_seconds": [
+        0.012611589976586401,
+        0.01151760492939502,
+        0.011367639061063528,
+        0.011288090026937425,
+        0.011292902985587716
+      ]
+    },
+    {
+      "sequence_length": 512,
+      "median_seconds": 0.012268526013940573,
+      "tokens_per_second": 41732.804692122,
+      "peak_memory_bytes": 1478814208,
+      "samples_seconds": [
+        0.012456053053028882,
+        0.012266981997527182,
+        0.012247575912624598,
+        0.012308935984037817,
+        0.012268526013940573
+      ]
+    },
+    {
+      "sequence_length": 2048,
+      "median_seconds": 0.019679664983414114,
+      "tokens_per_second": 104066.81220061623,
+      "peak_memory_bytes": 2902268416,
+      "samples_seconds": [
+        0.019781972048804164,
+        0.019710863009095192,
+        0.019643783918581903,
+        0.01963002805132419,
+        0.019679664983414114
+      ]
+    }
+  ],
+  "generation": {
+    "requested_new_tokens": 64,
+    "actual_new_tokens": 64,
+    "seconds": 0.7252990020206198,
+    "tokens_per_second": 88.23947064824517,
+    "peak_memory_bytes": 1007585792
+  },
+  "environment": {
+    "torch_version": "2.7.1+cu128",
+    "torch_cuda_version": "12.8",
+    "cuda_available": true,
+    "device": "cuda",
+    "cuda_visible_devices": "7",
+    "gpu_name": "NVIDIA GeForce RTX 5090",
+    "gpu_total_memory_bytes": 33679998976
+  }
+}
