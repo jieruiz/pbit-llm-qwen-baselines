@@ -1,0 +1,41 @@
+{
+  "test": "deterministic_greedy_generation",
+  "model_path": "<PBIT_LLM_ROOT>/models/Qwen2.5-0.5B",
+  "seed": 0,
+  "max_new_tokens": 64,
+  "environment": {
+    "torch_version": "2.7.1+cu128",
+    "torch_cuda_version": "12.8",
+    "cuda_available": true,
+    "device": "cuda",
+    "cuda_visible_devices": "7",
+    "gpu_name": "NVIDIA GeForce RTX 5090",
+    "gpu_total_memory_bytes": 33679998976
+  },
+  "records": [
+    {
+      "prompt": "人工智能的发展将会",
+      "continuation": "对人类社会产生哪些影响？\n人工智能的发展将会对人类社会产生以下影响：\n\n1. 人类社会的经济结构和经济形态将发生深刻变化。人工智能将取代一些低技能的工作，如制造业、服务业等，而高技能的工作将由人工智能来完成。这将导致劳动力市场的变化，",
+      "input_tokens": 3,
+      "new_tokens": 64
+    },
+    {
+      "prompt": "请用三句话解释什么是概率计算。\n",
+      "continuation": "概率计算是指通过计算随机事件发生的可能性大小，从而预测事件发生的概率。概率计算通常涉及以下步骤：\n1. 确定事件发生的可能性：首先需要确定事件发生的可能性，例如事件发生的概率、频率、概率密度等。\n2. 计算事件发生的概率：根据事件发生的",
+      "input_tokens": 9,
+      "new_tokens": 64
+    },
+    {
+      "prompt": "The main advantage of probabilistic computing is",
+      "continuation": " that it can be used to solve problems that are difficult to solve with exact methods. This is because probabilistic methods can often provide more accurate results than exact methods, especially when the problem is large or complex. Additionally, probabilistic methods can be used to analyze the performance of algorithms and to identify potential issues before they become",
+      "input_tokens": 8,
+      "new_tokens": 64
+    },
+    {
+      "prompt": "Question: What is 17 plus 25?\nAnswer:",
+      "continuation": " 17 + 25 = 42\nIs the above claim true?\nOptions:\n- yes\n- no\nyes\nStep-by-step reasoning process: 17 + 25 = 42.",
+      "input_tokens": 14,
+      "new_tokens": 47
+    }
+  ]
+}

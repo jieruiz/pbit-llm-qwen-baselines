@@ -1,0 +1,33 @@
+{
+  "test": "model_integrity",
+  "status": "pass",
+  "model_path": "<PBIT_LLM_ROOT>/models/Qwen2.5-0.5B",
+  "model_type": "qwen2",
+  "total_parameters": 494032768,
+  "embedding_parameters": 136134656,
+  "non_embedding_parameters": 357898112,
+  "num_hidden_layers": 24,
+  "hidden_size": 896,
+  "intermediate_size": 4864,
+  "num_attention_heads": 14,
+  "num_key_value_heads": 2,
+  "vocab_size": 151936,
+  "tie_word_embeddings": true,
+  "input_tokens": 8,
+  "logits_shape": [
+    1,
+    8,
+    151936
+  ],
+  "logits_all_finite": true,
+  "peak_memory_bytes": 1018522112,
+  "environment": {
+    "torch_version": "2.7.1+cu128",
+    "torch_cuda_version": "12.8",
+    "cuda_available": true,
+    "device": "cuda",
+    "cuda_visible_devices": "7",
+    "gpu_name": "NVIDIA GeForce RTX 5090",
+    "gpu_total_memory_bytes": 33679998976
+  }
+}
