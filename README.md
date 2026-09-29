@@ -84,6 +84,16 @@ seconds and reduced four-path PPL from 13.8953 to **13.1535 +/- 0.0014**,
 recovering 31.2% of the excess NLL caused by independent replacement. See
 [`results/joint_full_path_pdnn_layers10_13_v1/RESULTS.md`](results/joint_full_path_pdnn_layers10_13_v1/RESULTS.md).
 
+The same method was extended to ten layers
+`{7,8,9,10,11,12,13,14,15,18}`. A staged initialization used the joint
+four-layer checkpoints for layers 10–13 and independent checkpoints elsewhere.
+The 1,000-step run took 316 seconds on one RTX 5090 and reduced full-test N=4
+PPL from the ten-independent result of 27.3051 to **19.2261 +/- 0.0069**.
+This recovers 41.2% of the excess NLL, but the remaining 65.0% PPL increase
+over original Qwen shows that the present structure still needs improvement.
+See
+[`results/joint_full_path_pdnn_layers7_15_18_ten_v1/RESULTS.md`](results/joint_full_path_pdnn_layers7_15_18_ten_v1/RESULTS.md).
+
 ## Repository contents
 
 - `baselines/`: integrity, generation, performance, perplexity, FFN probe, and
@@ -99,6 +109,8 @@ recovering 31.2% of the excess NLL caused by independent replacement. See
   cumulative 4–24-FFN curves, held-out split checks, and sampling controls.
 - `results/joint_full_path_pdnn_layers10_13_v1/`: joint four-layer training
   curve, cost measurement, and full-model perplexity recovery.
+- `results/joint_full_path_pdnn_layers7_15_18_ten_v1/`: joint ten-layer
+  training curve, robust full-test evaluation, and checkpoint identities.
 - `experiments/pdnn_ffn/`: P-DNN module, layer distillation, and evaluation.
 - `config/`: the Qwen2.5-0.5B configuration used for architecture accounting.
 - `upstream/`: pinned Transformers v4.45.2 Qwen2 implementation for source

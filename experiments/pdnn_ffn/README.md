@@ -46,6 +46,13 @@ next-token loss. On layers `{10,11,12,13}`, 1,000 updates reduced N=4 PPL from
 13.8953 to 13.1535 in 225 seconds on one RTX 5090. See
 [`results/joint_full_path_pdnn_layers10_13_v1/RESULTS.md`](../../results/joint_full_path_pdnn_layers10_13_v1/RESULTS.md).
 
+The ten-layer extension uses layers `{7,8,9,10,11,12,13,14,15,18}` and a
+staged initialization. In 316 seconds on one RTX 5090, 1,000 updates reduced
+the N=4 full-test result from 27.3051 for ten independent students to
+19.2261 +/- 0.0069. Mean-field PPL remains 18.2533, so the residual error is
+mainly structural rather than sampling variance. See
+[`results/joint_full_path_pdnn_layers7_15_18_ten_v1/RESULTS.md`](../../results/joint_full_path_pdnn_layers7_15_18_ten_v1/RESULTS.md).
+
 Run with:
 
 ```bash
