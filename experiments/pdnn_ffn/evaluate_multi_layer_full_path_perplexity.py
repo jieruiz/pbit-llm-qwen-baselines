@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import time
 from pathlib import Path
 
 import torch
@@ -13,9 +14,9 @@ from full_path_pdnn_ffn import load_full_path_checkpoint
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Evaluate a full-path P-DNN FFN replacement")
+    parser = argparse.ArgumentParser(description="Evaluate multiple full-path bipolar P-DNN FFN replacements")
     parser.add_argument("--model", required=True)
-    parser.add_argument("--checkpoint", required=True)
+    parser.add_argument("--checkpoints", nargs="+", required=True)
     parser.add_argument("--text-file", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--sample-count", type=int, default=4)
@@ -29,14 +30,18 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    total_start = time.perf_counter()
     if args.stride <= 0 or args.stride > args.max_length:
         raise ValueError("stride must be in (0, max_length]")
     if args.start_token < 0:
         raise ValueError("start-token must be non-negative")
     if args.max_tokens is not None and args.max_tokens <= 0:
         raise ValueError("max-tokens must be positive")
+    if args.sample_count < 0:
+        raise ValueError("sample_count must be non-negative")
     torch.manual_seed(args.seed)
     torch.cuda.manual_seed_all(args.seed)
+
     tokenizer = AutoTokenizer.from_pretrained(args.model, local_files_only=True, trust_remote_code=False)
     model = AutoModelForCausalLM.from_pretrained(
         args.model,
@@ -45,11 +50,35 @@ def main() -> None:
         torch_dtype=torch.bfloat16,
         attn_implementation="sdpa",
     ).cuda().eval()
-    student, payload = load_full_path_checkpoint(args.checkpoint)
-    student.to(dtype=torch.bfloat16).eval()
-    student.set_sample_count(args.sample_count)
-    layer = int(payload["training_args"]["layer"])
-    model.model.layers[layer].mlp = student
+
+    layers: list[int] = []
+    checkpoint_records: list[dict[str, object]] = []
+    student_parameters = 0
+    for checkpoint in args.checkpoints:
+        student, payload = load_full_path_checkpoint(checkpoint)
+        student.to(dtype=torch.bfloat16).eval()
+        student.set_sample_count(args.sample_count)
+        layer = int(payload["training_args"]["layer"])
+        if layer in layers:
+            raise ValueError(f"multiple checkpoints target decoder layer {layer}")
+        if layer < 0 or layer >= len(model.model.layers):
+            raise ValueError(f"checkpoint targets invalid decoder layer {layer}")
+        model.model.layers[layer].mlp = student
+        layers.append(layer)
+        parameter_count = sum(parameter.numel() for parameter in student.parameters())
+        student_parameters += parameter_count
+        checkpoint_records.append(
+            {
+                "path": str(Path(checkpoint).resolve()),
+                "layer": layer,
+                "student_type": payload.get("student_type"),
+                "parameters": parameter_count,
+            }
+        )
+
+    ordered = sorted(zip(layers, checkpoint_records), key=lambda item: item[0])
+    layers = [layer for layer, _ in ordered]
+    checkpoint_records = [record for _, record in ordered]
 
     token_ids = tokenizer(
         Path(args.text_file).read_text(encoding="utf-8"),
@@ -67,6 +96,7 @@ def main() -> None:
     previous_end = 0
     windows = 0
     torch.cuda.reset_peak_memory_stats()
+    evaluation_start = time.perf_counter()
     for begin in range(0, sequence_length, args.stride):
         end = min(begin + args.max_length, sequence_length)
         window = token_ids[:, begin:end].cuda()
@@ -83,17 +113,23 @@ def main() -> None:
             total_scored_tokens += selected_labels.numel()
         previous_end = end
         windows += 1
-        print(f"sample_count={args.sample_count} window={windows} end={end}/{sequence_length}", flush=True)
+        print(
+            f"layers={layers} sample_count={args.sample_count} "
+            f"window={windows} end={end}/{sequence_length}",
+            flush=True,
+        )
         if end == sequence_length:
             break
 
+    evaluation_elapsed = time.perf_counter() - evaluation_start
+    total_elapsed = time.perf_counter() - total_start
     mean_nll = total_nll / total_scored_tokens
     result = {
-        "test": "full_path_pdnn_ffn_sliding_window_perplexity",
-        "checkpoint": str(Path(args.checkpoint).resolve()),
-        "student_type": payload.get("student_type"),
-        "student_config": student.checkpoint_config(),
-        "layer": layer,
+        "test": "multi_layer_full_path_pdnn_ffn_sliding_window_perplexity",
+        "layers": layers,
+        "checkpoints": checkpoint_records,
+        "replacement_count": len(layers),
+        "student_parameters_total": student_parameters,
         "sample_count": args.sample_count,
         "seed": args.seed,
         "source_tokens": source_tokens,
@@ -106,6 +142,9 @@ def main() -> None:
         "mean_negative_log_likelihood": mean_nll,
         "perplexity": math.exp(mean_nll),
         "windows": windows,
+        "evaluation_elapsed_seconds": evaluation_elapsed,
+        "total_elapsed_seconds": total_elapsed,
+        "scored_tokens_per_second": total_scored_tokens / evaluation_elapsed,
         "peak_allocated_bytes": torch.cuda.max_memory_allocated(),
     }
     output = Path(args.output)

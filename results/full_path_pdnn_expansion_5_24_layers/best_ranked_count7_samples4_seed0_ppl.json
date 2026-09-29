@@ -1,0 +1,71 @@
+{
+  "test": "multi_layer_full_path_pdnn_ffn_sliding_window_perplexity",
+  "layers": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "checkpoints": [
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer8_bipolar_t0p25/student_sampled.pt",
+      "layer": 8,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer9_bipolar_t0p25/student_sampled.pt",
+      "layer": 9,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer10_bipolar_t0p25/student_sampled.pt",
+      "layer": 10,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer11_bipolar_t0p25/student_sampled.pt",
+      "layer": 11,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer12_bipolar_t0p25/student_sampled.pt",
+      "layer": 12,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer13_bipolar_t0p25/student_sampled.pt",
+      "layer": 13,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer14_bipolar_t0p25/student_sampled.pt",
+      "layer": 14,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    }
+  ],
+  "replacement_count": 7,
+  "student_parameters_total": 61054336,
+  "sample_count": 4,
+  "seed": 0,
+  "corpus_tokens": 299078,
+  "scored_tokens": 299077,
+  "max_length": 2048,
+  "stride": 1024,
+  "mean_negative_log_likelihood": 2.8782270480988434,
+  "perplexity": 17.782717311894466,
+  "windows": 292,
+  "evaluation_elapsed_seconds": 9.196157398982905,
+  "total_elapsed_seconds": 16.888662400073372,
+  "scored_tokens_per_second": 32521.95314024072,
+  "peak_allocated_bytes": 5305982464
+}

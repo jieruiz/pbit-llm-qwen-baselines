@@ -1,0 +1,43 @@
+{
+  "test": "multi_layer_full_path_pdnn_ffn_sliding_window_perplexity",
+  "layers": [
+    6,
+    12,
+    18
+  ],
+  "checkpoints": [
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer6_bipolar_t0p25/student_sampled.pt",
+      "layer": 6,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer12_bipolar_t0p25/student_sampled.pt",
+      "layer": 12,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer18_bipolar_t0p25/student_sampled.pt",
+      "layer": 18,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    }
+  ],
+  "replacement_count": 3,
+  "student_parameters_total": 26166144,
+  "sample_count": 0,
+  "seed": 0,
+  "corpus_tokens": 299078,
+  "scored_tokens": 299077,
+  "max_length": 2048,
+  "stride": 1024,
+  "mean_negative_log_likelihood": 2.6453947738302417,
+  "perplexity": 14.089005956254248,
+  "windows": 292,
+  "evaluation_elapsed_seconds": 6.918402339913882,
+  "total_elapsed_seconds": 13.483290220960043,
+  "scored_tokens_per_second": 43229.20022655444,
+  "peak_allocated_bytes": 5340800512
+}

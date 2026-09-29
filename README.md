@@ -57,6 +57,26 @@ inputs. See
 [`results/full_path_pdnn_layer12_bipolar_t0p25/RESULTS.md`](results/full_path_pdnn_layer12_bipolar_t0p25/RESULTS.md)
 for the temperature pilot, protocol, full table, and limitations.
 
+Progressive composition was then tested with independently distilled students.
+Layers 6 and 12 reached four-path PPL 13.2025, while layers 6, 12, and 18
+reached 14.3115. Adding layer 0 caused PPL to exceed 46 even though that layer
+had low local MSE. Replacing it with screened middle layers `{9,12,15,18}`
+reduced the four-layer result to **15.3493 +/- 0.0051**, confirming that layer
+0 caused the catastrophic failure while also showing that independent
+replacement errors still accumulate. Late layers 21 and 23 were also more
+sensitive than their local normalized MSE suggested, so candidate layers must
+be screened with full-model perplexity. See
+[`results/full_path_pdnn_progressive_2_4_layers/RESULTS.md`](results/full_path_pdnn_progressive_2_4_layers/RESULTS.md).
+
+All 24 layers were then trained and ranked by single-layer sensitivity. The
+safest layers are concentrated around decoder layers 9–14, while layers 0 and
+2 are catastrophic even alone. With safest-first cumulative replacement,
+held-out-half PPL rises from 12.1563 for original Qwen to 14.4869 at four
+layers, 16.9659 at six, 20.4379 at eight, and 24.1865 at nine. Thus eight
+independently distilled FFNs is a lenient boundary and nine to ten is already
+unacceptable. See
+[`results/full_path_pdnn_expansion_5_24_layers/RESULTS.md`](results/full_path_pdnn_expansion_5_24_layers/RESULTS.md).
+
 ## Repository contents
 
 - `baselines/`: integrity, generation, performance, perplexity, FFN probe, and
@@ -66,6 +86,10 @@ for the temperature pilot, protocol, full table, and limitations.
   perplexity results; large training checkpoints are retained off-repository.
 - `results/full_path_pdnn_layer12_bipolar_t0p25/`: full-path bipolar P-DNN
   training and perplexity results.
+- `results/full_path_pdnn_progressive_2_4_layers/`: two-, three-, and four-FFN
+  composition results, timing estimates, and per-layer sensitivity data.
+- `results/full_path_pdnn_expansion_5_24_layers/`: all-layer sensitivity,
+  cumulative 4–24-FFN curves, held-out split checks, and sampling controls.
 - `experiments/pdnn_ffn/`: P-DNN module, layer distillation, and evaluation.
 - `config/`: the Qwen2.5-0.5B configuration used for architecture accounting.
 - `upstream/`: pinned Transformers v4.45.2 Qwen2 implementation for source
