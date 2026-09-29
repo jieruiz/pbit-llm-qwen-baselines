@@ -110,6 +110,13 @@ composed, PPL fell from 14.0926 +/- 0.0032 with fixed encoding to
 saturation substantially, while hidden encodings became sharper. See
 [`results/layerwise_binary_encoding_20260929/RESULTS_ZH.md`](results/layerwise_binary_encoding_20260929/RESULTS_ZH.md).
 
+The learned 0/1 encoding was then extended to the same ten-layer set used in
+the earlier joint experiment. End-to-end adaptation reduced N=4 PPL from
+23.7393 to **18.5686 +/- 0.0009**. This is 0.6575 better than the previous
+joint ten-layer result, but still 59.35% above original Qwen. Mean-field PPL
+of 17.4551 confirms that most remaining error is structural. See
+[`results/joint_binary_learnable_encoding_layers7_15_18_ten_v1/RESULTS_ZH.md`](results/joint_binary_learnable_encoding_layers7_15_18_ten_v1/RESULTS_ZH.md).
+
 ## Repository contents
 
 - `baselines/`: integrity, generation, performance, perplexity, FFN probe, and
@@ -131,6 +138,10 @@ saturation substantially, while hidden encodings became sharper. See
   training, staged-initialization comparison, and failure-boundary result.
 - `results/layerwise_binary_encoding_20260929/`: fixed-versus-learned 0/1
   encoding, saturation measurements, and three-layer composition results.
+- `results/layerwise_binary_encoding_ten_20260929/`: independent training logs
+  for the additional layers used by the learned-encoding ten-layer run.
+- `results/joint_binary_learnable_encoding_layers7_15_18_ten_v1/`: joint
+  ten-layer 0/1 learned-encoding curve, evaluations, and saturation data.
 - `experiments/pdnn_ffn/`: P-DNN module, layer distillation, and evaluation.
 - `config/`: the Qwen2.5-0.5B configuration used for architecture accounting.
 - `upstream/`: pinned Transformers v4.45.2 Qwen2 implementation for source

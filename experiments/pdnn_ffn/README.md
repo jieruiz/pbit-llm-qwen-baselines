@@ -68,6 +68,13 @@ and full-model perplexity. Composing all three improves N=4 PPL from
 measures how much probability mass lies below 0.01 or above 0.99. See
 [`results/layerwise_binary_encoding_20260929/RESULTS_ZH.md`](../../results/layerwise_binary_encoding_20260929/RESULTS_ZH.md).
 
+Extending learned 0/1 encoding to the ten-layer set and jointly adapting all
+students reduces full-test N=4 PPL from 23.7393 to 18.5686 +/- 0.0009. This
+beats the earlier bipolar ten-layer result by 0.6575 PPL, while the remaining
+mean-field PPL of 17.4551 still identifies structural approximation as the
+main limit. See
+[`results/joint_binary_learnable_encoding_layers7_15_18_ten_v1/RESULTS_ZH.md`](../../results/joint_binary_learnable_encoding_layers7_15_18_ten_v1/RESULTS_ZH.md).
+
 Run with:
 
 ```bash
