@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import time
 from pathlib import Path
 
 import torch
@@ -28,6 +29,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    total_start = time.perf_counter()
     if args.stride <= 0 or args.stride > args.max_length:
         raise ValueError("stride must be in (0, max_length]")
     if args.sample_count < 0:
@@ -86,6 +88,7 @@ def main() -> None:
     previous_end = 0
     windows = 0
     torch.cuda.reset_peak_memory_stats()
+    evaluation_start = time.perf_counter()
     for begin in range(0, sequence_length, args.stride):
         end = min(begin + args.max_length, sequence_length)
         window = token_ids[:, begin:end].cuda()
@@ -110,6 +113,8 @@ def main() -> None:
         if end == sequence_length:
             break
 
+    evaluation_elapsed = time.perf_counter() - evaluation_start
+    total_elapsed = time.perf_counter() - total_start
     mean_nll = total_nll / total_scored_tokens
     result = {
         "test": "multi_layer_full_path_pdnn_ffn_sliding_window_perplexity",
@@ -126,6 +131,9 @@ def main() -> None:
         "mean_negative_log_likelihood": mean_nll,
         "perplexity": math.exp(mean_nll),
         "windows": windows,
+        "evaluation_elapsed_seconds": evaluation_elapsed,
+        "total_elapsed_seconds": total_elapsed,
+        "scored_tokens_per_second": total_scored_tokens / evaluation_elapsed,
         "peak_allocated_bytes": torch.cuda.max_memory_allocated(),
     }
     output = Path(args.output)
