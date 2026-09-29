@@ -1,0 +1,28 @@
+{
+  "test": "full_path_pdnn_ffn_sliding_window_perplexity",
+  "checkpoint": "/home/Weican_Chen/projects/pbit-qwen-depth-20260929/results/smoke/depth4/student_sampled.pt",
+  "student_type": "full_path_binary_pdnn_v1",
+  "student_config": {
+    "input_size": 896,
+    "hidden_sizes": [
+      1688,
+      1688,
+      1688
+    ],
+    "output_size": 896,
+    "input_temperature": 0.125,
+    "hidden_temperature": 0.5,
+    "coding": "binary"
+  },
+  "layer": 12,
+  "sample_count": 4,
+  "seed": 0,
+  "corpus_tokens": 128,
+  "scored_tokens": 127,
+  "max_length": 128,
+  "stride": 64,
+  "mean_negative_log_likelihood": 2.719609298105315,
+  "perplexity": 15.174392422762676,
+  "windows": 1,
+  "peak_allocated_bytes": 1230711296
+}

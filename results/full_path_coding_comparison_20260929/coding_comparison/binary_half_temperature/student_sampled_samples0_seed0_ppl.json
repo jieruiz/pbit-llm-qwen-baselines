@@ -1,0 +1,26 @@
+{
+  "test": "full_path_pdnn_ffn_sliding_window_perplexity",
+  "checkpoint": "/home/Weican_Chen/projects/pbit-qwen-sigmoid-20260929/results/coding_comparison/binary_half_temperature/student_sampled.pt",
+  "student_type": "full_path_binary_pdnn_v1",
+  "student_config": {
+    "input_size": 896,
+    "hidden_sizes": [
+      4864
+    ],
+    "output_size": 896,
+    "input_temperature": 0.125,
+    "hidden_temperature": 0.5,
+    "coding": "binary"
+  },
+  "layer": 12,
+  "sample_count": 0,
+  "seed": 0,
+  "corpus_tokens": 299078,
+  "scored_tokens": 299077,
+  "max_length": 2048,
+  "stride": 1024,
+  "mean_negative_log_likelihood": 2.489449718543721,
+  "perplexity": 12.054640849657247,
+  "windows": 292,
+  "peak_allocated_bytes": 5358209536
+}

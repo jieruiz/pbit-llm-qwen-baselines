@@ -22,12 +22,13 @@ def parse_hidden_sizes(value: str) -> tuple[int, ...]:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Distill one Qwen FFN into a full-path bipolar P-DNN")
+    parser = argparse.ArgumentParser(description="Distill one Qwen FFN into a full-path P-DNN")
     parser.add_argument("--model", required=True)
     parser.add_argument("--train-text", required=True)
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--layer", type=int, default=12)
     parser.add_argument("--hidden-sizes", type=parse_hidden_sizes, default=(4864,))
+    parser.add_argument("--coding", choices=("bipolar", "binary"), default="bipolar")
     parser.add_argument("--input-temperature", type=float, default=1.0)
     parser.add_argument("--hidden-temperature", type=float, default=1.0)
     parser.add_argument("--sequence-length", type=int, default=256)
@@ -144,7 +145,7 @@ def save_checkpoint(
     training_args = vars(args).copy()
     training_args["hidden_sizes"] = list(args.hidden_sizes)
     payload = {
-        "student_type": "full_path_bipolar_pdnn_v1",
+        "student_type": f"full_path_{args.coding}_pdnn_v1",
         "student_config": student.checkpoint_config(),
         "student_state_dict": {key: value.detach().cpu() for key, value in student.state_dict().items()},
         "optimizer_state_dict": optimizer.state_dict(),
@@ -193,6 +194,7 @@ def main() -> None:
         output_size=teacher.config.hidden_size,
         input_temperature=args.input_temperature,
         hidden_temperature=args.hidden_temperature,
+        coding=args.coding,
     )
     student = FullPathPBitFFN(config).cuda().train()
     optimizer = torch.optim.AdamW(student.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
@@ -204,7 +206,7 @@ def main() -> None:
     with log_path.open("w", encoding="utf-8") as log_file:
         header = {
             "event": "start",
-            "student_type": "full_path_bipolar_pdnn_v1",
+            "student_type": f"full_path_{args.coding}_pdnn_v1",
             "args": {**vars(args), "hidden_sizes": list(args.hidden_sizes)},
             "model_parameters": sum(parameter.numel() for parameter in teacher.parameters()),
             "student_parameters": sum(parameter.numel() for parameter in student.parameters()),
