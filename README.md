@@ -36,7 +36,10 @@ and a continuous linear readout. After conditional-mean distillation and
 sample-aware training, four-sample inference reached WikiText-2 perplexity
 12.0726 +/- 0.0017 across three random seeds, compared with 11.6527 for the
 unmodified model. See `results/pdnn_ffn_layer12_bipolar/RESULTS.md` for the
-protocol, full table, and limitations.
+protocol, full table, and limitations. The Chinese living design document
+[`experiments/pdnn_ffn/P_DNN_FFN_DESIGN_ZH.md`](experiments/pdnn_ffn/P_DNN_FFN_DESIGN_ZH.md)
+describes every layer and is the canonical place for all future P-DNN FFN
+changes and version records.
 
 ## Repository contents
 

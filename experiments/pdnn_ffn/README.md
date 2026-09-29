@@ -10,6 +10,11 @@ The final evaluation inserts the student into the complete language model and
 reports WikiText-2 perplexity for deterministic conditional means and for
 1, 4, 8, and 16 samples.
 
+The continuously maintained Chinese design document
+[`P_DNN_FFN_DESIGN_ZH.md`](P_DNN_FFN_DESIGN_ZH.md) explains every computation
+stage, the exact binary/continuous boundaries, training method, current
+results, limitations, and the required format for recording future versions.
+
 Run with:
 
 ```bash
