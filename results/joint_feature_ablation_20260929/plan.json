@@ -1,0 +1,46 @@
+{
+  "base_main_commit": "f41bbbb",
+  "layers": [
+    10,
+    11,
+    12,
+    13
+  ],
+  "coding": "bipolar",
+  "input_temperature": 0.25,
+  "hidden_temperature": 1.0,
+  "joint_training_seeds": [
+    0
+  ],
+  "inference_seeds": [
+    0,
+    1,
+    2
+  ],
+  "training_paths": 4,
+  "conditions": [
+    {
+      "name": "reference_1000",
+      "steps": 1000,
+      "feature_weight": 0.0
+    },
+    {
+      "name": "long_3000",
+      "steps": 3000,
+      "feature_weight": 0.0
+    },
+    {
+      "name": "feature_3000",
+      "steps": 3000,
+      "feature_weight": 0.1
+    }
+  ],
+  "feature_target": "same-token FFN continuous outputs AFTER per-FFN path averaging; each model uses its own inputs",
+  "validation": "64 fixed 256-token windows across the held-out last 65536 train tokens; fixed RNG seed 12345",
+  "selection": "lowest validation CE/PPL; no test-based selection or feature-weight tuning",
+  "scope": "Exploratory, one joint-training seed per condition. Inference repeats are not training replications.",
+  "scheduler": "fresh optimizer and 50-step warmup/cosine for each total budget; 3000 is not a continuation of 1000",
+  "job_id": "1060",
+  "train_sha256": "6707892fa3788b5ab9ed78ab5ff37d9fe825f6011a2ad4fcd6a6d467f0e7da57",
+  "test_sha256": "173c87a53759e0201f33e0ccf978e510c2042d7f2cb78229d9a50d79b9e7dd08"
+}
