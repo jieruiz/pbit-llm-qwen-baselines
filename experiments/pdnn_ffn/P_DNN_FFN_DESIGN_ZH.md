@@ -609,3 +609,48 @@ layer 0 的局部 N=4 normalized MSE 只有 0.3265，是四层中最低的，但
 下一步不再增加独立 student 数量，而应对最安全的4层 `{10,11,12,13}`，或最安全的6层 `{9,10,11,12,13,14}` 做联合端到端适配。联合训练应同时使用 teacher-logit KL、next-token loss，并让每一层看到上游 p-bit student 产生的实际分布。
 
 完整的逐层表、4–24层曲线、原始 JSON、训练日志和24个 checkpoint 哈希见 [`results/full_path_pdnn_expansion_5_24_layers/RESULTS.md`](../../results/full_path_pdnn_expansion_5_24_layers/RESULTS.md)。
+
+## 17. v4：四层联合端到端蒸馏（2026-09-29）
+
+### 17.1 训练结构
+
+选择单层 PPL 最好的 `{10,11,12,13}` 四层，将各自独立蒸馏的 checkpoint 同时装入 Qwen。原始 Qwen 作为冻结 teacher；student 模型除四个 P-DNN FFN 外全部冻结。每段文本同时通过两个完整模型，损失直接定义在最终词表 logits：
+
+$$
+L=0.8\,D_{KL}(p_{teacher}\Vert p_{student})+0.2\,L_{next-token}.
+$$
+
+KL 温度为1.0，与入口 p-bit 温度0.25、隐藏 p-bit 温度1.0相互独立。student 前向使用 N=4 的真实 -1/+1 完整路径，反向继续使用现有的 tanh 均值 STE。训练过程中每个后层都看到上游 p-bit student 实际产生的输入分布。
+
+训练仅更新四个 student 的34,888,192个参数。配置为 sequence length 256、micro-batch 1、gradient accumulation 4、有效每步1,024 token、学习率1e-5、50步 warm-up和 cosine decay，共1,000个 optimizer updates。
+
+### 17.2 实测成本
+
+一张 RTX 5090 上：
+
+| 项目 | 结果 |
+| --- | ---: |
+| 总时间 | 225.18秒（3分45秒） |
+| 有效吞吐 | 4,547.55 token/s |
+| 峰值 allocated memory | 3.73 GiB |
+| 稳态单步时间 | 约0.21–0.25秒 |
+
+联合训练比单层局部回归单步更重，但在0.5B模型和四层范围内没有造成数量级上的训练成本增长。
+
+### 17.3 结果
+
+训练语料中保留的65,536个验证 token 未参与优化。其 PPL 从27.978359降至24.695601，最佳点为第1,000步。
+
+| 推理模式 | 联合训练前 | 联合训练后 |
+| --- | ---: | ---: |
+| Mean-field，seed 0 | 13.715394 | **12.985907** |
+| N=4，3 seeds | 13.895320 ± 0.001680 | **13.153481 ± 0.001378** |
+| N=16，seed 0 | 13.758046 | **13.035125** |
+
+原始 Qwen PPL 为11.652735。N=4 相对退化由19.25%降到12.88%，联合训练恢复了独立四层替换所引入额外 NLL 的31.17%。三个采样设置的改善都约为0.72–0.74 PPL，说明主要收益来自修复多层组合和分布偏移，并非降低随机采样方差。
+
+### 17.4 当前判断
+
+联合训练方向得到验证，而且成本低于此前保守估计。剩余 mean-field PPL 仍为12.985907，说明结构近似误差尚未消除。下一步优先把同样方法扩展到安全六层 `{9,10,11,12,13,14}`；同时可延长四层训练或扫描 KL/CE 权重，因为1,000步时验证曲线仍缓慢下降。
+
+完整训练曲线、原始 JSON、图表和 checkpoint 哈希见 [`results/joint_full_path_pdnn_layers10_13_v1/RESULTS.md`](../../results/joint_full_path_pdnn_layers10_13_v1/RESULTS.md)。
