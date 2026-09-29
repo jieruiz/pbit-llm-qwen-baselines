@@ -102,6 +102,14 @@ therefore confirms that the current P-DNN structure is not acceptable at
 twenty layers even after joint training. See
 [`results/joint_full_path_pdnn_layers1_22_twenty_v1/RESULTS.md`](results/joint_full_path_pdnn_layers1_22_twenty_v1/RESULTS.md).
 
+Layer-specific 0/1 encoding was then tested by learning a scalar threshold and
+positive temperature at each p-bit boundary. On representative layers 10, 12,
+and 19, four-path PPL improved in all three cases. When the three students were
+composed, PPL fell from 14.0926 +/- 0.0032 with fixed encoding to
+**13.8903 +/- 0.0016**. Learned input temperatures reduced input probability
+saturation substantially, while hidden encodings became sharper. See
+[`results/layerwise_binary_encoding_20260929/RESULTS_ZH.md`](results/layerwise_binary_encoding_20260929/RESULTS_ZH.md).
+
 ## Repository contents
 
 - `baselines/`: integrity, generation, performance, perplexity, FFN probe, and
@@ -121,6 +129,8 @@ twenty layers even after joint training. See
   training curve, robust full-test evaluation, and checkpoint identities.
 - `results/joint_full_path_pdnn_layers1_22_twenty_v1/`: joint twenty-layer
   training, staged-initialization comparison, and failure-boundary result.
+- `results/layerwise_binary_encoding_20260929/`: fixed-versus-learned 0/1
+  encoding, saturation measurements, and three-layer composition results.
 - `experiments/pdnn_ffn/`: P-DNN module, layer distillation, and evaluation.
 - `config/`: the Qwen2.5-0.5B configuration used for architecture accounting.
 - `upstream/`: pinned Transformers v4.45.2 Qwen2 implementation for source

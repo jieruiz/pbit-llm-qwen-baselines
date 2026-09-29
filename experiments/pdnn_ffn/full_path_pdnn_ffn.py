@@ -5,6 +5,7 @@ from dataclasses import asdict, dataclass
 
 import torch
 from torch import nn
+from torch.nn import functional as F
 
 
 class _HardForwardMeanBackward(torch.autograd.Function):
@@ -24,6 +25,9 @@ class FullPathPBitFFNConfig:
     output_size: int = 896
     input_temperature: float = 1.0
     hidden_temperature: float = 1.0
+    coding: str = "bipolar"
+    learnable_encoding: bool = False
+    minimum_temperature: float = 1e-3
 
 
 class FullPathPBitFFN(nn.Module):
@@ -42,12 +46,21 @@ class FullPathPBitFFN(nn.Module):
 
     def __init__(self, config: FullPathPBitFFNConfig):
         super().__init__()
+        if config.coding not in {"bipolar", "binary"}:
+            raise ValueError("coding must be bipolar (-1/+1) or binary (0/1)")
         if not config.hidden_sizes:
             raise ValueError("hidden_sizes must contain at least one p-bit layer")
         if any(size <= 0 for size in config.hidden_sizes):
             raise ValueError("all hidden sizes must be positive")
         if config.input_temperature <= 0 or config.hidden_temperature <= 0:
             raise ValueError("temperatures must be positive")
+        if config.minimum_temperature <= 0:
+            raise ValueError("minimum_temperature must be positive")
+        if config.learnable_encoding and (
+            config.input_temperature <= config.minimum_temperature
+            or config.hidden_temperature <= config.minimum_temperature
+        ):
+            raise ValueError("learnable temperatures must exceed minimum_temperature")
         self.config = config
         sizes = [config.input_size, *config.hidden_sizes, config.output_size]
         self.projections = nn.ModuleList(
@@ -55,7 +68,43 @@ class FullPathPBitFFN(nn.Module):
             for input_size, output_size in zip(sizes[:-1], sizes[1:])
         )
         self.sample_count = 0
+        if config.learnable_encoding:
+            self.input_threshold = nn.Parameter(torch.zeros(()))
+            self.input_temperature_raw = nn.Parameter(
+                self._inverse_softplus(config.input_temperature - config.minimum_temperature)
+            )
+            self.hidden_thresholds = nn.Parameter(torch.zeros(len(config.hidden_sizes)))
+            self.hidden_temperature_raw = nn.Parameter(
+                self._inverse_softplus(
+                    torch.full((len(config.hidden_sizes),), config.hidden_temperature - config.minimum_temperature)
+                )
+            )
         self.reset_parameters()
+
+    @staticmethod
+    def _inverse_softplus(value: float | torch.Tensor) -> torch.Tensor:
+        tensor = torch.as_tensor(value, dtype=torch.float32)
+        return torch.log(torch.expm1(tensor))
+
+    def effective_input_temperature(self) -> torch.Tensor:
+        if self.config.learnable_encoding:
+            return F.softplus(self.input_temperature_raw) + self.config.minimum_temperature
+        return self.projections[0].weight.new_tensor(self.config.input_temperature)
+
+    def effective_hidden_temperature(self, index: int) -> torch.Tensor:
+        if self.config.learnable_encoding:
+            return F.softplus(self.hidden_temperature_raw[index]) + self.config.minimum_temperature
+        return self.projections[0].weight.new_tensor(self.config.hidden_temperature)
+
+    def effective_input_threshold(self) -> torch.Tensor:
+        if self.config.learnable_encoding:
+            return self.input_threshold
+        return self.projections[0].weight.new_zeros(())
+
+    def effective_hidden_threshold(self, index: int) -> torch.Tensor:
+        if self.config.learnable_encoding:
+            return self.hidden_thresholds[index]
+        return self.projections[0].weight.new_zeros(())
 
     def reset_parameters(self) -> None:
         for projection in self.projections[:-1]:
@@ -74,32 +123,34 @@ class FullPathPBitFFN(nn.Module):
             raise ValueError("sample_count must be non-negative; zero selects mean-field mode")
         self.sample_count = sample_count
 
-    @staticmethod
-    def _sample_bipolar(mean: torch.Tensor) -> torch.Tensor:
-        probability = (mean + 1.0).mul(0.5).clamp_(0.0, 1.0)
+    def _sample_state(self, mean: torch.Tensor) -> torch.Tensor:
+        probability = (mean + 1.0).mul(0.5).clamp_(0.0, 1.0) if self.config.coding == "bipolar" else mean
         with torch.no_grad():
             hard = (torch.rand_like(probability) < probability).to(mean.dtype)
-            hard = hard.mul_(2.0).sub_(1.0)
+            if self.config.coding == "bipolar":
+                hard = hard.mul_(2.0).sub_(1.0)
         if mean.requires_grad and torch.is_grad_enabled():
             return _HardForwardMeanBackward.apply(hard, mean)
         return hard
 
     def input_mean(self, hidden_states: torch.Tensor) -> torch.Tensor:
-        return torch.tanh(hidden_states / self.config.input_temperature)
+        field = (hidden_states - self.effective_input_threshold()) / self.effective_input_temperature()
+        return torch.tanh(field) if self.config.coding == "bipolar" else torch.sigmoid(field)
 
-    def hidden_mean(self, field: torch.Tensor) -> torch.Tensor:
-        return torch.tanh(field / self.config.hidden_temperature)
+    def hidden_mean(self, field: torch.Tensor, index: int = 0) -> torch.Tensor:
+        field = (field - self.effective_hidden_threshold(index)) / self.effective_hidden_temperature(index)
+        return torch.tanh(field) if self.config.coding == "bipolar" else torch.sigmoid(field)
 
     def mean_field_forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
         state = self.input_mean(hidden_states)
-        for projection in self.projections[:-1]:
-            state = self.hidden_mean(projection(state))
+        for index, projection in enumerate(self.projections[:-1]):
+            state = self.hidden_mean(projection(state), index)
         return self.projections[-1](state)
 
     def sampled_path_forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
-        state = self._sample_bipolar(self.input_mean(hidden_states))
-        for projection in self.projections[:-1]:
-            state = self._sample_bipolar(self.hidden_mean(projection(state)))
+        state = self._sample_state(self.input_mean(hidden_states))
+        for index, projection in enumerate(self.projections[:-1]):
+            state = self._sample_state(self.hidden_mean(projection(state), index))
         return self.projections[-1](state)
 
     def forward(self, hidden_states: torch.Tensor) -> torch.Tensor:

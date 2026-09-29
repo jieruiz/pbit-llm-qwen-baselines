@@ -60,6 +60,14 @@ Mean-field PPL remains 42.8818, confirming an unacceptable deterministic
 structural gap at this depth. See
 [`results/joint_full_path_pdnn_layers1_22_twenty_v1/RESULTS.md`](../../results/joint_full_path_pdnn_layers1_22_twenty_v1/RESULTS.md).
 
+The layer-specific encoding experiment adds binary 0/1 operation and optional
+learned scalar thresholds and positive temperatures to `full_path_pdnn_ffn.py`.
+Across layers 10, 12, and 19, learned encoding consistently lowers local error
+and full-model perplexity. Composing all three improves N=4 PPL from
+14.0926 +/- 0.0032 to 13.8903 +/- 0.0016. The accompanying saturation tool
+measures how much probability mass lies below 0.01 or above 0.99. See
+[`results/layerwise_binary_encoding_20260929/RESULTS_ZH.md`](../../results/layerwise_binary_encoding_20260929/RESULTS_ZH.md).
+
 Run with:
 
 ```bash

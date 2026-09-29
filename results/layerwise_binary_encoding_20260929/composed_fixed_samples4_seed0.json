@@ -1,0 +1,46 @@
+{
+  "test": "multi_layer_full_path_pdnn_ffn_sliding_window_perplexity",
+  "layers": [
+    10,
+    12,
+    19
+  ],
+  "checkpoints": [
+    {
+      "path": "<PBIT_LLM_ROOT>/results/layerwise_binary_encoding_20260929/layer10_fixed/student_sampled.pt",
+      "layer": 10,
+      "student_type": "full_path_binary_pdnn_v2",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/layerwise_binary_encoding_20260929/layer12_fixed/student_sampled.pt",
+      "layer": 12,
+      "student_type": "full_path_binary_pdnn_v2",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/layerwise_binary_encoding_20260929/layer19_fixed/student_sampled.pt",
+      "layer": 19,
+      "student_type": "full_path_binary_pdnn_v2",
+      "parameters": 8722048
+    }
+  ],
+  "replacement_count": 3,
+  "student_parameters_total": 26166144,
+  "sample_count": 4,
+  "seed": 0,
+  "source_tokens": 299078,
+  "start_token": 0,
+  "end_token": 299078,
+  "corpus_tokens": 299078,
+  "scored_tokens": 299077,
+  "max_length": 2048,
+  "stride": 1024,
+  "mean_negative_log_likelihood": 2.645815204980853,
+  "perplexity": 14.09493065861685,
+  "windows": 292,
+  "evaluation_elapsed_seconds": 17.039317718008533,
+  "total_elapsed_seconds": 22.395567341940477,
+  "scored_tokens_per_second": 17552.169925437283,
+  "peak_allocated_bytes": 5340866048
+}
