@@ -40,6 +40,12 @@ unacceptable. `--start-token` can be combined with `--max-tokens` in all PPL
 evaluators to keep selection and final evaluation segments disjoint. See
 [`results/full_path_pdnn_expansion_5_24_layers/RESULTS.md`](../../results/full_path_pdnn_expansion_5_24_layers/RESULTS.md).
 
+`train_joint_full_path_distillation.py` inserts multiple existing students
+into one model and jointly adapts them against frozen original-Qwen logits and
+next-token loss. On layers `{10,11,12,13}`, 1,000 updates reduced N=4 PPL from
+13.8953 to 13.1535 in 225 seconds on one RTX 5090. See
+[`results/joint_full_path_pdnn_layers10_13_v1/RESULTS.md`](../../results/joint_full_path_pdnn_layers10_13_v1/RESULTS.md).
+
 Run with:
 
 ```bash

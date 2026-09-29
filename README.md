@@ -77,6 +77,13 @@ independently distilled FFNs is a lenient boundary and nine to ten is already
 unacceptable. See
 [`results/full_path_pdnn_expansion_5_24_layers/RESULTS.md`](results/full_path_pdnn_expansion_5_24_layers/RESULTS.md).
 
+Joint end-to-end adaptation was then tested on the four safest layers
+`{10,11,12,13}`. Only the 34.9M P-DNN parameters were updated using original
+Qwen logits and next-token loss. A 1,000-step run on one RTX 5090 took 225
+seconds and reduced four-path PPL from 13.8953 to **13.1535 +/- 0.0014**,
+recovering 31.2% of the excess NLL caused by independent replacement. See
+[`results/joint_full_path_pdnn_layers10_13_v1/RESULTS.md`](results/joint_full_path_pdnn_layers10_13_v1/RESULTS.md).
+
 ## Repository contents
 
 - `baselines/`: integrity, generation, performance, perplexity, FFN probe, and
@@ -90,6 +97,8 @@ unacceptable. See
   composition results, timing estimates, and per-layer sensitivity data.
 - `results/full_path_pdnn_expansion_5_24_layers/`: all-layer sensitivity,
   cumulative 4–24-FFN curves, held-out split checks, and sampling controls.
+- `results/joint_full_path_pdnn_layers10_13_v1/`: joint four-layer training
+  curve, cost measurement, and full-model perplexity recovery.
 - `experiments/pdnn_ffn/`: P-DNN module, layer distillation, and evaluation.
 - `config/`: the Qwen2.5-0.5B configuration used for architecture accounting.
 - `upstream/`: pinned Transformers v4.45.2 Qwen2 implementation for source
