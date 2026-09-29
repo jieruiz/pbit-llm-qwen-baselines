@@ -856,3 +856,27 @@ logit-KL训练；随后才有必要比较逐通道参数。完整原始数据与
 下一步保留逐层编码，优先测试 residual/低秩连续补偿或中间 hidden-state
 matching。完整原始数据、曲线、逐层饱和度和 checkpoint 哈希见
 [`results/joint_binary_learnable_encoding_layers7_15_18_ten_v1/RESULTS_ZH.md`](../../results/joint_binary_learnable_encoding_layers7_15_18_ten_v1/RESULTS_ZH.md)。
+
+## 22. v9：二十层 0/1 可学习编码联合训练（2026-09-29）
+
+把 v8 的十层联合 checkpoint 与另外十层独立 student 组合，使用与 v6 相同
+的二十层集合和1,000步联合训练协议。完整 WikiText-2结果为：
+
+| 推理模式 | 旧 ±1 二十层 | 新0/1可学习编码二十层 |
+| --- | ---: | ---: |
+| Mean-field | 42.881774 | **38.008323** |
+| N=4，3 seeds | 48.910814 ± 0.096274 | **43.383146 ± 0.009963** |
+| N=16 | 43.840279 | **39.207920** |
+
+新编码把最终 N=4 PPL 降低11.30%，说明它在20层规模仍然有效；但新结果
+仍比原 Qwen 高272.30%，结构仍不可接受。分阶段初始化从旧方案101.374861
+降到75.855991，二十层全独立 seed-0也从166.089720降到108.161196。
+
+训练在一张 RTX 5090 上耗时506.51秒，峰值 allocated memory 6.26 GiB。
+最佳验证点为step 900。layer 21的隐藏概率饱和度达到93.38%；恢复 layer
+20或21可把 seed-0 PPL 分别降到39.848899和39.934467，同时恢复
+`{17,20,21,22}` 后的16层消融为31.698282。晚期层是当前主要累积误差来源。
+
+停止继续扩大替换层数。下一轮应在十层或重新训练的16层范围内引入 residual/
+低秩连续补偿和 hidden-state matching。完整数据与 checkpoint 哈希见
+[`results/joint_binary_learnable_encoding_layers1_22_twenty_v1/RESULTS_ZH.md`](../../results/joint_binary_learnable_encoding_layers1_22_twenty_v1/RESULTS_ZH.md)。

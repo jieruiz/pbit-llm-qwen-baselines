@@ -75,6 +75,12 @@ mean-field PPL of 17.4551 still identifies structural approximation as the
 main limit. See
 [`results/joint_binary_learnable_encoding_layers7_15_18_ten_v1/RESULTS_ZH.md`](../../results/joint_binary_learnable_encoding_layers7_15_18_ten_v1/RESULTS_ZH.md).
 
+The twenty-layer learned-encoding extension reduces N=4 PPL from the earlier
+48.9108 to 43.3831 +/- 0.0100, while mean-field remains 38.0083. Restoring late
+layers 17, 20, 21, and 22 to their original Qwen FFNs lowers an indicative
+seed-0 ablation to 31.6983, locating a major source of accumulated error. See
+[`results/joint_binary_learnable_encoding_layers1_22_twenty_v1/RESULTS_ZH.md`](../../results/joint_binary_learnable_encoding_layers1_22_twenty_v1/RESULTS_ZH.md).
+
 Run with:
 
 ```bash

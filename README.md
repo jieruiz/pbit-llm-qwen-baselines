@@ -117,6 +117,13 @@ joint ten-layer result, but still 59.35% above original Qwen. Mean-field PPL
 of 17.4551 confirms that most remaining error is structural. See
 [`results/joint_binary_learnable_encoding_layers7_15_18_ten_v1/RESULTS_ZH.md`](results/joint_binary_learnable_encoding_layers7_15_18_ten_v1/RESULTS_ZH.md).
 
+At twenty replaced FFNs, learned 0/1 encoding reduced N=4 PPL from the earlier
+48.9108 to **43.3831 +/- 0.0100**. The staged initialization also improved from
+101.3749 to 75.8560, but the final model remains 272.3% above original Qwen.
+Late layers 17, 20, 21, and 22 account for a large part of the accumulated
+error. See
+[`results/joint_binary_learnable_encoding_layers1_22_twenty_v1/RESULTS_ZH.md`](results/joint_binary_learnable_encoding_layers1_22_twenty_v1/RESULTS_ZH.md).
+
 ## Repository contents
 
 - `baselines/`: integrity, generation, performance, perplexity, FFN probe, and
@@ -142,6 +149,10 @@ of 17.4551 confirms that most remaining error is structural. See
   for the additional layers used by the learned-encoding ten-layer run.
 - `results/joint_binary_learnable_encoding_layers7_15_18_ten_v1/`: joint
   ten-layer 0/1 learned-encoding curve, evaluations, and saturation data.
+- `results/layerwise_binary_encoding_twenty_20260929/`: independent training
+  logs for the additional learned-encoding twenty-layer initializers.
+- `results/joint_binary_learnable_encoding_layers1_22_twenty_v1/`: joint
+  twenty-layer learned-encoding results, saturation, and layer ablations.
 - `experiments/pdnn_ffn/`: P-DNN module, layer distillation, and evaluation.
 - `config/`: the Qwen2.5-0.5B configuration used for architecture accounting.
 - `upstream/`: pinned Transformers v4.45.2 Qwen2 implementation for source
