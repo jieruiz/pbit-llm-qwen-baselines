@@ -25,8 +25,11 @@ are in
 `evaluate_multi_layer_full_path_perplexity.py` installs any number of trained
 students into one Qwen model. The first progressive test covers layers 6 and
 12; layers 6, 12, and 18; and a four-layer set including layer 0. Its results
-show that independent local distillation needs joint end-to-end adaptation
-before all 24 FFNs can be converted. See
+show that layer 0 dominates the catastrophic four-layer degradation. A second
+screen of layers 9, 15, 21, and 23 selected `{9,12,15,18}`, which reached
+four-path PPL 15.3493 +/- 0.0051 without layer 0. The remaining accumulated
+error shows that independent local distillation still needs joint end-to-end
+adaptation before all 24 FFNs can be converted. See
 [`results/full_path_pdnn_progressive_2_4_layers/RESULTS.md`](../../results/full_path_pdnn_progressive_2_4_layers/RESULTS.md).
 
 Run with:

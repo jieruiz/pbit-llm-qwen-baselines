@@ -60,8 +60,12 @@ for the temperature pilot, protocol, full table, and limitations.
 Progressive composition was then tested with independently distilled students.
 Layers 6 and 12 reached four-path PPL 13.2025, while layers 6, 12, and 18
 reached 14.3115. Adding layer 0 caused PPL to exceed 46 even though that layer
-had low local MSE, showing that local layer loss does not measure downstream
-sensitivity. See
+had low local MSE. Replacing it with screened middle layers `{9,12,15,18}`
+reduced the four-layer result to **15.3493 +/- 0.0051**, confirming that layer
+0 caused the catastrophic failure while also showing that independent
+replacement errors still accumulate. Late layers 21 and 23 were also more
+sensitive than their local normalized MSE suggested, so candidate layers must
+be screened with full-model perplexity. See
 [`results/full_path_pdnn_progressive_2_4_layers/RESULTS.md`](results/full_path_pdnn_progressive_2_4_layers/RESULTS.md).
 
 ## Repository contents

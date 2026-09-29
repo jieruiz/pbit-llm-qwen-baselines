@@ -58,6 +58,25 @@ alone severely damages full-model perplexity. Errors in the first decoder
 block propagate through all subsequent blocks, and the locally normalized
 output loss does not capture that downstream sensitivity.
 
+### Layer-0 replacement screening
+
+To test whether layer 0 caused the four-layer collapse, four additional
+students were trained with exactly the same v1 protocol. Their complete-model
+perplexities, rather than local loss, were used to select replacement layers.
+
+| Replaced layer | Training seconds | N=4 local normalized MSE | N=4 full-model PPL |
+| ---: | ---: | ---: | ---: |
+| 9 | 74.2624 | 0.597266 | **12.214694** |
+| 15 | 71.7557 | 0.531348 | 12.542750 |
+| 21 | 72.6735 | 0.025727 | 13.828664 |
+| 23 | 70.5505 | 0.076684 | 16.158388 |
+
+The result supports the layer-0 hypothesis, but it also shows that decoder
+depth alone does not rank safety. Layers 21 and 23 have very small normalized
+local error because their teacher outputs have much larger RMS, yet their
+full-model PPL is poor. Layer 9 is the best new candidate by the metric that
+matters for language modeling.
+
 ## Progressive combinations
 
 | Replaced layers | Paths | Seed | PPL |
@@ -78,10 +97,24 @@ output loss does not capture that downstream sensitivity.
 | 0, 6, 12, 18 | 4 | 1 | 47.299433 |
 | 0, 6, 12, 18 | 4 | 2 | 46.653581 |
 | 0, 6, 12, 18 | 16 | 0 | 40.450719 |
+| 6, 9, 12, 18 | 4 | 0 | 15.657847 |
+| 9, 12, 15, 18 | mean-field | 0 | 15.025650 |
+| 9, 12, 15, 18 | 4 | 0 | 15.342209 |
+| 9, 12, 15, 18 | 4 | 1 | 15.353550 |
+| 9, 12, 15, 18 | 4 | 2 | 15.352258 |
+| 9, 12, 15, 18 | 16 | 0 | 15.103215 |
 
 The `{6,12}` four-path mean is **13.202479 ± 0.003268**. The `{6,12,18}`
 four-path mean is **14.311508 ± 0.009282**. The four-layer set containing layer
 0 has mean **46.767307 ± 0.485361**.
+
+Replacing layer 0 directly with layer 9 changes the four-layer seed-0 PPL from
+46.348907 for `{0,6,12,18}` to 15.657847 for `{6,9,12,18}`. Selecting four
+layers by their measured single-layer full-model PPL gives `{9,12,15,18}` and
+improves this further to **15.349339 ± 0.005070** across three seeds. Its
+mean-field PPL is 15.025650 and its 16-path PPL is 15.103215. Therefore the
+catastrophic four-layer result was dominated by layer 0, while the remaining
+gap is a stable composition error rather than random-seed noise.
 
 For the stable middle and late layers, negative-log-likelihood degradation is
 approximately additive but includes a growing interaction term. The measured
@@ -114,16 +147,18 @@ a meaningful 24-layer accuracy run.
 ## Decision
 
 Do not train all 24 independent replacements with the current objective. The
-hardware and wall-time budget is sufficient, but the four-layer test already
-shows unacceptable quality loss, especially at layer 0.
+hardware and wall-time budget is sufficient, but even a screened four-layer
+set raises PPL from 11.652735 to 15.349339. Avoiding layer 0 removes the
+catastrophic failure; it does not remove the accumulation of structural and
+distribution-shift error.
 
 The next useful experiment is joint end-to-end adaptation of the already
-trained students for layers `{6,12,18}`. Keep all three replacements active,
+trained students for layers `{9,12,15,18}`. Keep all four replacements active,
 unfreeze their parameters, and train against teacher logits and next-token
 loss so each student sees the shifted upstream distribution. Early layers such
-as layer 0 should remain original until this joint method is shown to recover
-the three-layer PPL. After recovery, expand in the order 3, 6, 12, and 24
-layers, with a full-model PPL gate at every stage.
+as layer 0 and sensitive final layers should remain original until this joint
+method is shown to recover the four-layer PPL. After recovery, expand in the
+order 4, 6, 12, and 24 layers, with a full-model PPL gate at every stage.
 
 ## Checkpoint identities
 
@@ -135,3 +170,7 @@ Large checkpoints remain on the experiment server.
 | 6 | `bdea3a5fe756e9e786d5597757ad5b5076a1ec950e255ae3a805a438b0208208` |
 | 12 | `24cdcf43c8e643ea27ccb1427218b1b97b53f80a2750b09e1d3b62f18e046912` |
 | 18 | `2f7d5cc7a0e40927e9a93cfd51e6e6e7c6f4dd9ff1f07269e3ad825d25cf54a8` |
+| 9 | `37f33991c2c1fff34e390f341e6e515c879862e51d7a30af5b9a97566bbec0f0` |
+| 15 | `148202fd25bc394197886e51f0df32294a1a39098cf67082341020651741f2d2` |
+| 21 | `29cbbf44093328fc40c2fc4a1ecf6bf56a2e5ad2e0d02ae1d83edc9b06c5833b` |
+| 23 | `6f0a77b7b110d9d5541cebb6be588bf0dbbf90915e75761bb5cdfa4e81bddfc6` |
