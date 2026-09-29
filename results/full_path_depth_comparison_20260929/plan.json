@@ -1,0 +1,42 @@
+{
+  "scope": "One decoder FFN (zero-based layer 12); matrix depth varies, parameter count matched within 0.2%.",
+  "shapes": {
+    "2": [
+      896,
+      4864,
+      896
+    ],
+    "3": [
+      896,
+      2192,
+      2192,
+      896
+    ],
+    "4": [
+      896,
+      1688,
+      1688,
+      1688,
+      896
+    ]
+  },
+  "parameters": {
+    "2": 8722048,
+    "3": 8738208,
+    "4": 8729544
+  },
+  "coding": "binary",
+  "input_temperature": 0.125,
+  "hidden_temperature": 0.5,
+  "training_seeds": [
+    0,
+    1,
+    2
+  ],
+  "mean_steps": 2000,
+  "sample_steps": 2000,
+  "training_paths": 4,
+  "primary_evaluation": "4 paths, inference seed 0, three independently trained checkpoints per depth",
+  "secondary_evaluation": "training seed 0: paths 0,1,8,16 at inference seed 0, and paths 4 at inference seeds 1,2",
+  "job_id": "1058"
+}

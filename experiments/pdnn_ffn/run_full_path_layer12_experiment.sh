@@ -6,7 +6,8 @@ ROOT="${PBIT_LLM_ROOT:-$(cd "$SCRIPT_DIR/../.." && pwd)}"
 MODEL_PATH="${MODEL_PATH:-$ROOT/models/Qwen2.5-0.5B}"
 TRAIN_TEXT="${TRAIN_TEXT:-$ROOT/data/wikitext-2/wiki.train.raw}"
 TEST_TEXT="${TEST_TEXT:-$ROOT/data/wikitext-2/wiki.test.raw}"
-OUTPUT_DIR="${OUTPUT_DIR:-$ROOT/results/full_path_pdnn_layer12_bipolar}"
+CODING="${CODING:-bipolar}"
+OUTPUT_DIR="${OUTPUT_DIR:-$ROOT/results/full_path_pdnn_layer12_${CODING}}"
 INPUT_TEMPERATURE="${INPUT_TEMPERATURE:-1.0}"
 HIDDEN_TEMPERATURE="${HIDDEN_TEMPERATURE:-1.0}"
 MEAN_STEPS="${MEAN_STEPS:-2000}"
@@ -19,6 +20,7 @@ python "$SCRIPT_DIR/train_full_path_distillation.py" \
   --output-dir "$OUTPUT_DIR" \
   --layer 12 \
   --hidden-sizes 4864 \
+  --coding "$CODING" \
   --input-temperature "$INPUT_TEMPERATURE" \
   --hidden-temperature "$HIDDEN_TEMPERATURE" \
   --sequence-length 256 \

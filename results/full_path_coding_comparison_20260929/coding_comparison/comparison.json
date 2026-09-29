@@ -1,0 +1,174 @@
+{
+  "baseline_ppl": 11.652735047455899,
+  "conditions": {
+    "bipolar": {
+      "training_seed": 0,
+      "input_temperature": 0.25,
+      "hidden_temperature": 1.0,
+      "ppl": {
+        "N0_seed0": 12.085347791977824,
+        "N1_seed0": 12.22910407179439,
+        "N4_seed0": 12.117122501955848,
+        "N8_seed0": 12.105107645160246,
+        "N16_seed0": 12.09544240396358,
+        "N4_seed1": 12.122254272663062,
+        "N4_seed2": 12.120305482481115
+      },
+      "N4_mean": 12.119894085700007,
+      "N4_sample_std": 0.0025905024862917466,
+      "N4_increase_percent_vs_original": 4.00900763933616,
+      "training_seconds": 80.64029243099503,
+      "training_peak_allocated_bytes": 1270366720,
+      "validation": {
+        "0": {
+          "mse": 0.013311529532074928,
+          "normalized_mse": 0.5370183661580086,
+          "cosine_similarity": 0.6809797808527946,
+          "target_rms": 0.15741421096026897,
+          "prediction_rms": 0.10353084281086922
+        },
+        "1": {
+          "mse": 0.02006959170103073,
+          "normalized_mse": 0.8178025409579277,
+          "cosine_similarity": 0.5199543535709381,
+          "target_rms": 0.15664050169289112,
+          "prediction_rms": 0.12985344789922237
+        },
+        "4": {
+          "mse": 0.014698356506414711,
+          "normalized_mse": 0.5977825224399567,
+          "cosine_similarity": 0.6335520446300507,
+          "target_rms": 0.1568243633955717,
+          "prediction_rms": 0.10771828982979059
+        },
+        "8": {
+          "mse": 0.01388870133087039,
+          "normalized_mse": 0.550870843231678,
+          "cosine_similarity": 0.6680310070514679,
+          "target_rms": 0.1587606444954872,
+          "prediction_rms": 0.10483155027031898
+        },
+        "16": {
+          "mse": 0.01416154217440635,
+          "normalized_mse": 0.5631334185600281,
+          "cosine_similarity": 0.6607766970992088,
+          "target_rms": 0.15849107317626476,
+          "prediction_rms": 0.10118059162050486
+        }
+      }
+    },
+    "binary_same_temperature": {
+      "training_seed": 0,
+      "input_temperature": 0.25,
+      "hidden_temperature": 1.0,
+      "ppl": {
+        "N0_seed0": 12.110391139882028,
+        "N1_seed0": 12.29135212781879,
+        "N4_seed0": 12.1552677918237,
+        "N8_seed0": 12.13823151229517,
+        "N16_seed0": 12.120199879030796,
+        "N4_seed1": 12.159556491067994,
+        "N4_seed2": 12.157862227796414
+      },
+      "N4_mean": 12.157562170229369,
+      "N4_sample_std": 0.002160037316727758,
+      "N4_increase_percent_vs_original": 4.3322629470039065,
+      "training_seconds": 73.47276388294995,
+      "training_peak_allocated_bytes": 1271415296,
+      "validation": {
+        "0": {
+          "mse": 0.013719330891035497,
+          "normalized_mse": 0.5535130128264427,
+          "cosine_similarity": 0.6731667965650558,
+          "target_rms": 0.15741421096026897,
+          "prediction_rms": 0.0922719482332468
+        },
+        "1": {
+          "mse": 0.022325378376990557,
+          "normalized_mse": 0.9098027870059013,
+          "cosine_similarity": 0.46312732994556427,
+          "target_rms": 0.15664050169289112,
+          "prediction_rms": 0.1306933742016554
+        },
+        "4": {
+          "mse": 0.015660369186662138,
+          "normalized_mse": 0.6369208842515945,
+          "cosine_similarity": 0.5983442887663841,
+          "target_rms": 0.1568243633955717,
+          "prediction_rms": 0.10269670933485031
+        },
+        "8": {
+          "mse": 0.014641604968346655,
+          "normalized_mse": 0.580772653222084,
+          "cosine_similarity": 0.6430153325200081,
+          "target_rms": 0.1587606444954872,
+          "prediction_rms": 0.09886778611689806
+        },
+        "16": {
+          "mse": 0.01473890314809978,
+          "normalized_mse": 0.5861684903502464,
+          "cosine_similarity": 0.6429455503821373,
+          "target_rms": 0.15849107317626476,
+          "prediction_rms": 0.09404116030782461
+        }
+      }
+    },
+    "binary_half_temperature": {
+      "training_seed": 0,
+      "input_temperature": 0.125,
+      "hidden_temperature": 0.5,
+      "ppl": {
+        "N0_seed0": 12.054640849657247,
+        "N1_seed0": 12.203259020674219,
+        "N4_seed0": 12.09075431347728,
+        "N8_seed0": 12.078649779215677,
+        "N16_seed0": 12.066037208217303,
+        "N4_seed1": 12.095799350576206,
+        "N4_seed2": 12.09321054365444
+      },
+      "N4_mean": 12.093254735902642,
+      "N4_sample_std": 0.002522808860870155,
+      "N4_increase_percent_vs_original": 3.7803973629600307,
+      "training_seconds": 72.650883493945,
+      "training_peak_allocated_bytes": 1271415296,
+      "validation": {
+        "0": {
+          "mse": 0.012295893160626292,
+          "normalized_mse": 0.496081106364727,
+          "cosine_similarity": 0.7125147208571434,
+          "target_rms": 0.15741421096026897,
+          "prediction_rms": 0.10166558250784874
+        },
+        "1": {
+          "mse": 0.01904400624334812,
+          "normalized_mse": 0.7759850472211838,
+          "cosine_similarity": 0.5445820167660713,
+          "target_rms": 0.15664050169289112,
+          "prediction_rms": 0.1308142114430666
+        },
+        "4": {
+          "mse": 0.01372505014296621,
+          "normalized_mse": 0.5582821741700172,
+          "cosine_similarity": 0.6607980579137802,
+          "target_rms": 0.1568243633955717,
+          "prediction_rms": 0.10946379508823156
+        },
+        "8": {
+          "mse": 0.012877054628916085,
+          "normalized_mse": 0.5107816532254219,
+          "cosine_similarity": 0.6959944665431976,
+          "target_rms": 0.1587606444954872,
+          "prediction_rms": 0.10740487556904554
+        },
+        "16": {
+          "mse": 0.013165006996132433,
+          "normalized_mse": 0.5234908014535904,
+          "cosine_similarity": 0.6898957267403603,
+          "target_rms": 0.15849107317626476,
+          "prediction_rms": 0.10285557247698307
+        }
+      }
+    }
+  },
+  "scope": "One trained checkpoint per condition; three inference seeds, not three training replications."
+}

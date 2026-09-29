@@ -13,7 +13,7 @@ from full_path_pdnn_ffn import load_full_path_checkpoint
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Evaluate a full-path bipolar P-DNN FFN replacement")
+    parser = argparse.ArgumentParser(description="Evaluate a full-path P-DNN FFN replacement")
     parser.add_argument("--model", required=True)
     parser.add_argument("--checkpoint", required=True)
     parser.add_argument("--text-file", required=True)
@@ -84,6 +84,7 @@ def main() -> None:
         "test": "full_path_pdnn_ffn_sliding_window_perplexity",
         "checkpoint": str(Path(args.checkpoint).resolve()),
         "student_type": payload.get("student_type"),
+        "student_config": student.checkpoint_config(),
         "layer": layer,
         "sample_count": args.sample_count,
         "seed": args.seed,

@@ -109,6 +109,23 @@ fixed. For stochastic variants, report the sample count and at least three
 independent seeds. Compare task accuracy and perplexity alongside peak memory,
 throughput, output variance, and layer-local error.
 
+## Sigmoid coding and internal P-DNN depth (2026-09-29)
+
+Both studies replace only decoder FFN index 12 of Qwen2.5-0.5B Base;
+original BF16 WikiText-2 PPL is 11.652735. Every matrix input is sampled,
+and only the final continuous path readouts are averaged.
+
+| Study | Four-path PPL | Replication and conclusion |
+| --- | --- | --- |
+| [Coding comparison](results/full_path_coding_comparison_20260929/RESULTS_ZH.md) | tanh: 12.119894; same-temperature sigmoid: 12.157562; half-temperature sigmoid: 12.093255 | One trained checkpoint per condition, three inference seeds; half-temperature sigmoid slightly improves this fixed recipe. |
+| [Internal depth comparison](results/full_path_depth_comparison_20260929/RESULTS_ZH.md) | 2 matrices: 12.096229; 3: 12.128913; 4: 12.136852 | Three independent training seeds per depth, inference seed 0; deeper and narrower students do not improve PPL at matched parameters and training steps. |
+
+Here 2/3/4 layers means matrices **inside one student FFN**, not the number
+of decoder FFNs replaced. See the [experiment instructions](experiments/pdnn_ffn/README.md)
+for runners and tests. Raw metrics, environments and SHA-256 manifests are
+included; weights, datasets and checkpoints remain outside Git. These are
+software feasibility measurements, not p-bit hardware speed or energy results.
+
 ## License
 
 Apache License 2.0. Qwen model weights and WikiText-2 are obtained separately
