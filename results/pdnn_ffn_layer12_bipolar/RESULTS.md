@@ -29,6 +29,14 @@ The conditional-mean checkpoint reached validation normalized MSE 0.4357 and
 cosine similarity 0.7527. The final sample-aware checkpoint at 4 samples
 reached normalized MSE 0.4997 and cosine similarity 0.7076.
 
+The large checkpoints remain on the experiment server and are excluded from
+Git. Their artifact identities are:
+
+| Checkpoint | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `student_mean.pt` | 104,671,393 | `61e5eecadf9d254ae3fc395eefcaf345ead42600859e38cbf487b74bd35215de` |
+| `student_sampled.pt` | 104,671,459 | `0557b82fcccb1e7f5659eb1fd54e599fbfbe3e490db34525257768f3439933bd` |
+
 ## Full WikiText-2 test perplexity
 
 All runs use the same 299,078-token corpus, 2,048-token windows, and stride
