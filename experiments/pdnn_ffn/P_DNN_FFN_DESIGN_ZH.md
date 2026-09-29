@@ -2,9 +2,11 @@
 
 本文档是本项目 P-DNN FFN 的**唯一持续设计文档**。它说明当前代码究竟做了什么、每个计算阶段如何工作、哪些量已经二值化、训练和测试结果如何，以及后续改进应怎样记录。以后修改网络结构、训练方法、采样策略或硬件映射时，都在本文档中追加新版本，保留旧版本和旧结果，不覆盖历史结论。
 
-当前已验证实现版本为 **v1**，对应实现提交 `c9f383d`，日期为 2026-09-29。当前结论只适用于 Qwen2.5-0.5B Base 的第 12 个 decoder block 中单个 FFN 的替换实验。
+当前已验证实验版本为 **v2**，对应多层评估实现提交 `6dfc677`，日期为 2026-09-29。v2 保持 v1 的两矩阵 full-path 结构，测试多个 decoder FFN 逐步组合。
 
 第 13 节记录“入口和隐藏层都采用 p-bit”的设计分析，第 14 节记录已经完成训练与完整 PPL 评估的 v1 实现。v0 仍作为输入矩阵接收连续值的对照基线。
+
+第 15 节记录 2、3、4 个 FFN 的渐进替换结果和 24 层时间估算。结果表明训练成本可接受，但独立局部蒸馏的误差会累积，早期 layer 0 尤其敏感，因此尚不应直接执行 24 层独立替换。
 
 ## 1. 实验对象和替换边界
 
@@ -272,6 +274,7 @@ v0 尚未证明：
 | [`full_path_pdnn_ffn.py`](full_path_pdnn_ffn.py) | v1 多矩阵完整随机路径模块，保证每个矩阵的输入均为双极性状态 |
 | [`train_full_path_distillation.py`](train_full_path_distillation.py) | v1 均值场预热与完整路径 sample-aware 蒸馏 |
 | [`evaluate_full_path_perplexity.py`](evaluate_full_path_perplexity.py) | 将 v1 student 插回 Qwen 并评估完整 PPL |
+| [`evaluate_multi_layer_full_path_perplexity.py`](evaluate_multi_layer_full_path_perplexity.py) | 同时安装多个 student，记录 PPL、显存和评估时间 |
 | [`run_full_path_layer12_experiment.sh`](run_full_path_layer12_experiment.sh) | v1 layer 12 训练与评估入口 |
 | [`upstream/modeling_qwen2.py`](../../upstream/modeling_qwen2.py) | 固定为 Transformers v4.45.2 的 Qwen2 参考实现 |
 | [`config/qwen2.5-0.5b-config.json`](../../config/qwen2.5-0.5b-config.json) | 本实验所用 Qwen2.5-0.5B 配置 |
@@ -478,3 +481,45 @@ continuous x (896)
 v1 支持继续研究多矩阵 P-DNN。下一步不应立刻替换全部 24 层，而应在相近参数预算下增加第三个矩阵和第二个隐藏 p-bit 层，确定深度本身带来的表达收益能否抵消额外采样噪声。随后再进行逐层增加的完整模型实验。
 
 完整原始结果见 [`results/full_path_pdnn_layer12_bipolar_t0p25/RESULTS.md`](../../results/full_path_pdnn_layer12_bipolar_t0p25/RESULTS.md)。checkpoint 保留在实验服务器，sample-aware checkpoint SHA-256 为 `24cdcf43c8e643ea27ccb1427218b1b97b53f80a2750b09e1d3b62f18e046912`。
+
+## 15. v2：多个 FFN 渐进替换（2026-09-29）
+
+### 15.1 时间与资源估算
+
+layer 0、6、12、18 的单层训练时间分别为 72.37、75.13、71.00、71.70 秒，平均 72.55 秒。24 个 student 总计约 29.0 GPU-minutes；使用当前 7 张空闲 RTX 5090 分四批并行，包含模型加载和 checkpoint 写入预计约 6–8 分钟。若保留每层 mean、latest、sampled 三份 checkpoint，24 层约占 7.5 GB。
+
+因此训练时间不是阻碍。下面的精度结果说明当前训练目标才是阻碍。
+
+### 15.2 单层敏感度
+
+| 替换层 | N=4 PPL | 备注 |
+| ---: | ---: | --- |
+| 0 | 40.512179 | mean-field 也达到 30.180632，早期层极敏感 |
+| 6 | 12.627425 | 可运行，但弱于 layer 12 |
+| 12 | 12.119894 | 三 seed 平均，当前最好单层工作点 |
+| 18 | 12.497141 | 可运行 |
+
+layer 0 的局部 N=4 normalized MSE 只有 0.3265，是四层中最低的，但完整 PPL 最差。这证明局部相对 MSE 不能用于判断某层是否安全；早期层的误差会被后续 23 个 block 放大。
+
+### 15.3 多层组合结果
+
+| 替换层 | 模式 | PPL |
+| --- | --- | ---: |
+| 12, 18 | N=4 seed 0 | 13.038061 |
+| 6, 12 | mean-field | 13.067955 |
+| 6, 12 | N=4，3 seeds | **13.202479 ± 0.003268** |
+| 6, 12 | N=16 | 13.098192 |
+| 6, 12, 18 | mean-field | 14.089006 |
+| 6, 12, 18 | N=4，3 seeds | **14.311508 ± 0.009282** |
+| 6, 12, 18 | N=16 | 14.141447 |
+| 0, 6, 12, 18 | mean-field | 35.013256 |
+| 0, 6, 12, 18 | N=4，3 seeds | **46.767307 ± 0.485361** |
+| 0, 6, 12, 18 | N=16 | 40.450719 |
+
+对较稳定的 6、12、18 层，NLL 误差近似相加，但组合结果还存在额外分布偏移。增加采样数只能缩小随机部分：三层 mean-field 已经是 14.0890，说明 14.3115 中的大部分偏差不是四次采样造成的。
+
+### 15.4 决策
+
+当前不执行 24 个 FFN 的独立局部替换。下一步应让 `{6,12,18}` 三个已训练 student 同时在线，联合使用 teacher logits KL 和 next-token loss 做端到端适配，使后层在真实的上游替换分布下训练。只有三层 PPL 明显恢复后，才按 3→6→12→24 层扩展。layer 0 等早期层最后处理，并需要单独的精度门槛。
+
+完整日志、原始 JSON、checkpoint 哈希和时间测量见 [`results/full_path_pdnn_progressive_2_4_layers/RESULTS.md`](../../results/full_path_pdnn_progressive_2_4_layers/RESULTS.md)。

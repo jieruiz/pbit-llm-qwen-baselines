@@ -57,6 +57,13 @@ inputs. See
 [`results/full_path_pdnn_layer12_bipolar_t0p25/RESULTS.md`](results/full_path_pdnn_layer12_bipolar_t0p25/RESULTS.md)
 for the temperature pilot, protocol, full table, and limitations.
 
+Progressive composition was then tested with independently distilled students.
+Layers 6 and 12 reached four-path PPL 13.2025, while layers 6, 12, and 18
+reached 14.3115. Adding layer 0 caused PPL to exceed 46 even though that layer
+had low local MSE, showing that local layer loss does not measure downstream
+sensitivity. See
+[`results/full_path_pdnn_progressive_2_4_layers/RESULTS.md`](results/full_path_pdnn_progressive_2_4_layers/RESULTS.md).
+
 ## Repository contents
 
 - `baselines/`: integrity, generation, performance, perplexity, FFN probe, and
@@ -66,6 +73,8 @@ for the temperature pilot, protocol, full table, and limitations.
   perplexity results; large training checkpoints are retained off-repository.
 - `results/full_path_pdnn_layer12_bipolar_t0p25/`: full-path bipolar P-DNN
   training and perplexity results.
+- `results/full_path_pdnn_progressive_2_4_layers/`: two-, three-, and four-FFN
+  composition results, timing estimates, and per-layer sensitivity data.
 - `experiments/pdnn_ffn/`: P-DNN module, layer distillation, and evaluation.
 - `config/`: the Qwen2.5-0.5B configuration used for architecture accounting.
 - `upstream/`: pinned Transformers v4.45.2 Qwen2 implementation for source
