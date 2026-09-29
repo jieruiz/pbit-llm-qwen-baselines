@@ -106,3 +106,9 @@ run `test_calibrated_pdnn.py` and the included short GPU preflight first.
 `summarize_calibration_ablation.py RESULT_DIR` separates training-seed
 variation from repeated stochastic inference. See the
 [prespecified protocol](TEN_LAYER_CALIBRATION_ZH.md).
+
+The completed three-pair experiment reduced PPL by 0.206%, missing the 1%
+target; see [results](../../results/ten_layer_calibration_20260929/RESULTS_ZH.md).
+The channel-calibration loader rejects upstream binary/scalar-learnable
+encoding configs rather than silently combining different model variants.
+Compatibility tests pass with both the executed base and upstream `ab051b9`.

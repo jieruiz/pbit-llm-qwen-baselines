@@ -12,7 +12,7 @@ import torch.nn.functional as F
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from full_path_pdnn_ffn import FullPathPBitFFN
-from calibrated_pdnn_ffn import load_checkpoint, parameter_groups
+from calibrated_pdnn_ffn import load_checkpoint, parameter_groups, validate_training_mode
 
 
 def parse_args() -> argparse.Namespace:
@@ -126,6 +126,7 @@ def install_students(
     source_payloads: dict[int, dict] = {}
     for checkpoint_path in checkpoint_paths:
         student, payload = load_checkpoint(checkpoint_path, enable_calibration=calibration)
+        validate_training_mode(student, calibration)
         layer = int(payload["training_args"]["layer"])
         if layer in students:
             raise ValueError(f"multiple checkpoints target decoder layer {layer}")

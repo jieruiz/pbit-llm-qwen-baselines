@@ -4,7 +4,7 @@ from pathlib import Path
 
 import torch
 
-from calibrated_pdnn_ffn import CalibratedPBitFFN, TYPE, load_checkpoint
+from calibrated_pdnn_ffn import CalibratedPBitFFN, TYPE, load_checkpoint, validate_training_mode
 from full_path_pdnn_ffn import FullPathPBitFFN, FullPathPBitFFNConfig
 
 
@@ -57,6 +57,21 @@ class CalibrationTests(unittest.TestCase):
                 self.assertTrue(torch.equal(rng, torch.get_rng_state()))
                 x = torch.randn(3, 5)
                 self.assertTrue(torch.equal(model(x), loaded(x)))
+
+    def test_reject_mixed_encoding_variants(self):
+        self.base.config.coding = 'binary'
+        with self.assertRaises(ValueError):
+            CalibratedPBitFFN(self.base.config)
+        self.base.config.coding = 'bipolar'
+        self.base.config.learnable_encoding = True
+        with self.assertRaises(ValueError):
+            CalibratedPBitFFN(self.base.config)
+
+    def test_training_mode_cannot_mislabel_control(self):
+        validate_training_mode(self.base, False)
+        validate_training_mode(self.student, True)
+        with self.assertRaises(ValueError):
+            validate_training_mode(self.student, False)
 
 
 if __name__ == '__main__':

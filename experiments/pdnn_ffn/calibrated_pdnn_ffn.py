@@ -13,6 +13,8 @@ class CalibratedPBitFFN(FullPathPBitFFN):
     def __init__(self, config):
         if len(config.hidden_sizes) != 1:
             raise ValueError("This ablation supports exactly two projections")
+        if getattr(config, "coding", "bipolar") != "bipolar" or getattr(config, "learnable_encoding", False):
+            raise ValueError("Channel calibration requires the fixed bipolar base encoding")
         super().__init__(config)
         self.input_log_scale = nn.Parameter(torch.zeros(config.input_size))
         self.input_shift = nn.Parameter(torch.zeros(config.input_size))
@@ -30,7 +32,9 @@ class CalibratedPBitFFN(FullPathPBitFFN):
         return self.calibrated_mean(hidden_states / self.config.input_temperature,
                                     self.input_log_scale, self.input_shift)
 
-    def hidden_mean(self, field):
+    def hidden_mean(self, field, index=0):
+        if index != 0:
+            raise ValueError("This ablation has one hidden p-bit boundary")
         return self.calibrated_mean(field / self.config.hidden_temperature,
                                     self.hidden_log_scale, self.hidden_shift)
 
@@ -62,3 +66,10 @@ def parameter_groups(students, learning_rate, calibration_lr, weight_decay):
     if calibration:
         groups.append({"params": calibration, "lr": calibration_lr, "weight_decay": 0.0})
     return groups
+
+
+def validate_training_mode(student, calibration):
+    if getattr(student.config, "coding", "bipolar") != "bipolar" or getattr(student.config, "learnable_encoding", False):
+        raise ValueError("This matched ablation requires fixed bipolar source encoders")
+    if isinstance(student, CalibratedPBitFFN) != calibration:
+        raise ValueError("Use --calibration to continue a channel-calibrated checkpoint")
