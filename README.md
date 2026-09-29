@@ -168,3 +168,15 @@ throughput, output variance, and layer-local error.
 
 Apache License 2.0. Qwen model weights and WikiText-2 are obtained separately
 and remain subject to their own licenses and terms.
+
+## Controlled four-FFN training comparison
+
+A separate fixed-initialization comparison on FFNs 10–13 reproduces the
+1,000-step joint baseline (four-path PPL 13.153481). A 3,000-step training
+budget, selecting step 2,500 on held-out training data, reaches **12.981314**.
+Adding 0.1-weight teacher/student FFN-output matching reaches **12.980273**;
+the 0.001041 difference does not establish an additional benefit, while training
+cost rises by about 11%. These are one training seed per condition with three
+inference seeds, not independent training replications. See
+[the result report](results/joint_feature_ablation_20260929/RESULTS_ZH.md) and
+[the prespecified protocol](experiments/pdnn_ffn/JOINT_FEATURE_ABLATION_ZH.md).

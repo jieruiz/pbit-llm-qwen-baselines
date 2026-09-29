@@ -1,0 +1,149 @@
+{
+  "baseline_ppl": 11.652735047455899,
+  "initial_n4_seed0_ppl": 13.895235259477014,
+  "conditions": {
+    "reference_1000": {
+      "steps": 1000,
+      "feature_weight": 0.0,
+      "best_step": 1000,
+      "best_validation_ppl": 23.373905578804465,
+      "n4_ppl_inference_seeds": [
+        13.153876980725324,
+        13.154935158089266,
+        13.151631319733855
+      ],
+      "n4_mean": 13.153481152849482,
+      "n4_sample_std": 0.0016871119554258403,
+      "all_ppl": {
+        "n4_s0": 13.153876980725324,
+        "n4_s1": 13.154935158089266,
+        "n4_s2": 13.151631319733855,
+        "n0_s0": 12.985906651859946,
+        "n16_s0": 13.035125387372569
+      },
+      "increase_percent_vs_original": 12.878917260898648,
+      "elapsed_seconds": 258.55384321697056,
+      "validation_curve": [
+        {
+          "step": 0,
+          "perplexity": 26.68786252974954
+        },
+        {
+          "step": 500,
+          "perplexity": 23.466327056393723
+        },
+        {
+          "step": 1000,
+          "perplexity": 23.373905578804465
+        }
+      ]
+    },
+    "long_3000": {
+      "steps": 3000,
+      "feature_weight": 0.0,
+      "best_step": 2500,
+      "best_validation_ppl": 22.899619150316305,
+      "n4_ppl_inference_seeds": [
+        12.97953481894589,
+        12.982959022276843,
+        12.98144691895488
+      ],
+      "n4_mean": 12.981313586725872,
+      "n4_sample_std": 0.0017159910330175271,
+      "all_ppl": {
+        "n4_s0": 12.97953481894589,
+        "n4_s1": 12.982959022276843,
+        "n4_s2": 12.98144691895488,
+        "n0_s0": 12.816962758552679,
+        "n16_s0": 12.863521483089139
+      },
+      "increase_percent_vs_original": 11.40143094182886,
+      "elapsed_seconds": 697.3264287370257,
+      "validation_curve": [
+        {
+          "step": 0,
+          "perplexity": 26.68786252974954
+        },
+        {
+          "step": 500,
+          "perplexity": 23.41076036075187
+        },
+        {
+          "step": 1000,
+          "perplexity": 23.17773846082683
+        },
+        {
+          "step": 1500,
+          "perplexity": 23.030003887094146
+        },
+        {
+          "step": 2000,
+          "perplexity": 22.93713192584129
+        },
+        {
+          "step": 2500,
+          "perplexity": 22.899619150316305
+        },
+        {
+          "step": 3000,
+          "perplexity": 22.903215324054987
+        }
+      ]
+    },
+    "feature_3000": {
+      "steps": 3000,
+      "feature_weight": 0.1,
+      "best_step": 3000,
+      "best_validation_ppl": 22.971495392550068,
+      "n4_ppl_inference_seeds": [
+        12.983424839243543,
+        12.978533591703489,
+        12.978860703991971
+      ],
+      "n4_mean": 12.980273044979668,
+      "n4_sample_std": 0.0027344297254946115,
+      "all_ppl": {
+        "n4_s0": 12.983424839243543,
+        "n4_s1": 12.978533591703489,
+        "n4_s2": 12.978860703991971,
+        "n0_s0": 12.815586156842938,
+        "n16_s0": 12.867133057362889
+      },
+      "increase_percent_vs_original": 11.392501349402995,
+      "elapsed_seconds": 773.613930993015,
+      "validation_curve": [
+        {
+          "step": 0,
+          "perplexity": 26.68786252974954
+        },
+        {
+          "step": 500,
+          "perplexity": 23.435253189712185
+        },
+        {
+          "step": 1000,
+          "perplexity": 23.23285090536624
+        },
+        {
+          "step": 1500,
+          "perplexity": 23.083254463896285
+        },
+        {
+          "step": 2000,
+          "perplexity": 22.997798031626125
+        },
+        {
+          "step": 2500,
+          "perplexity": 22.97239335370568
+        },
+        {
+          "step": 3000,
+          "perplexity": 22.971495392550068
+        }
+      ]
+    }
+  },
+  "scope": "One joint-training seed per condition; sample standard deviation across three inference seeds only.",
+  "long_minus_reference_ppl": -0.17216756612361017,
+  "feature_minus_same_budget_control_ppl": -0.0010405417462031608
+}

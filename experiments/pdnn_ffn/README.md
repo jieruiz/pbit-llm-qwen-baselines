@@ -69,3 +69,18 @@ CUDA_VISIBLE_DEVICES=7 bash experiments/pdnn_ffn/run_layer12_experiment.sh
 This is a layer-distillation feasibility test. It does not establish hardware
 speed or energy savings, and replacing only one of 24 FFNs does not represent
 the quality of a model whose complete FFN stack has been converted.
+
+## Joint budget and FFN-feature ablation
+
+`train_joint_feature_distillation.py` is an independent trainer with fixed
+validation RNG, 64 validation windows, explicit final checkpoints, and optional
+training-only FFN-output NMSE. `run_joint_feature_ablation.py` executes the
+prespecified shared-initialization 1000/3000/3000-step comparison;
+`summarize_joint_feature_ablation.py` validates conditions and aggregates the
+saved metrics. Run `test_feature_distillation.py` before GPU preflight.
+
+See [protocol](JOINT_FEATURE_ABLATION_ZH.md) and
+[results](../../results/joint_feature_ablation_20260929/RESULTS_ZH.md).
+The longer baseline improves PPL; the tested auxiliary loss gives no clear
+additional gain. Original forward modules and joint-training entry point remain
+available for direct reproduction.

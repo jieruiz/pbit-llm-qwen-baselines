@@ -1,0 +1,53 @@
+{
+  "test": "multi_layer_full_path_pdnn_ffn_sliding_window_perplexity",
+  "layers": [
+    10,
+    11,
+    12,
+    13
+  ],
+  "checkpoints": [
+    {
+      "path": "/home/Weican_Chen/projects/pbit-qwen-joint-ablation-20260929/results/feature_3000/best_layer10.pt",
+      "layer": 10,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "/home/Weican_Chen/projects/pbit-qwen-joint-ablation-20260929/results/feature_3000/best_layer11.pt",
+      "layer": 11,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "/home/Weican_Chen/projects/pbit-qwen-joint-ablation-20260929/results/feature_3000/best_layer12.pt",
+      "layer": 12,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "/home/Weican_Chen/projects/pbit-qwen-joint-ablation-20260929/results/feature_3000/best_layer13.pt",
+      "layer": 13,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    }
+  ],
+  "replacement_count": 4,
+  "student_parameters_total": 34888192,
+  "sample_count": 0,
+  "seed": 0,
+  "source_tokens": 299078,
+  "start_token": 0,
+  "end_token": 299078,
+  "corpus_tokens": 299078,
+  "scored_tokens": 299077,
+  "max_length": 2048,
+  "stride": 1024,
+  "mean_negative_log_likelihood": 2.550662098671904,
+  "perplexity": 12.815586156842938,
+  "windows": 292,
+  "evaluation_elapsed_seconds": 6.914157214923762,
+  "total_elapsed_seconds": 9.636701917042956,
+  "scored_tokens_per_second": 43255.741907988675,
+  "peak_allocated_bytes": 5332096000
+}
