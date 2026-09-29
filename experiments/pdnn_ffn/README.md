@@ -15,6 +15,13 @@ The continuously maintained Chinese design document
 stage, the exact binary/continuous boundaries, training method, current
 results, limitations, and the required format for recording future versions.
 
+The v1 full-path experiment adds an input p-bit layer, keeps the p-bit layer
+between the two matrices, and averages only after the continuous readout. Both
+matrices therefore receive bipolar inputs. Its implementation is in
+`full_path_pdnn_ffn.py`, with separate training and perplexity scripts. Results
+are in
+[`results/full_path_pdnn_layer12_bipolar_t0p25/RESULTS.md`](../../results/full_path_pdnn_layer12_bipolar_t0p25/RESULTS.md).
+
 Run with:
 
 ```bash

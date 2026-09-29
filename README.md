@@ -41,6 +41,22 @@ protocol, full table, and limitations. The Chinese living design document
 describes every layer and is the canonical place for all future P-DNN FFN
 changes and version records.
 
+## Full-path bipolar P-DNN replacement
+
+The second experiment also converts the FFN input into bipolar p-bit samples:
+
+```text
+continuous input -> input p-bits -> W_in -> hidden p-bits -> W_out -> average
+```
+
+Every learned matrix therefore receives -1/+1 activations. With four complete
+paths, decoder layer 12 reached WikiText-2 PPL **12.1199 +/- 0.0026** across
+three seeds. This is 4.01% above the original Qwen result and only 0.39% above
+the first P-DNN replacement, whose first matrix still received continuous
+inputs. See
+[`results/full_path_pdnn_layer12_bipolar_t0p25/RESULTS.md`](results/full_path_pdnn_layer12_bipolar_t0p25/RESULTS.md)
+for the temperature pilot, protocol, full table, and limitations.
+
 ## Repository contents
 
 - `baselines/`: integrity, generation, performance, perplexity, FFN probe, and
@@ -48,6 +64,8 @@ changes and version records.
 - `results/base_bf16/`: raw JSON results plus environment and artifact hashes.
 - `results/pdnn_ffn_layer12_bipolar/`: first single-layer P-DNN training and
   perplexity results; large training checkpoints are retained off-repository.
+- `results/full_path_pdnn_layer12_bipolar_t0p25/`: full-path bipolar P-DNN
+  training and perplexity results.
 - `experiments/pdnn_ffn/`: P-DNN module, layer distillation, and evaluation.
 - `config/`: the Qwen2.5-0.5B configuration used for architecture accounting.
 - `upstream/`: pinned Transformers v4.45.2 Qwen2 implementation for source

@@ -2,9 +2,9 @@
 
 本文档是本项目 P-DNN FFN 的**唯一持续设计文档**。它说明当前代码究竟做了什么、每个计算阶段如何工作、哪些量已经二值化、训练和测试结果如何，以及后续改进应怎样记录。以后修改网络结构、训练方法、采样策略或硬件映射时，都在本文档中追加新版本，保留旧版本和旧结果，不覆盖历史结论。
 
-当前实现版本为 **v0**，对应实现与结果提交 `40d043b`，日期为 2026-09-29。当前结论只适用于 Qwen2.5-0.5B Base 的第 12 个 decoder block 中单个 FFN 的替换实验。
+当前已验证实现版本为 **v1**，对应实现提交 `c9f383d`，日期为 2026-09-29。当前结论只适用于 Qwen2.5-0.5B Base 的第 12 个 decoder block 中单个 FFN 的替换实验。
 
-第 13 节新增“入口和隐藏层都采用 p-bit”的候选方案。它处于分析阶段，尚未实现、训练或获得 PPL 结果，当前实现仍为 v0。
+第 13 节记录“入口和隐藏层都采用 p-bit”的设计分析，第 14 节记录已经完成训练与完整 PPL 评估的 v1 实现。v0 仍作为输入矩阵接收连续值的对照基线。
 
 ## 1. 实验对象和替换边界
 
@@ -269,6 +269,10 @@ v0 尚未证明：
 | [`evaluate_perplexity.py`](evaluate_perplexity.py) | 把 student 插回完整 Qwen 并计算 PPL |
 | [`run_layer12_experiment.sh`](run_layer12_experiment.sh) | layer 12 训练与主评估入口 |
 | [`evaluate_layer12_checkpoints.sh`](evaluate_layer12_checkpoints.sh) | 不同 checkpoint、样本数与 seed 的批量评估 |
+| [`full_path_pdnn_ffn.py`](full_path_pdnn_ffn.py) | v1 多矩阵完整随机路径模块，保证每个矩阵的输入均为双极性状态 |
+| [`train_full_path_distillation.py`](train_full_path_distillation.py) | v1 均值场预热与完整路径 sample-aware 蒸馏 |
+| [`evaluate_full_path_perplexity.py`](evaluate_full_path_perplexity.py) | 将 v1 student 插回 Qwen 并评估完整 PPL |
+| [`run_full_path_layer12_experiment.sh`](run_full_path_layer12_experiment.sh) | v1 layer 12 训练与评估入口 |
 | [`upstream/modeling_qwen2.py`](../../upstream/modeling_qwen2.py) | 固定为 Transformers v4.45.2 的 Qwen2 参考实现 |
 | [`config/qwen2.5-0.5b-config.json`](../../config/qwen2.5-0.5b-config.json) | 本实验所用 Qwen2.5-0.5B 配置 |
 
@@ -412,4 +416,65 @@ $$
 4. 测试 N=1、4、8、16、32 及至少 3 个 seeds，报告完整模型 PPL，同时保留 v0、原始 Qwen 和较大 N 的随机参考。
 5. 精度可接受后再对权重做低位宽量化；1-bit 权重与 XNOR/popcount 作为单独方案比较。
 
-本节是设计分析；没有启动新的训练，没有新 checkpoint 或性能结果。正式实现后应新增版本条目并补齐数据、配置、哈希和结果。
+本节最初作为设计分析加入。其最小两矩阵结构现已实现并完成训练，结果记录在下一节；增加第三个及更多矩阵仍属于待验证扩展。
+
+## 14. v1：入口与隐藏层双 p-bit 完整路径（2026-09-29）
+
+### 14.1 实际结构
+
+v1 使用：
+
+```text
+continuous x (896)
+ -> input p-bits b^(n) (-1/+1, 896)
+ -> W_in b^(n) + bias (4864-dimensional field)
+ -> hidden p-bits s^(n) (-1/+1, 4864)
+ -> W_out s^(n) + bias (continuous 896-dimensional readout)
+ -> average N complete-path readouts
+```
+
+代码单元检查记录了每次矩阵调用的实际输入，并确认 sample-aware 前向中 `W_in` 和 `W_out` 都只接收严格的 -1/+1；所有矩阵的 STE 梯度均为有限值。权重和累加场仍为浮点/多位数。v1 参数量为 8,722,048，与 v0 相同。
+
+入口均值为 `tanh(x/T_in)`。先用同一配置各训练 400 个 mean-field steps 和 400 个四路径 steps，得到：
+
+| T_in | N=4 normalized MSE |
+| ---: | ---: |
+| 0.125 | 0.629495 |
+| **0.25** | **0.624446** |
+| 0.35 | 0.626466 |
+| 0.5 | 0.635921 |
+| 1.0 | 0.689295 |
+| 2.0 | 0.780949 |
+
+因此正式训练选择 `T_in=0.25`，隐藏温度保持 1.0。
+
+### 14.2 训练与局部结果
+
+- layer 12，WikiText-2 raw train；
+- 2,000 mean-field warm-up steps + 2,000 sample-aware steps；
+- sample-aware 训练使用 4 条独立完整路径；
+- batch 4 × sequence length 256，共处理 4,096,000 token；
+- 一张 RTX 5090，70.9996 秒，峰值 allocated memory 1.18 GiB；
+- 最终 N=4 局部 normalized MSE 0.597783，cosine similarity 0.633552。
+
+### 14.3 完整模型 PPL
+
+| 模型 | 完整路径数 | Seed | PPL | 相对原模型 |
+| --- | ---: | ---: | ---: | ---: |
+| 原始 Qwen | 确定性 | 0 | 11.652735 | 0.00% |
+| v1 | mean-field | 0 | 12.085348 | +3.71% |
+| v1 | 1 | 0 | 12.229104 | +4.95% |
+| v1 | 4 | 0 | 12.117123 | +3.99% |
+| v1 | 4 | 1 | 12.122254 | +4.03% |
+| v1 | 4 | 2 | 12.120305 | +4.01% |
+| v1 | 8 | 0 | 12.105108 | +3.88% |
+| v1 | 16 | 0 | 12.095442 | +3.80% |
+| v1 | 32 | 0 | 12.091615 | +3.77% |
+
+四路径平均为 **12.119894 ± 0.002591**。v0 的四样本平均为 12.072649；v1 只增加 0.047245 PPL，即相对 v0 增加 0.391%。这说明在只替换一个 FFN 时，让两个矩阵都接收二值激活是可行的，入口二值化带来的额外语言模型误差较小。
+
+### 14.4 当前判断
+
+v1 支持继续研究多矩阵 P-DNN。下一步不应立刻替换全部 24 层，而应在相近参数预算下增加第三个矩阵和第二个隐藏 p-bit 层，确定深度本身带来的表达收益能否抵消额外采样噪声。随后再进行逐层增加的完整模型实验。
+
+完整原始结果见 [`results/full_path_pdnn_layer12_bipolar_t0p25/RESULTS.md`](../../results/full_path_pdnn_layer12_bipolar_t0p25/RESULTS.md)。checkpoint 保留在实验服务器，sample-aware checkpoint SHA-256 为 `24cdcf43c8e643ea27ccb1427218b1b97b53f80a2750b09e1d3b62f18e046912`。
