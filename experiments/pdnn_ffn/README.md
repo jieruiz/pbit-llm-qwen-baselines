@@ -32,6 +32,14 @@ error shows that independent local distillation still needs joint end-to-end
 adaptation before all 24 FFNs can be converted. See
 [`results/full_path_pdnn_progressive_2_4_layers/RESULTS.md`](../../results/full_path_pdnn_progressive_2_4_layers/RESULTS.md).
 
+The expansion experiment trains students for all 24 layers, ranks them by
+single-layer full-model PPL, and evaluates cumulative replacement from four to
+24 FFNs. A fixed corpus split confirms that eight replacements is the lenient
+boundary and that nine to ten independent replacements is already
+unacceptable. `--start-token` can be combined with `--max-tokens` in all PPL
+evaluators to keep selection and final evaluation segments disjoint. See
+[`results/full_path_pdnn_expansion_5_24_layers/RESULTS.md`](../../results/full_path_pdnn_expansion_5_24_layers/RESULTS.md).
+
 Run with:
 
 ```bash

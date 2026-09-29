@@ -15,18 +15,24 @@ def main() -> None:
     parser.add_argument("--output", required=True)
     parser.add_argument("--max-length", type=int, default=2048)
     parser.add_argument("--stride", type=int, default=1024)
+    parser.add_argument("--start-token", type=int, default=0)
     parser.add_argument("--max-tokens", type=int, default=None)
     parser.add_argument("--seed", type=int, default=0)
     args = parser.parse_args()
 
     if args.stride <= 0 or args.stride > args.max_length:
         raise ValueError("stride must be in (0, max_length]")
+    if args.start_token < 0:
+        raise ValueError("start-token must be non-negative")
+    if args.max_tokens is not None and args.max_tokens <= 0:
+        raise ValueError("max-tokens must be positive")
     set_deterministic(args.seed)
     tokenizer, model = load_local_model(args.model, "cuda")
     text = Path(args.text_file).read_text(encoding="utf-8")
     token_ids = tokenizer(text, return_tensors="pt", add_special_tokens=False).input_ids
-    if args.max_tokens is not None:
-        token_ids = token_ids[:, : args.max_tokens]
+    source_tokens = token_ids.shape[-1]
+    stop_token = None if args.max_tokens is None else args.start_token + args.max_tokens
+    token_ids = token_ids[:, args.start_token : stop_token]
     sequence_length = token_ids.shape[-1]
     if sequence_length < 2:
         raise ValueError("The corpus must contain at least two tokens")
@@ -61,6 +67,9 @@ def main() -> None:
         "test": "sliding_window_perplexity",
         "model_path": args.model,
         "text_file": str(Path(args.text_file).resolve()),
+        "source_tokens": source_tokens,
+        "start_token": args.start_token,
+        "end_token": args.start_token + sequence_length,
         "corpus_tokens": sequence_length,
         "scored_tokens": total_scored_tokens,
         "max_length": args.max_length,
@@ -76,4 +85,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

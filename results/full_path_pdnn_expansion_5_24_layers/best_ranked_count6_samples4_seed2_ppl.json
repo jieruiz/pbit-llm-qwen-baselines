@@ -1,0 +1,64 @@
+{
+  "test": "multi_layer_full_path_pdnn_ffn_sliding_window_perplexity",
+  "layers": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "checkpoints": [
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer9_bipolar_t0p25/student_sampled.pt",
+      "layer": 9,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer10_bipolar_t0p25/student_sampled.pt",
+      "layer": 10,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer11_bipolar_t0p25/student_sampled.pt",
+      "layer": 11,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer12_bipolar_t0p25/student_sampled.pt",
+      "layer": 12,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer13_bipolar_t0p25/student_sampled.pt",
+      "layer": 13,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    },
+    {
+      "path": "<PBIT_LLM_ROOT>/results/full_path_pdnn_layer14_bipolar_t0p25/student_sampled.pt",
+      "layer": 14,
+      "student_type": "full_path_bipolar_pdnn_v1",
+      "parameters": 8722048
+    }
+  ],
+  "replacement_count": 6,
+  "student_parameters_total": 52332288,
+  "sample_count": 4,
+  "seed": 2,
+  "corpus_tokens": 299078,
+  "scored_tokens": 299077,
+  "max_length": 2048,
+  "stride": 1024,
+  "mean_negative_log_likelihood": 2.791872087156315,
+  "perplexity": 16.3115278377921,
+  "windows": 292,
+  "evaluation_elapsed_seconds": 8.940381865017116,
+  "total_elapsed_seconds": 15.50182731600944,
+  "scored_tokens_per_second": 33452.37424032865,
+  "peak_allocated_bytes": 5314883584
+}

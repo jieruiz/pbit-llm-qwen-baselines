@@ -68,6 +68,15 @@ sensitive than their local normalized MSE suggested, so candidate layers must
 be screened with full-model perplexity. See
 [`results/full_path_pdnn_progressive_2_4_layers/RESULTS.md`](results/full_path_pdnn_progressive_2_4_layers/RESULTS.md).
 
+All 24 layers were then trained and ranked by single-layer sensitivity. The
+safest layers are concentrated around decoder layers 9–14, while layers 0 and
+2 are catastrophic even alone. With safest-first cumulative replacement,
+held-out-half PPL rises from 12.1563 for original Qwen to 14.4869 at four
+layers, 16.9659 at six, 20.4379 at eight, and 24.1865 at nine. Thus eight
+independently distilled FFNs is a lenient boundary and nine to ten is already
+unacceptable. See
+[`results/full_path_pdnn_expansion_5_24_layers/RESULTS.md`](results/full_path_pdnn_expansion_5_24_layers/RESULTS.md).
+
 ## Repository contents
 
 - `baselines/`: integrity, generation, performance, perplexity, FFN probe, and
@@ -79,6 +88,8 @@ be screened with full-model perplexity. See
   training and perplexity results.
 - `results/full_path_pdnn_progressive_2_4_layers/`: two-, three-, and four-FFN
   composition results, timing estimates, and per-layer sensitivity data.
+- `results/full_path_pdnn_expansion_5_24_layers/`: all-layer sensitivity,
+  cumulative 4–24-FFN curves, held-out split checks, and sampling controls.
 - `experiments/pdnn_ffn/`: P-DNN module, layer distillation, and evaluation.
 - `config/`: the Qwen2.5-0.5B configuration used for architecture accounting.
 - `upstream/`: pinned Transformers v4.45.2 Qwen2 implementation for source

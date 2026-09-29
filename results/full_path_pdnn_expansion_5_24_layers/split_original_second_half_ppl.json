@@ -1,0 +1,24 @@
+{
+  "test": "sliding_window_perplexity",
+  "model_path": "models/Qwen2.5-0.5B",
+  "text_file": "<PBIT_LLM_ROOT>/data/wikitext-2/wiki.test.raw",
+  "source_tokens": 299078,
+  "start_token": 149539,
+  "end_token": 299078,
+  "corpus_tokens": 149539,
+  "scored_tokens": 149538,
+  "max_length": 2048,
+  "stride": 1024,
+  "mean_negative_log_likelihood": 2.497844783237711,
+  "perplexity": 12.156266318791815,
+  "windows": 146,
+  "environment": {
+    "torch_version": "2.7.1+cu128",
+    "torch_cuda_version": "12.8",
+    "cuda_available": true,
+    "device": "cuda",
+    "cuda_visible_devices": "0",
+    "gpu_name": "NVIDIA GeForce RTX 5090",
+    "gpu_total_memory_bytes": 33679998976
+  }
+}

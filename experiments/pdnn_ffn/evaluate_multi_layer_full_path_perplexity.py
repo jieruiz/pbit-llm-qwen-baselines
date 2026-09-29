@@ -22,6 +22,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--sample-count", type=int, default=4)
     parser.add_argument("--max-length", type=int, default=2048)
     parser.add_argument("--stride", type=int, default=1024)
+    parser.add_argument("--start-token", type=int, default=0)
     parser.add_argument("--max-tokens", type=int, default=None)
     parser.add_argument("--seed", type=int, default=0)
     return parser.parse_args()
@@ -32,6 +33,10 @@ def main() -> None:
     total_start = time.perf_counter()
     if args.stride <= 0 or args.stride > args.max_length:
         raise ValueError("stride must be in (0, max_length]")
+    if args.start_token < 0:
+        raise ValueError("start-token must be non-negative")
+    if args.max_tokens is not None and args.max_tokens <= 0:
+        raise ValueError("max-tokens must be positive")
     if args.sample_count < 0:
         raise ValueError("sample_count must be non-negative")
     torch.manual_seed(args.seed)
@@ -80,9 +85,12 @@ def main() -> None:
         return_tensors="pt",
         add_special_tokens=False,
     ).input_ids
-    if args.max_tokens is not None:
-        token_ids = token_ids[:, : args.max_tokens]
+    source_tokens = token_ids.shape[-1]
+    stop_token = None if args.max_tokens is None else args.start_token + args.max_tokens
+    token_ids = token_ids[:, args.start_token : stop_token]
     sequence_length = token_ids.shape[-1]
+    if sequence_length < 2:
+        raise ValueError("The selected corpus segment must contain at least two tokens")
     total_nll = 0.0
     total_scored_tokens = 0
     previous_end = 0
@@ -124,6 +132,9 @@ def main() -> None:
         "student_parameters_total": student_parameters,
         "sample_count": args.sample_count,
         "seed": args.seed,
+        "source_tokens": source_tokens,
+        "start_token": args.start_token,
+        "end_token": args.start_token + sequence_length,
         "corpus_tokens": sequence_length,
         "scored_tokens": total_scored_tokens,
         "max_length": args.max_length,
