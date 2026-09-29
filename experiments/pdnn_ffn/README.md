@@ -84,3 +84,25 @@ See [protocol](JOINT_FEATURE_ABLATION_ZH.md) and
 The longer baseline improves PPL; the tested auxiliary loss gives no clear
 additional gain. Original forward modules and joint-training entry point remain
 available for direct reproduction.
+
+## Ten-FFN channel calibration
+
+`calibrated_pdnn_ffn.py` adds identity-initialized, channelwise affine fields
+before the input and hidden p-bit samplers of the two-projection P-DNN.
+Sampled matrix inputs remain bipolar; averaging stays after each FFN readout.
+`train_joint_calibration.py --calibration` trains these fields together with
+the projection weights. Without that flag, use original, uncalibrated
+checkpoints for the matched fixed-field control.
+
+Use `evaluate_calibrated_perplexity.py` for calibrated checkpoints: it selects
+the module class from the saved `student_type`. The old full-path loader does
+not support the additional field parameters. Mean-field mode is diagnostic,
+not the exact infinite-sample expectation.
+
+`run_calibration_ablation.py` reconstructs the ten-layer reference and runs
+three paired training seeds followed by held-out field diagnostics and the
+complete perplexity evaluation. Execute it only inside a scheduler allocation;
+run `test_calibrated_pdnn.py` and the included short GPU preflight first.
+`summarize_calibration_ablation.py RESULT_DIR` separates training-seed
+variation from repeated stochastic inference. See the
+[prespecified protocol](TEN_LAYER_CALIBRATION_ZH.md).

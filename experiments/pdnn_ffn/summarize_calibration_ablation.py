@@ -51,7 +51,7 @@ def main():
     result = dict(rows=rows, aggregates=aggregates, paired_differences=paired,
                   relative_ppl_improvement=relative, training_seed_wins=wins,
                   validation_improved=validation_improved, prespecified_target_met=met)
-    (root/'comparison.json').write_text(json.dumps(result, indent=2)+'\n', encoding='utf-8')
+    (root/'comparison.json').write_text(json.dumps(result, indent=2)+'\n', encoding='utf-8', newline='\n')
     lines = ['# 十层 FFN：逐通道 p-bit 编码校准对照结果', '',
         '预定目标：相对固定编码，同预算校准降低至少 1% PPL，至少 2/3 配对训练种子改善，平均最佳验证 CE 同向改善。', '',
         f"目标判定：**{'达到' if met else '未达到'}**。PPL 相对改善 {relative*100:.3f}%，配对训练种子胜出 {wins}/3；验证同向改善：{validation_improved}。", '',
@@ -77,7 +77,7 @@ def main():
         '- 原始 BF16、十层基线重建、预检日志与制品哈希随结果保存。field_diagnostics.json 中的 teacher 原 FFN 仅在 student 实际输入上记录局部误差，不进入推理控制。',
         '- N=0 为 mean-field 代理，不是精确无限采样极限。本轮没有进行二十层扩展、下游任务评测、长期持续训练或物理 p-bit 能耗验证。',
         '- 执行协议：[TEN_LAYER_CALIBRATION_ZH.md](../../experiments/pdnn_ffn/TEN_LAYER_CALIBRATION_ZH.md)。模型权重留在个人服务器及指定制品存储，身份见清单。', '']
-    (root/'RESULTS_ZH.md').write_text('\n'.join(lines), encoding='utf-8')
+    (root/'RESULTS_ZH.md').write_text('\n'.join(lines), encoding='utf-8', newline='\n')
     print(json.dumps({k:v for k,v in result.items() if k!='rows'}, indent=2))
 
 
