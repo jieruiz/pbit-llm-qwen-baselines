@@ -28,11 +28,24 @@ FFN probes are included for layers 0, 12, and 23. The gated-product RMS changes
 from 0.1049 to 0.1183 to 1.4467 across those layers, which motivates per-layer
 calibration for later stochastic or binary activations.
 
+## First P-DNN FFN replacement
+
+`experiments/pdnn_ffn/` contains the first layer-distillation experiment. It
+replaces decoder layer 12's SwiGLU FFN with a bipolar stochastic hidden layer
+and a continuous linear readout. After conditional-mean distillation and
+sample-aware training, four-sample inference reached WikiText-2 perplexity
+12.0726 +/- 0.0017 across three random seeds, compared with 11.6527 for the
+unmodified model. See `results/pdnn_ffn_layer12_bipolar/RESULTS.md` for the
+protocol, full table, and limitations.
+
 ## Repository contents
 
 - `baselines/`: integrity, generation, performance, perplexity, FFN probe, and
   lm-evaluation-harness entry points.
 - `results/base_bf16/`: raw JSON results plus environment and artifact hashes.
+- `results/pdnn_ffn_layer12_bipolar/`: first single-layer P-DNN training and
+  perplexity results; large training checkpoints are retained off-repository.
+- `experiments/pdnn_ffn/`: P-DNN module, layer distillation, and evaluation.
 - `config/`: the Qwen2.5-0.5B configuration used for architecture accounting.
 - `upstream/`: pinned Transformers v4.45.2 Qwen2 implementation for source
   comparison. Its upstream Apache-2.0 license is retained.
@@ -79,4 +92,3 @@ throughput, output variance, and layer-local error.
 
 Apache License 2.0. Qwen model weights and WikiText-2 are obtained separately
 and remain subject to their own licenses and terms.
-
