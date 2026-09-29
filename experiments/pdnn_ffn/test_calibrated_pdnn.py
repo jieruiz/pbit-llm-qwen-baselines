@@ -47,7 +47,7 @@ class CalibrationTests(unittest.TestCase):
             self.assertGreater(p.grad.abs().sum().item(), 0, name)
 
     def test_checkpoint_roundtrip_and_rng(self):
-        with tempfile.TemporaryDirectory() as directory:
+        with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parent) as directory:
             path = Path(directory) / 'student.pt'
             for model, kind in ((self.base, 'full_path_bipolar_pdnn_v1'), (self.student, TYPE)):
                 torch.save({'student_config': model.checkpoint_config(), 'student_type': kind,
