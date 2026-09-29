@@ -180,3 +180,13 @@ cost rises by about 11%. These are one training seed per condition with three
 inference seeds, not independent training replications. See
 [the result report](results/joint_feature_ablation_20260929/RESULTS_ZH.md) and
 [the prespecified protocol](experiments/pdnn_ffn/JOINT_FEATURE_ABLATION_ZH.md).
+
+## Controlled ten-FFN channel calibration
+
+Three paired training seeds compare fixed bipolar encoding with learnable
+per-channel input/hidden fields for 2,000 additional joint steps. Four-path
+WikiText-2 PPL averages **18.395328 vs 18.357464**: a **0.206%** reduction,
+below the prespecified 1% target, with about 28% more training time.
+All three pairs improve slightly; this does not establish statistical
+significance or a twenty-layer solution. See the
+[complete report and raw results](results/ten_layer_calibration_20260929/RESULTS_ZH.md).

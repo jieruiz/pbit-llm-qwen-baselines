@@ -1,0 +1,6 @@
+Token indices sequence length is longer than the specified maximum sequence length for this model (299078 > 131072). Running this sequence through the model will result in indexing errors
+Starting from v4.46, the `logits` model output will have the same type as the model (except at train time, where it will always be FP32)
+layers=[12] sample_count=4 window=1 end=256/512
+layers=[12] sample_count=4 window=2 end=384/512
+layers=[12] sample_count=4 window=3 end=512/512
+{"test": "multi_layer_full_path_pdnn_ffn_sliding_window_perplexity", "layers": [12], "checkpoints": [{"path": "/home/Weican_Chen/projects/pbit-qwen-calibration-20260929/results/smoke_calibrated/final_layer12.pt", "layer": 12, "student_type": "full_path_bipolar_channel_calibrated_v1", "parameters": 8733568}], "replacement_count": 1, "student_parameters_total": 8733568, "sample_count": 4, "seed": 0, "source_tokens": 299078, "start_token": 0, "end_token": 512, "corpus_tokens": 512, "scored_tokens": 511, "max_length": 256, "stride": 128, "mean_negative_log_likelihood": 2.7360891801270486, "perplexity": 15.42653656595424, "windows": 3, "evaluation_elapsed_seconds": 0.4696691579883918, "total_elapsed_seconds": 2.8702030959539115, "scored_tokens_per_second": 1087.9999065483232, "peak_allocated_bytes": 1540982272}

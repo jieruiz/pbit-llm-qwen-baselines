@@ -1,0 +1,49 @@
+{
+  "layers": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    18
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "inference_seeds": [
+    0,
+    1,
+    2
+  ],
+  "conditions": [
+    "fixed",
+    "calibrated"
+  ],
+  "steps": 2000,
+  "sample_count": 4,
+  "learning_rate": 1e-05,
+  "calibration_lr": 0.0003,
+  "calibration_weight_decay": 0.0,
+  "calibration_scale_bounds": [
+    0.25,
+    4.0
+  ],
+  "calibration_shift_bounds": [
+    -4.0,
+    4.0
+  ],
+  "target_relative_ppl_improvement": 0.01,
+  "required_training_seed_wins": 2,
+  "validation": "64 fixed 256-token windows, RNG 12345, final 65536 train tokens",
+  "selection": "lowest validation PPL every 500 steps; test never selects checkpoint",
+  "initialization": "reconstruct published ten-layer joint model, then fresh optimizer per condition",
+  "job_id": "1061",
+  "train_sha256": "6707892fa3788b5ab9ed78ab5ff37d9fe825f6011a2ad4fcd6a6d467f0e7da57",
+  "test_sha256": "173c87a53759e0201f33e0ccf978e510c2042d7f2cb78229d9a50d79b9e7dd08"
+}
