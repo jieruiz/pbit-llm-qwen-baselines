@@ -94,6 +94,14 @@ over original Qwen shows that the present structure still needs improvement.
 See
 [`results/joint_full_path_pdnn_layers7_15_18_ten_v1/RESULTS.md`](results/joint_full_path_pdnn_layers7_15_18_ten_v1/RESULTS.md).
 
+A twenty-layer staged run then kept only layers 0, 2, 3, and 23 as original
+Qwen FFNs. Joint adaptation reduced N=4 PPL from 101.3749 at the staged
+initialization to **48.9108 +/- 0.0963**. This is a large recovery but still
+319.7% above original Qwen; mean-field PPL is already 42.8818. The experiment
+therefore confirms that the current P-DNN structure is not acceptable at
+twenty layers even after joint training. See
+[`results/joint_full_path_pdnn_layers1_22_twenty_v1/RESULTS.md`](results/joint_full_path_pdnn_layers1_22_twenty_v1/RESULTS.md).
+
 ## Repository contents
 
 - `baselines/`: integrity, generation, performance, perplexity, FFN probe, and
@@ -111,6 +119,8 @@ See
   curve, cost measurement, and full-model perplexity recovery.
 - `results/joint_full_path_pdnn_layers7_15_18_ten_v1/`: joint ten-layer
   training curve, robust full-test evaluation, and checkpoint identities.
+- `results/joint_full_path_pdnn_layers1_22_twenty_v1/`: joint twenty-layer
+  training, staged-initialization comparison, and failure-boundary result.
 - `experiments/pdnn_ffn/`: P-DNN module, layer distillation, and evaluation.
 - `config/`: the Qwen2.5-0.5B configuration used for architecture accounting.
 - `upstream/`: pinned Transformers v4.45.2 Qwen2 implementation for source
