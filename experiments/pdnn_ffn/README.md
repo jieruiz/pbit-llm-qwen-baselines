@@ -53,6 +53,13 @@ the N=4 full-test result from 27.3051 for ten independent students to
 mainly structural rather than sampling variance. See
 [`results/joint_full_path_pdnn_layers7_15_18_ten_v1/RESULTS.md`](../../results/joint_full_path_pdnn_layers7_15_18_ten_v1/RESULTS.md).
 
+The twenty-layer staged run leaves only layers 0, 2, 3, and 23 unchanged.
+One thousand updates reduce N=4 PPL from 101.3749 to
+48.9108 +/- 0.0963 in 439 seconds, with 6.02 GiB peak allocated memory.
+Mean-field PPL remains 42.8818, confirming an unacceptable deterministic
+structural gap at this depth. See
+[`results/joint_full_path_pdnn_layers1_22_twenty_v1/RESULTS.md`](../../results/joint_full_path_pdnn_layers1_22_twenty_v1/RESULTS.md).
+
 Run with:
 
 ```bash
