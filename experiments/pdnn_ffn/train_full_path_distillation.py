@@ -285,7 +285,8 @@ def main() -> None:
                 save_checkpoint(output_dir, checkpoint_name, student, optimizer, args, phase, phase_step, validation)
 
         final_validations = {}
-        for count in [0, 1, 4, 8, 16]:
+        validation_counts = sorted({0, 1, 4, 8, 16, args.train_samples})
+        for count in validation_counts:
             final_validations[str(count)] = validate(student, teacher, capture, validation_tokens, args, count)
         elapsed = time.perf_counter() - start_time
         summary = {
