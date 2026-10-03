@@ -1,0 +1,35 @@
+{
+  "checkpoint": "<PBIT_LLM_ROOT>/results/gated_dual_rail_20260929/layer10_serial/student_sampled.pt",
+  "layer": 10,
+  "coding": "binary",
+  "architecture": "serial",
+  "input_distribution": "original teacher FFN input, not joint student on-policy input",
+  "learnable_encoding": true,
+  "input_threshold": 0.0,
+  "input_temperature": 0.2280542552471161,
+  "hidden_thresholds": [
+    0.0
+  ],
+  "hidden_temperatures": [
+    0.2907524108886719
+  ],
+  "sample_paths": 4,
+  "input_probability": {
+    "count": 3670016,
+    "mean_probability": 0.4964991637638637,
+    "mean_entropy_nats": 0.3694178249154772,
+    "below_0p01_fraction": 0.07029179164341517,
+    "above_0p99_fraction": 0.06679725646972656,
+    "saturated_fraction": 0.13708904811314174
+  },
+  "hidden_probabilities": [
+    {
+      "count": 79691776,
+      "mean_probability": 0.15349486156513817,
+      "mean_entropy_nats": 0.28735278076247167,
+      "below_0p01_fraction": 0.19467041366978696,
+      "above_0p99_fraction": 0.0002907702797337582,
+      "saturated_fraction": 0.19496118394952072
+    }
+  ]
+}

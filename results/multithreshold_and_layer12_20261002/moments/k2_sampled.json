@@ -1,0 +1,64 @@
+{
+  "checkpoint": "results/multithreshold_and_layer12_20261002/k2/student_sampled.pt",
+  "phase": "sampled",
+  "bits": 2,
+  "probe": "1024 held-out teacher-input tokens; 128 iid paths each; no test data",
+  "means": {
+    "bias_nmse": 0.11217053793370724,
+    "single_path_variance_nmse": 0.335486464202404,
+    "expected_n4_nmse": 0.19604215398430824,
+    "expected_n16_nmse": 0.13313844054937363,
+    "empirical_single_path_variance_nmse": 0.3354302644729614,
+    "empirical_corrected_bias_nmse": 0.11227716132998466,
+    "expanded_factorized_max_absolute_difference": 2.384185791015625e-06,
+    "gate_branch_nmse": 0.3543674498796463,
+    "value_branch_nmse": 0.0798112116754055
+  },
+  "records": [
+    {
+      "bias_nmse": 0.11870639026165009,
+      "single_path_variance_nmse": 0.3131507635116577,
+      "expected_n4_nmse": 0.19699408113956451,
+      "expected_n16_nmse": 0.1382783055305481,
+      "empirical_single_path_variance_nmse": 0.31283336877822876,
+      "empirical_corrected_bias_nmse": 0.11878877133131027,
+      "expanded_factorized_max_absolute_difference": 2.6226043701171875e-06,
+      "gate_branch_nmse": 0.35741838812828064,
+      "value_branch_nmse": 0.0803520530462265
+    },
+    {
+      "bias_nmse": 0.10938562452793121,
+      "single_path_variance_nmse": 0.31966039538383484,
+      "expected_n4_nmse": 0.18930071592330933,
+      "expected_n16_nmse": 0.12936440110206604,
+      "empirical_single_path_variance_nmse": 0.3196985423564911,
+      "empirical_corrected_bias_nmse": 0.10945949703454971,
+      "expanded_factorized_max_absolute_difference": 2.384185791015625e-06,
+      "gate_branch_nmse": 0.33556780219078064,
+      "value_branch_nmse": 0.08067721128463745
+    },
+    {
+      "bias_nmse": 0.11696269363164902,
+      "single_path_variance_nmse": 0.369867205619812,
+      "expected_n4_nmse": 0.20942950248718262,
+      "expected_n16_nmse": 0.14007939398288727,
+      "empirical_single_path_variance_nmse": 0.37005615234375,
+      "empirical_corrected_bias_nmse": 0.1170385330915451,
+      "expanded_factorized_max_absolute_difference": 2.384185791015625e-06,
+      "gate_branch_nmse": 0.36318063735961914,
+      "value_branch_nmse": 0.07926348596811295
+    },
+    {
+      "bias_nmse": 0.10362744331359863,
+      "single_path_variance_nmse": 0.3392674922943115,
+      "expected_n4_nmse": 0.1884443163871765,
+      "expected_n16_nmse": 0.1248316615819931,
+      "empirical_single_path_variance_nmse": 0.33913299441337585,
+      "empirical_corrected_bias_nmse": 0.10382184386253357,
+      "expanded_factorized_max_absolute_difference": 2.1457672119140625e-06,
+      "gate_branch_nmse": 0.3613029718399048,
+      "value_branch_nmse": 0.07895209640264511
+    }
+  ],
+  "notes": "Exact moments condition on fixed input and independent banks/channels; include shared-AND covariance. Real arithmetic, before BF16 final cast."
+}

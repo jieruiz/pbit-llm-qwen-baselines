@@ -1,0 +1,43 @@
+{
+  "model": "Qwen2.5-0.5B Base",
+  "layers": [
+    9,
+    12,
+    15,
+    18
+  ],
+  "architecture": "serial",
+  "coding": "0/1",
+  "hidden_width": 4864,
+  "input_encoding": "stochastic adjacent rounding",
+  "input_bits": 4,
+  "individual_training": "2000 mean-field + 6000 N=4 updates",
+  "joint_training": "1000 N=4 end-to-end updates; 0.8 KL + 0.2 next-token CE",
+  "training_seed": 0,
+  "evaluation_pairs": [
+    [
+      0,
+      0
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      16,
+      0
+    ]
+  ],
+  "checkpoint_selection": "student_sampled.pt for independent; held-out train-tail best validation for joint",
+  "calibration": "per-layer frozen per-channel abs 99.9 percentile; train-only, excludes validation tail",
+  "baseline_comparison": "results/gated_four_layer_9_12_15_18_20260930 serial",
+  "cost_note": "K=4 costs four binary input projections plus one binary hidden readout per path."
+}

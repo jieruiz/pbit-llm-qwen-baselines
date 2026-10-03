@@ -1,0 +1,97 @@
+{
+  "model": "Qwen2.5-0.5B Base",
+  "layer": 12,
+  "hidden_width": 4864,
+  "architecture": "serial",
+  "coding": "0/1",
+  "configs": [
+    {
+      "name": "sigmoid_k1",
+      "input_encoding": "sigmoid",
+      "input_bits": 1,
+      "gpu": 0
+    },
+    {
+      "name": "continuous",
+      "input_encoding": "continuous",
+      "input_bits": 1,
+      "gpu": 1
+    },
+    {
+      "name": "stochastic_k1",
+      "input_encoding": "stochastic",
+      "input_bits": 1,
+      "gpu": 2
+    },
+    {
+      "name": "stochastic_k2",
+      "input_encoding": "stochastic",
+      "input_bits": 2,
+      "gpu": 3
+    },
+    {
+      "name": "stochastic_k4",
+      "input_encoding": "stochastic",
+      "input_bits": 4,
+      "gpu": 4
+    },
+    {
+      "name": "deterministic_k1",
+      "input_encoding": "deterministic",
+      "input_bits": 1,
+      "gpu": 5
+    },
+    {
+      "name": "deterministic_k2",
+      "input_encoding": "deterministic",
+      "input_bits": 2,
+      "gpu": 6
+    },
+    {
+      "name": "deterministic_k4",
+      "input_encoding": "deterministic",
+      "input_bits": 4,
+      "gpu": 7
+    }
+  ],
+  "mean_steps": 2000,
+  "sample_steps": 6000,
+  "train_samples": 4,
+  "seed": 0,
+  "batch_size": 4,
+  "sequence_length": 256,
+  "learning_rates": [
+    0.0003,
+    0.0001
+  ],
+  "loss": "normalized output MSE + 0.05*(1-cosine)",
+  "checkpoint_selection": "student_sampled.pt; verify phase step=6000, never choose on test PPL",
+  "evaluation_pairs": [
+    [
+      0,
+      0
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      16,
+      0
+    ]
+  ],
+  "calibration": "frozen per-channel abs 99.9th percentile, 32768 sampled train tokens, excludes final65536 validation tokens",
+  "projection_audit": "teacher Wg and Wu are frozen for analytical input-only moment diagnostics",
+  "distillation": "student matrices trainable, shared initial matrix draws and training windows; no independent bitplane weights",
+  "controls": "Fresh sigmoid baseline; clipped continuous-input control; deterministic input quantization with stochastic hidden p-bits",
+  "hardware_scope": "Adjacent stochastic rounding coordinates bitplanes; not a demonstrated independent-sigmoid hardware encoder.",
+  "cost": "Equal steps/tokens/path count, NOT equal bitplane operations; K-plane input requires K binary-input matrix evaluations per path."
+}

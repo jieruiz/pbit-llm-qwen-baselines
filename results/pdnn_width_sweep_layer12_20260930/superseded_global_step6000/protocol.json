@@ -1,0 +1,96 @@
+{
+  "purpose": "Test whether wider p-bit FFNs improve layer-12 replacement quality.",
+  "model": "models/Qwen2.5-0.5B",
+  "layer": 12,
+  "coding": "binary_0_1",
+  "temperature_only": true,
+  "input_temperature": 0.125,
+  "hidden_temperature": 0.5,
+  "training": {
+    "mean_steps": 2000,
+    "sample_steps": 6000,
+    "train_samples": 4,
+    "seed": 0
+  },
+  "evaluation": {
+    "sample_counts_and_seeds": [
+      [
+        0,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        16,
+        0
+      ]
+    ]
+  },
+  "moments": {
+    "paths": 256,
+    "batches": 4,
+    "sequence_length": 256,
+    "seed": 27183
+  },
+  "model_width": 896,
+  "original_qwen_ffn_intermediate_width": 4864,
+  "original_qwen_three_matrix_weight_count": 13074432,
+  "configs": [
+    {
+      "name": "serial_width4864",
+      "architecture": "serial",
+      "width": 4864,
+      "checkpoint": "results/gated_sample_budget_20260929/serial_train4/student_step6000.pt",
+      "summary": "results/gated_sample_budget_20260929/serial_train4/summary.json",
+      "train": false,
+      "trainable_parameter_count": 8722050
+    },
+    {
+      "name": "serial_width6144",
+      "architecture": "serial",
+      "width": 6144,
+      "train": true,
+      "trainable_parameter_count": 11017090
+    },
+    {
+      "name": "serial_width7296",
+      "architecture": "serial",
+      "width": 7296,
+      "train": true,
+      "trainable_parameter_count": 13082626
+    },
+    {
+      "name": "gated_dual_rail_width3242",
+      "architecture": "gated_dual_rail",
+      "width": 3242,
+      "checkpoint": "results/gated_sample_budget_20260929/gated_dual_rail_train4/student_step6000.pt",
+      "summary": "results/gated_sample_budget_20260929/gated_dual_rail_train4/summary.json",
+      "train": false,
+      "trainable_parameter_count": 8721879
+    },
+    {
+      "name": "gated_dual_rail_width4096",
+      "architecture": "gated_dual_rail",
+      "width": 4096,
+      "train": true,
+      "trainable_parameter_count": 11019139
+    },
+    {
+      "name": "gated_dual_rail_width4864",
+      "architecture": "gated_dual_rail",
+      "width": 4864,
+      "train": true,
+      "trainable_parameter_count": 13085059
+    }
+  ]
+}

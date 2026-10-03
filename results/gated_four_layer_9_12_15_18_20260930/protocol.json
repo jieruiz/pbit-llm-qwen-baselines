@@ -1,0 +1,21 @@
+{
+  "layers": [
+    9,
+    12,
+    15,
+    18
+  ],
+  "architectures": [
+    "serial",
+    "gated_dual_rail"
+  ],
+  "individual_training": "2000 mean-field + 6000 N=4 updates",
+  "joint_training": "1000 N=4 end-to-end updates; 0.8 KL + 0.2 next-token CE",
+  "layer12_sources": {
+    "serial": "results/gated_sample_budget_20260929/serial_train4/student_step6000.pt",
+    "gated_dual_rail": "results/gated_sample_budget_20260929/gated_dual_rail_train4/student_step6000.pt"
+  },
+  "comparison": "Near-equal parameters, equal updates and tokens; gated has more dense arithmetic.",
+  "training_seed": 0,
+  "inference": "Full WikiText-2; N=4 seeds 0/1/2; mean-field and N=16 seed 0."
+}

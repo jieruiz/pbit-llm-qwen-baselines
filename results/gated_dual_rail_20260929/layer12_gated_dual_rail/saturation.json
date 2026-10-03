@@ -1,0 +1,52 @@
+{
+  "checkpoint": "<PBIT_LLM_ROOT>/results/gated_dual_rail_20260929/layer12_gated_dual_rail/student_sampled.pt",
+  "layer": 12,
+  "coding": "binary",
+  "architecture": "gated_dual_rail",
+  "input_distribution": "original teacher FFN input, not joint student on-policy input",
+  "learnable_encoding": true,
+  "input_threshold": 0.0,
+  "input_temperature": 0.20493611693382263,
+  "hidden_thresholds": [
+    0.0
+  ],
+  "hidden_temperatures": [
+    0.3636494576931
+  ],
+  "sample_paths": 4,
+  "input_probability": {
+    "count": 3670016,
+    "mean_probability": 0.4985474475792476,
+    "mean_entropy_nats": 0.3455995661871774,
+    "below_0p01_fraction": 0.08648409162248884,
+    "above_0p99_fraction": 0.08466121128627233,
+    "saturated_fraction": 0.17114530290876115
+  },
+  "hidden_probabilities": [
+    {
+      "count": 53116928,
+      "mean_probability": 0.49306935987525485,
+      "mean_entropy_nats": 0.4658409521066429,
+      "below_0p01_fraction": 0.025103597858671344,
+      "above_0p99_fraction": 0.0034942156293376004,
+      "saturated_fraction": 0.028597813488008945
+    }
+  ],
+  "gate_probability": {
+    "count": 53116928,
+    "mean_probability": 0.49306935987525485,
+    "mean_entropy_nats": 0.4658409521066429,
+    "below_0p01_fraction": 0.025103597858671344,
+    "above_0p99_fraction": 0.0034942156293376004,
+    "saturated_fraction": 0.028597813488008945
+  },
+  "value_probability": {
+    "count": 53116928,
+    "mean_probability": 0.49972679966544753,
+    "mean_entropy_nats": 0.5657405629708103,
+    "below_0p01_fraction": 0.0005412398849572024,
+    "above_0p99_fraction": 0.00047421793669995374,
+    "saturated_fraction": 0.0010154578216571562
+  },
+  "value_temperature": 0.3746604323387146
+}

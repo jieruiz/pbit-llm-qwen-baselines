@@ -1,0 +1,208 @@
+{
+  "protocol": {
+    "layers": [
+      9,
+      12,
+      15,
+      18
+    ],
+    "architectures": [
+      "serial",
+      "gated_dual_rail"
+    ],
+    "individual_training": "2000 mean-field + 6000 N=4 updates",
+    "joint_training": "1000 N=4 end-to-end updates; 0.8 KL + 0.2 next-token CE",
+    "layer12_sources": {
+      "serial": "results/gated_sample_budget_20260929/serial_train4/student_step6000.pt",
+      "gated_dual_rail": "results/gated_sample_budget_20260929/gated_dual_rail_train4/student_step6000.pt"
+    },
+    "comparison": "Near-equal parameters, equal updates and tokens; gated has more dense arithmetic.",
+    "training_seed": 0,
+    "inference": "Full WikiText-2; N=4 seeds 0/1/2; mean-field and N=16 seed 0."
+  },
+  "rows": [
+    {
+      "stage": "independent",
+      "architecture": "serial",
+      "n0_ppl_mean": 14.031970904620243,
+      "n0_ppl_population_std": 0.0,
+      "n0_ppls": [
+        14.031970904620243
+      ],
+      "n4_ppl_mean": 14.454435155789186,
+      "n4_ppl_population_std": 0.0016259153576509073,
+      "n4_ppls": [
+        14.455301335547242,
+        14.45584670695801,
+        14.452157424862307
+      ],
+      "n16_ppl_mean": 14.238733368993424,
+      "n16_ppl_population_std": 0.0,
+      "n16_ppls": [
+        14.238733368993424
+      ]
+    },
+    {
+      "stage": "independent",
+      "architecture": "gated_dual_rail",
+      "n0_ppl_mean": 14.184850665006227,
+      "n0_ppl_population_std": 0.0,
+      "n0_ppls": [
+        14.184850665006227
+      ],
+      "n4_ppl_mean": 14.616642948925007,
+      "n4_ppl_population_std": 0.006550206526457488,
+      "n4_ppls": [
+        14.624920569922145,
+        14.616105325908324,
+        14.608902950944554
+      ],
+      "n16_ppl_mean": 14.351711308598633,
+      "n16_ppl_population_std": 0.0,
+      "n16_ppls": [
+        14.351711308598633
+      ]
+    },
+    {
+      "stage": "joint",
+      "architecture": "serial",
+      "n0_ppl_mean": 13.290284527432902,
+      "n0_ppl_population_std": 0.0,
+      "n0_ppls": [
+        13.290284527432902
+      ],
+      "n4_ppl_mean": 13.559057716969866,
+      "n4_ppl_population_std": 0.003787218119600266,
+      "n4_ppls": [
+        13.561635565161199,
+        13.56183457147798,
+        13.553703014270416
+      ],
+      "n16_ppl_mean": 13.386762352425926,
+      "n16_ppl_population_std": 0.0,
+      "n16_ppls": [
+        13.386762352425926
+      ]
+    },
+    {
+      "stage": "joint",
+      "architecture": "gated_dual_rail",
+      "n0_ppl_mean": 13.335065156399622,
+      "n0_ppl_population_std": 0.0,
+      "n0_ppls": [
+        13.335065156399622
+      ],
+      "n4_ppl_mean": 13.693251224443333,
+      "n4_ppl_population_std": 0.003934458063632399,
+      "n4_ppls": [
+        13.696338948090414,
+        13.695716029778733,
+        13.687698695460853
+      ],
+      "n16_ppl_mean": 13.469430346758458,
+      "n16_ppl_population_std": 0.0,
+      "n16_ppls": [
+        13.469430346758458
+      ]
+    }
+  ],
+  "joint_training": {
+    "serial": {
+      "event": "complete",
+      "layers": [
+        9,
+        12,
+        15,
+        18
+      ],
+      "steps": 1000,
+      "best_step": 600,
+      "best_validation_perplexity": 25.806279705474786,
+      "elapsed_seconds": 248.13098388910294,
+      "effective_tokens_per_second": 4126.852616107209,
+      "peak_allocated_bytes": 4078049280
+    },
+    "gated_dual_rail": {
+      "event": "complete",
+      "layers": [
+        9,
+        12,
+        15,
+        18
+      ],
+      "steps": 1000,
+      "best_step": 700,
+      "best_validation_perplexity": 25.924982823508664,
+      "elapsed_seconds": 286.9743127999827,
+      "effective_tokens_per_second": 3568.2636191682923,
+      "peak_allocated_bytes": 4191638016
+    }
+  },
+  "individual_training": {
+    "serial": {
+      "9": {
+        "elapsed_seconds": 160.43315054592676,
+        "peak_allocated_bytes": 1328297472,
+        "n4_validation_nmse": 0.5041014887392521
+      },
+      "15": {
+        "elapsed_seconds": 162.30450408393517,
+        "peak_allocated_bytes": 1328297472,
+        "n4_validation_nmse": 0.4166134148836136
+      },
+      "18": {
+        "elapsed_seconds": 163.59012873889878,
+        "peak_allocated_bytes": 1328297472,
+        "n4_validation_nmse": 0.4808184802532196
+      }
+    },
+    "gated_dual_rail": {
+      "9": {
+        "elapsed_seconds": 192.46890549501404,
+        "peak_allocated_bytes": 1440571904,
+        "n4_validation_nmse": 0.5331493578851223
+      },
+      "15": {
+        "elapsed_seconds": 198.94828233704902,
+        "peak_allocated_bytes": 1440571904,
+        "n4_validation_nmse": 0.45440446957945824
+      },
+      "18": {
+        "elapsed_seconds": 203.7979018818587,
+        "peak_allocated_bytes": 1440571904,
+        "n4_validation_nmse": 0.5124048329889774
+      }
+    }
+  },
+  "checkpoint_sha256": {
+    "independent/serial/layer9/student_sampled.pt": "bbe94dc98740b2d08930f44945b7378c00a577a4bac0ac079c6ba1781184b16b",
+    "independent/serial/layer12/student_step6000.pt": "aa14fd9780f0fa778a04295588253f2133dc35fa2bd2bae01519faa0df34b316",
+    "independent/serial/layer15/student_sampled.pt": "c4fcf8455feff132692cddc158eee3e37e846974bd2de06db6be2b2076c44692",
+    "independent/serial/layer18/student_sampled.pt": "fa0c0ee22c99c0962c40aac85632972a2c0f298b6552e6fac650cbe8fd351a4a",
+    "joint/serial/layer9/best_layer9.pt": "0e9ebab592a6d37043fc041a01d9f88d37873f3865be52a5345a003ba62656c5",
+    "joint/serial/layer12/best_layer12.pt": "f86cf841da751d0d2dcd17ea2d7d8f447b744c83364bdbd7677cd4f914d97c23",
+    "joint/serial/layer15/best_layer15.pt": "2d0eeab5c17049a4008629195b90bb8cd5dd0e326698a178a518375d2abe87a9",
+    "joint/serial/layer18/best_layer18.pt": "212335d0a81677ada6feb32bafe8d9b4b99501fc23e3c368d7e0b85d53786f2e",
+    "independent/gated_dual_rail/layer9/student_sampled.pt": "c840d5ef6b8e95a5068c2bb2074c23e5decc031c98c1bcea08a682be584d7b32",
+    "independent/gated_dual_rail/layer12/student_step6000.pt": "abb20656b7241f1af575ac421b0d30ac56df0964766b5c4e59324aa53842007c",
+    "independent/gated_dual_rail/layer15/student_sampled.pt": "0c0a3740af5b35cad8e26376f1764a274e28b8b9ed929768792a3b60c0aa7295",
+    "independent/gated_dual_rail/layer18/student_sampled.pt": "86b9e611b7e26482d9bf6707581dc4527b54cc28312060a22a9b2e46c92218e4",
+    "joint/gated_dual_rail/layer9/best_layer9.pt": "80b33cb53e13f3166c31e1f1c79a24dd4ae4f221113ca3464856011f81620238",
+    "joint/gated_dual_rail/layer12/best_layer12.pt": "af570711ac24b7d9312b5eea2a0e4dd249d40e99cffd25cab9a0e8b79fec47d3",
+    "joint/gated_dual_rail/layer15/best_layer15.pt": "8841b955aca5f09a0f5aef6a22391d15d705a0691eee1bc209729677d003a178",
+    "joint/gated_dual_rail/layer18/best_layer18.pt": "57942c543d852478dd62de2478c5cb4066e6961faccc016a5b2d7538e79efd65"
+  },
+  "source_sha256": {
+    "full_path_pdnn_ffn.py": "2cb786e8909334725b3a00875cca1c0a9f2dd4c04dd8d39e78f7f1b92c391e9c",
+    "train_full_path_distillation.py": "37227342270f753ab302fa1565584be0807e168ee3657d02acee08f2616d7a18",
+    "train_joint_full_path_distillation.py": "d04411f2f6bbb37e423d94ce2f9b9ee46152084202963c32816957c57b3339b9",
+    "evaluate_multi_layer_full_path_perplexity.py": "a0b345d980f6b45e2a577604853c23068960c11d47aafb5241cdbeba27675a7b",
+    "run_gated_four_layer_comparison.py": "40ebcfa4844e5f8db6bb24deefa13950ba7cb3f013135b1503065b473fa335f5",
+    "summarize_gated_four_layer.py": "86da913b45134d6e164fe1db316583ec5a2b2918d00a981475cdafb7498d8dc6"
+  },
+  "notes": [
+    "N=4 reports three inference seeds and population standard deviation; all training uses seed 0.",
+    "The test set is used only after training; joint checkpoint selection uses held-out train-tail validation.",
+    "Equal parameter count and updates are not equal arithmetic: gated performs more dense operations per path."
+  ]
+}

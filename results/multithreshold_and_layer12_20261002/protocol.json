@@ -1,0 +1,28 @@
+{
+  "layer": 12,
+  "bits_per_branch": [
+    1,
+    2,
+    4
+  ],
+  "hidden_width": 4864,
+  "init": "original Qwen gate/up/down weights; affine biases zero; train-only .995 abs quantile scales",
+  "branch_fit": "500 steps on 32768 train-only tokens, per-channel standardized MSE",
+  "mean_steps": 2000,
+  "sample_steps": 6000,
+  "training_samples": 4,
+  "seed": 0,
+  "learning_rates": [
+    0.0003,
+    0.0001
+  ],
+  "batch": 4,
+  "sequence": 256,
+  "loss": "NMSE + 0.05 cosine loss",
+  "trainable": "all three matrices, biases, per-channel bank thresholds, temperatures, coefficients, offsets",
+  "input": "raw floating; no input quantization",
+  "inference": "binary single-bit and AND terms, shared tied output weights; output/path accumulation FP32",
+  "comparison": "K=1/2/4 same matrices and schedule; bank parameter counts differ slightly; old serial is historical only",
+  "evaluation": "full WT2 test 299078 tokens, scored299077, context2048 stride1024; final fixed6000 sample step",
+  "selection": "no test checkpoint selection; fitted/mean/final checkpoints all prespecified"
+}

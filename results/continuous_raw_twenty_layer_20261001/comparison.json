@@ -1,0 +1,562 @@
+{
+  "original_qwen_ppl": 11.652735047455899,
+  "rows": [
+    {
+      "mode": "continuous_raw",
+      "stage": "independent",
+      "n0_mean": 40.65472515073808,
+      "n0_population_std": 0.0,
+      "n0_values": [
+        40.65472515073808
+      ],
+      "n4_mean": 43.26050832241975,
+      "n4_population_std": 0.034827498714355275,
+      "n4_values": [
+        43.29981466072958,
+        43.266559060099254,
+        43.215151246430416
+      ],
+      "n16_mean": 41.08254653450722,
+      "n16_population_std": 0.0,
+      "n16_values": [
+        41.08254653450722
+      ]
+    },
+    {
+      "mode": "continuous_raw",
+      "stage": "staged",
+      "n0_mean": 33.41449320716767,
+      "n0_population_std": 0.0,
+      "n0_values": [
+        33.41449320716767
+      ],
+      "n4_mean": 35.58851716616874,
+      "n4_population_std": 0.022843829549967276,
+      "n4_values": [
+        35.62082264188049,
+        35.572197090210985,
+        35.572531766414755
+      ],
+      "n16_mean": 33.85807905141074,
+      "n16_population_std": 0.0,
+      "n16_values": [
+        33.85807905141074
+      ]
+    },
+    {
+      "mode": "continuous_raw",
+      "stage": "joint",
+      "n0_mean": 25.35400254493168,
+      "n0_population_std": 0.0,
+      "n0_values": [
+        25.35400254493168
+      ],
+      "n4_mean": 27.127763684393432,
+      "n4_population_std": 0.03691280868505878,
+      "n4_values": [
+        27.17992295922714,
+        27.103525433450358,
+        27.099842660502798
+      ],
+      "n16_mean": 25.703192947272903,
+      "n16_population_std": 0.0,
+      "n16_values": [
+        25.703192947272903
+      ]
+    },
+    {
+      "mode": "sigmoid",
+      "stage": "independent",
+      "n0_mean": 69.08635636074783,
+      "n0_population_std": 0.0,
+      "n0_values": [
+        69.08635636074783
+      ],
+      "n4_mean": 84.85683183373426,
+      "n4_population_std": 0.03560879360649815,
+      "n4_values": [
+        84.8341537109613,
+        84.82923175884646,
+        84.907110031395
+      ],
+      "n16_mean": 76.47923444291366,
+      "n16_population_std": 0.0,
+      "n16_values": [
+        76.47923444291366
+      ]
+    },
+    {
+      "mode": "sigmoid",
+      "stage": "staged",
+      "n0_mean": 53.778999481492754,
+      "n0_population_std": 0.0,
+      "n0_values": [
+        53.778999481492754
+      ],
+      "n4_mean": 62.504667585642174,
+      "n4_population_std": 0.0747875406434327,
+      "n4_values": [
+        62.59561975145848,
+        62.4124417219513,
+        62.50594128351674
+      ],
+      "n16_mean": 56.620366690771775,
+      "n16_population_std": 0.0,
+      "n16_values": [
+        56.620366690771775
+      ]
+    },
+    {
+      "mode": "sigmoid",
+      "stage": "joint",
+      "n0_mean": 34.76871122809937,
+      "n0_population_std": 0.0,
+      "n0_values": [
+        34.76871122809937
+      ],
+      "n4_mean": 38.76410537283896,
+      "n4_population_std": 0.027492265830406426,
+      "n4_values": [
+        38.77087361395995,
+        38.79387815510172,
+        38.727564349455214
+      ],
+      "n16_mean": 35.222215697388016,
+      "n16_population_std": 0.0,
+      "n16_values": [
+        35.222215697388016
+      ]
+    }
+  ],
+  "comparisons": {
+    "independent": {
+      "raw_gain_ppl": 41.59632351131451,
+      "raw_relative_reduction_percent": 49.019416130002355,
+      "raw_above_original_percent": 271.2476783024829,
+      "raw_recovery_of_sigmoid_excess_nll_percent": 33.93356460989916
+    },
+    "staged": {
+      "raw_gain_ppl": 26.916150419473432,
+      "raw_relative_reduction_percent": 43.06262469533762,
+      "raw_above_original_percent": 205.4091337461471,
+      "raw_recovery_of_sigmoid_excess_nll_percent": 33.53087428940763
+    },
+    "joint": {
+      "raw_gain_ppl": 11.63634168844553,
+      "raw_relative_reduction_percent": 30.018341908127265,
+      "raw_above_original_percent": 132.80168624717973,
+      "raw_recovery_of_sigmoid_excess_nll_percent": 29.696400298955187
+    }
+  },
+  "depth_comparison": {
+    "continuous_raw": {
+      "ten_layer_joint_n4": 15.592537296860735,
+      "twenty_layer_joint_n4": 27.127763684393432,
+      "depth_ppl_increase_percent": 73.97914892180569,
+      "joint_recovery_of_staged_excess_nll_percent": 24.314347475729083
+    },
+    "sigmoid": {
+      "ten_layer_joint_n4": 17.838368392922824,
+      "twenty_layer_joint_n4": 38.76410537283896,
+      "depth_ppl_increase_percent": 117.30746063198355,
+      "joint_recovery_of_staged_excess_nll_percent": 28.4423674816581
+    }
+  },
+  "single_layers": {
+    "continuous_raw": {
+      "1": {
+        "n0": 12.28197924892042,
+        "n4": 12.323843930313357
+      },
+      "4": {
+        "n0": 12.22770148871343,
+        "n4": 12.266207560013424
+      },
+      "5": {
+        "n0": 12.156353458458748,
+        "n4": 12.189793289631798
+      },
+      "6": {
+        "n0": 12.126733847798901,
+        "n4": 12.163138932206412
+      },
+      "7": {
+        "n0": 12.052921669423663,
+        "n4": 12.092775533497736
+      },
+      "8": {
+        "n0": 11.995444720746002,
+        "n4": 12.023089383093
+      },
+      "9": {
+        "n0": 11.932237637085677,
+        "n4": 11.954890185143357
+      },
+      "10": {
+        "n0": 11.890664318446099,
+        "n4": 11.906099508912689
+      },
+      "11": {
+        "n0": 11.927574277860101,
+        "n4": 11.946101581842482
+      },
+      "12": {
+        "n0": 11.931872109241274,
+        "n4": 11.953122718737777
+      },
+      "13": {
+        "n0": 11.941571449654331,
+        "n4": 11.968232724515692
+      },
+      "14": {
+        "n0": 11.943752948924699,
+        "n4": 11.969157639034988
+      },
+      "15": {
+        "n0": 12.11451701515496,
+        "n4": 12.156931494556783
+      },
+      "16": {
+        "n0": 12.13162933256311,
+        "n4": 12.182509447152832
+      },
+      "17": {
+        "n0": 12.1533470082026,
+        "n4": 12.18610273482151
+      },
+      "18": {
+        "n0": 12.13846770473768,
+        "n4": 12.170605394163028
+      },
+      "19": {
+        "n0": 12.432965772048522,
+        "n4": 12.47898507887137
+      },
+      "20": {
+        "n0": 12.58236846977937,
+        "n4": 12.638366869569802
+      },
+      "21": {
+        "n0": 12.913125905314143,
+        "n4": 12.919572406373366
+      },
+      "22": {
+        "n0": 12.680914511415859,
+        "n4": 12.724797646238532
+      }
+    },
+    "sigmoid": {
+      "1": {
+        "n0": 12.394820040686504,
+        "n4": 12.4867741919608
+      },
+      "4": {
+        "n0": 12.389008279531993,
+        "n4": 12.495655080912215
+      },
+      "5": {
+        "n0": 12.305495567924094,
+        "n4": 12.386427075869147
+      },
+      "6": {
+        "n0": 12.265821664160407,
+        "n4": 12.362409916864683
+      },
+      "7": {
+        "n0": 12.203148138269233,
+        "n4": 12.311054031123751
+      },
+      "8": {
+        "n0": 12.189037568411113,
+        "n4": 12.226984211696797
+      },
+      "9": {
+        "n0": 12.037855934574024,
+        "n4": 12.101564592887923
+      },
+      "10": {
+        "n0": 11.95592225279506,
+        "n4": 12.000447060147927
+      },
+      "11": {
+        "n0": 12.001697334098987,
+        "n4": 12.057963501000023
+      },
+      "12": {
+        "n0": 12.002341431867952,
+        "n4": 12.045059467576717
+      },
+      "13": {
+        "n0": 12.019730627955584,
+        "n4": 12.082151788180193
+      },
+      "14": {
+        "n0": 12.03502981946694,
+        "n4": 12.09579115889026
+      },
+      "15": {
+        "n0": 12.243478111534191,
+        "n4": 12.340844542518836
+      },
+      "16": {
+        "n0": 12.325329382938213,
+        "n4": 12.449909000942908
+      },
+      "17": {
+        "n0": 12.27274812528185,
+        "n4": 12.340201349534066
+      },
+      "18": {
+        "n0": 12.235966350329228,
+        "n4": 12.297882034783932
+      },
+      "19": {
+        "n0": 12.635794520982383,
+        "n4": 12.752423796213506
+      },
+      "20": {
+        "n0": 12.841332457806887,
+        "n4": 12.963983318361866
+      },
+      "21": {
+        "n0": 13.596609894052383,
+        "n4": 13.604914672283854
+      },
+      "22": {
+        "n0": 12.993875803842496,
+        "n4": 13.083129504136961
+      }
+    }
+  },
+  "joint_training": {
+    "continuous_raw": {
+      "event": "complete",
+      "layers": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "steps": 1000,
+      "best_step": 1000,
+      "best_validation_perplexity": 53.4905452021978,
+      "elapsed_seconds": 410.5478684459813,
+      "effective_tokens_per_second": 2494.228027236086,
+      "peak_allocated_bytes": 6611826688
+    },
+    "sigmoid": {
+      "event": "complete",
+      "layers": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "steps": 1000,
+      "best_step": 900,
+      "best_validation_perplexity": 75.11494842106113,
+      "elapsed_seconds": 512.3401592981536,
+      "effective_tokens_per_second": 1998.6721349401164,
+      "peak_allocated_bytes": 6722926592
+    }
+  },
+  "previous_joint": {
+    "sigmoid": {
+      "mode": "sigmoid",
+      "stage": "joint",
+      "n0_mean": 16.893215807290353,
+      "n0_population_std": 0.0,
+      "n0_values": [
+        16.893215807290353
+      ],
+      "n4_mean": 17.838368392922824,
+      "n4_population_std": 0.002506465052047672,
+      "n4_values": [
+        17.837807295518797,
+        17.841680018638556,
+        17.835617864611116
+      ],
+      "n16_mean": 17.21003542710165,
+      "n16_population_std": 0.0,
+      "n16_values": [
+        17.21003542710165
+      ]
+    },
+    "continuous_raw": {
+      "mode": "continuous_raw",
+      "stage": "joint",
+      "n0_mean": 15.226125811450276,
+      "n0_population_std": 0.0,
+      "n0_values": [
+        15.226125811450276
+      ],
+      "n4_mean": 15.592537296860735,
+      "n4_population_std": 0.009334564877292745,
+      "n4_values": [
+        15.579710385508545,
+        15.601653327428458,
+        15.596248177645204
+      ],
+      "n16_mean": 15.312788843842124,
+      "n16_population_std": 0.0,
+      "n16_values": [
+        15.312788843842124
+      ]
+    }
+  },
+  "protocol": {
+    "layers": [
+      1,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "new_layers": [
+      1,
+      4,
+      5,
+      6,
+      16,
+      17,
+      19,
+      20,
+      21,
+      22
+    ],
+    "old_layers": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      18
+    ],
+    "retained_original_layers": [
+      0,
+      2,
+      3,
+      23
+    ],
+    "modes": [
+      "continuous_raw",
+      "sigmoid"
+    ],
+    "training_seed": 0,
+    "previous_run": "results/continuous_raw_ten_layer_20261001",
+    "model": "Qwen2.5-0.5B Base",
+    "hidden_width": 4864,
+    "input_policy": "continuous_raw: raw BF16 activations, no clipping or input encoding; sigmoid: binary 0/1 input sampling",
+    "hidden_policy": "binary 0/1 p-bits, learned scalar positive temperature, all matrix biases retained, no separate p-bit threshold",
+    "local_mean_steps": 2000,
+    "local_sample_steps": 6000,
+    "local_train_samples": 4,
+    "local_batch_size": 4,
+    "sequence_length": 256,
+    "local_learning_rates": [
+      0.0003,
+      0.0001
+    ],
+    "initial_input_temperature_sigmoid": 0.125,
+    "initial_hidden_temperature": 0.5,
+    "independent_stage": "All 20 locally trained final checkpoints; old 10 reused with SHA256 identity verification",
+    "staged_stage": "Previous 10-layer best joint checkpoints plus 10 new local students",
+    "joint_start": "staged",
+    "joint_steps": 1000,
+    "joint_samples": 4,
+    "joint_learning_rate": 1e-05,
+    "joint_kd_weight": 0.8,
+    "joint_micro_batch": 1,
+    "joint_gradient_accumulation": 4,
+    "selection": "Minimum held-out train-tail validation PPL; no test-based checkpoint selection",
+    "inherited_best_steps": {
+      "continuous_raw": 900,
+      "sigmoid": 1000
+    },
+    "budget_note": "Both arms follow same schedules and selection policy. Old 10 layers have prior joint adaptation; this is a staged 10-to-20 experiment, not a fresh 20-layer joint run.",
+    "evaluation_stages": [
+      "independent",
+      "staged",
+      "joint"
+    ],
+    "evaluation_pairs": [
+      [
+        0,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        16,
+        0
+      ]
+    ],
+    "test": "Full WikiText-2 raw test; 2048 context, 1024 stride",
+    "historical_note": "Older 43.383146 binary twenty-layer result used 2000 local sample updates and different encoding settings; historical reference only"
+  },
+  "source_hashes_verified": true,
+  "new_full_test_evaluations": 70,
+  "reused_single_layer_evaluations": 40,
+  "checkpoint_records": 120
+}

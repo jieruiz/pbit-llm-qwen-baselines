@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import random
 import time
@@ -11,7 +12,7 @@ import torch.nn.functional as F
 from torch import nn
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from full_path_pdnn_ffn import FullPathPBitFFN, FullPathPBitFFNConfig
+from full_path_pdnn_ffn import FullPathPBitFFN, FullPathPBitFFNConfig, build_full_path_student, load_full_path_checkpoint, student_type_name
 
 
 def parse_hidden_sizes(value: str) -> tuple[int, ...]:
@@ -32,7 +33,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--hidden-temperature", type=float, default=1.0)
     parser.add_argument("--coding", choices=["bipolar", "binary"], default="bipolar")
     parser.add_argument("--learnable-encoding", action="store_true")
+    parser.add_argument("--architecture", choices=["serial", "gated_dual_rail"], default="serial")
+    parser.add_argument("--temperature-only", action="store_true", help="Learn temperatures, without separate p-bit thresholds; keep matrix biases")
     parser.add_argument("--minimum-temperature", type=float, default=1e-3)
+    parser.add_argument("--input-encoding", choices=["sigmoid", "stochastic", "deterministic", "continuous", "continuous_raw"], default="sigmoid")
+    parser.add_argument("--input-bits", type=int, default=1)
+    parser.add_argument("--input-calibration", help="Train-only per-channel input bounds JSON")
     parser.add_argument("--sequence-length", type=int, default=256)
     parser.add_argument("--batch-size", type=int, default=4)
     parser.add_argument("--validation-batches", type=int, default=8)
@@ -47,6 +53,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--log-every", type=int, default=20)
     parser.add_argument("--validate-every", type=int, default=200)
     parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--initialize-from", help="Fork weights and Adam state; requires mean-steps=0; starts a new seeded sample stream")
+    parser.add_argument("--training-window-offset", type=int, default=0, help="Skip this many training batches in the seeded window stream")
+    parser.add_argument("--checkpoint-every", type=int, default=0, help="Keep numbered checkpoints in addition to latest")
+    parser.add_argument("--validation-sample-count", type=int, default=None, help="Use a common validation sample count across training arms")
+    parser.add_argument("--isolate-validation-rng", action="store_true", help="Reset and restore CUDA RNG around validation")
     return parser.parse_args()
 
 
@@ -134,6 +145,15 @@ def validate(
     return {key: value / args.validation_batches for key, value in sums.items()}
 
 
+def controlled_validate(student, teacher, capture, tokens, args, sample_count):
+    if not args.isolate_validation_rng:
+        return validate(student, teacher, capture, tokens, args, sample_count)
+    # Validation must not change the stochastic stream used by training.
+    with torch.random.fork_rng(devices=[torch.cuda.current_device()]):
+        torch.manual_seed(args.seed + 200003 + sample_count)
+        return validate(student, teacher, capture, tokens, args, sample_count)
+
+
 def save_checkpoint(
     output_dir: Path,
     name: str,
@@ -147,7 +167,7 @@ def save_checkpoint(
     training_args = vars(args).copy()
     training_args["hidden_sizes"] = list(args.hidden_sizes)
     payload = {
-        "student_type": "full_path_binary_pdnn_v2" if student.config.coding == "binary" else "full_path_bipolar_pdnn_v1",
+        "student_type": student_type_name(student),
         "student_config": student.checkpoint_config(),
         "student_state_dict": {key: value.detach().cpu() for key, value in student.state_dict().items()},
         "optimizer_state_dict": optimizer.state_dict(),
@@ -161,12 +181,22 @@ def save_checkpoint(
 
 def main() -> None:
     args = parse_args()
+    if args.initialize_from and args.mean_steps != 0:
+        raise ValueError("initialize-from requires mean-steps=0")
+    if args.training_window_offset < 0 or args.checkpoint_every < 0:
+        raise ValueError("offset and checkpoint interval must be non-negative")
+    if args.mean_steps < 0 or args.sample_steps < 0 or args.mean_steps + args.sample_steps == 0:
+        raise ValueError("request a positive number of training steps")
+    if args.train_samples <= 0:
+        raise ValueError("train-samples must be positive")
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA is required")
     set_seed(args.seed)
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     log_path = output_dir / "train_metrics.jsonl"
+    if log_path.exists():
+        raise FileExistsError(f"refusing to overwrite an existing run: {log_path}")
 
     tokenizer = AutoTokenizer.from_pretrained(args.model, local_files_only=True, trust_remote_code=False)
     text = Path(args.train_text).read_text(encoding="utf-8")
@@ -197,12 +227,51 @@ def main() -> None:
         input_temperature=args.input_temperature,
         hidden_temperature=args.hidden_temperature,
         coding=args.coding,
-        learnable_encoding=args.learnable_encoding,
+        learnable_encoding=args.learnable_encoding or args.temperature_only,
         minimum_temperature=args.minimum_temperature,
+        learnable_thresholds=not args.temperature_only,
+        architecture=args.architecture,
+        input_encoding=args.input_encoding,
+        input_bits=args.input_bits,
     )
-    student = FullPathPBitFFN(config).cuda().train()
+    source_payload = None
+    if args.initialize_from:
+        student, source_payload = load_full_path_checkpoint(args.initialize_from)
+        if int(source_payload["training_args"]["layer"]) != args.layer:
+            raise ValueError("initial checkpoint targets a different decoder layer")
+        config = student.config
+        if config.input_size != teacher.config.hidden_size or config.output_size != teacher.config.hidden_size:
+            raise ValueError("checkpoint dimensions do not match teacher")
+        # The checkpoint, not CLI defaults, defines the architecture being continued.
+        for name in ("hidden_sizes", "architecture", "coding", "input_temperature", "hidden_temperature", "minimum_temperature", "input_encoding", "input_bits"):
+            setattr(args, name, getattr(config, name))
+        args.learnable_encoding = config.learnable_encoding
+        args.temperature_only = config.learnable_encoding and not config.learnable_thresholds
+        args.initial_checkpoint_sha256 = hashlib.sha256(Path(args.initialize_from).read_bytes()).hexdigest()
+        args.initial_checkpoint_phase = source_payload["phase"]
+        args.initial_checkpoint_step = source_payload["step"]
+    else:
+        student = build_full_path_student(config).cuda()
+        if config.input_encoding not in {"sigmoid", "continuous_raw"}:
+            if not args.input_calibration:
+                raise ValueError("multi-bit input requires a train-only calibration file")
+            calibration = json.loads(Path(args.input_calibration).read_text())
+            if calibration["layer"] != args.layer:
+                raise ValueError("calibration targets a different layer")
+            bounds = torch.tensor(calibration["input_bound"], device="cuda", dtype=torch.float32)
+            if bounds.shape != student.input_bound.shape or not torch.isfinite(bounds).all() or not (bounds > 0).all():
+                raise ValueError("invalid calibrated ranges")
+            student.input_bound.copy_(bounds)
+            args.input_calibration_sha256 = hashlib.sha256(Path(args.input_calibration).read_bytes()).hexdigest()
+    student.train()
     optimizer = torch.optim.AdamW(student.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
+    if source_payload is not None:
+        optimizer.load_state_dict(source_payload["optimizer_state_dict"])
+        del source_payload
+        set_seed(args.seed)
     generator = torch.Generator().manual_seed(args.seed + 17)
+    for _ in range(args.training_window_offset):
+        torch.randint(0, training_tokens.numel() - args.sequence_length, (args.batch_size,), generator=generator)
     total_steps = args.mean_steps + args.sample_steps
     start_time = time.perf_counter()
     torch.cuda.reset_peak_memory_stats()
@@ -210,7 +279,7 @@ def main() -> None:
     with log_path.open("w", encoding="utf-8") as log_file:
         header = {
             "event": "start",
-            "student_type": "full_path_binary_pdnn_v2" if args.coding == "binary" else "full_path_bipolar_pdnn_v1",
+            "student_type": student_type_name(student),
             "args": {**vars(args), "hidden_sizes": list(args.hidden_sizes)},
             "model_parameters": sum(parameter.numel() for parameter in teacher.parameters()),
             "student_parameters": sum(parameter.numel() for parameter in student.parameters()),
@@ -274,9 +343,12 @@ def main() -> None:
                 print(json.dumps(record), flush=True)
 
             phase_end = global_step in {args.mean_steps, total_steps}
-            if global_step % args.validate_every == 0 or phase_end:
+            numbered_checkpoint = args.checkpoint_every > 0 and global_step % args.checkpoint_every == 0
+            if global_step % args.validate_every == 0 or phase_end or numbered_checkpoint:
                 validation_samples = 0 if phase == "mean_field" else args.train_samples
-                validation = validate(student, teacher, capture, validation_tokens, args, validation_samples)
+                if args.validation_sample_count is not None and phase != "mean_field":
+                    validation_samples = args.validation_sample_count
+                validation = controlled_validate(student, teacher, capture, validation_tokens, args, validation_samples)
                 record = {
                     "event": "validation",
                     "global_step": global_step,
@@ -289,11 +361,13 @@ def main() -> None:
                 print(json.dumps(record), flush=True)
                 checkpoint_name = "student_mean.pt" if global_step == args.mean_steps else "student_latest.pt"
                 save_checkpoint(output_dir, checkpoint_name, student, optimizer, args, phase, phase_step, validation)
+                if numbered_checkpoint:
+                    save_checkpoint(output_dir, f"student_step{global_step}.pt", student, optimizer, args, phase, phase_step, validation)
 
         final_validations = {}
         validation_counts = sorted({0, 1, 4, 8, 16, args.train_samples})
         for count in validation_counts:
-            final_validations[str(count)] = validate(student, teacher, capture, validation_tokens, args, count)
+            final_validations[str(count)] = controlled_validate(student, teacher, capture, validation_tokens, args, count)
         elapsed = time.perf_counter() - start_time
         summary = {
             "event": "complete",

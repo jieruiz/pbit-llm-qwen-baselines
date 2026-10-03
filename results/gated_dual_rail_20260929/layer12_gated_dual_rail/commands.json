@@ -1,0 +1,143 @@
+{
+  "gpu": 3,
+  "commands": [
+    {
+      "command": [
+        "<PYTHON>",
+        "experiments/pdnn_ffn/train_full_path_distillation.py",
+        "--model",
+        "models/Qwen2.5-0.5B",
+        "--train-text",
+        "data/wikitext-2/wiki.train.raw",
+        "--output-dir",
+        "results/gated_dual_rail_20260929/layer12_gated_dual_rail",
+        "--layer",
+        "12",
+        "--architecture",
+        "gated_dual_rail",
+        "--hidden-sizes",
+        "3242",
+        "--coding",
+        "binary",
+        "--temperature-only",
+        "--input-temperature",
+        "0.125",
+        "--hidden-temperature",
+        "0.5",
+        "--seed",
+        "0"
+      ],
+      "log": "training.log"
+    },
+    {
+      "command": [
+        "<PYTHON>",
+        "experiments/pdnn_ffn/evaluate_full_path_perplexity.py",
+        "--model",
+        "models/Qwen2.5-0.5B",
+        "--checkpoint",
+        "results/gated_dual_rail_20260929/layer12_gated_dual_rail/student_sampled.pt",
+        "--text-file",
+        "data/wikitext-2/wiki.test.raw",
+        "--output",
+        "results/gated_dual_rail_20260929/layer12_gated_dual_rail/samples0_seed0_ppl.json",
+        "--sample-count",
+        "0",
+        "--seed",
+        "0"
+      ],
+      "log": "eval_samples0_seed0.log"
+    },
+    {
+      "command": [
+        "<PYTHON>",
+        "experiments/pdnn_ffn/evaluate_full_path_perplexity.py",
+        "--model",
+        "models/Qwen2.5-0.5B",
+        "--checkpoint",
+        "results/gated_dual_rail_20260929/layer12_gated_dual_rail/student_sampled.pt",
+        "--text-file",
+        "data/wikitext-2/wiki.test.raw",
+        "--output",
+        "results/gated_dual_rail_20260929/layer12_gated_dual_rail/samples4_seed0_ppl.json",
+        "--sample-count",
+        "4",
+        "--seed",
+        "0"
+      ],
+      "log": "eval_samples4_seed0.log"
+    },
+    {
+      "command": [
+        "<PYTHON>",
+        "experiments/pdnn_ffn/evaluate_full_path_perplexity.py",
+        "--model",
+        "models/Qwen2.5-0.5B",
+        "--checkpoint",
+        "results/gated_dual_rail_20260929/layer12_gated_dual_rail/student_sampled.pt",
+        "--text-file",
+        "data/wikitext-2/wiki.test.raw",
+        "--output",
+        "results/gated_dual_rail_20260929/layer12_gated_dual_rail/samples4_seed1_ppl.json",
+        "--sample-count",
+        "4",
+        "--seed",
+        "1"
+      ],
+      "log": "eval_samples4_seed1.log"
+    },
+    {
+      "command": [
+        "<PYTHON>",
+        "experiments/pdnn_ffn/evaluate_full_path_perplexity.py",
+        "--model",
+        "models/Qwen2.5-0.5B",
+        "--checkpoint",
+        "results/gated_dual_rail_20260929/layer12_gated_dual_rail/student_sampled.pt",
+        "--text-file",
+        "data/wikitext-2/wiki.test.raw",
+        "--output",
+        "results/gated_dual_rail_20260929/layer12_gated_dual_rail/samples4_seed2_ppl.json",
+        "--sample-count",
+        "4",
+        "--seed",
+        "2"
+      ],
+      "log": "eval_samples4_seed2.log"
+    },
+    {
+      "command": [
+        "<PYTHON>",
+        "experiments/pdnn_ffn/evaluate_full_path_perplexity.py",
+        "--model",
+        "models/Qwen2.5-0.5B",
+        "--checkpoint",
+        "results/gated_dual_rail_20260929/layer12_gated_dual_rail/student_sampled.pt",
+        "--text-file",
+        "data/wikitext-2/wiki.test.raw",
+        "--output",
+        "results/gated_dual_rail_20260929/layer12_gated_dual_rail/samples16_seed0_ppl.json",
+        "--sample-count",
+        "16",
+        "--seed",
+        "0"
+      ],
+      "log": "eval_samples16_seed0.log"
+    },
+    {
+      "command": [
+        "<PYTHON>",
+        "experiments/pdnn_ffn/measure_encoding_saturation.py",
+        "--model",
+        "models/Qwen2.5-0.5B",
+        "--checkpoint",
+        "results/gated_dual_rail_20260929/layer12_gated_dual_rail/student_sampled.pt",
+        "--text-file",
+        "data/wikitext-2/wiki.train.raw",
+        "--output",
+        "results/gated_dual_rail_20260929/layer12_gated_dual_rail/saturation.json"
+      ],
+      "log": "saturation.log"
+    }
+  ]
+}

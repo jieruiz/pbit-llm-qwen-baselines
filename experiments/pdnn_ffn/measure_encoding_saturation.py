@@ -10,7 +10,7 @@ import torch
 from torch import nn
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from full_path_pdnn_ffn import FullPathPBitFFN, load_full_path_checkpoint
+from full_path_pdnn_ffn import FullPathPBitFFN, GatedPBitFFN, load_full_path_checkpoint
 
 
 def parse_args() -> argparse.Namespace:
@@ -110,6 +110,7 @@ def main() -> None:
     generator = torch.Generator().manual_seed(args.seed + 1907)
     input_stats = ProbabilityStats()
     hidden_stats = [ProbabilityStats() for _ in student.config.hidden_sizes]
+    value_stats = ProbabilityStats() if isinstance(student, GatedPBitFFN) else None
 
     with torch.no_grad():
         for _ in range(args.batches):
@@ -123,6 +124,12 @@ def main() -> None:
             input_stats.update(as_probability(student, input_mean))
             for _ in range(args.sample_paths):
                 state = student._sample_state(input_mean)
+                if isinstance(student, GatedPBitFFN):
+                    with torch.autocast("cuda", dtype=torch.bfloat16):
+                        gate_probability, value_probability = student.branch_probabilities(state)
+                    hidden_stats[0].update(gate_probability)
+                    value_stats.update(value_probability)
+                    continue
                 for index, projection in enumerate(student.projections[:-1]):
                     with torch.autocast("cuda", dtype=torch.bfloat16):
                         hidden_mean = student.hidden_mean(projection(state), index)
@@ -134,6 +141,8 @@ def main() -> None:
         "checkpoint": str(Path(args.checkpoint).resolve()),
         "layer": layer,
         "coding": student.config.coding,
+        "architecture": student.config.architecture,
+        "input_distribution": "original teacher FFN input, not joint student on-policy input",
         "learnable_encoding": student.config.learnable_encoding,
         "input_threshold": float(student.effective_input_threshold().detach().cpu()),
         "input_temperature": float(student.effective_input_temperature().detach().cpu()),
@@ -149,6 +158,10 @@ def main() -> None:
         "input_probability": input_stats.result(),
         "hidden_probabilities": [stats.result() for stats in hidden_stats],
     }
+    if isinstance(student, GatedPBitFFN):
+        result["gate_probability"] = result["hidden_probabilities"][0]
+        result["value_probability"] = value_stats.result()
+        result["value_temperature"] = float(student.effective_value_temperature().detach().cpu())
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")

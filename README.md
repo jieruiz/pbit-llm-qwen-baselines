@@ -196,6 +196,86 @@ fixed. For stochastic variants, report the sample count and at least three
 independent seeds. Compare task accuracy and perplexity alongside peak memory,
 throughput, output variance, and layer-local error.
 
+## Binary gated dual-rail pilot
+
+A new 0/1 gate/value FFN retains all matrix biases upstream of p-bits and learns
+temperatures without separate p-bit thresholds. Positive and negative binary
+rails share a readout matrix; complete paths are averaged at the output.
+Matched-parameter single-layer tests at layers 10/12/19 did **not** improve
+PPL over serial FFNs: N=4 PPL was 12.0720/12.1016/12.9578 versus
+12.0298/12.0666/12.8741. See the
+[implementation and full pilot results](results/gated_dual_rail_20260929/RESULTS_ZH.md).
+
+Continuing layer 12 to 6,000 sample-training updates narrows the gated/serial
+N=4 PPL gap to 12.0560 versus 12.0465. Training with N=16 instead improves
+N=16 inference, but worsens N=4 inference; repeated-path diagnostics measure
+the resulting bias/variance tradeoff. See the
+[controlled continuation results](results/gated_sample_budget_20260929/RESULTS_ZH.md).
+
+The four-layer `{9,12,15,18}` comparison confirms that the gated design does
+not improve composition in this setup. After matched joint training, N=4 PPL
+is 13.6933 for gated and 13.5591 for serial. See the
+[four-layer comparison](results/gated_four_layer_9_12_15_18_20260930/RESULTS_ZH.md).
+
+A corrected layer-12 width sweep finds modest N=4 PPL improvements as parameters
+grow from 8.72M to 13.08M: serial 12.04655 to 12.03119, gated 12.05600 to
+12.04255. An earlier evaluation selected the wrong global-step checkpoint for
+new widths; those results are superseded. Width helps but leaves most of the
+gap to original Qwen. Single-seed local distillation does not establish an
+architectural limit. See the
+[width-sweep results](results/pdnn_width_sweep_layer12_20260930/RESULTS_ZH.md).
+
+A fixed-width input-encoding experiment lowers N=4 PPL from 12.04655 to
+11.95572 using four tied position bits per input feature. This is close to the
+continuous-input control (11.95222), while deterministic 4-bit input gives
+11.95921. It improves amplitude representation with unchanged matrix parameter
+count, at greater bitplane computation cost; the coordinated encoder remains
+an algorithmic reference. See
+[input multibit results](results/input_multibit_layer12_20260930/RESULTS_ZH.md).
+
+Extending the stochastic K=4 input encoder to layers `{9,12,15,18}` lowers
+four-layer N=4 PPL from 14.45444 to 13.68340 before joint adaptation, and from
+13.55906 to 12.90971 after 1,000 joint updates. The latter remains 10.79% above
+original Qwen and uses 2.5x as many matrix calls per replacement path as the
+two-matrix sigmoid-input student. See the
+[four-layer multibit results](results/input_multibit_four_layer_9_12_15_18_20260930/RESULTS_ZH.md).
+
+A matched ten-layer experiment removes input encoding entirely and feeds raw,
+unclipped floating activations into the first matrix, retaining binary hidden
+p-bits. After 1,000 joint updates, N=4 PPL is 15.59254 versus 17.83837 for a
+fresh sigmoid-input control trained for the same duration. This is a 12.59%
+improvement, but remains 33.81% above original Qwen. See the
+[ten-layer floating-input results](results/continuous_raw_ten_layer_20261001/RESULTS_ZH.md).
+
+A staged twenty-layer extension retains original FFNs 0, 2, 3, and 23 and
+jointly adapts the other 20 replacements for 1,000 additional updates. Raw-input
+N=4 PPL is **27.12776 +/- 0.03691**, versus **38.76411 +/- 0.02749** for the
+matched sigmoid-input control. The 30.02% benefit persists, but the raw-input
+result is 73.98% worse than its ten-layer predecessor. N=16 reaches 25.70319;
+additional averaging does not close the observed gap. See the
+[twenty-layer results](results/continuous_raw_twenty_layer_20261001/RESULTS_ZH.md).
+
+A teacher-initialized layer-12 experiment uses sigmoid p-bit banks on both
+SwiGLU branches and binary AND features with tied readout weights. With 1, 2,
+or 4 bits per branch, final N=4 PPL is **11.90592, 11.78858, and 11.72048**.
+The four-bit result is 0.58% above original Qwen; at N=1 it reaches 11.80462.
+All sampled evaluations use actual binary readout inputs. Input projections
+remain floating point, and readout terms grow as K²+2K, so these quality gains
+do not establish hardware efficiency or multi-layer performance. See the
+[AND-bank experiment](results/multithreshold_and_layer12_20261002/RESULTS_ZH.md).
+
+The [FFN supplement](experiments/pdnn_ffn/FFN_SUPPLEMENT_20261003_ZH.md)
+collects the latest implementation, reproducibility checks, and result links.
+The K=4 AND-bank model was extended to 20 FFNs, retaining original layers
+0, 2, 3, and 23. Independent composition gives N=4 PPL **14.84908 +/- 0.01373**;
+1,000 joint updates reduce it to **13.67284 +/- 0.00289**, still 17.34% above
+original Qwen. N=16 reaches **12.74181**, with mean-field at **12.46957**.
+This improves substantially over the historical two-matrix raw
+input result, but uses more replacement parameters, teacher initialization,
+and different readout precision. See the
+[twenty-layer AND-bank experiment](results/multithreshold_and_twenty_layer_20261002/RESULTS_ZH.md).
+
+
 ## License
 
 Apache License 2.0. Qwen model weights and WikiText-2 are obtained separately

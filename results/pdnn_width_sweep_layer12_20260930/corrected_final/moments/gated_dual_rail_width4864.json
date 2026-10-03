@@ -1,0 +1,95 @@
+{
+  "checkpoint": "results/pdnn_width_sweep_layer12_20260930/training/gated_dual_rail_width4864/student_sampled.pt",
+  "layer": 12,
+  "architecture": "gated_dual_rail",
+  "args": {
+    "model": "models/Qwen2.5-0.5B",
+    "checkpoint": "results/pdnn_width_sweep_layer12_20260930/training/gated_dual_rail_width4864/student_sampled.pt",
+    "train_text": "data/wikitext-2/wiki.train.raw",
+    "output": "results/pdnn_width_sweep_layer12_20260930/corrected_final/moments/gated_dual_rail_width4864.json",
+    "paths": 256,
+    "batches": 4,
+    "sequence_length": 256,
+    "seed": 27183
+  },
+  "input_distribution": "fixed held-out original-teacher inputs, common across all checkpoints",
+  "means": {
+    "target_power": 0.023963971994817257,
+    "single_path_variance_mse": 0.008250122191384435,
+    "finite_sample_mean_mse": 0.00961978523992002,
+    "corrected_bias_mse": 0.009587558219209313,
+    "empirical_single_path_mse": 0.0178376785479486,
+    "predicted_n4_mse": 0.011650088941678405,
+    "empirical_n4_mse": 0.011650530155748129,
+    "predicted_n16_mse": 0.010103191016241908,
+    "empirical_n16_mse": 0.010103577747941017,
+    "mean_field_mse": 0.009352924069389701
+  },
+  "normalized": {
+    "single_path_variance_nmse": 0.34427190088390636,
+    "finite_sample_mean_nmse": 0.4014269939057062,
+    "corrected_bias_nmse": 0.4000821825898827,
+    "empirical_single_path_nmse": 0.7443540057468935,
+    "predicted_n4_nmse": 0.48615016509775577,
+    "empirical_n4_nmse": 0.4861685766561493,
+    "predicted_n16_nmse": 0.42159918307478195,
+    "empirical_n16_nmse": 0.4216153211214794,
+    "mean_field_nmse": 0.39029106157411964
+  },
+  "batch_records": [
+    {
+      "target_power": 0.025817688554525375,
+      "single_path_variance_mse": 0.008456121198832989,
+      "finite_sample_mean_mse": 0.010447745211422443,
+      "corrected_bias_mse": 0.010414713062345982,
+      "empirical_single_path_mse": 0.01887083426117897,
+      "predicted_n4_mse": 0.012528743594884872,
+      "empirical_n4_mse": 0.012528704479336739,
+      "predicted_n16_mse": 0.010943220928311348,
+      "empirical_n16_mse": 0.010944434441626072,
+      "mean_field_mse": 0.010178502649068832
+    },
+    {
+      "target_power": 0.025804203003644943,
+      "single_path_variance_mse": 0.008472267538309097,
+      "finite_sample_mean_mse": 0.010283011011779308,
+      "corrected_bias_mse": 0.010249916464090347,
+      "empirical_single_path_mse": 0.018722182139754295,
+      "predicted_n4_mse": 0.012367983348667622,
+      "empirical_n4_mse": 0.012368235737085342,
+      "predicted_n16_mse": 0.010779432952404022,
+      "empirical_n16_mse": 0.010779356583952904,
+      "mean_field_mse": 0.009981594048440456
+    },
+    {
+      "target_power": 0.020806504413485527,
+      "single_path_variance_mse": 0.007959376089274883,
+      "finite_sample_mean_mse": 0.008823459967970848,
+      "corrected_bias_mse": 0.008792368695139885,
+      "empirical_single_path_mse": 0.016751741990447044,
+      "predicted_n4_mse": 0.01078221295028925,
+      "empirical_n4_mse": 0.010782423429191113,
+      "predicted_n16_mse": 0.00928982999175787,
+      "empirical_n16_mse": 0.009289996698498726,
+      "mean_field_mse": 0.008581792935729027
+    },
+    {
+      "target_power": 0.023427492007613182,
+      "single_path_variance_mse": 0.00811272393912077,
+      "finite_sample_mean_mse": 0.00892492476850748,
+      "corrected_bias_mse": 0.00889323465526104,
+      "empirical_single_path_mse": 0.017005955800414085,
+      "predicted_n4_mse": 0.010921415872871876,
+      "empirical_n4_mse": 0.010922756977379322,
+      "predicted_n16_mse": 0.009400280192494392,
+      "empirical_n16_mse": 0.009400523267686367,
+      "mean_field_mse": 0.008669806644320488
+    }
+  ],
+  "notes": [
+    "The exact expected output is estimated by repeated full-path sampling, not by mean-field.",
+    "Corrected squared bias subtracts variance/R; it is an unbiased finite-sample estimate and may be negative.",
+    "Predicted MSE uses real-valued averaging; empirical N=4/16 additionally includes native BF16 summation rounding.",
+    "256 paths per input, one fixed probe seed, 1024 input tokens by default; no confidence interval claimed."
+  ]
+}

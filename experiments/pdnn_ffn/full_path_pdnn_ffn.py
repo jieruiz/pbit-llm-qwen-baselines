@@ -28,10 +28,14 @@ class FullPathPBitFFNConfig:
     coding: str = "bipolar"
     learnable_encoding: bool = False
     minimum_temperature: float = 1e-3
+    learnable_thresholds: bool = True
+    architecture: str = "serial"
+    input_encoding: str = "sigmoid"
+    input_bits: int = 1
 
 
 class FullPathPBitFFN(nn.Module):
-    """P-DNN whose every matrix input is a sampled bipolar p-bit state.
+    """P-DNN whose every matrix input is a sampled binary or bipolar state.
 
     A complete stochastic path is
 
@@ -69,11 +73,12 @@ class FullPathPBitFFN(nn.Module):
         )
         self.sample_count = 0
         if config.learnable_encoding:
-            self.input_threshold = nn.Parameter(torch.zeros(()))
+            if config.learnable_thresholds:
+                self.input_threshold = nn.Parameter(torch.zeros(()))
+                self.hidden_thresholds = nn.Parameter(torch.zeros(len(config.hidden_sizes)))
             self.input_temperature_raw = nn.Parameter(
                 self._inverse_softplus(config.input_temperature - config.minimum_temperature)
             )
-            self.hidden_thresholds = nn.Parameter(torch.zeros(len(config.hidden_sizes)))
             self.hidden_temperature_raw = nn.Parameter(
                 self._inverse_softplus(
                     torch.full((len(config.hidden_sizes),), config.hidden_temperature - config.minimum_temperature)
@@ -97,12 +102,12 @@ class FullPathPBitFFN(nn.Module):
         return self.projections[0].weight.new_tensor(self.config.hidden_temperature)
 
     def effective_input_threshold(self) -> torch.Tensor:
-        if self.config.learnable_encoding:
+        if self.config.learnable_encoding and self.config.learnable_thresholds:
             return self.input_threshold
         return self.projections[0].weight.new_zeros(())
 
     def effective_hidden_threshold(self, index: int) -> torch.Tensor:
-        if self.config.learnable_encoding:
+        if self.config.learnable_encoding and self.config.learnable_thresholds:
             return self.hidden_thresholds[index]
         return self.projections[0].weight.new_zeros(())
 
@@ -166,11 +171,86 @@ class FullPathPBitFFN(nn.Module):
         return asdict(self.config)
 
 
+class GatedPBitFFN(FullPathPBitFFN):
+    """Binary gate/value branches and a shared-weight, dual-rail readout.
+
+    Hard paths use only 0/1 matrix inputs. The signed readout is implemented
+    with two binary-input projections, not a ternary-input matrix multiply.
+    Bias belongs to the affine driver; p-bits have no separate threshold.
+    """
+
+    def __init__(self, config: FullPathPBitFFNConfig):
+        if config.coding != "binary" or len(config.hidden_sizes) != 1:
+            raise ValueError("gated architecture requires binary coding and one hidden width")
+        if config.learnable_thresholds or config.architecture != "gated_dual_rail":
+            raise ValueError("gated architecture requires disabled p-bit thresholds")
+        super().__init__(config)
+        self.value_projection = nn.Linear(config.input_size, config.hidden_sizes[0], bias=True)
+        nn.init.xavier_uniform_(self.value_projection.weight)
+        nn.init.zeros_(self.value_projection.bias)
+        if config.learnable_encoding:
+            self.value_temperature_raw = nn.Parameter(
+                self._inverse_softplus(config.hidden_temperature - config.minimum_temperature)
+            )
+
+    def effective_value_temperature(self) -> torch.Tensor:
+        if self.config.learnable_encoding:
+            return F.softplus(self.value_temperature_raw) + self.config.minimum_temperature
+        return self.value_projection.weight.new_tensor(self.config.hidden_temperature)
+
+    def branch_probabilities(self, state: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        gate = self.hidden_mean(self.projections[0](state))
+        value = torch.sigmoid(self.value_projection(state) / self.effective_value_temperature())
+        return gate, value
+
+    def dual_rail_readout(self, positive: torch.Tensor, negative: torch.Tensor) -> torch.Tensor:
+        readout = self.projections[-1]
+        # The same weight is used twice; the output bias is added exactly once.
+        return readout(positive) - F.linear(negative, readout.weight, None)
+
+    def mean_field_forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
+        gate, value = self.branch_probabilities(self.input_mean(hidden_states))
+        return self.dual_rail_readout(gate * value, gate * (1.0 - value))
+
+    def sampled_path_forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
+        state = self._sample_state(self.input_mean(hidden_states))
+        gate_probability, value_probability = self.branch_probabilities(state)
+        gate = self._sample_state(gate_probability)
+        value = self._sample_state(value_probability)
+        return self.dual_rail_readout(gate * value, gate * (1.0 - value))
+
+
+def build_full_path_student(config: FullPathPBitFFNConfig) -> FullPathPBitFFN:
+    if config.input_encoding == "continuous_raw":
+        from continuous_input_ffn import ContinuousInputPBitFFN
+        return ContinuousInputPBitFFN(config)
+    if config.input_encoding != "sigmoid":
+        if config.architecture != "serial":
+            raise ValueError("multi-bit input experiment currently supports serial only")
+        from multibit_input_ffn import MultiBitInputFFN
+        return MultiBitInputFFN(config)
+    if config.architecture == "gated_dual_rail":
+        return GatedPBitFFN(config)
+    if config.architecture != "serial":
+        raise ValueError(f"unknown architecture: {config.architecture}")
+    return FullPathPBitFFN(config)
+
+
+def student_type_name(student: FullPathPBitFFN) -> str:
+    if student.config.input_encoding == "continuous_raw":
+        return "continuous_raw_input_binary_hidden_pdnn_v1"
+    if student.config.input_encoding != "sigmoid":
+        return f"full_path_binary_input_{student.config.input_encoding}_k{student.config.input_bits}_v1"
+    if student.config.architecture == "gated_dual_rail":
+        return "full_path_binary_gated_dual_rail_v1"
+    return "full_path_binary_pdnn_v2" if student.config.coding == "binary" else "full_path_bipolar_pdnn_v1"
+
+
 def load_full_path_checkpoint(path: str, device: str = "cuda") -> tuple[FullPathPBitFFN, dict]:
     payload = torch.load(path, map_location="cpu", weights_only=False)
     config_payload = dict(payload["student_config"])
     config_payload["hidden_sizes"] = tuple(config_payload["hidden_sizes"])
-    model = FullPathPBitFFN(FullPathPBitFFNConfig(**config_payload))
+    model = build_full_path_student(FullPathPBitFFNConfig(**config_payload))
     model.load_state_dict(payload["student_state_dict"])
     model.to(device)
     return model, payload

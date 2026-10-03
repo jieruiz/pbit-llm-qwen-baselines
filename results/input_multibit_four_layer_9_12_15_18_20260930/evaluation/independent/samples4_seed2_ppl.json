@@ -1,0 +1,53 @@
+{
+  "test": "multi_layer_full_path_pdnn_ffn_sliding_window_perplexity",
+  "layers": [
+    9,
+    12,
+    15,
+    18
+  ],
+  "checkpoints": [
+    {
+      "path": "/home/Hongjie_Zeng/pbit_llm/results/input_multibit_four_layer_9_12_15_18_20260930/individual/layer9/student_sampled.pt",
+      "layer": 9,
+      "student_type": "full_path_binary_input_stochastic_k4_v1",
+      "parameters": 8722049
+    },
+    {
+      "path": "/home/Hongjie_Zeng/pbit_llm/results/input_multibit_layer12_20260930/training/stochastic_k4/student_sampled.pt",
+      "layer": 12,
+      "student_type": "full_path_binary_input_stochastic_k4_v1",
+      "parameters": 8722049
+    },
+    {
+      "path": "/home/Hongjie_Zeng/pbit_llm/results/input_multibit_four_layer_9_12_15_18_20260930/individual/layer15/student_sampled.pt",
+      "layer": 15,
+      "student_type": "full_path_binary_input_stochastic_k4_v1",
+      "parameters": 8722049
+    },
+    {
+      "path": "/home/Hongjie_Zeng/pbit_llm/results/input_multibit_four_layer_9_12_15_18_20260930/individual/layer18/student_sampled.pt",
+      "layer": 18,
+      "student_type": "full_path_binary_input_stochastic_k4_v1",
+      "parameters": 8722049
+    }
+  ],
+  "replacement_count": 4,
+  "student_parameters_total": 34888196,
+  "sample_count": 4,
+  "seed": 2,
+  "source_tokens": 299078,
+  "start_token": 0,
+  "end_token": 299078,
+  "corpus_tokens": 299078,
+  "scored_tokens": 299077,
+  "max_length": 2048,
+  "stride": 1024,
+  "mean_negative_log_likelihood": 2.616564035430796,
+  "perplexity": 13.688609113686615,
+  "windows": 292,
+  "evaluation_elapsed_seconds": 11.645527357934043,
+  "total_elapsed_seconds": 16.556561788078398,
+  "scored_tokens_per_second": 25681.705156635973,
+  "peak_allocated_bytes": 5332302848
+}

@@ -1,0 +1,146 @@
+{
+  "base_qwen_ppl": 11.652735047455899,
+  "layers": [
+    9,
+    12,
+    15,
+    18
+  ],
+  "stochastic_k4": {
+    "independent": {
+      "mean_field": 13.50559577773442,
+      "n4_mean": 13.68339674717137,
+      "n4_population_std": 0.0049155824296060425,
+      "n4_values": [
+        13.684774011216831,
+        13.676807116610664,
+        13.688609113686615
+      ],
+      "n16": 13.563462886301494
+    },
+    "joint": {
+      "mean_field": 12.765765769205878,
+      "n4_mean": 12.909709421085246,
+      "n4_population_std": 0.004628089901064328,
+      "n4_values": [
+        12.916234620595068,
+        12.906005060403746,
+        12.906888582256922
+      ],
+      "n16": 12.802377369343477
+    }
+  },
+  "sigmoid_input_baseline": {
+    "independent": {
+      "mean_field": 14.031970904620243,
+      "n4_mean": 14.454435155789186,
+      "n4_population_std": 0.0016259153576509073,
+      "n16": 14.238733368993424
+    },
+    "joint": {
+      "mean_field": 13.290284527432902,
+      "n4_mean": 13.559057716969866,
+      "n4_population_std": 0.003787218119600266,
+      "n16": 13.386762352425926
+    }
+  },
+  "single_layers": {
+    "9": {
+      "mean_field": 11.928686594320371,
+      "n4_mean": 11.955574330687973,
+      "n4_population_std": 0.0018402114113785048,
+      "n16": 11.935612671198305,
+      "path_moments_normalized": {
+        "single_path_variance_nmse": 0.17820544696129578,
+        "finite_sample_mean_nmse": 0.2864984626955484,
+        "corrected_bias_nmse": 0.2858023440020155,
+        "empirical_single_path_nmse": 0.4640077823524568,
+        "predicted_n4_nmse": 0.33035370789505303,
+        "empirical_n4_nmse": 0.33036031242039804,
+        "predicted_n16_nmse": 0.2969401828225613,
+        "empirical_n16_nmse": 0.2969542486532667,
+        "mean_field_nmse": 0.28567914420231083
+      }
+    },
+    "12": {
+      "mean_field": 11.93275567274805,
+      "n4_mean": 11.95572151231809,
+      "n4_population_std": 0.00028250842629330686,
+      "n16": 11.938944976195119,
+      "path_moments_normalized": {
+        "single_path_variance_nmse": 0.1813522956386001,
+        "finite_sample_mean_nmse": 0.28679905059706107,
+        "corrected_bias_nmse": 0.28609064281269697,
+        "empirical_single_path_nmse": 0.4674429141616422,
+        "predicted_n4_nmse": 0.33142871672234697,
+        "empirical_n4_nmse": 0.33143487172089175,
+        "predicted_n16_nmse": 0.2974251576466612,
+        "empirical_n16_nmse": 0.29744300082713077,
+        "mean_field_nmse": 0.28613276107424634
+      }
+    },
+    "15": {
+      "mean_field": 12.11610175350821,
+      "n4_mean": 12.167109720301019,
+      "n4_population_std": 0.001725598781456421,
+      "n16": 12.128921751257646,
+      "path_moments_normalized": {
+        "single_path_variance_nmse": 0.16313788348985453,
+        "finite_sample_mean_nmse": 0.22572511335160286,
+        "corrected_bias_nmse": 0.22508785420206187,
+        "empirical_single_path_nmse": 0.38822571857555654,
+        "predicted_n4_nmse": 0.2658723288977975,
+        "empirical_n4_nmse": 0.26588085097103004,
+        "predicted_n16_nmse": 0.23528397000854182,
+        "empirical_n16_nmse": 0.23529508808344546,
+        "mean_field_nmse": 0.22532917530585947
+      }
+    },
+    "18": {
+      "mean_field": 12.138907711576595,
+      "n4_mean": 12.17705077770254,
+      "n4_population_std": 0.00197225275745292,
+      "n16": 12.150043532260687,
+      "path_moments_normalized": {
+        "single_path_variance_nmse": 0.15882005716477035,
+        "finite_sample_mean_nmse": 0.3219448207455074,
+        "corrected_bias_nmse": 0.32132442733564565,
+        "empirical_single_path_nmse": 0.48014449342231846,
+        "predicted_n4_nmse": 0.36102944051160046,
+        "empirical_n4_nmse": 0.36103458844932323,
+        "predicted_n16_nmse": 0.3312506862058234,
+        "empirical_n16_nmse": 0.3312597062492163,
+        "mean_field_nmse": 0.32195277908250686
+      }
+    }
+  },
+  "comparisons": {
+    "independent_n4_absolute_gain_over_sigmoid": 0.7710384086178159,
+    "independent_n4_relative_gain_percent": 5.334268688520874,
+    "joint_n4_absolute_gain_over_sigmoid": 0.6493482958846197,
+    "joint_n4_relative_gain_percent": 4.789037036636599,
+    "joint_n4_gap_above_original_percent": 10.786947171718086,
+    "k4_joint_recovery_of_independent_excess_nll_percent": 36.23173917075195
+  },
+  "joint_training": {
+    "event": "complete",
+    "layers": [
+      9,
+      12,
+      15,
+      18
+    ],
+    "steps": 1000,
+    "best_step": 900,
+    "best_validation_perplexity": 24.735861396785463,
+    "elapsed_seconds": 332.78001353307627,
+    "effective_tokens_per_second": 3077.1078741428705,
+    "peak_allocated_bytes": 4177016832
+  },
+  "notes": [
+    "N=4 mean and population standard deviation use inference seeds 0, 1, and 2.",
+    "All training uses seed 0; this is not a multi-seed training confidence interval.",
+    "Checkpoint selection uses held-out train-tail validation; test PPL is post-training only.",
+    "K=4 adjacent stochastic rounding coordinates bitplanes and is an algorithm reference, not an independent-sigmoid p-bit circuit demonstration."
+  ]
+}

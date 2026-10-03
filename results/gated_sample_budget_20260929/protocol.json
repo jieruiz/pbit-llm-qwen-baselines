@@ -1,0 +1,22 @@
+{
+  "args": {
+    "gpus": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "output_dir": "results/gated_sample_budget_20260929",
+    "source_dir": "results/gated_dual_rail_20260929",
+    "steps": 6000
+  },
+  "source_sha256": {
+    "serial": "814011de9a1a1cbebcdd3d5d3872e6c61f399b0e8d3c4f1a15af0041a0659778",
+    "gated_dual_rail": "91d454d99b1c9e9f6ca82e0a4c0c75760d7c163647c246c92f695b29e86d8c9c"
+  },
+  "restored_optimizer": true,
+  "training_window_offset": 2000,
+  "validation_rng_isolated": true,
+  "training_rng_reseeded": true,
+  "note": "Controlled forks, not bit-exact continuation: old checkpoints lack RNG state. Equal updates/tokens; N=16 uses four times the stochastic paths."
+}

@@ -1,0 +1,302 @@
+{
+  "original_qwen_ppl": 11.652735047455899,
+  "rows": [
+    {
+      "mode": "sigmoid",
+      "stage": "independent",
+      "n0_mean": 20.227138975531165,
+      "n0_population_std": 0.0,
+      "n0_values": [
+        20.227138975531165
+      ],
+      "n4_mean": 22.459804093881477,
+      "n4_population_std": 0.005171551167439401,
+      "n4_values": [
+        22.452603337899802,
+        22.462295757668624,
+        22.464513186076
+      ],
+      "n16_mean": 21.385854770972887,
+      "n16_population_std": 0.0,
+      "n16_values": [
+        21.385854770972887
+      ]
+    },
+    {
+      "mode": "sigmoid",
+      "stage": "joint",
+      "n0_mean": 16.893215807290353,
+      "n0_population_std": 0.0,
+      "n0_values": [
+        16.893215807290353
+      ],
+      "n4_mean": 17.838368392922824,
+      "n4_population_std": 0.002506465052047672,
+      "n4_values": [
+        17.837807295518797,
+        17.841680018638556,
+        17.835617864611116
+      ],
+      "n16_mean": 17.21003542710165,
+      "n16_population_std": 0.0,
+      "n16_values": [
+        17.21003542710165
+      ]
+    },
+    {
+      "mode": "continuous_raw",
+      "stage": "independent",
+      "n0_mean": 17.463193088482566,
+      "n0_population_std": 0.0,
+      "n0_values": [
+        17.463193088482566
+      ],
+      "n4_mean": 17.923948726326763,
+      "n4_population_std": 0.010938651434023412,
+      "n4_values": [
+        17.909229077131354,
+        17.935429241214415,
+        17.92718786063452
+      ],
+      "n16_mean": 17.55671886970619,
+      "n16_population_std": 0.0,
+      "n16_values": [
+        17.55671886970619
+      ]
+    },
+    {
+      "mode": "continuous_raw",
+      "stage": "joint",
+      "n0_mean": 15.226125811450276,
+      "n0_population_std": 0.0,
+      "n0_values": [
+        15.226125811450276
+      ],
+      "n4_mean": 15.592537296860735,
+      "n4_population_std": 0.009334564877292745,
+      "n4_values": [
+        15.579710385508545,
+        15.601653327428458,
+        15.596248177645204
+      ],
+      "n16_mean": 15.312788843842124,
+      "n16_population_std": 0.0,
+      "n16_values": [
+        15.312788843842124
+      ]
+    }
+  ],
+  "comparisons": {
+    "independent": {
+      "absolute_ppl_gain": 4.5358553675547135,
+      "relative_ppl_reduction_percent": 20.195436026934786,
+      "raw_ppl_above_original_percent": 53.81752569959992,
+      "excess_nll_reduction_percent": 34.37887812360183
+    },
+    "joint": {
+      "absolute_ppl_gain": 2.245831096062089,
+      "relative_ppl_reduction_percent": 12.589890771361677,
+      "raw_ppl_above_original_percent": 33.81010752720237,
+      "excess_nll_reduction_percent": 31.600715919158162
+    }
+  },
+  "single_layers": {
+    "sigmoid": {
+      "7": {
+        "n0": 12.203148138269233,
+        "n4": 12.311054031123751
+      },
+      "8": {
+        "n0": 12.189037568411113,
+        "n4": 12.226984211696797
+      },
+      "9": {
+        "n0": 12.037855934574024,
+        "n4": 12.101564592887923
+      },
+      "10": {
+        "n0": 11.95592225279506,
+        "n4": 12.000447060147927
+      },
+      "11": {
+        "n0": 12.001697334098987,
+        "n4": 12.057963501000023
+      },
+      "12": {
+        "n0": 12.002341431867952,
+        "n4": 12.045059467576717
+      },
+      "13": {
+        "n0": 12.019730627955584,
+        "n4": 12.082151788180193
+      },
+      "14": {
+        "n0": 12.03502981946694,
+        "n4": 12.09579115889026
+      },
+      "15": {
+        "n0": 12.243478111534191,
+        "n4": 12.340844542518836
+      },
+      "18": {
+        "n0": 12.235966350329228,
+        "n4": 12.297882034783932
+      }
+    },
+    "continuous_raw": {
+      "7": {
+        "n0": 12.052921669423663,
+        "n4": 12.092775533497736
+      },
+      "8": {
+        "n0": 11.995444720746002,
+        "n4": 12.023089383093
+      },
+      "9": {
+        "n0": 11.932237637085677,
+        "n4": 11.954890185143357
+      },
+      "10": {
+        "n0": 11.890664318446099,
+        "n4": 11.906099508912689
+      },
+      "11": {
+        "n0": 11.927574277860101,
+        "n4": 11.946101581842482
+      },
+      "12": {
+        "n0": 11.931872109241274,
+        "n4": 11.953122718737777
+      },
+      "13": {
+        "n0": 11.941571449654331,
+        "n4": 11.968232724515692
+      },
+      "14": {
+        "n0": 11.943752948924699,
+        "n4": 11.969157639034988
+      },
+      "15": {
+        "n0": 12.11451701515496,
+        "n4": 12.156931494556783
+      },
+      "18": {
+        "n0": 12.13846770473768,
+        "n4": 12.170605394163028
+      }
+    }
+  },
+  "joint_training": {
+    "sigmoid": {
+      "event": "complete",
+      "layers": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        18
+      ],
+      "steps": 1000,
+      "best_step": 1000,
+      "best_validation_perplexity": 32.16230149212069,
+      "elapsed_seconds": 335.3186967421789,
+      "effective_tokens_per_second": 3053.81122481022,
+      "peak_allocated_bytes": 5057138688
+    },
+    "continuous_raw": {
+      "event": "complete",
+      "layers": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        18
+      ],
+      "steps": 1000,
+      "best_step": 900,
+      "best_validation_perplexity": 29.30943161407172,
+      "elapsed_seconds": 289.04019970609806,
+      "effective_tokens_per_second": 3542.7597996445616,
+      "peak_allocated_bytes": 4996739072
+    }
+  },
+  "protocol": {
+    "layers": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      18
+    ],
+    "modes": [
+      "continuous_raw",
+      "sigmoid"
+    ],
+    "training_seed": 0,
+    "model": "Qwen2.5-0.5B Base",
+    "hidden_width": 4864,
+    "coding": "binary 0/1",
+    "mean_steps": 2000,
+    "sample_steps": 6000,
+    "train_samples": 4,
+    "local_batch_size": 4,
+    "sequence_length": 256,
+    "local_learning_rates": [
+      0.0003,
+      0.0001
+    ],
+    "joint_steps": 1000,
+    "joint_learning_rate": 1e-05,
+    "joint_kd_weight": 0.8,
+    "joint_micro_batch": 1,
+    "joint_gradient_accumulation": 4,
+    "input_temperature_sigmoid_initial": 0.125,
+    "hidden_temperature_initial": 0.5,
+    "temperature_policy": "Learn scalar temperatures; no separate p-bit threshold; all matrix biases retained",
+    "continuous_policy": "Identity input: no p-bit, no quantization, no calibration, no clipping",
+    "precision": "BF16 activations/autocast with FP32 trainable parameters; continuous means floating-point, not FP32-only inference",
+    "initialization": "Fresh all 20 local students; seed 0 matrix draws and train windows shared; sampling RNG consumption differs",
+    "joint_selection": "Minimum held-out train-tail validation PPL; never test-set selection",
+    "evaluation_pairs": [
+      [
+        0,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        16,
+        0
+      ]
+    ],
+    "test": "Full WikiText-2 raw test, context 2048 stride 1024",
+    "comparison": "Equal width, data, updates and N; sigmoid has one extra input-temperature scalar per FFN",
+    "historical_reference": "Older ten-layer 18.568570 used only 2000 sample updates and different temperature/threshold policy; not a matched control"
+  },
+  "source_hashes_verified": true
+}

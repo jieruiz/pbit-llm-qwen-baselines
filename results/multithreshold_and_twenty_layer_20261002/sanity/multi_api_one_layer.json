@@ -1,0 +1,35 @@
+{
+  "test": "multi_layer_multithreshold_and_full_test_perplexity",
+  "layers": [
+    12
+  ],
+  "checkpoints": [
+    {
+      "layer": 12,
+      "path": "/home/Hongjie_Zeng/pbit_llm/results/multithreshold_and_layer12_20261002/k4/student_sampled.pt",
+      "sha256": "56d95fadce22b3a0bd3452b01c4b25174dd432a5f5c383c80fa00f1a9f415b96",
+      "bits": 4,
+      "phase": "sampled",
+      "step": 6000,
+      "parameters": 13211520
+    }
+  ],
+  "replacement_count": 1,
+  "student_parameters_total": 13211520,
+  "sample_count": 4,
+  "seed": 0,
+  "source_tokens": 299078,
+  "start_token": 0,
+  "end_token": 4096,
+  "corpus_tokens": 4096,
+  "scored_tokens": 4095,
+  "max_length": 2048,
+  "stride": 1024,
+  "windows": 3,
+  "mean_negative_log_likelihood": 2.425034340659341,
+  "perplexity": 11.302617551954189,
+  "evaluation_elapsed_seconds": 0.6794802190270275,
+  "peak_allocated_bytes": 5376706048,
+  "readout": "expanded single-bit and AND terms; shared FP32 columns, FP32 path accumulation",
+  "precision": "BF16 backbone/input projections/output; FP32 probability banks and readout"
+}

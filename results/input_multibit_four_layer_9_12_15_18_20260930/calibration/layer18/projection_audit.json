@@ -1,0 +1,63 @@
+{
+  "probe_tokens": 1024,
+  "input_distribution": "held-out original teacher layer18 inputs",
+  "clipped_fraction": 0.0008217947906814516,
+  "continuous_clipped_projection_nmse": 7.005161751294509e-05,
+  "rows": [
+    {
+      "mode": "stochastic",
+      "bits": 1,
+      "input_bias_nmse": 0.00011055630602641031,
+      "input_single_variance_nmse": 9.305534362792969,
+      "teacher_projection_bias_nmse": 7.005161751294509e-05,
+      "teacher_projection_single_variance_nmse": 5.81054162979126,
+      "teacher_projection_n4_nmse": 1.4527055025100708
+    },
+    {
+      "mode": "deterministic",
+      "bits": 1,
+      "input_bias_nmse": 6.513246059417725,
+      "input_single_variance_nmse": 0.0,
+      "teacher_projection_bias_nmse": 5.111158847808838,
+      "teacher_projection_single_variance_nmse": 0.0,
+      "teacher_projection_n4_nmse": 5.111158847808838
+    },
+    {
+      "mode": "stochastic",
+      "bits": 2,
+      "input_bias_nmse": 0.00011055630602641031,
+      "input_single_variance_nmse": 0.8298031091690063,
+      "teacher_projection_bias_nmse": 7.005161751294509e-05,
+      "teacher_projection_single_variance_nmse": 0.5168907642364502,
+      "teacher_projection_n4_nmse": 0.12929274141788483
+    },
+    {
+      "mode": "deterministic",
+      "bits": 2,
+      "input_bias_nmse": 0.4644632935523987,
+      "input_single_variance_nmse": 0.0,
+      "teacher_projection_bias_nmse": 0.2954268753528595,
+      "teacher_projection_single_variance_nmse": 0.0,
+      "teacher_projection_n4_nmse": 0.2954268753528595
+    },
+    {
+      "mode": "stochastic",
+      "bits": 4,
+      "input_bias_nmse": 0.00011055630602641031,
+      "input_single_variance_nmse": 0.030711039900779724,
+      "teacher_projection_bias_nmse": 7.005161751294509e-05,
+      "teacher_projection_single_variance_nmse": 0.019170494750142097,
+      "teacher_projection_n4_nmse": 0.004862675443291664
+    },
+    {
+      "mode": "deterministic",
+      "bits": 4,
+      "input_bias_nmse": 0.015520728193223476,
+      "input_single_variance_nmse": 0.0,
+      "teacher_projection_bias_nmse": 0.00963413342833519,
+      "teacher_projection_single_variance_nmse": 0.0,
+      "teacher_projection_n4_nmse": 0.00963413342833519
+    }
+  ],
+  "note": "Analytical unbiased adjacent-rounding moments for frozen teacher gate/up matrices, prior to nonlinearities; not a full-FFN quality claim."
+}

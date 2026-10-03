@@ -90,3 +90,98 @@ CUDA_VISIBLE_DEVICES=7 bash experiments/pdnn_ffn/run_layer12_experiment.sh
 This is a layer-distillation feasibility test. It does not establish hardware
 speed or energy savings, and replacing only one of 24 FFNs does not represent
 the quality of a model whose complete FFN stack has been converted.
+
+## Binary gated dual-rail FFN
+
+`GatedPBitFFN` adds two independently sampled 0/1 branches, `gate` and `value`.
+The rails `gate*value` and `gate*(1-value)` feed the same readout weight; their
+continuous outputs are subtracted and the readout bias is added once. All
+matrix biases are retained upstream of p-bits; only temperatures are learned,
+with no separate p-bit threshold. Full paths are averaged only at the output.
+
+Use `train_full_path_distillation.py --architecture gated_dual_rail --coding
+binary --temperature-only --hidden-sizes 3242` together with its required model,
+training text and output directory arguments. Existing PPL and joint-training
+scripts load the architecture from its checkpoint. The default serial model
+and legacy checkpoint behavior are preserved.
+
+See section 23 of [the evolving design document](P_DNN_FFN_DESIGN_ZH.md) for the
+equations, hardware interface, matched-parameter protocol and compute cost.
+The completed three-layer pilot did not beat the matched serial controls; see
+[full results](../../results/gated_dual_rail_20260929/RESULTS_ZH.md).
+
+The layer-12 continuation forks common warm-start checkpoints into N=4/N=16
+training arms for 6,000 updates. Longer training narrows the gated/serial N=4
+PPL gap to 0.00946, but N=16 training worsens N=4 inference while improving
+N=16 inference. Direct repeated-path measurements quantify this bias/variance
+tradeoff. See [continuation results](../../results/gated_sample_budget_20260929/RESULTS_ZH.md).
+
+A controlled four-layer test on `{9,12,15,18}` finds no multi-layer benefit
+from the gated design. After identical 1,000-update joint adaptation, N=4 PPL
+is 13.6933 for gated versus 13.5591 for serial. Mean-field and N=16 also favor
+serial, while gated joint training is 15.7% slower in the current dense PyTorch
+implementation. See [four-layer results](../../results/gated_four_layer_9_12_15_18_20260930/RESULTS_ZH.md).
+
+The layer-12 width sweep compares three near-equal parameter budgets for serial
+and gated models. Increasing the serial model from 8.72M to 13.08M trainable
+parameters changes N=4 PPL from 12.0465 to 12.0312; gated improves from
+12.0560 to 12.0425. These corrected results evaluate 6000 sample-training updates
+for every model; the initial new-width evaluations mistakenly used checkpoints
+with only 4000 sample updates. Width helps modestly; the remaining error is not
+proven to be a fundamental architectural limit. See the
+[width-sweep results](../../results/pdnn_width_sweep_layer12_20260930/RESULTS_ZH.md).
+
+Input position-bit encoding improves quality without widening the student:
+4-bit stochastic input reaches N=4 PPL 11.95572 versus 12.04655 for the original
+sigmoid input, close to the clipped continuous-input control at 11.95222.
+Deterministic 4-bit input reaches 11.95921; its hidden layer still samples.
+Bitplanes share matrix weights and receive only 0/1 inputs; the encoding uses
+coordinated adjacent rounding, not independent physical sigmoid p-bits. N=4
+matrix terms increase 2.5x for K=4. See
+[input-encoding results](../../results/input_multibit_layer12_20260930/RESULTS_ZH.md).
+
+The same stochastic K=4 input encoder was then installed at layers
+`{9,12,15,18}`. N=4 PPL is 13.68340 for independently trained replacements and
+12.90971 after 1,000 joint updates, compared with 14.45444 and 13.55906 for the
+matched sigmoid-input serial baseline. Mean-field/N=16 and three N=4 inference
+seeds agree on the improvement. The coordinated encoder and 2.5x matrix-call
+cost remain material limitations. See
+[four-layer multibit results](../../results/input_multibit_four_layer_9_12_15_18_20260930/RESULTS_ZH.md).
+
+Use `--input-encoding continuous_raw --coding binary --temperature-only` for
+unclipped floating inputs with sampled binary hidden nodes. This is distinct
+from `continuous`, which retains calibrated input clipping. No calibration file
+is needed for `continuous_raw`. A matched ten-layer run gives joint N=4 PPL
+15.59254 versus 17.83837 for the sigmoid-input control; see
+[results and limitations](../../results/continuous_raw_ten_layer_20261001/RESULTS_ZH.md).
+
+`run_continuous_twenty_layer.py` extends this run to 20 layers, retaining
+original FFNs 0, 2, 3, and 23. It trains the ten new local students per arm,
+audits reused ten-layer checkpoints, and evaluates independent, staged, and
+joint models. After 1,000 joint updates, raw-input N=4 PPL is 27.12776 versus
+38.76411 for the matched sigmoid-input control. The raw-input best validation
+point is the final update, so convergence is not established. See the
+[twenty-layer report](../../results/continuous_raw_twenty_layer_20261001/RESULTS_ZH.md).
+
+`multithreshold_and_ffn.py` implements teacher-initialized gate/value projections,
+per-channel sigmoid banks, and tied binary single-bit/AND readout terms.
+`run_multithreshold_and.py` compares K=L=1/2/4 at layer 12 with common training
+budgets; `run_multithreshold_sample_budget.py` evaluates N=1/2 on the same fixed
+final checkpoints. N=4 PPL is 11.90592/11.78858/11.72048. Four mathematical
+tests cover the binary boundary, exact moments including shared-AND covariance,
+factorized/expanded gradients, final averaging, and checkpoint loading.
+Training uses the equivalent factorized form; sampled PPL uses expanded 0/1
+inputs with FP32 readout and accumulation. The input projections remain
+floating point. See the [full report](../../results/multithreshold_and_layer12_20261002/RESULTS_ZH.md)
+and section 33 of the living design document for cost and comparison limits.
+
+`run_multithreshold_twenty_layer.py` extends K=4 to 20 FFNs, reusing the
+verified layer-12 checkpoint and training 19 additional local students. The
+joint wrapper reuses the established KL/CE protocol with the AND-bank loader;
+all sampled full-test evaluations use binary expanded readouts. Independent
+N=4 PPL is 14.84908, improving to 13.67284 after 1,000 joint updates, with
+validation selecting step 800. N=16 reaches 12.74181; mean-field is 12.46957.
+Historical architecture comparisons are not
+parameter/initialization/precision matched. See the
+[twenty-layer results](../../results/multithreshold_and_twenty_layer_20261002/RESULTS_ZH.md)
+and section 34 of the design document.
