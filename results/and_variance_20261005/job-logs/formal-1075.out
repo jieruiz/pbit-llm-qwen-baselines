@@ -1,0 +1,131 @@
+START reference_scales
+DONE reference_scales 13.3
+START smoke_control
+DONE smoke_control 22.69
+START smoke_variance
+DONE smoke_variance 23.15
+START pilot
+DONE pilot 107.1
+START control_seed0
+DONE control_seed0 1117.05
+START variance_seed0
+DONE variance_seed0 1539.39
+START control_seed1
+DONE control_seed1 1110.35
+START variance_seed1
+DONE variance_seed1 1497.47
+START control_seed2
+DONE control_seed2 1232.95
+START variance_seed2
+DONE variance_seed2 1502.19
+START control_seed0_probe
+DONE control_seed0_probe 20.11
+START control_seed0_n4_s0
+DONE control_seed0_n4_s0 396.1
+START control_seed0_n4_s1
+DONE control_seed0_n4_s1 396.05
+START control_seed0_n4_s2
+DONE control_seed0_n4_s2 395.97
+START control_seed0_n0_s0
+DONE control_seed0_n0_s0 28.97
+START control_seed0_n16_s0
+DONE control_seed0_n16_s0 1520.41
+START variance_seed0_probe
+DONE variance_seed0_probe 20.68
+START variance_seed0_n4_s0
+DONE variance_seed0_n4_s0 395.81
+START variance_seed0_n4_s1
+DONE variance_seed0_n4_s1 396.04
+START variance_seed0_n4_s2
+DONE variance_seed0_n4_s2 396.09
+START variance_seed0_n0_s0
+DONE variance_seed0_n0_s0 28.65
+START variance_seed0_n16_s0
+DONE variance_seed0_n16_s0 1520.62
+START control_seed1_probe
+DONE control_seed1_probe 20.22
+START control_seed1_n4_s0
+DONE control_seed1_n4_s0 395.84
+START control_seed1_n4_s1
+DONE control_seed1_n4_s1 396.65
+START control_seed1_n4_s2
+DONE control_seed1_n4_s2 395.92
+START control_seed1_n0_s0
+DONE control_seed1_n0_s0 28.72
+START variance_seed1_probe
+DONE variance_seed1_probe 20.12
+START variance_seed1_n4_s0
+DONE variance_seed1_n4_s0 395.8
+START variance_seed1_n4_s1
+DONE variance_seed1_n4_s1 396.37
+START variance_seed1_n4_s2
+DONE variance_seed1_n4_s2 395.94
+START variance_seed1_n0_s0
+DONE variance_seed1_n0_s0 29.23
+START control_seed2_probe
+DONE control_seed2_probe 19.99
+START control_seed2_n4_s0
+DONE control_seed2_n4_s0 396.0
+START control_seed2_n4_s1
+DONE control_seed2_n4_s1 395.88
+START control_seed2_n4_s2
+DONE control_seed2_n4_s2 395.89
+START control_seed2_n0_s0
+DONE control_seed2_n0_s0 28.56
+START variance_seed2_probe
+DONE variance_seed2_probe 20.5
+START variance_seed2_n4_s0
+DONE variance_seed2_n4_s0 395.7
+START variance_seed2_n4_s1
+DONE variance_seed2_n4_s1 396.29
+START variance_seed2_n4_s2
+DONE variance_seed2_n4_s2 396.21
+START variance_seed2_n0_s0
+DONE variance_seed2_n0_s0 29.17
+{
+  "aggregates": {
+    "control": {
+      "ppl_mean": 13.386292817466725,
+      "seconds": 1136.452849994724,
+      "common_input_n4_variance": 0.04663397395682599,
+      "common_input_bias": 0.05529368498682743,
+      "actual_input_n4_variance": 0.04642405477788998,
+      "actual_input_bias": 0.05295321587497407,
+      "training_seed_sample_std": 0.024099982754534666,
+      "mean_best_validation_ce": 3.174368415027857
+    },
+    "variance": {
+      "ppl_mean": 13.390169599012511,
+      "seconds": 1495.9224829027273,
+      "common_input_n4_variance": 0.04660721789890279,
+      "common_input_bias": 0.05532683225465007,
+      "actual_input_n4_variance": 0.046306341627253764,
+      "actual_input_bias": 0.05268931521786726,
+      "training_seed_sample_std": 0.029083136830487816,
+      "mean_best_validation_ce": 3.174955795208613
+    }
+  },
+  "paired": [
+    {
+      "seed": 0,
+      "delta_ppl": 0.002742639888399623
+    },
+    {
+      "seed": 1,
+      "delta_ppl": -0.005064716457615859
+    },
+    {
+      "seed": 2,
+      "delta_ppl": 0.013952421206578691
+    }
+  ],
+  "relative_ppl_improvement": -0.0002896083029595431,
+  "paired_wins": 1,
+  "validation_improved": false,
+  "prespecified_target_met": false,
+  "selected_lambda": 0.1,
+  "training_time_ratio": 1.316308444217173,
+  "common_input_variance_reduction": 0.000573746040772094
+}
+FORMAL_JOB_COMPLETE
+RESULT_ARCHIVE_SHA256 d6307dd06d946a6cb6410f6e60741aae857810509d7b31d5b1b3e5b6f65b8109

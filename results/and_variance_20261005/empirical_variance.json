@@ -1,0 +1,33 @@
+{
+  "layer": 12,
+  "tokens": 128,
+  "groups": 128,
+  "samples_per_group": 4,
+  "split": "first128 tokens of held-out train tail",
+  "seeds": "83160+repeat, paired across A/B",
+  "readout": "actual expanded binary AND, FP32 accumulation, BF16 FFN output",
+  "results": {
+    "control": {
+      "checkpoint_sha256": "0d5c20d2e904150e3a6b7bc470f22100569bbd9dcf5f0197790e6e96c7285829",
+      "checkpoint_step": 2000,
+      "analytical_n4_variance_nmse": 0.04940169304609299,
+      "empirical_n4_variance_nmse": 0.049413539469242096,
+      "empirical_over_analytical": 1.0002398490905762,
+      "empirical_mean_vs_analytical_nmse": 0.00038539653178304434,
+      "analytical_bias_nmse": 0.039913881570100784,
+      "elapsed_seconds": 1.384084734832868
+    },
+    "variance": {
+      "checkpoint_sha256": "373fbf669e31f194cb7168c050423ed0e147ae78111a22ca2f5b5160487b84b2",
+      "checkpoint_step": 2000,
+      "analytical_n4_variance_nmse": 0.04935305938124657,
+      "empirical_n4_variance_nmse": 0.04936153069138527,
+      "empirical_over_analytical": 1.0001716613769531,
+      "empirical_mean_vs_analytical_nmse": 0.00038470426807180047,
+      "analytical_bias_nmse": 0.040030337870121,
+      "elapsed_seconds": 1.372009125072509
+    }
+  },
+  "used_for_selection": false,
+  "note": "Finite Monte Carlo diagnostic; local conditional variance, not whole-model variance or a quality confidence interval."
+}
