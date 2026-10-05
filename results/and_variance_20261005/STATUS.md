@@ -23,3 +23,5 @@
   [预定协议](../../experiments/pdnn_ffn/AND_VARIANCE_PROTOCOL_ZH.md)。
 
 这里的预检通过不代表正式质量目标已达到。结果产生后会继续更新并保留负结果。
+
+首个完整test（尚非A/B结论）：control_seed0，推理seed0，K4/N4，PPL=13.414916742340965，299077计分token；正在进行后续统一测试。
