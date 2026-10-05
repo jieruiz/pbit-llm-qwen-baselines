@@ -11,3 +11,5 @@
 - 140个权重的远端归档位于 `/home/Weican_Chen/projects/pbit-qwen-and-variance-20261005/best-checkpoints.zip`，身份见best-checkpoints-manifest.json；权重不上传Git。
 
 A日志variance_penalty=0表示该项未启用、未计算，不表示A的物理输出方差为零。
+
+独立完成核验及后续解读已完成，见[completion-audit.json](completion-audit.json)和[ANALYSIS_ZH.md](ANALYSIS_ZH.md)。140个checkpoint已保存在用户指定的百度同步目录，整包及逐成员哈希核验通过，见[共享目录核验](shared-archive-verification.json)。未查询百度云端上传状态。

@@ -186,14 +186,27 @@ parameter/initialization/precision matched. See the
 [twenty-layer results](../../results/multithreshold_and_twenty_layer_20261002/RESULTS_ZH.md)
 and section 34 of the design document.
 
-## Fixed-N=4 analytical output-variance ablation (in progress)
+## Fixed-N=4 analytical output-variance ablation (completed)
 
-`train_joint_and_variance.py` continues an AND-bank model with KL/CE and an
-optional fixed-scale conditional output variance penalty. `and_variance_tools.py`
-calibrates train-only teacher reference powers, screens lambda on held-out local
-validation, and records both shared-teacher-input and actual-student-input
-diagnostics. `rebuild_and_variance_initial.py` sequentially reconstructs the
-published method within one allocated GPU; `run_and_variance_ablation.py`
-executes the prespecified three-pair continuation and expanded binary tests.
-The mathematical/RNG tests passed; model reconstruction is running. See the
-[protocol](AND_VARIANCE_PROTOCOL_ZH.md). This is not yet a quality result.
+Three paired continuation seeds, each trained for 2,000 steps from one
+reconstructed initializer, held K=4 and inference N=4 fixed. A used KL/CE;
+B added normalized analytical conditional variance, with lambda=0.1 selected
+only on held-out local validation. All 26 full-test evaluations completed.
+N=4 PPL was 13.386293 +/- 0.024100 for A
+and 13.390170 +/- 0.029083 for B
+(sample standard deviations across continuation-seed means).
+The prespecified 2% gain was not met: B changed PPL by
++0.029% and won only 1/3 pairs.
+Shared-input local variance fell by 0.057%,
+while recorded training time increased by 31.6%.
+A layer-12 actual binary-AND sampling check agreed with analytical variance
+within 0.03%; this does not establish whole-model variance or hardware speed.
+
+See the [full report](../../results/and_variance_20261005/RESULTS_ZH.md),
+[interpretation and future goals](../../results/and_variance_20261005/ANALYSIS_ZH.md),
+[completion audit](../../results/and_variance_20261005/completion-audit.json),
+and [prespecified protocol](AND_VARIANCE_PROTOCOL_ZH.md).
+Next experiments should first screen lambda in short joint validation with
+separate component-gradient measurements. A conditional-mean anchor, if used,
+must be identical in both A and B; inference remains K4/N4. These follow-ups
+have not been executed.
