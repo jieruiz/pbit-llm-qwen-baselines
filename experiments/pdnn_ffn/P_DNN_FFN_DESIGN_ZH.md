@@ -1501,3 +1501,19 @@ N=16仍比原模型高约9.35%，但明显优于N=4。增加路径平均能够�
 `train_joint_multithreshold_and.py`，评估为`evaluate_multi_layer_multithreshold_and.py`。
 14份完整测试结果、40份检查点身份和执行源码哈希已核对，详见
 [二十层AND完整报告](../../results/multithreshold_and_twenty_layer_20261002/RESULTS_ZH.md)。
+
+## 35. 固定四位、四路径的解析输出方差约束（2026-10-05，进行中）
+
+目标是在固定K=4、N=4时通过训练提高质量。A继续原KL+CE，B加按固定teacher
+层输出均方归一化的Var(Y|x)/4，再对20层等权平均。所有替换参数包括浮点gate/up
+在两组均可训练，维持相同初始化、2000步追加预算及三个配对训练seed。
+
+解析矩沿用conditional_moments，保留同通道共享AND项的协方差；参考尺度只用
+排除保留尾部的train文本提前校准。单层lambda筛选只读取保留验证集，不能据test调参。
+诊断同时使用公共teacher输入与student实际输入，分别报告均值偏差和局部方差。
+
+本次登录Weican_Chen，没有师弟原checkpoint。用户已授权复用公开方法重训；
+因此按原脚本重新训练20层、做1000步联合选择，再固定此共同初始化进行对照。
+不进入其他用户私人目录，不声称使用了师弟原始权重。完整条件、2%成功门槛和
+条件化后续目标见[预定协议](AND_VARIANCE_PROTOCOL_ZH.md)。目前只有数学预检
+和原BF16核验完成；正式对照结果尚未产生。

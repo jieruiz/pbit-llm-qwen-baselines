@@ -185,3 +185,15 @@ Historical architecture comparisons are not
 parameter/initialization/precision matched. See the
 [twenty-layer results](../../results/multithreshold_and_twenty_layer_20261002/RESULTS_ZH.md)
 and section 34 of the design document.
+
+## Fixed-N=4 analytical output-variance ablation (in progress)
+
+`train_joint_and_variance.py` continues an AND-bank model with KL/CE and an
+optional fixed-scale conditional output variance penalty. `and_variance_tools.py`
+calibrates train-only teacher reference powers, screens lambda on held-out local
+validation, and records both shared-teacher-input and actual-student-input
+diagnostics. `rebuild_and_variance_initial.py` sequentially reconstructs the
+published method within one allocated GPU; `run_and_variance_ablation.py`
+executes the prespecified three-pair continuation and expanded binary tests.
+The mathematical/RNG tests passed; model reconstruction is running. See the
+[protocol](AND_VARIANCE_PROTOCOL_ZH.md). This is not yet a quality result.
