@@ -13,3 +13,6 @@
 A日志variance_penalty=0表示该项未启用、未计算，不表示A的物理输出方差为零。
 
 独立完成核验及后续解读已完成，见[completion-audit.json](completion-audit.json)和[ANALYSIS_ZH.md](ANALYSIS_ZH.md)。140个checkpoint已保存在用户指定的百度同步目录，整包及逐成员哈希核验通过，见[共享目录核验](shared-archive-verification.json)。未查询百度云端上传状态。
+
+
+2026-10-06存储变更：按用户要求，百度同步目录中的140个checkpoint压缩包已删除（7,405,473,966字节），权重只保留在已核验的服务器个人目录。实验报告保留；此前共享目录核验记录属于删除前的历史记录。见[存储变更记录](checkpoint-retention-update.json)。
