@@ -1,0 +1,284 @@
+{
+  "test": "cached_teacher_forced_decode_ising_and_router",
+  "args": {
+    "model": "models/Qwen2.5-0.5B",
+    "text": "data/wikitext-2/wiki.test.raw",
+    "mode": "ising",
+    "samples": 512,
+    "burn": 4.0,
+    "spacing": 1.0,
+    "ratio": 0.25,
+    "block_size": 64,
+    "rank": 64,
+    "seed": 0,
+    "context": 2048,
+    "decode": 128,
+    "examples": 32,
+    "batch": 16,
+    "output": "results/pbit_softmax_router_20261006/evaluation/ctx2048_ising_s512_t1.0_w4.0_r0.25_d64_seed0.json"
+  },
+  "perplexity": 10.486507460578178,
+  "mean_nll": 2.3500894270837307,
+  "scored_tokens": 4096,
+  "source_tokens": 299078,
+  "examples": [
+    {
+      "start_token": 0,
+      "first_target_token": 2048,
+      "last_target_token": 2175,
+      "scored_tokens": 128,
+      "nll_sum": 360.0411376953125
+    },
+    {
+      "start_token": 9577,
+      "first_target_token": 11625,
+      "last_target_token": 11752,
+      "scored_tokens": 128,
+      "nll_sum": 194.23306274414062
+    },
+    {
+      "start_token": 19155,
+      "first_target_token": 21203,
+      "last_target_token": 21330,
+      "scored_tokens": 128,
+      "nll_sum": 238.21755981445312
+    },
+    {
+      "start_token": 28732,
+      "first_target_token": 30780,
+      "last_target_token": 30907,
+      "scored_tokens": 128,
+      "nll_sum": 267.6575012207031
+    },
+    {
+      "start_token": 38310,
+      "first_target_token": 40358,
+      "last_target_token": 40485,
+      "scored_tokens": 128,
+      "nll_sum": 259.36712646484375
+    },
+    {
+      "start_token": 47887,
+      "first_target_token": 49935,
+      "last_target_token": 50062,
+      "scored_tokens": 128,
+      "nll_sum": 427.6010437011719
+    },
+    {
+      "start_token": 57465,
+      "first_target_token": 59513,
+      "last_target_token": 59640,
+      "scored_tokens": 128,
+      "nll_sum": 252.0220489501953
+    },
+    {
+      "start_token": 67042,
+      "first_target_token": 69090,
+      "last_target_token": 69217,
+      "scored_tokens": 128,
+      "nll_sum": 313.0260925292969
+    },
+    {
+      "start_token": 76620,
+      "first_target_token": 78668,
+      "last_target_token": 78795,
+      "scored_tokens": 128,
+      "nll_sum": 258.75714111328125
+    },
+    {
+      "start_token": 86197,
+      "first_target_token": 88245,
+      "last_target_token": 88372,
+      "scored_tokens": 128,
+      "nll_sum": 399.3459777832031
+    },
+    {
+      "start_token": 95775,
+      "first_target_token": 97823,
+      "last_target_token": 97950,
+      "scored_tokens": 128,
+      "nll_sum": 329.9174499511719
+    },
+    {
+      "start_token": 105352,
+      "first_target_token": 107400,
+      "last_target_token": 107527,
+      "scored_tokens": 128,
+      "nll_sum": 345.3241882324219
+    },
+    {
+      "start_token": 114930,
+      "first_target_token": 116978,
+      "last_target_token": 117105,
+      "scored_tokens": 128,
+      "nll_sum": 176.1883087158203
+    },
+    {
+      "start_token": 124507,
+      "first_target_token": 126555,
+      "last_target_token": 126682,
+      "scored_tokens": 128,
+      "nll_sum": 347.3517150878906
+    },
+    {
+      "start_token": 134085,
+      "first_target_token": 136133,
+      "last_target_token": 136260,
+      "scored_tokens": 128,
+      "nll_sum": 364.7955627441406
+    },
+    {
+      "start_token": 143662,
+      "first_target_token": 145710,
+      "last_target_token": 145837,
+      "scored_tokens": 128,
+      "nll_sum": 380.6418151855469
+    },
+    {
+      "start_token": 153240,
+      "first_target_token": 155288,
+      "last_target_token": 155415,
+      "scored_tokens": 128,
+      "nll_sum": 275.9205627441406
+    },
+    {
+      "start_token": 162817,
+      "first_target_token": 164865,
+      "last_target_token": 164992,
+      "scored_tokens": 128,
+      "nll_sum": 217.18081665039062
+    },
+    {
+      "start_token": 172395,
+      "first_target_token": 174443,
+      "last_target_token": 174570,
+      "scored_tokens": 128,
+      "nll_sum": 272.8902893066406
+    },
+    {
+      "start_token": 181972,
+      "first_target_token": 184020,
+      "last_target_token": 184147,
+      "scored_tokens": 128,
+      "nll_sum": 278.0772399902344
+    },
+    {
+      "start_token": 191550,
+      "first_target_token": 193598,
+      "last_target_token": 193725,
+      "scored_tokens": 128,
+      "nll_sum": 416.48846435546875
+    },
+    {
+      "start_token": 201127,
+      "first_target_token": 203175,
+      "last_target_token": 203302,
+      "scored_tokens": 128,
+      "nll_sum": 294.0946044921875
+    },
+    {
+      "start_token": 210705,
+      "first_target_token": 212753,
+      "last_target_token": 212880,
+      "scored_tokens": 128,
+      "nll_sum": 279.6753845214844
+    },
+    {
+      "start_token": 220282,
+      "first_target_token": 222330,
+      "last_target_token": 222457,
+      "scored_tokens": 128,
+      "nll_sum": 345.44873046875
+    },
+    {
+      "start_token": 229860,
+      "first_target_token": 231908,
+      "last_target_token": 232035,
+      "scored_tokens": 128,
+      "nll_sum": 261.9555358886719
+    },
+    {
+      "start_token": 239437,
+      "first_target_token": 241485,
+      "last_target_token": 241612,
+      "scored_tokens": 128,
+      "nll_sum": 293.2892761230469
+    },
+    {
+      "start_token": 249015,
+      "first_target_token": 251063,
+      "last_target_token": 251190,
+      "scored_tokens": 128,
+      "nll_sum": 270.6898193359375
+    },
+    {
+      "start_token": 258592,
+      "first_target_token": 260640,
+      "last_target_token": 260767,
+      "scored_tokens": 128,
+      "nll_sum": 319.1113586425781
+    },
+    {
+      "start_token": 268170,
+      "first_target_token": 270218,
+      "last_target_token": 270345,
+      "scored_tokens": 128,
+      "nll_sum": 222.6858367919922
+    },
+    {
+      "start_token": 277747,
+      "first_target_token": 279795,
+      "last_target_token": 279922,
+      "scored_tokens": 128,
+      "nll_sum": 293.3697204589844
+    },
+    {
+      "start_token": 287325,
+      "first_target_token": 289373,
+      "last_target_token": 289500,
+      "scored_tokens": 128,
+      "nll_sum": 317.2616271972656
+    },
+    {
+      "start_token": 296902,
+      "first_target_token": 298950,
+      "last_target_token": 299077,
+      "scored_tokens": 128,
+      "nll_sum": 353.33929443359375
+    }
+  ],
+  "attention_layers": 24,
+  "ffn": "original Qwen2MLP; all weights unchanged; no stochastic FFN",
+  "mlp_sha256": "4d554c1651dab977664bf5b16cbf024f673f7868a525b3f0faa5961e0e53f8e9",
+  "text_sha256": "173c87a53759e0201f33e0ccf978e510c2042d7f2cb78229d9a50d79b9e7dd08",
+  "source_sha256": {
+    "sampling.py": "42e2316ae6d088837d25efc0b2ebe40debd13417138f8f9f903778f020b096e7",
+    "attention.py": "6b9e39757a6957b512ce7a568f093a250ff522d15df594db00c01ec382c739e9",
+    "diagnostics.py": "92932ecc26abb26052ef4ff5f0176a6dc4a31b925b562f32955c75d5a5bfc152",
+    "run_experiment.py": "2dbb4c9915618fbb8d0d1f89e8388fc87d8b2900705e578f8d40e437d0a8789d",
+    "test_integration.py": "f754425ceb0d3118a5f5963e418feb65aea6169920d5bd23a466371532f98a30",
+    "evaluate.py": "8c6397a8a67dcd0abb2b61d1475eeffb159e0480d19fb7e56035291165d37fbe"
+  },
+  "torch": "2.7.1+cu128",
+  "transformers": "4.45.2",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "sampling_stats": {
+    "head_query_count": 1376256,
+    "unique_value_fraction_per_head": 0.03455572374664183,
+    "unique_value_fraction_GQA_group_union": 0.14811917677685196,
+    "teacher_probability_mass_on_selected_positions": 0.8481543132081806,
+    "mean_attention_TV": 0.21554583658386642,
+    "mean_attention_KL_clamped": 9.343124193982,
+    "adjacent_sample_repeat_fraction": 0.534688032808758,
+    "lambda24_invalid_mass_leading_upper_bound": 8.88889562153766e-11,
+    "selected_block_fraction": null,
+    "note": "Logical sparsity only. Dense reference QK/PV and diagnostic teacher softmax remain in this software implementation."
+  },
+  "decode_seconds": 9.959475298179314,
+  "prefill_seconds": 0.9242873061448336,
+  "peak_allocated_bytes": 2599484928,
+  "precision": "BF16 model/cache, FP32 reference attention; exact prefill SDPA",
+  "ising_scope": "Exact hard-penalty-limit continuous-time heat-bath simulation; time in bit-clock units, not microseconds. Finite penalty tested separately.",
+  "router_scope": "Untrained Qwen block-summary adaptation, not original trained image BoltzFormer; exact scores and dense masked PV used as numerical reference.",
+  "limitations": "Sampled WT2 test suffixes, not full WT2 PPL; teacher forcing; no training; arithmetic reference not sparse CUDA acceleration"
+}

@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "evaluations": 140,
+  "unique_configurations": 60,
+  "source_hashes_verified": true,
+  "ffn_and_text_hashes_identical": true,
+  "target_positions_identical_within_context": true,
+  "diagnostics": "passed",
+  "integration": {
+    "status": "passed",
+    "dense_vs_original_mean_KL": 0.0007201977423392236,
+    "max_logit_difference": 0.265625,
+    "prefill_bitwise_identical": true,
+    "sdpa_delegation_bitwise_identical": true,
+    "original_ffn_objects_retained": true,
+    "note": "FP32 manual attention differs slightly from fused BF16 SDPA; both baselines evaluated"
+  },
+  "note": "Inference-seed population SD is not a dataset confidence interval. All selection and burn choices were screened on these suffixes."
+}

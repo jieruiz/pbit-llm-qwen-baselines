@@ -284,6 +284,20 @@ These are cached-decode subset metrics, not the historical full-test PPL.
 See the [report](results/pbit_attention_20261003/RESULTS_ZH.md) for all 34 runs,
 sampling-law tests, and the distinction between logical sparsity and hardware speed.
 
+A separate [Ising SoftMax and block-routing experiment](experiments/pbit_softmax_router/README.md)
+completes 140 matched decode evaluations with original FFNs. Ideal asynchronous
+hard-penalty Ising dynamics, with 16-clock burn-in, 4-clock observation spacing
+and 512 samples, gives five-seed PPL **10.43017 / 9.46223** at 2k / 8k versus
+10.37356 / 9.41898 original SDPA. Time units are simulated per-bit clocks, not
+hardware microseconds. Finite penalties and transient laws were checked separately.
+An untrained BoltzFormer-inspired cached mean-key block router gives 8k PPL
+**9.55960** while retaining about 13.33% of candidate positions per head; GQA
+group address union is about 42.6%. These are numerical references and logical
+access counts, not sparse GPU or hardware acceleration. See the
+[full report](results/pbit_softmax_router_20261006/RESULTS_ZH.md).
+
+See also the [publication notes and KV-cache scope](experiments/pbit_softmax_router/PUBLICATION_NOTES_ZH.md).
+
 ## License
 
 Apache License 2.0. Qwen model weights and WikiText-2 are obtained separately

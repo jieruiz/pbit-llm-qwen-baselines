@@ -1,0 +1,192 @@
+{
+  "status": "passed",
+  "finite_penalty": [
+    {
+      "penalty": 0.0,
+      "exact_invalid_probability": 0.1597626872803367,
+      "literal_random_scan_final_ensemble_TV": 0.010035388790905065,
+      "replicas": 16000,
+      "sweeps": 600,
+      "conditional_valid_softmax_max_error": 2.7755575615628914e-17
+    },
+    {
+      "penalty": 4.0,
+      "exact_invalid_probability": 0.0029898779281136807,
+      "literal_random_scan_final_ensemble_TV": 0.0054507798793975906,
+      "replicas": 16000,
+      "sweeps": 600,
+      "conditional_valid_softmax_max_error": 0.0
+    },
+    {
+      "penalty": 8.0,
+      "exact_invalid_probability": 5.4919948379939814e-05,
+      "literal_random_scan_final_ensemble_TV": 0.0029665894893232897,
+      "replicas": 16000,
+      "sweeps": 600,
+      "conditional_valid_softmax_max_error": 2.7755575615628914e-17
+    },
+    {
+      "penalty": 16.0,
+      "exact_invalid_probability": 1.8424601433471384e-08,
+      "literal_random_scan_final_ensemble_TV": 0.008689106091077002,
+      "replicas": 16000,
+      "sweeps": 600,
+      "conditional_valid_softmax_max_error": 2.7755575615628914e-17
+    },
+    {
+      "penalty": 24.0,
+      "exact_invalid_probability": 6.18076532876862e-12,
+      "literal_random_scan_final_ensemble_TV": 0.004854420136351639,
+      "replicas": 16000,
+      "sweeps": 600,
+      "conditional_valid_softmax_max_error": 3.469446951953614e-18
+    }
+  ],
+  "hard_limit_transient": [
+    {
+      "time_bit_clocks": 0.1,
+      "replicas": 100000,
+      "empirical_vs_exact_transient_max_error": 0.0007602860675327595,
+      "exact_transient_TV_to_softmax": 0.41415352221718293
+    },
+    {
+      "time_bit_clocks": 0.5,
+      "replicas": 100000,
+      "empirical_vs_exact_transient_max_error": 0.0022055050915891494,
+      "exact_transient_TV_to_softmax": 0.22310838320089296
+    },
+    {
+      "time_bit_clocks": 1.0,
+      "replicas": 100000,
+      "empirical_vs_exact_transient_max_error": 0.0016792743686820655,
+      "exact_transient_TV_to_softmax": 0.10331746373073605
+    },
+    {
+      "time_bit_clocks": 4.0,
+      "replicas": 100000,
+      "empirical_vs_exact_transient_max_error": 0.002028795024924951,
+      "exact_transient_TV_to_softmax": 0.002204091574026996
+    },
+    {
+      "time_bit_clocks": 16.0,
+      "replicas": 100000,
+      "empirical_vs_exact_transient_max_error": 0.0012768919013708344,
+      "exact_transient_TV_to_softmax": 1.3278667541395672e-07
+    }
+  ],
+  "sample_count_and_spacing": [
+    {
+      "samples": 16,
+      "spacing": 0.25,
+      "replicas": 4096,
+      "probability_mse": 0.2359773034971049,
+      "iid_expected_mse": 0.04178534237504898,
+      "ESS_from_variance_ratio": 2.8331770390324253,
+      "adjacent_repeat_fraction": 0.8334473371505737
+    },
+    {
+      "samples": 16,
+      "spacing": 1.0,
+      "replicas": 4096,
+      "probability_mse": 0.08370158284913648,
+      "iid_expected_mse": 0.04178534237504898,
+      "ESS_from_variance_ratio": 7.987489068227114,
+      "adjacent_repeat_fraction": 0.5556315183639526
+    },
+    {
+      "samples": 16,
+      "spacing": 4.0,
+      "replicas": 4096,
+      "probability_mse": 0.04421015633376882,
+      "iid_expected_mse": 0.04178534237504898,
+      "ESS_from_variance_ratio": 15.122440937629454,
+      "adjacent_repeat_fraction": 0.3487142026424408
+    },
+    {
+      "samples": 64,
+      "spacing": 0.25,
+      "replicas": 4096,
+      "probability_mse": 0.07647059575909666,
+      "iid_expected_mse": 0.010446335593762245,
+      "ESS_from_variance_ratio": 8.742778467516432,
+      "adjacent_repeat_fraction": 0.8332868814468384
+    },
+    {
+      "samples": 64,
+      "spacing": 1.0,
+      "replicas": 4096,
+      "probability_mse": 0.021004004407006775,
+      "iid_expected_mse": 0.010446335593762245,
+      "ESS_from_variance_ratio": 31.83038172367529,
+      "adjacent_repeat_fraction": 0.555412232875824
+    },
+    {
+      "samples": 64,
+      "spacing": 4.0,
+      "replicas": 4096,
+      "probability_mse": 0.01088080351395696,
+      "iid_expected_mse": 0.010446335593762245,
+      "ESS_from_variance_ratio": 61.44449508193079,
+      "adjacent_repeat_fraction": 0.3459589183330536
+    },
+    {
+      "samples": 256,
+      "spacing": 0.25,
+      "replicas": 4096,
+      "probability_mse": 0.019776406060775038,
+      "iid_expected_mse": 0.0026115838984405613,
+      "ESS_from_variance_ratio": 33.806217163331375,
+      "adjacent_repeat_fraction": 0.8341203927993774
+    },
+    {
+      "samples": 256,
+      "spacing": 1.0,
+      "replicas": 4096,
+      "probability_mse": 0.005290141102972773,
+      "iid_expected_mse": 0.0026115838984405613,
+      "ESS_from_variance_ratio": 126.3795171030667,
+      "adjacent_repeat_fraction": 0.5562519431114197
+    },
+    {
+      "samples": 256,
+      "spacing": 4.0,
+      "replicas": 4096,
+      "probability_mse": 0.0027109513582361357,
+      "iid_expected_mse": 0.0026115838984405613,
+      "ESS_from_variance_ratio": 246.6165525137942,
+      "adjacent_repeat_fraction": 0.3455796241760254
+    },
+    {
+      "samples": 512,
+      "spacing": 0.25,
+      "replicas": 4096,
+      "probability_mse": 0.009920611229981753,
+      "iid_expected_mse": 0.0013057919492202807,
+      "ESS_from_variance_ratio": 67.39156111472916,
+      "adjacent_repeat_fraction": 0.8341200351715088
+    },
+    {
+      "samples": 512,
+      "spacing": 1.0,
+      "replicas": 4096,
+      "probability_mse": 0.0027450082935358434,
+      "iid_expected_mse": 0.0013057919492202807,
+      "ESS_from_variance_ratio": 243.55681532007503,
+      "adjacent_repeat_fraction": 0.5560247898101807
+    },
+    {
+      "samples": 512,
+      "spacing": 4.0,
+      "replicas": 4096,
+      "probability_mse": 0.0013602646355548344,
+      "iid_expected_mse": 0.0013057919492202807,
+      "ESS_from_variance_ratio": 491.49662538134316,
+      "adjacent_repeat_fraction": 0.3452516198158264
+    }
+  ],
+  "summary_cache": {
+    "incremental_summary_max_error": 9.5367431640625e-07,
+    "crosses_block_boundaries": true
+  },
+  "scope": "Finite-penalty literal random-scan check plus exact-generator transient validation of hard-limit continuous-time simulation."
+}

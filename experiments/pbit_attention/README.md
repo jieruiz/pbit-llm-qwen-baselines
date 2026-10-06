@@ -62,3 +62,10 @@ the source/result integrity audit performed when publishing this branch.
 `summarize.py` verifies all 34 archived results and their source hashes before
 regenerating the report/plot (requires matplotlib). Source files are kept with
 LF line endings so SHA256 checks also work after a Windows checkout.
+
+## Additional attention methods (2026-10-06)
+
+The original AV sampling baseline above is retained. The independent
+[Ising SoftMax and BoltzFormer-inspired supplement](../pbit_softmax_router/README.md)
+adds two decode-only alternatives with original FFNs and 140 matched evaluations.
+See the [scope and KV-cache notes](../pbit_softmax_router/PUBLICATION_NOTES_ZH.md).
