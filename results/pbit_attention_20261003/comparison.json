@@ -1,0 +1,509 @@
+{
+  "baselines": {
+    "2048": {
+      "dense": 10.3766366781855,
+      "sdpa": 10.373559499724413
+    },
+    "8192": {
+      "dense": 9.423514941549955,
+      "sdpa": 9.41898175776718
+    }
+  },
+  "rows": [
+    {
+      "context": 2048,
+      "mode": "tree",
+      "samples": 32,
+      "ppl_mean": 11.411573033356895,
+      "ppl_std": 0.0789251952297993,
+      "ppl_values": [
+        11.426059935626245,
+        11.308483993330128,
+        11.500175171114309
+      ],
+      "above_original_percent": 10.006339035892719,
+      "above_dense_reference_percent": 9.973716795415143,
+      "GQA_unique_value_fraction": 0.03310844960765862,
+      "mean_count": 32.0,
+      "count_std": 0.0,
+      "reference_decode_seconds_mean": 15.178349237501001
+    },
+    {
+      "context": 2048,
+      "mode": "independent",
+      "samples": 32,
+      "ppl_mean": 11.597838223781073,
+      "ppl_std": 0.04696916474796653,
+      "ppl_values": [
+        11.531418822269115,
+        11.63175572590565,
+        11.630340123168455
+      ],
+      "above_original_percent": 11.801915476449377,
+      "above_dense_reference_percent": 11.768760760053109,
+      "GQA_unique_value_fraction": 0.033139333329273636,
+      "mean_count": 31.998343089270215,
+      "count_std": 4.789148841415299,
+      "reference_decode_seconds_mean": 7.235057905005912
+    },
+    {
+      "context": 2048,
+      "mode": "tree",
+      "samples": 128,
+      "ppl_mean": 10.603625917390492,
+      "ppl_std": 0.032545944404779106,
+      "ppl_values": [
+        10.575918687081295,
+        10.649308603961694,
+        10.585650461128486
+      ],
+      "above_original_percent": 2.2178155692093027,
+      "above_dense_reference_percent": 2.1875030054987255,
+      "GQA_unique_value_fraction": 0.08502781810495023,
+      "mean_count": 128.0,
+      "count_std": 0.0,
+      "reference_decode_seconds_mean": 15.48720909593006
+    },
+    {
+      "context": 2048,
+      "mode": "independent",
+      "samples": 128,
+      "ppl_mean": 10.62691025577268,
+      "ppl_std": 0.006513497280330911,
+      "ppl_values": [
+        10.628628141418774,
+        10.633888731013736,
+        10.61821389488553
+      ],
+      "above_original_percent": 2.442274091694352,
+      "above_dense_reference_percent": 2.4118949650932864,
+      "GQA_unique_value_fraction": 0.0850376839055244,
+      "mean_count": 127.99399990505643,
+      "count_std": 9.57459030198429,
+      "reference_decode_seconds_mean": 7.219852168889095
+    },
+    {
+      "context": 2048,
+      "mode": "tree",
+      "samples": 512,
+      "ppl_mean": 10.423923518983152,
+      "ppl_std": 0.013483232692448777,
+      "ppl_values": [
+        10.436155254502662,
+        10.405139390474831,
+        10.430475911971962
+      ],
+      "above_original_percent": 0.48550373919460377,
+      "above_dense_reference_percent": 0.4557048903626182,
+      "GQA_unique_value_fraction": 0.19045915803621496,
+      "mean_count": 512.0,
+      "count_std": 0.0,
+      "reference_decode_seconds_mean": 15.56287065637298
+    },
+    {
+      "context": 2048,
+      "mode": "independent",
+      "samples": 512,
+      "ppl_mean": 10.444385910859811,
+      "ppl_std": 0.013396931946392921,
+      "ppl_values": [
+        10.426916987228477,
+        10.446768663556163,
+        10.459472081794793
+      ],
+      "above_original_percent": 0.6827590002957074,
+      "above_dense_reference_percent": 0.6529016556659162,
+      "GQA_unique_value_fraction": 0.1904838446186722,
+      "mean_count": 511.98397463843935,
+      "count_std": 19.13905133910432,
+      "reference_decode_seconds_mean": 7.00615001640593
+    },
+    {
+      "context": 8192,
+      "mode": "tree",
+      "samples": 128,
+      "ppl_mean": 9.641071164980266,
+      "ppl_std": 0.03847272137253619,
+      "ppl_values": [
+        9.689487787935668,
+        9.6383593276532,
+        9.595366379351928
+      ],
+      "above_original_percent": 2.357891892400632,
+      "above_dense_reference_percent": 2.308652607649253,
+      "GQA_unique_value_fraction": 0.025163895530347192,
+      "mean_count": 128.0,
+      "count_std": 0.0,
+      "reference_decode_seconds_mean": 33.27124985369543
+    },
+    {
+      "context": 8192,
+      "mode": "independent",
+      "samples": 128,
+      "ppl_mean": 9.688321170619453,
+      "ppl_std": 0.03322011291029335,
+      "ppl_values": [
+        9.681806612468264,
+        9.731871553965258,
+        9.651285345424837
+      ],
+      "above_original_percent": 2.859538533771633,
+      "above_dense_reference_percent": 2.810057931801224,
+      "GQA_unique_value_fraction": 0.025157713522818752,
+      "mean_count": 128.0118650406126,
+      "count_std": 9.68723724457342,
+      "reference_decode_seconds_mean": 13.573031281431517
+    },
+    {
+      "context": 8192,
+      "mode": "tree",
+      "samples": 512,
+      "ppl_mean": 9.491615462893579,
+      "ppl_std": 0.01918979083148529,
+      "ppl_values": [
+        9.514000551469628,
+        9.493710242087582,
+        9.467135595123526
+      ],
+      "above_original_percent": 0.7711417963677913,
+      "above_dense_reference_percent": 0.7226658180734313,
+      "GQA_unique_value_fraction": 0.06429145960905062,
+      "mean_count": 512.0,
+      "count_std": 0.0,
+      "reference_decode_seconds_mean": 33.762028804436945
+    },
+    {
+      "context": 8192,
+      "mode": "independent",
+      "samples": 512,
+      "ppl_mean": 9.494489346547345,
+      "ppl_std": 0.045625972485355416,
+      "ppl_values": [
+        9.432358329389395,
+        9.540634529461014,
+        9.510475180791628
+      ],
+      "above_original_percent": 0.8016534135221187,
+      "above_dense_reference_percent": 0.7531627576081057,
+      "GQA_unique_value_fraction": 0.0643191227681125,
+      "mean_count": 512.0157853383866,
+      "count_std": 19.369930017423354,
+      "reference_decode_seconds_mean": 13.77124286085988
+    }
+  ],
+  "evaluation_count": 34,
+  "original_ffn_sha256": "4d554c1651dab977664bf5b16cbf024f673f7868a525b3f0faa5961e0e53f8e9",
+  "source_audit": "All evaluated source hashes, FFN hashes, corpus hashes and scored positions verified",
+  "protocol": {
+    "date": "2026-10-03",
+    "model": "Qwen2.5-0.5B Base BF16",
+    "attention": "all24; only AV changed; exact QK/softmax",
+    "ffn": "all original Qwen2MLP",
+    "training": "none",
+    "sampling": "IID categorical via binary p-bit tree versus independent Bernoulli per position",
+    "independent_simulation": "Binomial(S,p) exactly compresses S independent Bernoulli rounds; no count renormalization",
+    "context2048": "32 evenly spread WT2-test spans; exact prefix2047 then128 sampled teacher-forced decode queries;4096 scored tokens",
+    "context8192": "16 evenly spread spans; exact prefix8191 then128 queries;2048 scored tokens",
+    "inference_seeds_main": [
+      0,
+      1,
+      2
+    ],
+    "samples": [
+      32,
+      128,
+      512
+    ],
+    "jobs": [
+      [
+        2048,
+        32,
+        128,
+        16,
+        "sdpa",
+        128,
+        0
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "dense",
+        128,
+        0
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "tree",
+        32,
+        0
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "independent",
+        32,
+        0
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "tree",
+        128,
+        0
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "independent",
+        128,
+        0
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "tree",
+        512,
+        0
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "independent",
+        512,
+        0
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "tree",
+        32,
+        1
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "independent",
+        32,
+        1
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "tree",
+        128,
+        1
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "independent",
+        128,
+        1
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "tree",
+        512,
+        1
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "independent",
+        512,
+        1
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "tree",
+        32,
+        2
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "independent",
+        32,
+        2
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "tree",
+        128,
+        2
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "independent",
+        128,
+        2
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "tree",
+        512,
+        2
+      ],
+      [
+        2048,
+        32,
+        128,
+        16,
+        "independent",
+        512,
+        2
+      ],
+      [
+        8192,
+        16,
+        128,
+        4,
+        "dense",
+        128,
+        0
+      ],
+      [
+        8192,
+        16,
+        128,
+        4,
+        "tree",
+        128,
+        0
+      ],
+      [
+        8192,
+        16,
+        128,
+        4,
+        "independent",
+        128,
+        0
+      ],
+      [
+        8192,
+        16,
+        128,
+        4,
+        "tree",
+        512,
+        0
+      ],
+      [
+        8192,
+        16,
+        128,
+        4,
+        "independent",
+        512,
+        0
+      ]
+    ],
+    "readout": "FP32 count/S @ V arithmetic reference; no sparse GPU acceleration claim",
+    "source_sha256": {
+      "test_sampling.py": "1b96b4803f9cf7fed607c16528c144c0fc664bb9494f7823e9c48b10d9c2a899",
+      "sampling.py": "b2d0c7c623de5a8911f797626d9b0cf250cab83318edf1caa06b38ed00c8ce89",
+      "attention.py": "d63d6f538673de93829b252493812a104fa31bea698d120a67ffccd087d9581c",
+      "run_experiment.py": "2e0b2dac6d72df65fb1d990789c56e088f3b1b06030977f71e9f488baf8342ea",
+      "test_integration.py": "f754425ceb0d3118a5f5963e418feb65aea6169920d5bd23a466371532f98a30",
+      "evaluate.py": "88bf05e486afdb123886b79773712c27dc54176c44658b4c2b3d5b3abacb3662"
+    }
+  },
+  "repeat_protocol": {
+    "reason": "Single-seed 8k ranking differed from 2k; add seeds1/2 for both methods/budgets, and original SDPA baseline",
+    "jobs": [
+      [
+        "tree",
+        128,
+        1
+      ],
+      [
+        "independent",
+        128,
+        1
+      ],
+      [
+        "tree",
+        512,
+        1
+      ],
+      [
+        "independent",
+        512,
+        1
+      ],
+      [
+        "tree",
+        128,
+        2
+      ],
+      [
+        "independent",
+        128,
+        2
+      ],
+      [
+        "tree",
+        512,
+        2
+      ],
+      [
+        "independent",
+        512,
+        2
+      ],
+      [
+        "sdpa",
+        128,
+        0
+      ]
+    ],
+    "context": 8192,
+    "examples": 16,
+    "decode": 128,
+    "batch": 4,
+    "script_sha256": "2f18759c6a744a73927fce152967ae06ece5740ee848d97ac2567cecd8fde1b6"
+  }
+}

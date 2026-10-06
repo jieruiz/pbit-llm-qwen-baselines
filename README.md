@@ -275,6 +275,14 @@ input result, but uses more replacement parameters, teacher initialization,
 and different readout precision. See the
 [twenty-layer AND-bank experiment](results/multithreshold_and_twenty_layer_20261002/RESULTS_ZH.md).
 
+A separate [p-bit attention experiment](experiments/pbit_attention/README.md)
+retains all original FFNs and changes only decode-time AV aggregation in all
+24 attention layers. At S=512, categorical-tree / independent-Bernoulli PPL is
+10.42392 / 10.44439 versus 10.37356 original SDPA on 2k-context sampled suffixes,
+and 9.49162 / 9.49449 versus 9.41898 at 8k. Three inference seeds are reported.
+These are cached-decode subset metrics, not the historical full-test PPL.
+See the [report](results/pbit_attention_20261003/RESULTS_ZH.md) for all 34 runs,
+sampling-law tests, and the distinction between logical sparsity and hardware speed.
 
 ## License
 

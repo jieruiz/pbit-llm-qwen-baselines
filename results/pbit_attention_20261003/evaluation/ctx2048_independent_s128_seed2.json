@@ -1,0 +1,275 @@
+{
+  "test": "cached_teacher_forced_decode_value_sampling",
+  "args": {
+    "model": "models/Qwen2.5-0.5B",
+    "text": "data/wikitext-2/wiki.test.raw",
+    "mode": "independent",
+    "samples": 128,
+    "seed": 2,
+    "context": 2048,
+    "decode": 128,
+    "examples": 32,
+    "batch": 16,
+    "output": "results/pbit_attention_20261003/evaluation/ctx2048_independent_s128_seed2.json"
+  },
+  "perplexity": 10.61821389488553,
+  "mean_nll": 2.362570818513632,
+  "scored_tokens": 4096,
+  "source_tokens": 299078,
+  "examples": [
+    {
+      "start_token": 0,
+      "first_target_token": 2048,
+      "last_target_token": 2175,
+      "scored_tokens": 128,
+      "nll_sum": 360.91015625
+    },
+    {
+      "start_token": 9577,
+      "first_target_token": 11625,
+      "last_target_token": 11752,
+      "scored_tokens": 128,
+      "nll_sum": 191.00892639160156
+    },
+    {
+      "start_token": 19155,
+      "first_target_token": 21203,
+      "last_target_token": 21330,
+      "scored_tokens": 128,
+      "nll_sum": 241.25653076171875
+    },
+    {
+      "start_token": 28732,
+      "first_target_token": 30780,
+      "last_target_token": 30907,
+      "scored_tokens": 128,
+      "nll_sum": 272.6576843261719
+    },
+    {
+      "start_token": 38310,
+      "first_target_token": 40358,
+      "last_target_token": 40485,
+      "scored_tokens": 128,
+      "nll_sum": 259.1506042480469
+    },
+    {
+      "start_token": 47887,
+      "first_target_token": 49935,
+      "last_target_token": 50062,
+      "scored_tokens": 128,
+      "nll_sum": 426.9888916015625
+    },
+    {
+      "start_token": 57465,
+      "first_target_token": 59513,
+      "last_target_token": 59640,
+      "scored_tokens": 128,
+      "nll_sum": 250.2913818359375
+    },
+    {
+      "start_token": 67042,
+      "first_target_token": 69090,
+      "last_target_token": 69217,
+      "scored_tokens": 128,
+      "nll_sum": 317.7204284667969
+    },
+    {
+      "start_token": 76620,
+      "first_target_token": 78668,
+      "last_target_token": 78795,
+      "scored_tokens": 128,
+      "nll_sum": 261.42706298828125
+    },
+    {
+      "start_token": 86197,
+      "first_target_token": 88245,
+      "last_target_token": 88372,
+      "scored_tokens": 128,
+      "nll_sum": 398.02081298828125
+    },
+    {
+      "start_token": 95775,
+      "first_target_token": 97823,
+      "last_target_token": 97950,
+      "scored_tokens": 128,
+      "nll_sum": 326.802734375
+    },
+    {
+      "start_token": 105352,
+      "first_target_token": 107400,
+      "last_target_token": 107527,
+      "scored_tokens": 128,
+      "nll_sum": 344.8039245605469
+    },
+    {
+      "start_token": 114930,
+      "first_target_token": 116978,
+      "last_target_token": 117105,
+      "scored_tokens": 128,
+      "nll_sum": 182.25222778320312
+    },
+    {
+      "start_token": 124507,
+      "first_target_token": 126555,
+      "last_target_token": 126682,
+      "scored_tokens": 128,
+      "nll_sum": 358.05657958984375
+    },
+    {
+      "start_token": 134085,
+      "first_target_token": 136133,
+      "last_target_token": 136260,
+      "scored_tokens": 128,
+      "nll_sum": 370.98944091796875
+    },
+    {
+      "start_token": 143662,
+      "first_target_token": 145710,
+      "last_target_token": 145837,
+      "scored_tokens": 128,
+      "nll_sum": 383.99249267578125
+    },
+    {
+      "start_token": 153240,
+      "first_target_token": 155288,
+      "last_target_token": 155415,
+      "scored_tokens": 128,
+      "nll_sum": 279.4740295410156
+    },
+    {
+      "start_token": 162817,
+      "first_target_token": 164865,
+      "last_target_token": 164992,
+      "scored_tokens": 128,
+      "nll_sum": 225.0819549560547
+    },
+    {
+      "start_token": 172395,
+      "first_target_token": 174443,
+      "last_target_token": 174570,
+      "scored_tokens": 128,
+      "nll_sum": 269.8191223144531
+    },
+    {
+      "start_token": 181972,
+      "first_target_token": 184020,
+      "last_target_token": 184147,
+      "scored_tokens": 128,
+      "nll_sum": 277.7699279785156
+    },
+    {
+      "start_token": 191550,
+      "first_target_token": 193598,
+      "last_target_token": 193725,
+      "scored_tokens": 128,
+      "nll_sum": 427.19378662109375
+    },
+    {
+      "start_token": 201127,
+      "first_target_token": 203175,
+      "last_target_token": 203302,
+      "scored_tokens": 128,
+      "nll_sum": 294.2325439453125
+    },
+    {
+      "start_token": 210705,
+      "first_target_token": 212753,
+      "last_target_token": 212880,
+      "scored_tokens": 128,
+      "nll_sum": 280.6969909667969
+    },
+    {
+      "start_token": 220282,
+      "first_target_token": 222330,
+      "last_target_token": 222457,
+      "scored_tokens": 128,
+      "nll_sum": 349.9688415527344
+    },
+    {
+      "start_token": 229860,
+      "first_target_token": 231908,
+      "last_target_token": 232035,
+      "scored_tokens": 128,
+      "nll_sum": 267.320068359375
+    },
+    {
+      "start_token": 239437,
+      "first_target_token": 241485,
+      "last_target_token": 241612,
+      "scored_tokens": 128,
+      "nll_sum": 291.5831298828125
+    },
+    {
+      "start_token": 249015,
+      "first_target_token": 251063,
+      "last_target_token": 251190,
+      "scored_tokens": 128,
+      "nll_sum": 267.5053405761719
+    },
+    {
+      "start_token": 258592,
+      "first_target_token": 260640,
+      "last_target_token": 260767,
+      "scored_tokens": 128,
+      "nll_sum": 320.5065612792969
+    },
+    {
+      "start_token": 268170,
+      "first_target_token": 270218,
+      "last_target_token": 270345,
+      "scored_tokens": 128,
+      "nll_sum": 222.5219268798828
+    },
+    {
+      "start_token": 277747,
+      "first_target_token": 279795,
+      "last_target_token": 279922,
+      "scored_tokens": 128,
+      "nll_sum": 290.6191711425781
+    },
+    {
+      "start_token": 287325,
+      "first_target_token": 289373,
+      "last_target_token": 289500,
+      "scored_tokens": 128,
+      "nll_sum": 314.1820068359375
+    },
+    {
+      "start_token": 296902,
+      "first_target_token": 298950,
+      "last_target_token": 299077,
+      "scored_tokens": 128,
+      "nll_sum": 352.2847900390625
+    }
+  ],
+  "attention_layers": 24,
+  "ffn": "original Qwen2MLP; all weights unchanged; no stochastic FFN",
+  "mlp_sha256": "4d554c1651dab977664bf5b16cbf024f673f7868a525b3f0faa5961e0e53f8e9",
+  "text_sha256": "173c87a53759e0201f33e0ccf978e510c2042d7f2cb78229d9a50d79b9e7dd08",
+  "source_sha256": {
+    "test_sampling.py": "1b96b4803f9cf7fed607c16528c144c0fc664bb9494f7823e9c48b10d9c2a899",
+    "sampling.py": "b2d0c7c623de5a8911f797626d9b0cf250cab83318edf1caa06b38ed00c8ce89",
+    "attention.py": "d63d6f538673de93829b252493812a104fa31bea698d120a67ffccd087d9581c",
+    "run_experiment.py": "2e0b2dac6d72df65fb1d990789c56e088f3b1b06030977f71e9f488baf8342ea",
+    "test_integration.py": "f754425ceb0d3118a5f5963e418feb65aea6169920d5bd23a466371532f98a30",
+    "evaluate.py": "88bf05e486afdb123886b79773712c27dc54176c44658b4c2b3d5b3abacb3662"
+  },
+  "torch": "2.7.1+cu128",
+  "transformers": "4.45.2",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "sampling_stats": {
+    "head_query_count": 1376256,
+    "mean_selected_events_per_S_rounds": 127.99790227980841,
+    "selected_events_std": 9.566739908974256,
+    "mean_selected_events_per_round": 0.9999836115610032,
+    "zero_total_events_fraction": 0.0,
+    "unique_value_fraction_per_head": 0.0183726605027704,
+    "unique_value_fraction_GQA_group_union": 0.08505114610235244,
+    "access_note": "Logical distinct rows, not measured memory transactions; reference uses dense count @ V."
+  },
+  "decode_seconds": 7.089769604848698,
+  "prefill_seconds": 0.7736550089903176,
+  "peak_allocated_bytes": 2599484928,
+  "precision": "BF16 model/cache, FP32 score-softmax-count aggregation; exact prefill SDPA",
+  "limitations": "Sampled WT2 test suffixes, not full WT2 PPL; teacher forcing; no training; arithmetic reference not sparse CUDA acceleration"
+}

@@ -1,0 +1,55 @@
+{
+  "reason": "Single-seed 8k ranking differed from 2k; add seeds1/2 for both methods/budgets, and original SDPA baseline",
+  "jobs": [
+    [
+      "tree",
+      128,
+      1
+    ],
+    [
+      "independent",
+      128,
+      1
+    ],
+    [
+      "tree",
+      512,
+      1
+    ],
+    [
+      "independent",
+      512,
+      1
+    ],
+    [
+      "tree",
+      128,
+      2
+    ],
+    [
+      "independent",
+      128,
+      2
+    ],
+    [
+      "tree",
+      512,
+      2
+    ],
+    [
+      "independent",
+      512,
+      2
+    ],
+    [
+      "sdpa",
+      128,
+      0
+    ]
+  ],
+  "context": 8192,
+  "examples": 16,
+  "decode": 128,
+  "batch": 4,
+  "script_sha256": "2f18759c6a744a73927fce152967ae06ece5740ee848d97ac2567cecd8fde1b6"
+}

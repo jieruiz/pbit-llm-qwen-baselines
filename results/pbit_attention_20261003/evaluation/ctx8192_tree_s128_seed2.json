@@ -1,0 +1,164 @@
+{
+  "test": "cached_teacher_forced_decode_value_sampling",
+  "args": {
+    "model": "models/Qwen2.5-0.5B",
+    "text": "data/wikitext-2/wiki.test.raw",
+    "mode": "tree",
+    "samples": 128,
+    "seed": 2,
+    "context": 8192,
+    "decode": 128,
+    "examples": 16,
+    "batch": 4,
+    "output": "results/pbit_attention_20261003/evaluation/ctx8192_tree_s128_seed2.json"
+  },
+  "perplexity": 9.595366379351928,
+  "mean_nll": 2.2612803131341934,
+  "scored_tokens": 2048,
+  "source_tokens": 299078,
+  "examples": [
+    {
+      "start_token": 0,
+      "first_target_token": 8192,
+      "last_target_token": 8319,
+      "scored_tokens": 128,
+      "nll_sum": 172.68446350097656
+    },
+    {
+      "start_token": 19384,
+      "first_target_token": 27576,
+      "last_target_token": 27703,
+      "scored_tokens": 128,
+      "nll_sum": 365.8332214355469
+    },
+    {
+      "start_token": 38768,
+      "first_target_token": 46960,
+      "last_target_token": 47087,
+      "scored_tokens": 128,
+      "nll_sum": 319.9118957519531
+    },
+    {
+      "start_token": 58152,
+      "first_target_token": 66344,
+      "last_target_token": 66471,
+      "scored_tokens": 128,
+      "nll_sum": 219.8982391357422
+    },
+    {
+      "start_token": 77535,
+      "first_target_token": 85727,
+      "last_target_token": 85854,
+      "scored_tokens": 128,
+      "nll_sum": 401.68768310546875
+    },
+    {
+      "start_token": 96919,
+      "first_target_token": 105111,
+      "last_target_token": 105238,
+      "scored_tokens": 128,
+      "nll_sum": 182.01914978027344
+    },
+    {
+      "start_token": 116303,
+      "first_target_token": 124495,
+      "last_target_token": 124622,
+      "scored_tokens": 128,
+      "nll_sum": 308.073974609375
+    },
+    {
+      "start_token": 135687,
+      "first_target_token": 143879,
+      "last_target_token": 144006,
+      "scored_tokens": 128,
+      "nll_sum": 271.83587646484375
+    },
+    {
+      "start_token": 155071,
+      "first_target_token": 163263,
+      "last_target_token": 163390,
+      "scored_tokens": 128,
+      "nll_sum": 352.68853759765625
+    },
+    {
+      "start_token": 174455,
+      "first_target_token": 182647,
+      "last_target_token": 182774,
+      "scored_tokens": 128,
+      "nll_sum": 300.3140563964844
+    },
+    {
+      "start_token": 193839,
+      "first_target_token": 202031,
+      "last_target_token": 202158,
+      "scored_tokens": 128,
+      "nll_sum": 350.8123474121094
+    },
+    {
+      "start_token": 213223,
+      "first_target_token": 221415,
+      "last_target_token": 221542,
+      "scored_tokens": 128,
+      "nll_sum": 288.8943176269531
+    },
+    {
+      "start_token": 232606,
+      "first_target_token": 240798,
+      "last_target_token": 240925,
+      "scored_tokens": 128,
+      "nll_sum": 298.54412841796875
+    },
+    {
+      "start_token": 251990,
+      "first_target_token": 260182,
+      "last_target_token": 260309,
+      "scored_tokens": 128,
+      "nll_sum": 221.00901794433594
+    },
+    {
+      "start_token": 271374,
+      "first_target_token": 279566,
+      "last_target_token": 279693,
+      "scored_tokens": 128,
+      "nll_sum": 259.30633544921875
+    },
+    {
+      "start_token": 290758,
+      "first_target_token": 298950,
+      "last_target_token": 299077,
+      "scored_tokens": 128,
+      "nll_sum": 317.5888366699219
+    }
+  ],
+  "attention_layers": 24,
+  "ffn": "original Qwen2MLP; all weights unchanged; no stochastic FFN",
+  "mlp_sha256": "4d554c1651dab977664bf5b16cbf024f673f7868a525b3f0faa5961e0e53f8e9",
+  "text_sha256": "173c87a53759e0201f33e0ccf978e510c2042d7f2cb78229d9a50d79b9e7dd08",
+  "source_sha256": {
+    "repeat_long_context.py": "2f18759c6a744a73927fce152967ae06ece5740ee848d97ac2567cecd8fde1b6",
+    "test_sampling.py": "1b96b4803f9cf7fed607c16528c144c0fc664bb9494f7823e9c48b10d9c2a899",
+    "sampling.py": "b2d0c7c623de5a8911f797626d9b0cf250cab83318edf1caa06b38ed00c8ce89",
+    "attention.py": "d63d6f538673de93829b252493812a104fa31bea698d120a67ffccd087d9581c",
+    "run_experiment.py": "2e0b2dac6d72df65fb1d990789c56e088f3b1b06030977f71e9f488baf8342ea",
+    "test_integration.py": "f754425ceb0d3118a5f5963e418feb65aea6169920d5bd23a466371532f98a30",
+    "evaluate.py": "88bf05e486afdb123886b79773712c27dc54176c44658b4c2b3d5b3abacb3662"
+  },
+  "torch": "2.7.1+cu128",
+  "transformers": "4.45.2",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "sampling_stats": {
+    "head_query_count": 688128,
+    "mean_selected_events_per_S_rounds": 128.0,
+    "selected_events_std": 0.0,
+    "mean_selected_events_per_round": 1.0,
+    "zero_total_events_fraction": 0.0,
+    "unique_value_fraction_per_head": 0.005051331571363139,
+    "unique_value_fraction_GQA_group_union": 0.02515419555760175,
+    "access_note": "Logical distinct rows, not measured memory transactions; reference uses dense count @ V."
+  },
+  "decode_seconds": 32.410622019320726,
+  "prefill_seconds": 1.3258662072476,
+  "peak_allocated_bytes": 2601113088,
+  "precision": "BF16 model/cache, FP32 score-softmax-count aggregation; exact prefill SDPA",
+  "limitations": "Sampled WT2 test suffixes, not full WT2 PPL; teacher forcing; no training; arithmetic reference not sparse CUDA acceleration"
+}

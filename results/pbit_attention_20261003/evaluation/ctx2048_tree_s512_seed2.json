@@ -1,0 +1,275 @@
+{
+  "test": "cached_teacher_forced_decode_value_sampling",
+  "args": {
+    "model": "models/Qwen2.5-0.5B",
+    "text": "data/wikitext-2/wiki.test.raw",
+    "mode": "tree",
+    "samples": 512,
+    "seed": 2,
+    "context": 2048,
+    "decode": 128,
+    "examples": 32,
+    "batch": 16,
+    "output": "results/pbit_attention_20261003/evaluation/ctx2048_tree_s512_seed2.json"
+  },
+  "perplexity": 10.430475911971962,
+  "mean_nll": 2.3447318971157074,
+  "scored_tokens": 4096,
+  "source_tokens": 299078,
+  "examples": [
+    {
+      "start_token": 0,
+      "first_target_token": 2048,
+      "last_target_token": 2175,
+      "scored_tokens": 128,
+      "nll_sum": 357.2723693847656
+    },
+    {
+      "start_token": 9577,
+      "first_target_token": 11625,
+      "last_target_token": 11752,
+      "scored_tokens": 128,
+      "nll_sum": 191.6273193359375
+    },
+    {
+      "start_token": 19155,
+      "first_target_token": 21203,
+      "last_target_token": 21330,
+      "scored_tokens": 128,
+      "nll_sum": 240.0431365966797
+    },
+    {
+      "start_token": 28732,
+      "first_target_token": 30780,
+      "last_target_token": 30907,
+      "scored_tokens": 128,
+      "nll_sum": 269.8995056152344
+    },
+    {
+      "start_token": 38310,
+      "first_target_token": 40358,
+      "last_target_token": 40485,
+      "scored_tokens": 128,
+      "nll_sum": 255.30563354492188
+    },
+    {
+      "start_token": 47887,
+      "first_target_token": 49935,
+      "last_target_token": 50062,
+      "scored_tokens": 128,
+      "nll_sum": 424.5353088378906
+    },
+    {
+      "start_token": 57465,
+      "first_target_token": 59513,
+      "last_target_token": 59640,
+      "scored_tokens": 128,
+      "nll_sum": 250.0091552734375
+    },
+    {
+      "start_token": 67042,
+      "first_target_token": 69090,
+      "last_target_token": 69217,
+      "scored_tokens": 128,
+      "nll_sum": 312.419189453125
+    },
+    {
+      "start_token": 76620,
+      "first_target_token": 78668,
+      "last_target_token": 78795,
+      "scored_tokens": 128,
+      "nll_sum": 257.4593811035156
+    },
+    {
+      "start_token": 86197,
+      "first_target_token": 88245,
+      "last_target_token": 88372,
+      "scored_tokens": 128,
+      "nll_sum": 398.04254150390625
+    },
+    {
+      "start_token": 95775,
+      "first_target_token": 97823,
+      "last_target_token": 97950,
+      "scored_tokens": 128,
+      "nll_sum": 324.0212097167969
+    },
+    {
+      "start_token": 105352,
+      "first_target_token": 107400,
+      "last_target_token": 107527,
+      "scored_tokens": 128,
+      "nll_sum": 344.9595642089844
+    },
+    {
+      "start_token": 114930,
+      "first_target_token": 116978,
+      "last_target_token": 117105,
+      "scored_tokens": 128,
+      "nll_sum": 176.9379119873047
+    },
+    {
+      "start_token": 124507,
+      "first_target_token": 126555,
+      "last_target_token": 126682,
+      "scored_tokens": 128,
+      "nll_sum": 349.25238037109375
+    },
+    {
+      "start_token": 134085,
+      "first_target_token": 136133,
+      "last_target_token": 136260,
+      "scored_tokens": 128,
+      "nll_sum": 363.46356201171875
+    },
+    {
+      "start_token": 143662,
+      "first_target_token": 145710,
+      "last_target_token": 145837,
+      "scored_tokens": 128,
+      "nll_sum": 379.2239074707031
+    },
+    {
+      "start_token": 153240,
+      "first_target_token": 155288,
+      "last_target_token": 155415,
+      "scored_tokens": 128,
+      "nll_sum": 274.2674865722656
+    },
+    {
+      "start_token": 162817,
+      "first_target_token": 164865,
+      "last_target_token": 164992,
+      "scored_tokens": 128,
+      "nll_sum": 218.5205535888672
+    },
+    {
+      "start_token": 172395,
+      "first_target_token": 174443,
+      "last_target_token": 174570,
+      "scored_tokens": 128,
+      "nll_sum": 272.4333190917969
+    },
+    {
+      "start_token": 181972,
+      "first_target_token": 184020,
+      "last_target_token": 184147,
+      "scored_tokens": 128,
+      "nll_sum": 278.3535461425781
+    },
+    {
+      "start_token": 191550,
+      "first_target_token": 193598,
+      "last_target_token": 193725,
+      "scored_tokens": 128,
+      "nll_sum": 417.62249755859375
+    },
+    {
+      "start_token": 201127,
+      "first_target_token": 203175,
+      "last_target_token": 203302,
+      "scored_tokens": 128,
+      "nll_sum": 294.556640625
+    },
+    {
+      "start_token": 210705,
+      "first_target_token": 212753,
+      "last_target_token": 212880,
+      "scored_tokens": 128,
+      "nll_sum": 279.9053649902344
+    },
+    {
+      "start_token": 220282,
+      "first_target_token": 222330,
+      "last_target_token": 222457,
+      "scored_tokens": 128,
+      "nll_sum": 346.2631530761719
+    },
+    {
+      "start_token": 229860,
+      "first_target_token": 231908,
+      "last_target_token": 232035,
+      "scored_tokens": 128,
+      "nll_sum": 259.9444580078125
+    },
+    {
+      "start_token": 239437,
+      "first_target_token": 241485,
+      "last_target_token": 241612,
+      "scored_tokens": 128,
+      "nll_sum": 292.0250244140625
+    },
+    {
+      "start_token": 249015,
+      "first_target_token": 251063,
+      "last_target_token": 251190,
+      "scored_tokens": 128,
+      "nll_sum": 268.68927001953125
+    },
+    {
+      "start_token": 258592,
+      "first_target_token": 260640,
+      "last_target_token": 260767,
+      "scored_tokens": 128,
+      "nll_sum": 323.5237121582031
+    },
+    {
+      "start_token": 268170,
+      "first_target_token": 270218,
+      "last_target_token": 270345,
+      "scored_tokens": 128,
+      "nll_sum": 222.0331573486328
+    },
+    {
+      "start_token": 277747,
+      "first_target_token": 279795,
+      "last_target_token": 279922,
+      "scored_tokens": 128,
+      "nll_sum": 294.0575866699219
+    },
+    {
+      "start_token": 287325,
+      "first_target_token": 289373,
+      "last_target_token": 289500,
+      "scored_tokens": 128,
+      "nll_sum": 315.58624267578125
+    },
+    {
+      "start_token": 296902,
+      "first_target_token": 298950,
+      "last_target_token": 299077,
+      "scored_tokens": 128,
+      "nll_sum": 351.76776123046875
+    }
+  ],
+  "attention_layers": 24,
+  "ffn": "original Qwen2MLP; all weights unchanged; no stochastic FFN",
+  "mlp_sha256": "4d554c1651dab977664bf5b16cbf024f673f7868a525b3f0faa5961e0e53f8e9",
+  "text_sha256": "173c87a53759e0201f33e0ccf978e510c2042d7f2cb78229d9a50d79b9e7dd08",
+  "source_sha256": {
+    "test_sampling.py": "1b96b4803f9cf7fed607c16528c144c0fc664bb9494f7823e9c48b10d9c2a899",
+    "sampling.py": "b2d0c7c623de5a8911f797626d9b0cf250cab83318edf1caa06b38ed00c8ce89",
+    "attention.py": "d63d6f538673de93829b252493812a104fa31bea698d120a67ffccd087d9581c",
+    "run_experiment.py": "2e0b2dac6d72df65fb1d990789c56e088f3b1b06030977f71e9f488baf8342ea",
+    "test_integration.py": "f754425ceb0d3118a5f5963e418feb65aea6169920d5bd23a466371532f98a30",
+    "evaluate.py": "88bf05e486afdb123886b79773712c27dc54176c44658b4c2b3d5b3abacb3662"
+  },
+  "torch": "2.7.1+cu128",
+  "transformers": "4.45.2",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "sampling_stats": {
+    "head_query_count": 1376256,
+    "mean_selected_events_per_S_rounds": 512.0,
+    "selected_events_std": 0.0,
+    "mean_selected_events_per_round": 1.0,
+    "zero_total_events_fraction": 0.0,
+    "unique_value_fraction_per_head": 0.046763993483879204,
+    "unique_value_fraction_GQA_group_union": 0.1904560498312811,
+    "access_note": "Logical distinct rows, not measured memory transactions; reference uses dense count @ V."
+  },
+  "decode_seconds": 15.5580914481543,
+  "prefill_seconds": 0.7472587889060378,
+  "peak_allocated_bytes": 2599484928,
+  "precision": "BF16 model/cache, FP32 score-softmax-count aggregation; exact prefill SDPA",
+  "limitations": "Sampled WT2 test suffixes, not full WT2 PPL; teacher forcing; no training; arithmetic reference not sparse CUDA acceleration"
+}

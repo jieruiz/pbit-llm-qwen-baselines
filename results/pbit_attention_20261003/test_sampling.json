@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "trials": 40000,
+  "samples": 8,
+  "results": {
+    "tree": {
+      "mean": [
+        0.3033062517642975,
+        1.4008843898773193
+      ],
+      "variance": [
+        0.32630956172943115,
+        0.1039634644985199
+      ],
+      "theoretical_variance": [
+        0.32625001668930054,
+        0.10500000417232513
+      ]
+    },
+    "binomial": {
+      "mean": [
+        0.29638123512268066,
+        1.401759386062622
+      ],
+      "variance": [
+        0.23271240293979645,
+        0.1560944765806198
+      ],
+      "theoretical_variance": [
+        0.23624999821186066,
+        0.1574999988079071
+      ]
+    },
+    "literal_bits": {
+      "mean": [
+        0.2987593710422516,
+        1.402409315109253
+      ],
+      "variance": [
+        0.2339084893465042,
+        0.15654990077018738
+      ],
+      "theoretical_variance": [
+        0.23624999821186066,
+        0.1574999988079071
+      ]
+    }
+  },
+  "covered": [
+    "means and analytic variances",
+    "non-power-of-two padded tree",
+    "zero/one probabilities",
+    "fixed tree count",
+    "independent zero/multiple selections",
+    "binomial versus literal p-bit law",
+    "constant value preservation"
+  ]
+}
