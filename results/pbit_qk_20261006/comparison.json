@@ -1,0 +1,1095 @@
+{
+  "evaluations": 70,
+  "baselines": {
+    "2048": {
+      "dense": 10.3766366781855,
+      "sdpa": 10.373559499724413
+    },
+    "8192": {
+      "dense": 9.423514941549955,
+      "sdpa": 9.41898175776718
+    }
+  },
+  "rows": [
+    {
+      "context": 2048,
+      "mode": "iid",
+      "B": 2,
+      "ppl_mean": 1533.7922702826222,
+      "ppl_std": 99.55901301942926,
+      "ppl_values": [
+        1483.6556390950886,
+        1444.9187837580344,
+        1672.8023879947434
+      ],
+      "ppl_increase_percent": 14685.592836512573,
+      "unique_key_feature_fraction_per_head": 0.19220228043813553,
+      "unique_key_feature_fraction_GQA_group_union": 0.6728976037767198,
+      "mean_active_bit_fraction_per_round": 0.11725063551039923,
+      "signed_add_events_relative_to_dense_mac_terms": 0.23450127102079846,
+      "score_relative_l2_global": 0.4802966988634258,
+      "attention_KL_exact_to_sampled": 4.541610835698201,
+      "attention_total_variation": 0.7140999086351852,
+      "attention_argmax_agreement": 0.2602880568731399
+    },
+    {
+      "context": 2048,
+      "mode": "iid",
+      "B": 4,
+      "ppl_mean": 466.61486538019676,
+      "ppl_std": 6.055069440668894,
+      "ppl_values": [
+        473.0813452750918,
+        458.5201156648199,
+        468.2431352006785
+      ],
+      "ppl_increase_percent": 4398.117212250944,
+      "unique_key_feature_fraction_per_head": 0.30101217920818024,
+      "unique_key_feature_fraction_GQA_group_union": 0.8381024466620551,
+      "mean_active_bit_fraction_per_round": 0.11648748791407025,
+      "signed_add_events_relative_to_dense_mac_terms": 0.465949951656281,
+      "score_relative_l2_global": 0.33778991062678215,
+      "attention_KL_exact_to_sampled": 2.4320366089744523,
+      "attention_total_variation": 0.5882053818227742,
+      "attention_argmax_agreement": 0.383697267562624
+    },
+    {
+      "context": 2048,
+      "mode": "iid",
+      "B": 8,
+      "ppl_mean": 102.25838629371253,
+      "ppl_std": 2.204857779940483,
+      "ppl_values": [
+        99.55425926296446,
+        102.26587943315627,
+        104.95502018501686
+      ],
+      "ppl_increase_percent": 885.7598666728538,
+      "unique_key_feature_fraction_per_head": 0.43994775650993223,
+      "unique_key_feature_fraction_GQA_group_union": 0.941394117143419,
+      "mean_active_bit_fraction_per_round": 0.1155939797560374,
+      "signed_add_events_relative_to_dense_mac_terms": 0.9247518380482992,
+      "score_relative_l2_global": 0.2426126347329732,
+      "attention_KL_exact_to_sampled": 1.2743424595418644,
+      "attention_total_variation": 0.45847637730550694,
+      "attention_argmax_agreement": 0.5054638574993799
+    },
+    {
+      "context": 2048,
+      "mode": "iid",
+      "B": 16,
+      "ppl_mean": 27.20500900322884,
+      "ppl_std": 0.4753689911075563,
+      "ppl_values": [
+        27.16634243828698,
+        26.643100348872583,
+        27.80558422252696
+      ],
+      "ppl_increase_percent": 162.2533663970557,
+      "unique_key_feature_fraction_per_head": 0.5883587050059486,
+      "unique_key_feature_fraction_GQA_group_union": 0.985373232099745,
+      "mean_active_bit_fraction_per_round": 0.11414826436648293,
+      "signed_add_events_relative_to_dense_mac_terms": 1.8263722298637268,
+      "score_relative_l2_global": 0.17234601599890204,
+      "attention_KL_exact_to_sampled": 0.6633785168296582,
+      "attention_total_variation": 0.34510767142464016,
+      "attention_argmax_agreement": 0.6167706686352926
+    },
+    {
+      "context": 2048,
+      "mode": "stratified",
+      "B": 2,
+      "ppl_mean": 1060.5968946899584,
+      "ppl_std": 30.798358774905694,
+      "ppl_values": [
+        1084.4284777510563,
+        1017.1081702667684,
+        1080.2540360520502
+      ],
+      "ppl_increase_percent": 10124.040212215821,
+      "unique_key_feature_fraction_per_head": 0.21027412868681408,
+      "unique_key_feature_fraction_GQA_group_union": 0.6945488982730441,
+      "mean_active_bit_fraction_per_round": 0.11688650222051711,
+      "signed_add_events_relative_to_dense_mac_terms": 0.23377300444103422,
+      "score_relative_l2_global": 0.42992230514749125,
+      "attention_KL_exact_to_sampled": 3.795211109303406,
+      "attention_total_variation": 0.6725064062971294,
+      "attention_argmax_agreement": 0.30153692336309523
+    },
+    {
+      "context": 2048,
+      "mode": "stratified",
+      "B": 4,
+      "ppl_mean": 112.63764141299903,
+      "ppl_std": 0.5449384885297186,
+      "ppl_values": [
+        112.68384376904773,
+        113.28075036784813,
+        111.94833010210125
+      ],
+      "ppl_increase_percent": 985.8147718340209,
+      "unique_key_feature_fraction_per_head": 0.35478383018856957,
+      "unique_key_feature_fraction_GQA_group_union": 0.8691025575002035,
+      "mean_active_bit_fraction_per_round": 0.11579599077739414,
+      "signed_add_events_relative_to_dense_mac_terms": 0.46318396310957655,
+      "score_relative_l2_global": 0.2573086598963054,
+      "attention_KL_exact_to_sampled": 1.374533757182088,
+      "attention_total_variation": 0.46309863909978133,
+      "attention_argmax_agreement": 0.5025419204954117
+    },
+    {
+      "context": 2048,
+      "mode": "stratified",
+      "B": 8,
+      "ppl_mean": 15.821100771440586,
+      "ppl_std": 0.25146681058667847,
+      "ppl_values": [
+        16.1407154150642,
+        15.796342310882649,
+        15.526244588374908
+      ],
+      "ppl_increase_percent": 52.513713078532916,
+      "unique_key_feature_fraction_per_head": 0.5250824633098784,
+      "unique_key_feature_fraction_GQA_group_union": 0.9616687827640109,
+      "mean_active_bit_fraction_per_round": 0.11323411644451202,
+      "signed_add_events_relative_to_dense_mac_terms": 0.9058729315560962,
+      "score_relative_l2_global": 0.14812753793587277,
+      "attention_KL_exact_to_sampled": 0.4441541329088598,
+      "attention_total_variation": 0.2680982142915061,
+      "attention_argmax_agreement": 0.7051139710441469
+    },
+    {
+      "context": 2048,
+      "mode": "stratified",
+      "B": 16,
+      "ppl_mean": 11.572423999924085,
+      "ppl_std": 0.07864881372201958,
+      "ppl_values": [
+        11.53835920948944,
+        11.497760449814995,
+        11.681152340467818
+      ],
+      "ppl_increase_percent": 11.55692508662549,
+      "unique_key_feature_fraction_per_head": 0.6886719900464255,
+      "unique_key_feature_fraction_GQA_group_union": 0.9936520523495145,
+      "mean_active_bit_fraction_per_round": 0.112448911818247,
+      "signed_add_events_relative_to_dense_mac_terms": 1.799182589091952,
+      "score_relative_l2_global": 0.07398209201756153,
+      "attention_KL_exact_to_sampled": 0.149363665597936,
+      "attention_total_variation": 0.14615938615002028,
+      "attention_argmax_agreement": 0.8335956391834077
+    },
+    {
+      "context": 2048,
+      "mode": "stratified",
+      "B": 32,
+      "ppl_mean": 10.63489591219573,
+      "ppl_std": 0.03245052367781996,
+      "ppl_values": [
+        10.636155189059298,
+        10.594537626709425,
+        10.673994920818469
+      ],
+      "ppl_increase_percent": 2.5192549623710203,
+      "unique_key_feature_fraction_per_head": 0.814775273913429,
+      "unique_key_feature_fraction_GQA_group_union": 0.9993363751305474,
+      "mean_active_bit_fraction_per_round": 0.11229957924002693,
+      "signed_add_events_relative_to_dense_mac_terms": 3.5935865356808616,
+      "score_relative_l2_global": 0.03741956906354266,
+      "attention_KL_exact_to_sampled": 0.05188195493554277,
+      "attention_total_variation": 0.07830562845559613,
+      "attention_argmax_agreement": 0.9065619574652778
+    },
+    {
+      "context": 2048,
+      "mode": "stratified",
+      "B": 64,
+      "ppl_mean": 10.434807197515246,
+      "ppl_std": 0.005026355618761793,
+      "ppl_values": [
+        10.430727860889725,
+        10.431805473586655,
+        10.441888258069357
+      ],
+      "ppl_increase_percent": 0.5904212319065572,
+      "unique_key_feature_fraction_per_head": 0.8969681679256378,
+      "unique_key_feature_fraction_GQA_group_union": 0.9999615086449517,
+      "mean_active_bit_fraction_per_round": 0.11225847982698017,
+      "signed_add_events_relative_to_dense_mac_terms": 7.184542708926731,
+      "score_relative_l2_global": 0.018266539046682396,
+      "attention_KL_exact_to_sampled": 0.01709653730911054,
+      "attention_total_variation": 0.041268177166176256,
+      "attention_argmax_agreement": 0.947662837921627
+    },
+    {
+      "context": 2048,
+      "mode": "stratified",
+      "B": 128,
+      "ppl_mean": 10.383784237285672,
+      "ppl_std": 0.005816058023950402,
+      "ppl_values": [
+        10.391809410202642,
+        10.378210482627892,
+        10.381332819026483
+      ],
+      "ppl_increase_percent": 0.09856537248889019,
+      "unique_key_feature_fraction_per_head": 0.9451538532499283,
+      "unique_key_feature_fraction_GQA_group_union": 0.999999205271403,
+      "mean_active_bit_fraction_per_round": 0.11224657734708181,
+      "signed_add_events_relative_to_dense_mac_terms": 14.367561900426471,
+      "score_relative_l2_global": 0.009138140099438476,
+      "attention_KL_exact_to_sampled": 0.005530410301216447,
+      "attention_total_variation": 0.021487946812572482,
+      "attention_argmax_agreement": 0.9706052749875992
+    },
+    {
+      "context": 8192,
+      "mode": "iid",
+      "B": 2,
+      "ppl_mean": 1853.6274248535756,
+      "ppl_std": 101.95800995876348,
+      "ppl_values": [
+        1709.437772927564,
+        1926.1246190791107,
+        1925.3198825540521
+      ],
+      "ppl_increase_percent": 19579.700763036493,
+      "unique_key_feature_fraction_per_head": 0.1930857158842541,
+      "unique_key_feature_fraction_GQA_group_union": 0.6724200248718262,
+      "mean_active_bit_fraction_per_round": 0.11783124530126178,
+      "signed_add_events_relative_to_dense_mac_terms": 0.23566249060252356,
+      "score_relative_l2_global": 0.4932949245173802,
+      "attention_KL_exact_to_sampled": 5.9166868310298435,
+      "attention_total_variation": 0.7671020746205495,
+      "attention_argmax_agreement": 0.21488734654017858
+    },
+    {
+      "context": 8192,
+      "mode": "iid",
+      "B": 4,
+      "ppl_mean": 658.3304952836306,
+      "ppl_std": 44.79931962438076,
+      "ppl_values": [
+        661.8938772175803,
+        711.3296886660869,
+        601.7679199672248
+      ],
+      "ppl_increase_percent": 6889.40195675346,
+      "unique_key_feature_fraction_per_head": 0.3026240969461108,
+      "unique_key_feature_fraction_GQA_group_union": 0.8377127117580837,
+      "mean_active_bit_fraction_per_round": 0.11727845858013819,
+      "signed_add_events_relative_to_dense_mac_terms": 0.46911383432055276,
+      "score_relative_l2_global": 0.3467368386232263,
+      "attention_KL_exact_to_sampled": 3.180289955475277,
+      "attention_total_variation": 0.6408963985965859,
+      "attention_argmax_agreement": 0.340606689453125
+    },
+    {
+      "context": 8192,
+      "mode": "iid",
+      "B": 8,
+      "ppl_mean": 142.9071422618033,
+      "ppl_std": 2.0560315471486432,
+      "ppl_values": [
+        143.83020943187682,
+        144.83346521222987,
+        140.05775214130318
+      ],
+      "ppl_increase_percent": 1417.2249605851262,
+      "unique_key_feature_fraction_per_head": 0.4432115706186446,
+      "unique_key_feature_fraction_GQA_group_union": 0.941874557071262,
+      "mean_active_bit_fraction_per_round": 0.11681737502415974,
+      "signed_add_events_relative_to_dense_mac_terms": 0.934539000193278,
+      "score_relative_l2_global": 0.24861100500685912,
+      "attention_KL_exact_to_sampled": 1.646790021924326,
+      "attention_total_variation": 0.4995366724741924,
+      "attention_argmax_agreement": 0.4712747240823413
+    },
+    {
+      "context": 8192,
+      "mode": "iid",
+      "B": 16,
+      "ppl_mean": 31.805930741294613,
+      "ppl_std": 0.7065452475238062,
+      "ppl_values": [
+        32.64254034074796,
+        31.860777675977307,
+        30.91447420715857
+      ],
+      "ppl_increase_percent": 237.67907783733068,
+      "unique_key_feature_fraction_per_head": 0.5923348381405785,
+      "unique_key_feature_fraction_GQA_group_union": 0.9856371349758571,
+      "mean_active_bit_fraction_per_round": 0.11559792785417466,
+      "signed_add_events_relative_to_dense_mac_terms": 1.8495668456667946,
+      "score_relative_l2_global": 0.17704762145761768,
+      "attention_KL_exact_to_sampled": 0.8538001560673675,
+      "attention_total_variation": 0.3754929779958403,
+      "attention_argmax_agreement": 0.5894378177703373
+    },
+    {
+      "context": 8192,
+      "mode": "stratified",
+      "B": 2,
+      "ppl_mean": 1371.0118226062123,
+      "ppl_std": 37.396595290324555,
+      "ppl_values": [
+        1325.6234653258311,
+        1417.2151649172747,
+        1370.1968375755307
+      ],
+      "ppl_increase_percent": 14455.83902660852,
+      "unique_key_feature_fraction_per_head": 0.21151172547113328,
+      "unique_key_feature_fraction_GQA_group_union": 0.69395203060574,
+      "mean_active_bit_fraction_per_round": 0.11756511340065608,
+      "signed_add_events_relative_to_dense_mac_terms": 0.23513022680131215,
+      "score_relative_l2_global": 0.441619791392913,
+      "attention_KL_exact_to_sampled": 4.91673025487877,
+      "attention_total_variation": 0.7246432611363172,
+      "attention_argmax_agreement": 0.25459555974082343
+    },
+    {
+      "context": 8192,
+      "mode": "stratified",
+      "B": 4,
+      "ppl_mean": 140.860845561311,
+      "ppl_std": 5.593029989429538,
+      "ppl_values": [
+        136.11915174631267,
+        137.7489712906367,
+        148.71441364698367
+      ],
+      "ppl_increase_percent": 1395.4997173144843,
+      "unique_key_feature_fraction_per_head": 0.35560283963642425,
+      "unique_key_feature_fraction_GQA_group_union": 0.867618136935764,
+      "mean_active_bit_fraction_per_round": 0.11618195828937349,
+      "signed_add_events_relative_to_dense_mac_terms": 0.46472783315749394,
+      "score_relative_l2_global": 0.2665337314341324,
+      "attention_KL_exact_to_sampled": 1.722629996177637,
+      "attention_total_variation": 0.5026701518231494,
+      "attention_argmax_agreement": 0.47410656156994047
+    },
+    {
+      "context": 8192,
+      "mode": "stratified",
+      "B": 8,
+      "ppl_mean": 15.054802858308303,
+      "ppl_std": 0.2150892546193052,
+      "ppl_values": [
+        15.07092782852824,
+        14.78368131104577,
+        15.3097994353509
+      ],
+      "ppl_increase_percent": 59.83471722825722,
+      "unique_key_feature_fraction_per_head": 0.5293420155843099,
+      "unique_key_feature_fraction_GQA_group_union": 0.9622116618686252,
+      "mean_active_bit_fraction_per_round": 0.1145620346069336,
+      "signed_add_events_relative_to_dense_mac_terms": 0.9164962768554688,
+      "score_relative_l2_global": 0.15372783217849248,
+      "attention_KL_exact_to_sampled": 0.5579409609202878,
+      "attention_total_variation": 0.28473768221525547,
+      "attention_argmax_agreement": 0.6878235832093254
+    },
+    {
+      "context": 8192,
+      "mode": "stratified",
+      "B": 16,
+      "ppl_mean": 10.722649803340786,
+      "ppl_std": 0.1725596410670588,
+      "ppl_values": [
+        10.522726230164183,
+        10.701416836519492,
+        10.943806343338684
+      ],
+      "ppl_increase_percent": 13.840859650233028,
+      "unique_key_feature_fraction_per_head": 0.6922767275855655,
+      "unique_key_feature_fraction_GQA_group_union": 0.9936125543382432,
+      "mean_active_bit_fraction_per_round": 0.11392981996611944,
+      "signed_add_events_relative_to_dense_mac_terms": 1.822877119457911,
+      "score_relative_l2_global": 0.07736505436425228,
+      "attention_KL_exact_to_sampled": 0.18841472030564563,
+      "attention_total_variation": 0.15462980536289891,
+      "attention_argmax_agreement": 0.8214154924665179
+    },
+    {
+      "context": 8192,
+      "mode": "stratified",
+      "B": 32,
+      "ppl_mean": 9.755194613568811,
+      "ppl_std": 0.06771528617775542,
+      "ppl_values": [
+        9.701943835110955,
+        9.850749720035134,
+        9.712890285560345
+      ],
+      "ppl_increase_percent": 3.5695244395646197,
+      "unique_key_feature_fraction_per_head": 0.8168806802658808,
+      "unique_key_feature_fraction_GQA_group_union": 0.9992895126342773,
+      "mean_active_bit_fraction_per_round": 0.11379993245715186,
+      "signed_add_events_relative_to_dense_mac_terms": 3.6415978386288597,
+      "score_relative_l2_global": 0.03893970354377577,
+      "attention_KL_exact_to_sampled": 0.06138377169165616,
+      "attention_total_variation": 0.08289815404966641,
+      "attention_argmax_agreement": 0.8987620520213293
+    },
+    {
+      "context": 8192,
+      "mode": "stratified",
+      "B": 64,
+      "ppl_mean": 9.5097372071372,
+      "ppl_std": 0.036782165329865925,
+      "ppl_values": [
+        9.47143049769296,
+        9.559367414357508,
+        9.498413709361131
+      ],
+      "ppl_increase_percent": 0.9635377974395176,
+      "unique_key_feature_fraction_per_head": 0.8979492036123125,
+      "unique_key_feature_fraction_GQA_group_union": 0.9999531639946831,
+      "mean_active_bit_fraction_per_round": 0.11375235446861812,
+      "signed_add_events_relative_to_dense_mac_terms": 7.2801506859915595,
+      "score_relative_l2_global": 0.018900823032210343,
+      "attention_KL_exact_to_sampled": 0.019411335067005903,
+      "attention_total_variation": 0.04350834594025642,
+      "attention_argmax_agreement": 0.9435584658668155
+    },
+    {
+      "context": 8192,
+      "mode": "stratified",
+      "B": 128,
+      "ppl_mean": 9.446415581845635,
+      "ppl_std": 0.010016230621571087,
+      "ppl_values": [
+        9.440694982494767,
+        9.438053432096059,
+        9.460498330946077
+      ],
+      "ppl_increase_percent": 0.2912610384432801,
+      "unique_key_feature_fraction_per_head": 0.9455871657719688,
+      "unique_key_feature_fraction_GQA_group_union": 0.9999985694885254,
+      "mean_active_bit_fraction_per_round": 0.11374235082240332,
+      "signed_add_events_relative_to_dense_mac_terms": 14.559020905267625,
+      "score_relative_l2_global": 0.009298181890218402,
+      "attention_KL_exact_to_sampled": 0.005915413691686519,
+      "attention_total_variation": 0.022491745368134954,
+      "attention_argmax_agreement": 0.968991234188988
+    }
+  ],
+  "audit": "All evaluated source hashes, FFN/corpus identities, matched targets, and prior dense baselines verified.",
+  "protocol": {
+    "date": "2026-10-06",
+    "model": "Qwen2.5-0.5B Base",
+    "scope": "all 24 decode-time QK; dense PV, original FFNs/projections/RoPE/prefill; no training",
+    "encoding": "per head signed Bernoulli abs(q)/max(abs(q)); B counts averaged; K continuous",
+    "stratified": "exact compressed count law floor(B*p)+Bernoulli(frac(B*p)); independent features",
+    "contexts": [
+      2048,
+      8192
+    ],
+    "decode_steps": 128,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "samples": [
+      2,
+      4,
+      8,
+      16
+    ],
+    "diagnostics": "same-state score relative L2, attention KL/TV/argmax, head and GQA-union key features",
+    "limitations": "ideal probability sampler; dense GPU arithmetic; no acceleration claim; no physical device model",
+    "jobs": [
+      [
+        2048,
+        32,
+        16,
+        "sdpa",
+        4,
+        0
+      ],
+      [
+        2048,
+        32,
+        16,
+        "dense",
+        4,
+        0
+      ],
+      [
+        2048,
+        32,
+        16,
+        "iid",
+        2,
+        0
+      ],
+      [
+        2048,
+        32,
+        16,
+        "iid",
+        4,
+        0
+      ],
+      [
+        2048,
+        32,
+        16,
+        "iid",
+        8,
+        0
+      ],
+      [
+        2048,
+        32,
+        16,
+        "iid",
+        16,
+        0
+      ],
+      [
+        2048,
+        32,
+        16,
+        "stratified",
+        2,
+        0
+      ],
+      [
+        2048,
+        32,
+        16,
+        "stratified",
+        4,
+        0
+      ],
+      [
+        2048,
+        32,
+        16,
+        "stratified",
+        8,
+        0
+      ],
+      [
+        2048,
+        32,
+        16,
+        "stratified",
+        16,
+        0
+      ],
+      [
+        2048,
+        32,
+        16,
+        "iid",
+        2,
+        1
+      ],
+      [
+        2048,
+        32,
+        16,
+        "iid",
+        4,
+        1
+      ],
+      [
+        2048,
+        32,
+        16,
+        "iid",
+        8,
+        1
+      ],
+      [
+        2048,
+        32,
+        16,
+        "iid",
+        16,
+        1
+      ],
+      [
+        2048,
+        32,
+        16,
+        "stratified",
+        2,
+        1
+      ],
+      [
+        2048,
+        32,
+        16,
+        "stratified",
+        4,
+        1
+      ],
+      [
+        2048,
+        32,
+        16,
+        "stratified",
+        8,
+        1
+      ],
+      [
+        2048,
+        32,
+        16,
+        "stratified",
+        16,
+        1
+      ],
+      [
+        2048,
+        32,
+        16,
+        "iid",
+        2,
+        2
+      ],
+      [
+        2048,
+        32,
+        16,
+        "iid",
+        4,
+        2
+      ],
+      [
+        2048,
+        32,
+        16,
+        "iid",
+        8,
+        2
+      ],
+      [
+        2048,
+        32,
+        16,
+        "iid",
+        16,
+        2
+      ],
+      [
+        2048,
+        32,
+        16,
+        "stratified",
+        2,
+        2
+      ],
+      [
+        2048,
+        32,
+        16,
+        "stratified",
+        4,
+        2
+      ],
+      [
+        2048,
+        32,
+        16,
+        "stratified",
+        8,
+        2
+      ],
+      [
+        2048,
+        32,
+        16,
+        "stratified",
+        16,
+        2
+      ],
+      [
+        8192,
+        16,
+        4,
+        "sdpa",
+        4,
+        0
+      ],
+      [
+        8192,
+        16,
+        4,
+        "dense",
+        4,
+        0
+      ],
+      [
+        8192,
+        16,
+        4,
+        "iid",
+        2,
+        0
+      ],
+      [
+        8192,
+        16,
+        4,
+        "iid",
+        4,
+        0
+      ],
+      [
+        8192,
+        16,
+        4,
+        "iid",
+        8,
+        0
+      ],
+      [
+        8192,
+        16,
+        4,
+        "iid",
+        16,
+        0
+      ],
+      [
+        8192,
+        16,
+        4,
+        "stratified",
+        2,
+        0
+      ],
+      [
+        8192,
+        16,
+        4,
+        "stratified",
+        4,
+        0
+      ],
+      [
+        8192,
+        16,
+        4,
+        "stratified",
+        8,
+        0
+      ],
+      [
+        8192,
+        16,
+        4,
+        "stratified",
+        16,
+        0
+      ],
+      [
+        8192,
+        16,
+        4,
+        "iid",
+        2,
+        1
+      ],
+      [
+        8192,
+        16,
+        4,
+        "iid",
+        4,
+        1
+      ],
+      [
+        8192,
+        16,
+        4,
+        "iid",
+        8,
+        1
+      ],
+      [
+        8192,
+        16,
+        4,
+        "iid",
+        16,
+        1
+      ],
+      [
+        8192,
+        16,
+        4,
+        "stratified",
+        2,
+        1
+      ],
+      [
+        8192,
+        16,
+        4,
+        "stratified",
+        4,
+        1
+      ],
+      [
+        8192,
+        16,
+        4,
+        "stratified",
+        8,
+        1
+      ],
+      [
+        8192,
+        16,
+        4,
+        "stratified",
+        16,
+        1
+      ],
+      [
+        8192,
+        16,
+        4,
+        "iid",
+        2,
+        2
+      ],
+      [
+        8192,
+        16,
+        4,
+        "iid",
+        4,
+        2
+      ],
+      [
+        8192,
+        16,
+        4,
+        "iid",
+        8,
+        2
+      ],
+      [
+        8192,
+        16,
+        4,
+        "iid",
+        16,
+        2
+      ],
+      [
+        8192,
+        16,
+        4,
+        "stratified",
+        2,
+        2
+      ],
+      [
+        8192,
+        16,
+        4,
+        "stratified",
+        4,
+        2
+      ],
+      [
+        8192,
+        16,
+        4,
+        "stratified",
+        8,
+        2
+      ],
+      [
+        8192,
+        16,
+        4,
+        "stratified",
+        16,
+        2
+      ]
+    ],
+    "gpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "source_sha256": {
+      "test_sampling.py": "fa35fb8cdf5e75400520fc9dbda74e1828deeda07a266f0cc1fd737807390aad",
+      "sampling.py": "78212c7049c89f0feab5ec94740bd008feb01b2b5309d0979c85019f60945caa",
+      "attention.py": "41466cf0bacba8496437375841c764dd2f8f6d2d5de729e76288eb85511ca41d",
+      "run_experiment.py": "cfabba9bcda2a2fd063628878d1f4f8ee069f1f1c07e7fcdfe4929dbb8a581d5",
+      "test_integration.py": "615034eefa9bfdaf8a2ad73b62a3e7f4a77de6ce745bcdc18da2c07b3521b8da",
+      "evaluate.py": "c85bae465533a11182e321011afac6312649a6b60b20585bd11ddfd3da9f2e0f"
+    }
+  },
+  "extension_protocol": {
+    "reason": "B<=16 strongly degrades QK PPL; extend stratified budget to locate fidelity/access tradeoff",
+    "samples": [
+      32,
+      64,
+      128
+    ],
+    "mode": "stratified",
+    "jobs": [
+      [
+        2048,
+        32,
+        16,
+        32,
+        0
+      ],
+      [
+        2048,
+        32,
+        16,
+        32,
+        1
+      ],
+      [
+        2048,
+        32,
+        16,
+        32,
+        2
+      ],
+      [
+        2048,
+        32,
+        16,
+        64,
+        0
+      ],
+      [
+        2048,
+        32,
+        16,
+        64,
+        1
+      ],
+      [
+        2048,
+        32,
+        16,
+        64,
+        2
+      ],
+      [
+        2048,
+        32,
+        16,
+        128,
+        0
+      ],
+      [
+        2048,
+        32,
+        16,
+        128,
+        1
+      ],
+      [
+        2048,
+        32,
+        16,
+        128,
+        2
+      ],
+      [
+        8192,
+        16,
+        4,
+        32,
+        0
+      ],
+      [
+        8192,
+        16,
+        4,
+        32,
+        1
+      ],
+      [
+        8192,
+        16,
+        4,
+        32,
+        2
+      ],
+      [
+        8192,
+        16,
+        4,
+        64,
+        0
+      ],
+      [
+        8192,
+        16,
+        4,
+        64,
+        1
+      ],
+      [
+        8192,
+        16,
+        4,
+        64,
+        2
+      ],
+      [
+        8192,
+        16,
+        4,
+        128,
+        0
+      ],
+      [
+        8192,
+        16,
+        4,
+        128,
+        1
+      ],
+      [
+        8192,
+        16,
+        4,
+        128,
+        2
+      ]
+    ],
+    "gpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "source_sha256": {
+      "test_sampling.py": "fa35fb8cdf5e75400520fc9dbda74e1828deeda07a266f0cc1fd737807390aad",
+      "sampling.py": "78212c7049c89f0feab5ec94740bd008feb01b2b5309d0979c85019f60945caa",
+      "attention.py": "41466cf0bacba8496437375841c764dd2f8f6d2d5de729e76288eb85511ca41d",
+      "extend_budget.py": "1e54b04c5db63269f037d027f04720ffb01b5684372914621fc0da043bf6d50b",
+      "run_experiment.py": "cfabba9bcda2a2fd063628878d1f4f8ee069f1f1c07e7fcdfe4929dbb8a581d5",
+      "test_integration.py": "615034eefa9bfdaf8a2ad73b62a3e7f4a77de6ce745bcdc18da2c07b3521b8da",
+      "evaluate.py": "c85bae465533a11182e321011afac6312649a6b60b20585bd11ddfd3da9f2e0f"
+    }
+  }
+}

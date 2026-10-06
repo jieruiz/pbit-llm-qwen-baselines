@@ -1,0 +1,169 @@
+{
+  "test": "cached_teacher_forced_decode_query_sampling",
+  "args": {
+    "model": "models/Qwen2.5-0.5B",
+    "text": "data/wikitext-2/wiki.test.raw",
+    "mode": "stratified",
+    "samples": 64,
+    "seed": 0,
+    "context": 8192,
+    "decode": 128,
+    "examples": 16,
+    "batch": 4,
+    "output": "results/pbit_qk_20261006/evaluation/ctx8192_stratified_b64_seed0.json"
+  },
+  "perplexity": 9.47143049769296,
+  "mean_nll": 2.2482799515128136,
+  "scored_tokens": 2048,
+  "source_tokens": 299078,
+  "examples": [
+    {
+      "start_token": 0,
+      "first_target_token": 8192,
+      "last_target_token": 8319,
+      "scored_tokens": 128,
+      "nll_sum": 171.5968017578125
+    },
+    {
+      "start_token": 19384,
+      "first_target_token": 27576,
+      "last_target_token": 27703,
+      "scored_tokens": 128,
+      "nll_sum": 361.02838134765625
+    },
+    {
+      "start_token": 38768,
+      "first_target_token": 46960,
+      "last_target_token": 47087,
+      "scored_tokens": 128,
+      "nll_sum": 323.9160461425781
+    },
+    {
+      "start_token": 58152,
+      "first_target_token": 66344,
+      "last_target_token": 66471,
+      "scored_tokens": 128,
+      "nll_sum": 217.79931640625
+    },
+    {
+      "start_token": 77535,
+      "first_target_token": 85727,
+      "last_target_token": 85854,
+      "scored_tokens": 128,
+      "nll_sum": 400.46234130859375
+    },
+    {
+      "start_token": 96919,
+      "first_target_token": 105111,
+      "last_target_token": 105238,
+      "scored_tokens": 128,
+      "nll_sum": 179.3710479736328
+    },
+    {
+      "start_token": 116303,
+      "first_target_token": 124495,
+      "last_target_token": 124622,
+      "scored_tokens": 128,
+      "nll_sum": 306.93572998046875
+    },
+    {
+      "start_token": 135687,
+      "first_target_token": 143879,
+      "last_target_token": 144006,
+      "scored_tokens": 128,
+      "nll_sum": 268.28521728515625
+    },
+    {
+      "start_token": 155071,
+      "first_target_token": 163263,
+      "last_target_token": 163390,
+      "scored_tokens": 128,
+      "nll_sum": 354.09259033203125
+    },
+    {
+      "start_token": 174455,
+      "first_target_token": 182647,
+      "last_target_token": 182774,
+      "scored_tokens": 128,
+      "nll_sum": 291.1617126464844
+    },
+    {
+      "start_token": 193839,
+      "first_target_token": 202031,
+      "last_target_token": 202158,
+      "scored_tokens": 128,
+      "nll_sum": 353.4814453125
+    },
+    {
+      "start_token": 213223,
+      "first_target_token": 221415,
+      "last_target_token": 221542,
+      "scored_tokens": 128,
+      "nll_sum": 286.6856689453125
+    },
+    {
+      "start_token": 232606,
+      "first_target_token": 240798,
+      "last_target_token": 240925,
+      "scored_tokens": 128,
+      "nll_sum": 298.1328125
+    },
+    {
+      "start_token": 251990,
+      "first_target_token": 260182,
+      "last_target_token": 260309,
+      "scored_tokens": 128,
+      "nll_sum": 217.6695556640625
+    },
+    {
+      "start_token": 271374,
+      "first_target_token": 279566,
+      "last_target_token": 279693,
+      "scored_tokens": 128,
+      "nll_sum": 255.77517700195312
+    },
+    {
+      "start_token": 290758,
+      "first_target_token": 298950,
+      "last_target_token": 299077,
+      "scored_tokens": 128,
+      "nll_sum": 318.08349609375
+    }
+  ],
+  "attention_layers": 24,
+  "value_aggregation": "dense continuous PV; no value sampling",
+  "encoding": "a=max(abs(q)) per head after RoPE; sign(q)*a*count/B; no group compensation",
+  "ffn": "original Qwen2MLP; all weights unchanged; no stochastic FFN",
+  "mlp_sha256": "4d554c1651dab977664bf5b16cbf024f673f7868a525b3f0faa5961e0e53f8e9",
+  "text_sha256": "173c87a53759e0201f33e0ccf978e510c2042d7f2cb78229d9a50d79b9e7dd08",
+  "source_sha256": {
+    "test_sampling.py": "fa35fb8cdf5e75400520fc9dbda74e1828deeda07a266f0cc1fd737807390aad",
+    "sampling.py": "78212c7049c89f0feab5ec94740bd008feb01b2b5309d0979c85019f60945caa",
+    "attention.py": "41466cf0bacba8496437375841c764dd2f8f6d2d5de729e76288eb85511ca41d",
+    "extend_budget.py": "1e54b04c5db63269f037d027f04720ffb01b5684372914621fc0da043bf6d50b",
+    "run_experiment.py": "cfabba9bcda2a2fd063628878d1f4f8ee069f1f1c07e7fcdfe4929dbb8a581d5",
+    "test_integration.py": "615034eefa9bfdaf8a2ad73b62a3e7f4a77de6ce745bcdc18da2c07b3521b8da",
+    "evaluate.py": "c85bae465533a11182e321011afac6312649a6b60b20585bd11ddfd3da9f2e0f"
+  },
+  "torch": "2.7.1+cu128",
+  "transformers": "4.45.2",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "sampling_stats": {
+    "unique_key_feature_fraction_per_head": 0.898022106715611,
+    "unique_key_feature_fraction_GQA_group_union": 0.9999508857727051,
+    "mean_active_bit_fraction_per_round": 0.11376515101818811,
+    "signed_add_events_relative_to_dense_mac_terms": 7.280969665164039,
+    "score_relative_l2_global": 0.018882690030064906,
+    "attention_KL_exact_to_sampled": 0.019406184332094917,
+    "attention_total_variation": 0.04353087229464457,
+    "attention_argmax_agreement": 0.9435628255208334,
+    "head_query_count": 688128,
+    "access_note": "Logical union of key features across B rounds and GQA heads; not physical bandwidth.",
+    "diagnostic_note": "Exact and approximate attention compared at same current Q/K state; FP32 dense reference."
+  },
+  "decode_seconds": 16.400680782971904,
+  "prefill_seconds": 1.3227980979718268,
+  "peak_allocated_bytes": 2601113088,
+  "precision": "BF16 model/cache; FP32 query encoding, scores, softmax and dense PV; exact prefill SDPA",
+  "limitations": "Sampled WT2 test suffixes, not full WT2 PPL; teacher forcing; no training; arithmetic reference not sparse CUDA acceleration"
+}

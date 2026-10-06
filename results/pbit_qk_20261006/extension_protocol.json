@@ -1,0 +1,156 @@
+{
+  "reason": "B<=16 strongly degrades QK PPL; extend stratified budget to locate fidelity/access tradeoff",
+  "samples": [
+    32,
+    64,
+    128
+  ],
+  "mode": "stratified",
+  "jobs": [
+    [
+      2048,
+      32,
+      16,
+      32,
+      0
+    ],
+    [
+      2048,
+      32,
+      16,
+      32,
+      1
+    ],
+    [
+      2048,
+      32,
+      16,
+      32,
+      2
+    ],
+    [
+      2048,
+      32,
+      16,
+      64,
+      0
+    ],
+    [
+      2048,
+      32,
+      16,
+      64,
+      1
+    ],
+    [
+      2048,
+      32,
+      16,
+      64,
+      2
+    ],
+    [
+      2048,
+      32,
+      16,
+      128,
+      0
+    ],
+    [
+      2048,
+      32,
+      16,
+      128,
+      1
+    ],
+    [
+      2048,
+      32,
+      16,
+      128,
+      2
+    ],
+    [
+      8192,
+      16,
+      4,
+      32,
+      0
+    ],
+    [
+      8192,
+      16,
+      4,
+      32,
+      1
+    ],
+    [
+      8192,
+      16,
+      4,
+      32,
+      2
+    ],
+    [
+      8192,
+      16,
+      4,
+      64,
+      0
+    ],
+    [
+      8192,
+      16,
+      4,
+      64,
+      1
+    ],
+    [
+      8192,
+      16,
+      4,
+      64,
+      2
+    ],
+    [
+      8192,
+      16,
+      4,
+      128,
+      0
+    ],
+    [
+      8192,
+      16,
+      4,
+      128,
+      1
+    ],
+    [
+      8192,
+      16,
+      4,
+      128,
+      2
+    ]
+  ],
+  "gpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "source_sha256": {
+    "test_sampling.py": "fa35fb8cdf5e75400520fc9dbda74e1828deeda07a266f0cc1fd737807390aad",
+    "sampling.py": "78212c7049c89f0feab5ec94740bd008feb01b2b5309d0979c85019f60945caa",
+    "attention.py": "41466cf0bacba8496437375841c764dd2f8f6d2d5de729e76288eb85511ca41d",
+    "extend_budget.py": "1e54b04c5db63269f037d027f04720ffb01b5684372914621fc0da043bf6d50b",
+    "run_experiment.py": "cfabba9bcda2a2fd063628878d1f4f8ee069f1f1c07e7fcdfe4929dbb8a581d5",
+    "test_integration.py": "615034eefa9bfdaf8a2ad73b62a3e7f4a77de6ce745bcdc18da2c07b3521b8da",
+    "evaluate.py": "c85bae465533a11182e321011afac6312649a6b60b20585bd11ddfd3da9f2e0f"
+  }
+}

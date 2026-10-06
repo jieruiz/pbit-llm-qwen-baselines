@@ -284,6 +284,14 @@ These are cached-decode subset metrics, not the historical full-test PPL.
 See the [report](results/pbit_attention_20261003/RESULTS_ZH.md) for all 34 runs,
 sampling-law tests, and the distinction between logical sparsity and hardware speed.
 
+A follow-up [query-side p-bit experiment](experiments/pbit_qk/README.md) changes
+only decode-time QK and retains dense PV and original FFNs. Across 70 evaluations,
+stratified B=64 reaches PPL 10.43481 / 9.50974 at 2k / 8k (below 1% above
+original SDPA), but GQA-group key-feature access exceeds 99.99%. This establishes
+a quality limitation of small sampling budgets and little logical key-read
+saving at high fidelity for this per-head encoding. See the
+[QK report](results/pbit_qk_20261006/RESULTS_ZH.md).
+
 ## License
 
 Apache License 2.0. Qwen model weights and WikiText-2 are obtained separately
