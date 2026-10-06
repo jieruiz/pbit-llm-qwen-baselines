@@ -298,6 +298,15 @@ access counts, not sparse GPU or hardware acceleration. See the
 
 See also the [publication notes and KV-cache scope](experiments/pbit_softmax_router/PUBLICATION_NOTES_ZH.md).
 
+A [joint stochastic FFN + PV experiment](experiments/pbit_joint/README.md)
+combines the user-confirmed twenty-layer K=4 AND joint checkpoint with exact
+softmax followed by categorical-tree PV sampling (S=512). The matched factorial
+protocol evaluates original / FFN-only / attention-only / combined models at
+2k and 8k, including N=4/N=16 FFNs and conditional-mean diagnostics. FFNs are
+active in prefill and decode; stochastic attention is decode-only. No new
+training or checkpoint selection is performed. See the
+[joint report](results/pbit_joint_20261006/RESULTS_ZH.md) for results and limits.
+
 ## License
 
 Apache License 2.0. Qwen model weights and WikiText-2 are obtained separately

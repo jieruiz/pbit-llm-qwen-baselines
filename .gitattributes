@@ -2,3 +2,7 @@
 # Preserve LF checkouts on Windows so the published audit remains reproducible.
 experiments/pbit_attention/*.py text eol=lf
 experiments/pbit_softmax_router/*.py text eol=lf
+experiments/pbit_joint/*.py text eol=lf
+results/pbit_joint_20261006/**/*.json text eol=lf
+# Preserve byte-identical runtime receipts, including legacy source line endings.
+results/pbit_joint_20261006/executed_sources/** -text whitespace=cr-at-eol
