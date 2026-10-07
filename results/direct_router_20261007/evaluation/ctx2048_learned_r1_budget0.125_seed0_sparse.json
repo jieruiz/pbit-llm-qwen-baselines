@@ -1,0 +1,287 @@
+{
+  "test": "cached_teacher_forced_decode_direct_router",
+  "args": {
+    "model": "models/Qwen2.5-0.5B",
+    "text": "data/wikitext-2/wiki.test.raw",
+    "mode": "learned",
+    "reps": 1,
+    "backend": "sparse",
+    "samples": 128,
+    "burn": 4.0,
+    "spacing": 1.0,
+    "ratio": 0.125,
+    "block_size": 64,
+    "rank": 64,
+    "seed": 0,
+    "context": 2048,
+    "decode": 128,
+    "examples": 32,
+    "batch": 16,
+    "output": "results/evaluation/ctx2048_learned_r1_budget0.125_seed0_sparse.json"
+  },
+  "perplexity": 13.915806079383016,
+  "mean_nll": 2.633025322109461,
+  "scored_tokens": 4096,
+  "source_tokens": 299078,
+  "examples": [
+    {
+      "start_token": 0,
+      "first_target_token": 2048,
+      "last_target_token": 2175,
+      "scored_tokens": 128,
+      "nll_sum": 372.39849853515625
+    },
+    {
+      "start_token": 9577,
+      "first_target_token": 11625,
+      "last_target_token": 11752,
+      "scored_tokens": 128,
+      "nll_sum": 219.1593475341797
+    },
+    {
+      "start_token": 19155,
+      "first_target_token": 21203,
+      "last_target_token": 21330,
+      "scored_tokens": 128,
+      "nll_sum": 276.703125
+    },
+    {
+      "start_token": 28732,
+      "first_target_token": 30780,
+      "last_target_token": 30907,
+      "scored_tokens": 128,
+      "nll_sum": 357.89666748046875
+    },
+    {
+      "start_token": 38310,
+      "first_target_token": 40358,
+      "last_target_token": 40485,
+      "scored_tokens": 128,
+      "nll_sum": 259.9442138671875
+    },
+    {
+      "start_token": 47887,
+      "first_target_token": 49935,
+      "last_target_token": 50062,
+      "scored_tokens": 128,
+      "nll_sum": 451.86395263671875
+    },
+    {
+      "start_token": 57465,
+      "first_target_token": 59513,
+      "last_target_token": 59640,
+      "scored_tokens": 128,
+      "nll_sum": 263.2790222167969
+    },
+    {
+      "start_token": 67042,
+      "first_target_token": 69090,
+      "last_target_token": 69217,
+      "scored_tokens": 128,
+      "nll_sum": 334.55902099609375
+    },
+    {
+      "start_token": 76620,
+      "first_target_token": 78668,
+      "last_target_token": 78795,
+      "scored_tokens": 128,
+      "nll_sum": 279.687255859375
+    },
+    {
+      "start_token": 86197,
+      "first_target_token": 88245,
+      "last_target_token": 88372,
+      "scored_tokens": 128,
+      "nll_sum": 428.5274658203125
+    },
+    {
+      "start_token": 95775,
+      "first_target_token": 97823,
+      "last_target_token": 97950,
+      "scored_tokens": 128,
+      "nll_sum": 358.4969177246094
+    },
+    {
+      "start_token": 105352,
+      "first_target_token": 107400,
+      "last_target_token": 107527,
+      "scored_tokens": 128,
+      "nll_sum": 355.5726318359375
+    },
+    {
+      "start_token": 114930,
+      "first_target_token": 116978,
+      "last_target_token": 117105,
+      "scored_tokens": 128,
+      "nll_sum": 273.5196228027344
+    },
+    {
+      "start_token": 124507,
+      "first_target_token": 126555,
+      "last_target_token": 126682,
+      "scored_tokens": 128,
+      "nll_sum": 380.63623046875
+    },
+    {
+      "start_token": 134085,
+      "first_target_token": 136133,
+      "last_target_token": 136260,
+      "scored_tokens": 128,
+      "nll_sum": 407.8846130371094
+    },
+    {
+      "start_token": 143662,
+      "first_target_token": 145710,
+      "last_target_token": 145837,
+      "scored_tokens": 128,
+      "nll_sum": 408.8852233886719
+    },
+    {
+      "start_token": 153240,
+      "first_target_token": 155288,
+      "last_target_token": 155415,
+      "scored_tokens": 128,
+      "nll_sum": 296.135009765625
+    },
+    {
+      "start_token": 162817,
+      "first_target_token": 164865,
+      "last_target_token": 164992,
+      "scored_tokens": 128,
+      "nll_sum": 272.1050109863281
+    },
+    {
+      "start_token": 172395,
+      "first_target_token": 174443,
+      "last_target_token": 174570,
+      "scored_tokens": 128,
+      "nll_sum": 275.29193115234375
+    },
+    {
+      "start_token": 181972,
+      "first_target_token": 184020,
+      "last_target_token": 184147,
+      "scored_tokens": 128,
+      "nll_sum": 327.0027160644531
+    },
+    {
+      "start_token": 191550,
+      "first_target_token": 193598,
+      "last_target_token": 193725,
+      "scored_tokens": 128,
+      "nll_sum": 440.6236267089844
+    },
+    {
+      "start_token": 201127,
+      "first_target_token": 203175,
+      "last_target_token": 203302,
+      "scored_tokens": 128,
+      "nll_sum": 306.2713317871094
+    },
+    {
+      "start_token": 210705,
+      "first_target_token": 212753,
+      "last_target_token": 212880,
+      "scored_tokens": 128,
+      "nll_sum": 285.3578186035156
+    },
+    {
+      "start_token": 220282,
+      "first_target_token": 222330,
+      "last_target_token": 222457,
+      "scored_tokens": 128,
+      "nll_sum": 364.3186340332031
+    },
+    {
+      "start_token": 229860,
+      "first_target_token": 231908,
+      "last_target_token": 232035,
+      "scored_tokens": 128,
+      "nll_sum": 348.00714111328125
+    },
+    {
+      "start_token": 239437,
+      "first_target_token": 241485,
+      "last_target_token": 241612,
+      "scored_tokens": 128,
+      "nll_sum": 394.1940612792969
+    },
+    {
+      "start_token": 249015,
+      "first_target_token": 251063,
+      "last_target_token": 251190,
+      "scored_tokens": 128,
+      "nll_sum": 306.8882751464844
+    },
+    {
+      "start_token": 258592,
+      "first_target_token": 260640,
+      "last_target_token": 260767,
+      "scored_tokens": 128,
+      "nll_sum": 397.24090576171875
+    },
+    {
+      "start_token": 268170,
+      "first_target_token": 270218,
+      "last_target_token": 270345,
+      "scored_tokens": 128,
+      "nll_sum": 294.6178894042969
+    },
+    {
+      "start_token": 277747,
+      "first_target_token": 279795,
+      "last_target_token": 279922,
+      "scored_tokens": 128,
+      "nll_sum": 340.8965759277344
+    },
+    {
+      "start_token": 287325,
+      "first_target_token": 289373,
+      "last_target_token": 289500,
+      "scored_tokens": 128,
+      "nll_sum": 346.5150146484375
+    },
+    {
+      "start_token": 296902,
+      "first_target_token": 298950,
+      "last_target_token": 299077,
+      "scored_tokens": 128,
+      "nll_sum": 360.3919677734375
+    }
+  ],
+  "attention_layers": 24,
+  "ffn": "original Qwen2MLP; all weights unchanged; no stochastic FFN",
+  "mlp_sha256": "4d554c1651dab977664bf5b16cbf024f673f7868a525b3f0faa5961e0e53f8e9",
+  "text_sha256": "173c87a53759e0201f33e0ccf978e510c2042d7f2cb78229d9a50d79b9e7dd08",
+  "source_sha256": {
+    "collect.py": "e3e59fe39c9d247bec52da6f1c9c05a9a827ff368cbb9697367ff4455a6b1eba",
+    "train.py": "061f43604415f88a203f46d49edc9c8ace29a346c359dda5ea3f6e33b55df0ee",
+    "benchmark.py": "53550145a877e25c2dbc861e7bbb2105cf831a406414956a9ec9a07fdb5a869d",
+    "attention.py": "218284a296f8774f030a3e440811d617d7d5eb2ab17fdd18b5e55e6306bdc85b",
+    "router.py": "a099d7e41149f60d472dc2dfb97c341745d19d4a783e4a625d2b5711db352d60",
+    "verify.py": "992bd8f26474078648a170acd13f8b5ce2365b0e6bc90c02a0ae37be657422b9",
+    "sparse.py": "26ab3ef224d31d08cee825c874b7b7d3292b297daf635733753f10824467f5a4",
+    "evaluate.py": "b7f82b7df73efa3e8adf9f1a859403b743dc674463540fad3e1daaba132a0f3b",
+    "run.py": "13238e37e2f5099362665292e68c5a075e911a23454c420ca914eb3adb4ded2b"
+  },
+  "torch": "2.7.1+cu128",
+  "transformers": "4.45.2",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "sampling_stats": {
+    "selected_token_fraction": 0.10691856810211653,
+    "GQA_union_fraction": 0.2555442603500671,
+    "selected_block_fraction": 0.12004598998955625,
+    "QK_PV_MAC_ratio": 0.10691856810211653,
+    "selector_MAC_ratio_to_dense_QK_PV": 0.008796289016250297,
+    "total_QK_PV_selector_MAC_ratio": 0.11571485711836682,
+    "selected_token_rows": 310701568.0,
+    "possible_token_rows": 2905964544.0,
+    "cost_scope": "decode QK/PV and selector linear MACs; excludes summary init/update, elementwise/reductions, projections, FFNs, memory and launch costs; NOT whole-model FLOPs"
+  },
+  "decode_seconds": 9.697830424876884,
+  "prefill_seconds": 0.7765047831926495,
+  "peak_allocated_bytes": 2599515648,
+  "precision": "BF16 model/cache, FP32 reference attention; exact prefill SDPA",
+  "router_scope": "Trained independent Bernoulli selector. Sparse Triton executes only selected QK/PV tiles; dense backend only for verification.",
+  "limitations": "Sampled WT2 test suffixes, not full WT2 PPL; teacher forcing; router trained on disjoint train text; prefill unchanged; no hardware p-bit device"
+}

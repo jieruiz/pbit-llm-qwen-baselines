@@ -1,0 +1,88 @@
+{
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "calibrated": true,
+  "data": "Real first-decode Q/K/V captured at layer12 in mean-router evaluation; budget0.5; first example for batch1",
+  "timing": "Serial CUDA event benchmark; warmed up; summary reset subtract overhead included; no summaries rebuilt from full keys; sparse-only benchmark uses fixed sampled mask. Baseline is Qwen repeat_kv + SDPA, not a native-GQA best-possible kernel. CPU dispatch is included between GPU events.",
+  "results": [
+    {
+      "batch": 16,
+      "context": 2048,
+      "reps": 1,
+      "dense_SDPA_ms": 0.1756299271639147,
+      "sparse_kernel_ms": 0.06942982057795286,
+      "selector_with_reset_ms": 0.4246355557725543,
+      "selector_plus_sparse_with_reset_ms": 0.5448284349695989,
+      "selected_block_fraction": 0.32421875
+    },
+    {
+      "batch": 16,
+      "context": 2048,
+      "reps": 4,
+      "dense_SDPA_ms": 0.1756299271639147,
+      "sparse_kernel_ms": 0.06921889832193778,
+      "selector_with_reset_ms": 0.4867091728053216,
+      "selector_plus_sparse_with_reset_ms": 0.6037302632485667,
+      "selected_block_fraction": 0.3023158609867096
+    },
+    {
+      "batch": 4,
+      "context": 8192,
+      "reps": 1,
+      "dense_SDPA_ms": 0.15884495962090592,
+      "sparse_kernel_ms": 0.21142480087109364,
+      "selector_with_reset_ms": 0.4275976599087357,
+      "selector_plus_sparse_with_reset_ms": 0.5506452558841106,
+      "selected_block_fraction": 0.2529296875
+    },
+    {
+      "batch": 4,
+      "context": 8192,
+      "reps": 4,
+      "dense_SDPA_ms": 0.15884495962090592,
+      "sparse_kernel_ms": 0.2285100819170475,
+      "selector_with_reset_ms": 0.4899015248081523,
+      "selector_plus_sparse_with_reset_ms": 0.6034193557925464,
+      "selected_block_fraction": 0.2361886203289032
+    },
+    {
+      "batch": 1,
+      "context": 2048,
+      "reps": 1,
+      "dense_SDPA_ms": 0.02894173343998513,
+      "sparse_kernel_ms": 0.044933008998134065,
+      "selector_with_reset_ms": 0.40302933360400955,
+      "selector_plus_sparse_with_reset_ms": 0.5152827674753211,
+      "selected_block_fraction": 0.252232164144516
+    },
+    {
+      "batch": 1,
+      "context": 2048,
+      "reps": 4,
+      "dense_SDPA_ms": 0.02894173343998513,
+      "sparse_kernel_ms": 0.04307161569098632,
+      "selector_with_reset_ms": 0.4546145087707851,
+      "selector_plus_sparse_with_reset_ms": 0.5733639025106663,
+      "selected_block_fraction": 0.265625
+    },
+    {
+      "batch": 1,
+      "context": 8192,
+      "reps": 1,
+      "dense_SDPA_ms": 0.05733676163135502,
+      "sparse_kernel_ms": 0.20032090404309516,
+      "selector_with_reset_ms": 0.4053961613963794,
+      "selector_plus_sparse_with_reset_ms": 0.5213807131785395,
+      "selected_block_fraction": 0.2583705484867096
+    },
+    {
+      "batch": 1,
+      "context": 8192,
+      "reps": 4,
+      "dense_SDPA_ms": 0.05733676163135502,
+      "sparse_kernel_ms": 0.21816210358151727,
+      "selector_with_reset_ms": 0.4669377775146411,
+      "selector_plus_sparse_with_reset_ms": 0.5822367669657024,
+      "selected_block_fraction": 0.2438616156578064
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "test": "cached_teacher_forced_decode_direct_router",
+  "args": {
+    "model": "models/Qwen2.5-0.5B",
+    "text": "data/wikitext-2/wiki.test.raw",
+    "mode": "all",
+    "reps": 1,
+    "backend": "sparse",
+    "samples": 128,
+    "burn": 4.0,
+    "spacing": 1.0,
+    "ratio": 0.25,
+    "block_size": 64,
+    "rank": 64,
+    "seed": 0,
+    "context": 2048,
+    "decode": 16,
+    "examples": 2,
+    "batch": 2,
+    "output": "results/smoke_debug.json"
+  },
+  "perplexity": 28.25872592648553,
+  "mean_nll": 3.341402292251587,
+  "scored_tokens": 32,
+  "source_tokens": 299078,
+  "examples": [
+    {
+      "start_token": 0,
+      "first_target_token": 2048,
+      "last_target_token": 2063,
+      "scored_tokens": 16,
+      "nll_sum": 43.3071174621582
+    },
+    {
+      "start_token": 297014,
+      "first_target_token": 299062,
+      "last_target_token": 299077,
+      "scored_tokens": 16,
+      "nll_sum": 63.61775588989258
+    }
+  ],
+  "attention_layers": 24,
+  "ffn": "original Qwen2MLP; all weights unchanged; no stochastic FFN",
+  "mlp_sha256": "4d554c1651dab977664bf5b16cbf024f673f7868a525b3f0faa5961e0e53f8e9",
+  "text_sha256": "173c87a53759e0201f33e0ccf978e510c2042d7f2cb78229d9a50d79b9e7dd08",
+  "source_sha256": {
+    "collect.py": "e3e59fe39c9d247bec52da6f1c9c05a9a827ff368cbb9697367ff4455a6b1eba",
+    "train.py": "061f43604415f88a203f46d49edc9c8ace29a346c359dda5ea3f6e33b55df0ee",
+    "benchmark.py": "ceb3a6e1a5f9df21884ecfe3e7ac5dea1efee8061b4133d6ca086c3ad50ba5c6",
+    "attention.py": "218284a296f8774f030a3e440811d617d7d5eb2ab17fdd18b5e55e6306bdc85b",
+    "router.py": "a099d7e41149f60d472dc2dfb97c341745d19d4a783e4a625d2b5711db352d60",
+    "verify.py": "992bd8f26474078648a170acd13f8b5ce2365b0e6bc90c02a0ae37be657422b9",
+    "sparse.py": "26ab3ef224d31d08cee825c874b7b7d3292b297daf635733753f10824467f5a4",
+    "evaluate.py": "b7f82b7df73efa3e8adf9f1a859403b743dc674463540fad3e1daaba132a0f3b",
+    "run.py": "eba61a31db3c336b612105615947610f410846196651cd764d1deeb62d52d8a5"
+  },
+  "torch": "2.7.1+cu128",
+  "transformers": "4.45.2",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "sampling_stats": {
+    "selected_token_fraction": 1.0,
+    "GQA_union_fraction": 1.0,
+    "selected_block_fraction": 1.0,
+    "QK_PV_MAC_ratio": 1.0,
+    "selector_MAC_ratio_to_dense_QK_PV": 0.00801204086596935,
+    "total_QK_PV_selector_MAC_ratio": 1.0080120408659694,
+    "selected_token_rows": 22100736.0,
+    "possible_token_rows": 22100736.0,
+    "cost_scope": "decode QK/PV and selector linear MACs; excludes summary init/update, elementwise/reductions, projections, FFNs, memory and launch costs; NOT whole-model FLOPs"
+  },
+  "decode_seconds": 0.8414837508462369,
+  "prefill_seconds": 0.367974110879004,
+  "peak_allocated_bytes": 1204633088,
+  "precision": "BF16 model/cache, FP32 reference attention; exact prefill SDPA",
+  "router_scope": "Trained independent Bernoulli selector. Sparse Triton executes only selected QK/PV tiles; dense backend only for verification.",
+  "limitations": "Sampled WT2 test suffixes, not full WT2 PPL; teacher forcing; router trained on disjoint train text; prefill unchanged; no hardware p-bit device"
+}
