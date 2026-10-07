@@ -62,7 +62,7 @@ RTX 5090，预热后串行 CUDA event 计时，真实第 12 层 Q/K/V；以下�
 
 ## 7. 保存与复现
 
-- 本地分支：`pbit-direct-router`；本轮未推送 GitHub。
+- 开发分支：`pbit-direct-router`；代码与结果发布到注意力分支 `pbit-attention-av-baseline`。
 - 远程目录：`/home/Hongjie_Zeng/pbit_direct_router_20261007`。
 - 源码：`experiments/direct_router/`；完整 66 组结果：本目录 `evaluation/`、`calibrated/`。
 - 权重本地备份：`artifacts/direct_router_20261007/`；训练用教师张量留在远程。

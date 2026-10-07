@@ -73,7 +73,7 @@ def main():
         '如果每条互抑制连接强度相同为 g，令 S=Σb_j，则局部驱动 h_i−gΣ(j≠i)b_j = h_i−gS+g b_i。精确全局求和、广播以及自身项补偿可代数精确替代同权稠密连接。配合同样异步更新顺序和随机数，状态轨迹也一致；使用同样更新动力学时，转移核和稳态分布一致。','',
         '前提不适用于任意不同权重的稠密 J。广播延迟、求和误差或多个节点同时依据旧 S 更新，会改变实际动力学。广播也不消除有限惩罚的多热点误差或混合时间。当前块预测器采用独立 p-bit，无需此耦合网络。','',
         '## 7. 保存与复现','',
-        '- 本地分支：`pbit-direct-router`；本轮未推送 GitHub。',
+        '- 开发分支：`pbit-direct-router`；代码与结果发布到注意力分支 `pbit-attention-av-baseline`。',
         '- 远程目录：`/home/Hongjie_Zeng/pbit_direct_router_20261007`。',
         '- 源码：`experiments/direct_router/`；完整 66 组结果：本目录 `evaluation/`、`calibrated/`。',
         '- 权重本地备份：`artifacts/direct_router_20261007/`；训练用教师张量留在远程。',

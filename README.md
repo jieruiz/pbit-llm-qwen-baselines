@@ -298,6 +298,18 @@ access counts, not sparse GPU or hardware acceleration. See the
 
 See also the [publication notes and KV-cache scope](experiments/pbit_softmax_router/PUBLICATION_NOTES_ZH.md).
 
+A [trained direct p-bit block router](experiments/direct_router/README.md)
+adds 66 decode evaluations with original FFNs and a Triton kernel that computes
+QK/PV only for selected blocks. The four-summary selector with held-out recall
+calibration reaches sampled-suffix PPL **10.56949 / 9.50191** at 2k / 8k, versus
+**10.37356 / 9.41898** for original Qwen. QK/PV plus selector linear MAC counts
+are **42.77% / 33.41%** of dense QK/PV; these exclude summary maintenance and
+other non-MAC costs and are not whole-model savings. Initial uncalibrated
+predictors performed worse, and this study does not establish a better
+accuracy/compute tradeoff than the previous mean router. The current GPU
+implementation is slower than SDPA. See the
+[Chinese report, raw results and timing](results/direct_router_20261007/RESULTS_ZH.md).
+
 ## License
 
 Apache License 2.0. Qwen model weights and WikiText-2 are obtained separately
