@@ -1,0 +1,1318 @@
+{
+  "args": {
+    "ffn": "fixed",
+    "mode": "all_exact",
+    "context": 8192,
+    "seed": 1,
+    "examples": 16,
+    "decode": 128,
+    "batch": 4,
+    "output": "<RUN_ROOT>/results/test/fixed_all_exact_c8192_s1.json"
+  },
+  "perplexity": 10.926395680140404,
+  "scored_tokens": 2048,
+  "source_tokens": 299078,
+  "records": [
+    {
+      "offset": 0,
+      "nll": 183.49937438964844,
+      "tokens": 128,
+      "ids_sha256": "3b214ef5e8d22535c18e324e994078bd951e7d45126e962ee82902656c5a846c"
+    },
+    {
+      "offset": 19384,
+      "nll": 375.43115234375,
+      "tokens": 128,
+      "ids_sha256": "ded58ee3e53c2c548f00bbf3c3660f1823acc97139d106e627b64e719ea123fd"
+    },
+    {
+      "offset": 38768,
+      "nll": 334.8234558105469,
+      "tokens": 128,
+      "ids_sha256": "49e5d98e05106231efc2934ad93a153f6a500c8e0f350e77b0620574b51b9847"
+    },
+    {
+      "offset": 58152,
+      "nll": 233.5214385986328,
+      "tokens": 128,
+      "ids_sha256": "55ff3eaef048b69ff4564e56cd1481253df9773a6a75f30b73cbf79c6a17466a"
+    },
+    {
+      "offset": 77535,
+      "nll": 430.3876647949219,
+      "tokens": 128,
+      "ids_sha256": "8df1e22471a3cb4c7139a40fb14b44aba5a36f58946e527677765641c538d489"
+    },
+    {
+      "offset": 96919,
+      "nll": 198.58743286132812,
+      "tokens": 128,
+      "ids_sha256": "3d75437083d1bade94197239ef42f5d5696a6523e2eba665bfb41851491d7866"
+    },
+    {
+      "offset": 116303,
+      "nll": 330.6258239746094,
+      "tokens": 128,
+      "ids_sha256": "532d41b5bd528986d611123ce33d4ad3a8360b2f5c2cca7a31aed222000ddf08"
+    },
+    {
+      "offset": 135687,
+      "nll": 283.4978332519531,
+      "tokens": 128,
+      "ids_sha256": "f282845352f1fd9e369e94542015b7c04bf4d4494cc70c20acd434202a8b2c52"
+    },
+    {
+      "offset": 155071,
+      "nll": 374.30047607421875,
+      "tokens": 128,
+      "ids_sha256": "f91b5037decc973b5681729eb5b920693a5a82c5046c1c02ba8b1c31a2e307e2"
+    },
+    {
+      "offset": 174455,
+      "nll": 309.4273376464844,
+      "tokens": 128,
+      "ids_sha256": "51ada5d18faa268073977da5849c1156b8fda921ead2d897c4bdb37b6482ef2f"
+    },
+    {
+      "offset": 193839,
+      "nll": 360.7883605957031,
+      "tokens": 128,
+      "ids_sha256": "e96975716a44127aeaba90a2cfcebea040ace259cb398fa882808c38bbe97210"
+    },
+    {
+      "offset": 213223,
+      "nll": 300.144775390625,
+      "tokens": 128,
+      "ids_sha256": "3ea5c747a3d50f11e2ee399b4ffbc3f972445038bddd9e0cb9e6563eef51a8c3"
+    },
+    {
+      "offset": 232606,
+      "nll": 336.7394104003906,
+      "tokens": 128,
+      "ids_sha256": "086d781f15d7b8f755857df682aa5ebec18e9349d8b63e8cf8408b8cdd6d1ed0"
+    },
+    {
+      "offset": 251990,
+      "nll": 233.15679931640625,
+      "tokens": 128,
+      "ids_sha256": "48db983d36c62c3af34b83de6d745d14d385c22976a173aebd27f9529489ca4e"
+    },
+    {
+      "offset": 271374,
+      "nll": 271.09283447265625,
+      "tokens": 128,
+      "ids_sha256": "c91d8648a645b4eef26d4c36fd4b562d62b07fd372c71e4f08c1f5ea1e8734c7"
+    },
+    {
+      "offset": 290758,
+      "nll": 341.1155090332031,
+      "tokens": 128,
+      "ids_sha256": "575a9b506559aaf64e7cc7def982d2c2e6f60f85f36c42205f8c4914d09aaf4b"
+    }
+  ],
+  "prefill_seconds": 94.53907102323137,
+  "decode_seconds": 113.96200561500154,
+  "seconds": 209.12686924706213,
+  "peak_allocated_bytes": 12330220032,
+  "protected_sha256_before": "5263c14ccf08f18ae44c5608e67933034fc38e748f2815d26abe45a60c2b6171",
+  "protected_sha256_after": "5263c14ccf08f18ae44c5608e67933034fc38e748f2815d26abe45a60c2b6171",
+  "attention_layers": 24,
+  "ffn_layers": 24,
+  "ffn_diagnostics": {
+    "0": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 27,
+          "above_top_code": 27,
+          "encoded_zero": 170843,
+          "squared_error": 25.880840644564003,
+          "signal_energy": 49043320.11349828,
+          "out_of_fullscale_fraction": 2.2639386172788626e-07,
+          "quantization_nmse": 5.277138779485032e-07
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 67,
+          "above_top_code": 67,
+          "encoded_zero": 13603098,
+          "squared_error": 2472.6203341634973,
+          "signal_energy": 2968072531.027057,
+          "out_of_fullscale_fraction": 8.624002692525881e-09,
+          "quantization_nmse": 8.330727461393553e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 11843489,
+          "squared_error": 666.1659273097262,
+          "signal_energy": 718805890.0822748,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 9.267674854938606e-07
+        }
+      }
+    },
+    "1": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 22,
+          "above_top_code": 22,
+          "encoded_zero": 331251,
+          "squared_error": 41.99715463924696,
+          "signal_energy": 68758368.73807079,
+          "out_of_fullscale_fraction": 1.8446907251901844e-07,
+          "quantization_nmse": 6.107933537404237e-07
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 1333,
+          "above_top_code": 1339,
+          "encoded_zero": 8894885,
+          "squared_error": 2660.5510084085167,
+          "signal_energy": 4359189316.83354,
+          "out_of_fullscale_fraction": 1.7157903864383581e-07,
+          "quantization_nmse": 6.103316041206275e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 837,
+          "above_top_code": 841,
+          "encoded_zero": 10295297,
+          "squared_error": 920.3608047872702,
+          "signal_energy": 1042100498.3242358,
+          "out_of_fullscale_fraction": 1.0773567542752481e-07,
+          "quantization_nmse": 8.831785478149845e-07
+        }
+      }
+    },
+    "2": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 4,
+          "above_top_code": 4,
+          "encoded_zero": 370527,
+          "squared_error": 228.79206645173687,
+          "signal_energy": 89786947.52219224,
+          "out_of_fullscale_fraction": 3.3539831367094256e-08,
+          "quantization_nmse": 2.5481662175360996e-06
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 69,
+          "above_top_code": 69,
+          "encoded_zero": 8047732,
+          "squared_error": 3669.5869695123392,
+          "signal_energy": 5781311994.397386,
+          "out_of_fullscale_fraction": 8.881435608720684e-09,
+          "quantization_nmse": 6.347325612367056e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 567,
+          "above_top_code": 576,
+          "encoded_zero": 13463514,
+          "squared_error": 9671.644145710115,
+          "signal_energy": 1376815266.4753118,
+          "out_of_fullscale_fraction": 7.298223174122649e-08,
+          "quantization_nmse": 7.0246491168490696e-06
+        }
+      }
+    },
+    "3": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 1054,
+          "above_top_code": 1054,
+          "encoded_zero": 829317,
+          "squared_error": 15453.785125127722,
+          "signal_energy": 119005973.88626477,
+          "out_of_fullscale_fraction": 8.837745565229338e-06,
+          "quantization_nmse": 0.0001298572216206311
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 144,
+          "above_top_code": 148,
+          "encoded_zero": 12265178,
+          "squared_error": 11171.779153816293,
+          "signal_energy": 7621279420.305014,
+          "out_of_fullscale_fraction": 1.8535169966025775e-08,
+          "quantization_nmse": 1.465866626547224e-06
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 800,
+          "above_top_code": 801,
+          "encoded_zero": 13942426,
+          "squared_error": 5128.012605274828,
+          "signal_energy": 1745825420.894763,
+          "out_of_fullscale_fraction": 1.0297316647792097e-07,
+          "quantization_nmse": 2.9372997688661452e-06
+        }
+      }
+    },
+    "4": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 5,
+          "above_top_code": 5,
+          "encoded_zero": 397179,
+          "squared_error": 304.27166577485383,
+          "signal_energy": 122823852.63451938,
+          "out_of_fullscale_fraction": 4.1924789208867825e-08,
+          "quantization_nmse": 2.4773011043731004e-06
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 3400,
+          "above_top_code": 3410,
+          "encoded_zero": 5952395,
+          "squared_error": 4527.583702485837,
+          "signal_energy": 9772997886.190466,
+          "out_of_fullscale_fraction": 4.3763595753116414e-07,
+          "quantization_nmse": 4.632748062785777e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 5375,
+          "above_top_code": 5391,
+          "encoded_zero": 8064320,
+          "squared_error": 2101.4658245240307,
+          "signal_energy": 1940762292.8849103,
+          "out_of_fullscale_fraction": 6.918509622735315e-07,
+          "quantization_nmse": 1.0828043353007634e-06
+        }
+      }
+    },
+    "5": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 912,
+          "above_top_code": 912,
+          "encoded_zero": 375166,
+          "squared_error": 2576.27376454109,
+          "signal_energy": 200477861.30980173,
+          "out_of_fullscale_fraction": 7.647081551697492e-06,
+          "quantization_nmse": 1.285066464550882e-05
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 6892,
+          "above_top_code": 6927,
+          "encoded_zero": 3982297,
+          "squared_error": 11548.045006308314,
+          "signal_energy": 26733905437.40553,
+          "out_of_fullscale_fraction": 8.871138292072892e-07,
+          "quantization_nmse": 4.319625141693861e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 1300,
+          "above_top_code": 1304,
+          "encoded_zero": 8009302,
+          "squared_error": 1514.175689374896,
+          "signal_energy": 2476496547.319581,
+          "out_of_fullscale_fraction": 1.6733139552662157e-07,
+          "quantization_nmse": 6.114184536270618e-07
+        }
+      }
+    },
+    "6": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 1537,
+          "above_top_code": 1537,
+          "encoded_zero": 376180,
+          "squared_error": 4162.490398924768,
+          "signal_energy": 131760656.38704744,
+          "out_of_fullscale_fraction": 1.288768020280597e-05,
+          "quantization_nmse": 3.159129980877931e-05
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 555,
+          "above_top_code": 558,
+          "encoded_zero": 4887119,
+          "squared_error": 2642.735801066278,
+          "signal_energy": 9308363549.40043,
+          "out_of_fullscale_fraction": 7.143763424405767e-08,
+          "quantization_nmse": 2.839098179869115e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 3895,
+          "above_top_code": 3917,
+          "encoded_zero": 8699677,
+          "squared_error": 1626.3183749958107,
+          "signal_energy": 2060495912.2559462,
+          "out_of_fullscale_fraction": 5.013506042893777e-07,
+          "quantization_nmse": 7.892849315169116e-07
+        }
+      }
+    },
+    "7": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 1429,
+          "above_top_code": 1429,
+          "encoded_zero": 412812,
+          "squared_error": 4022.6401621706864,
+          "signal_energy": 131964037.74607587,
+          "out_of_fullscale_fraction": 1.1982104755894424e-05,
+          "quantization_nmse": 3.048285147133053e-05
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 366,
+          "above_top_code": 369,
+          "encoded_zero": 5497215,
+          "squared_error": 3040.3095058923686,
+          "signal_energy": 9357795161.949558,
+          "out_of_fullscale_fraction": 4.711022366364884e-08,
+          "quantization_nmse": 3.2489592401581965e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 1875,
+          "above_top_code": 1884,
+          "encoded_zero": 9627149,
+          "squared_error": 1686.574136020358,
+          "signal_energy": 2105327701.7392197,
+          "out_of_fullscale_fraction": 2.413433589326273e-07,
+          "quantization_nmse": 8.010981542811945e-07
+        }
+      }
+    },
+    "8": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 13,
+          "above_top_code": 13,
+          "encoded_zero": 433694,
+          "squared_error": 303.84592583831045,
+          "signal_energy": 111186690.88109246,
+          "out_of_fullscale_fraction": 1.0900445194305634e-07,
+          "quantization_nmse": 2.7327544639605794e-06
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 556,
+          "above_top_code": 562,
+          "encoded_zero": 6078442,
+          "squared_error": 2730.73831812724,
+          "signal_energy": 8496165680.336546,
+          "out_of_fullscale_fraction": 7.156635070215507e-08,
+          "quantization_nmse": 3.214083176893828e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 1667,
+          "above_top_code": 1670,
+          "encoded_zero": 8242297,
+          "squared_error": 1300.0318001148698,
+          "signal_energy": 1848147713.4736822,
+          "out_of_fullscale_fraction": 2.1457033564836782e-07,
+          "quantization_nmse": 7.034241855438048e-07
+        }
+      }
+    },
+    "9": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 2,
+          "above_top_code": 2,
+          "encoded_zero": 432839,
+          "squared_error": 303.546445168432,
+          "signal_energy": 103383910.60346608,
+          "out_of_fullscale_fraction": 1.6769915683547128e-08,
+          "quantization_nmse": 2.936109143062878e-06
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 1701,
+          "above_top_code": 1708,
+          "encoded_zero": 7116917,
+          "squared_error": 2975.052426721126,
+          "signal_energy": 6332758055.324924,
+          "out_of_fullscale_fraction": 2.1894669522367947e-07,
+          "quantization_nmse": 4.6978779241685086e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 2795,
+          "above_top_code": 2805,
+          "encoded_zero": 8598284,
+          "squared_error": 1392.7565348619507,
+          "signal_energy": 1743051825.1299963,
+          "out_of_fullscale_fraction": 3.597625003822364e-07,
+          "quantization_nmse": 7.990333475931385e-07
+        }
+      }
+    },
+    "10": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 1,
+          "above_top_code": 1,
+          "encoded_zero": 263412,
+          "squared_error": 125.45055158316393,
+          "signal_energy": 94259514.16004226,
+          "out_of_fullscale_fraction": 8.384957841773564e-09,
+          "quantization_nmse": 1.330905985470737e-06
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 6322,
+          "above_top_code": 6361,
+          "encoded_zero": 7265989,
+          "squared_error": 3261.6688527166602,
+          "signal_energy": 6530872151.8466425,
+          "out_of_fullscale_fraction": 8.137454480917705e-07,
+          "quantization_nmse": 4.994231669034287e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 1920,
+          "above_top_code": 1934,
+          "encoded_zero": 8308771,
+          "squared_error": 1010.1374071975026,
+          "signal_energy": 1647484174.2065108,
+          "out_of_fullscale_fraction": 2.4713559954701033e-07,
+          "quantization_nmse": 6.131393691135286e-07
+        }
+      }
+    },
+    "11": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 7,
+          "above_top_code": 7,
+          "encoded_zero": 263634,
+          "squared_error": 158.11070561477106,
+          "signal_energy": 98400413.22184256,
+          "out_of_fullscale_fraction": 5.8694704892414956e-08,
+          "quantization_nmse": 1.6068093663215861e-06
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 3281,
+          "above_top_code": 3294,
+          "encoded_zero": 7892247,
+          "squared_error": 3177.1888558441683,
+          "signal_energy": 4953926322.061001,
+          "out_of_fullscale_fraction": 4.2231869901757337e-07,
+          "quantization_nmse": 6.413476199061335e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 4074,
+          "above_top_code": 4085,
+          "encoded_zero": 9599649,
+          "squared_error": 2239.5327314687192,
+          "signal_energy": 1748567745.8128123,
+          "out_of_fullscale_fraction": 5.243908502888126e-07,
+          "quantization_nmse": 1.2807812204197353e-06
+        }
+      }
+    },
+    "12": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 28,
+          "above_top_code": 28,
+          "encoded_zero": 292801,
+          "squared_error": 172.01017102535252,
+          "signal_energy": 94939188.22353211,
+          "out_of_fullscale_fraction": 2.3477881956965983e-07,
+          "quantization_nmse": 1.8117931514261378e-06
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 1618,
+          "above_top_code": 1622,
+          "encoded_zero": 7509328,
+          "squared_error": 2835.854680100109,
+          "signal_energy": 5440044961.803355,
+          "out_of_fullscale_fraction": 2.0826322920159517e-07,
+          "quantization_nmse": 5.212925076928102e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 2081,
+          "above_top_code": 2090,
+          "encoded_zero": 9083598,
+          "squared_error": 1396.730121525225,
+          "signal_energy": 1787547033.106947,
+          "out_of_fullscale_fraction": 2.6785894930069195e-07,
+          "quantization_nmse": 7.813669210692372e-07
+        }
+      }
+    },
+    "13": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 49,
+          "above_top_code": 49,
+          "encoded_zero": 293327,
+          "squared_error": 208.1987689445944,
+          "signal_energy": 106370955.26681246,
+          "out_of_fullscale_fraction": 4.1086293424690467e-07,
+          "quantization_nmse": 1.9572896419174306e-06
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 1293,
+          "above_top_code": 1296,
+          "encoded_zero": 8075082,
+          "squared_error": 3336.542456345011,
+          "signal_energy": 5906958452.562577,
+          "out_of_fullscale_fraction": 1.6643038031993977e-07,
+          "quantization_nmse": 5.648494877930859e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 8033,
+          "above_top_code": 8058,
+          "encoded_zero": 9416777,
+          "squared_error": 2896.6910865172313,
+          "signal_energy": 2034366041.4750917,
+          "out_of_fullscale_fraction": 1.033979307896424e-06,
+          "quantization_nmse": 1.4238790008590978e-06
+        }
+      }
+    },
+    "14": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 94,
+          "above_top_code": 94,
+          "encoded_zero": 302123,
+          "squared_error": 278.83482222465614,
+          "signal_energy": 114253982.33484018,
+          "out_of_fullscale_fraction": 7.881860371267151e-07,
+          "quantization_nmse": 2.440482305531238e-06
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 3787,
+          "above_top_code": 3802,
+          "encoded_zero": 7173282,
+          "squared_error": 3469.1530743062326,
+          "signal_energy": 6580188794.358154,
+          "out_of_fullscale_fraction": 4.874492268148584e-07,
+          "quantization_nmse": 5.272117841483028e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 27882,
+          "above_top_code": 27956,
+          "encoded_zero": 8926968,
+          "squared_error": 9151.110313356136,
+          "signal_energy": 2230814219.9441867,
+          "out_of_fullscale_fraction": 3.5888722846717406e-06,
+          "quantization_nmse": 4.102139134465931e-06
+        }
+      }
+    },
+    "15": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 35,
+          "above_top_code": 35,
+          "encoded_zero": 287346,
+          "squared_error": 217.61736600132133,
+          "signal_energy": 139533110.25523168,
+          "out_of_fullscale_fraction": 2.9347352446207476e-07,
+          "quantization_nmse": 1.5596109454111588e-06
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 1476,
+          "above_top_code": 1486,
+          "encoded_zero": 5693732,
+          "squared_error": 2872.7764903207217,
+          "signal_energy": 8388309859.069017,
+          "out_of_fullscale_fraction": 1.899854921517642e-07,
+          "quantization_nmse": 3.424738163689579e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 3367,
+          "above_top_code": 3373,
+          "encoded_zero": 9275469,
+          "squared_error": 2625.6959001494565,
+          "signal_energy": 2802673983.8697367,
+          "out_of_fullscale_fraction": 4.333883144139499e-07,
+          "quantization_nmse": 9.368538457420149e-07
+        }
+      }
+    },
+    "16": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 153,
+          "above_top_code": 153,
+          "encoded_zero": 280922,
+          "squared_error": 300.52210519244727,
+          "signal_energy": 188027733.28691456,
+          "out_of_fullscale_fraction": 1.2828985497913553e-06,
+          "quantization_nmse": 1.5982860609922672e-06
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 2556,
+          "above_top_code": 2563,
+          "encoded_zero": 6134172,
+          "squared_error": 8775.437832737494,
+          "signal_energy": 11811761080.343454,
+          "out_of_fullscale_fraction": 3.289992668969575e-07,
+          "quantization_nmse": 7.429406820072869e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 2346,
+          "above_top_code": 2356,
+          "encoded_zero": 10165935,
+          "squared_error": 2637.7154524470684,
+          "signal_energy": 3318754104.689267,
+          "out_of_fullscale_fraction": 3.0196881069650325e-07,
+          "quantization_nmse": 7.947908670666747e-07
+        }
+      }
+    },
+    "17": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 1369,
+          "above_top_code": 1369,
+          "encoded_zero": 311453,
+          "squared_error": 7865.912769309481,
+          "signal_energy": 273256514.3339652,
+          "out_of_fullscale_fraction": 1.147900728538801e-05,
+          "quantization_nmse": 2.8785819757972976e-05
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 9977,
+          "above_top_code": 10004,
+          "encoded_zero": 5266646,
+          "squared_error": 15686.437322427051,
+          "signal_energy": 20481276119.91949,
+          "out_of_fullscale_fraction": 1.284204102437772e-06,
+          "quantization_nmse": 7.658915992627471e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 60,
+          "above_top_code": 61,
+          "encoded_zero": 9573200,
+          "squared_error": 2590.0570467260104,
+          "signal_energy": 3968058451.1150455,
+          "out_of_fullscale_fraction": 7.722987485844073e-09,
+          "quantization_nmse": 6.527265358195998e-07
+        }
+      }
+    },
+    "18": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 747,
+          "above_top_code": 747,
+          "encoded_zero": 316428,
+          "squared_error": 2829.036053799745,
+          "signal_energy": 234271322.31770647,
+          "out_of_fullscale_fraction": 6.263563507804853e-06,
+          "quantization_nmse": 1.2075895699957482e-05
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 2956,
+          "above_top_code": 2966,
+          "encoded_zero": 6024028,
+          "squared_error": 6547.97590164511,
+          "signal_energy": 14279621879.817862,
+          "out_of_fullscale_fraction": 3.80485850135918e-07,
+          "quantization_nmse": 4.585538718570488e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 2148,
+          "above_top_code": 2154,
+          "encoded_zero": 9329466,
+          "squared_error": 3090.3745507402928,
+          "signal_energy": 3872717583.936142,
+          "out_of_fullscale_fraction": 2.764829519932178e-07,
+          "quantization_nmse": 7.979860353254333e-07
+        }
+      }
+    },
+    "19": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 2,
+          "above_top_code": 2,
+          "encoded_zero": 318987,
+          "squared_error": 577.1169185507733,
+          "signal_energy": 328435892.98997855,
+          "out_of_fullscale_fraction": 1.6769915683547128e-08,
+          "quantization_nmse": 1.7571676265248595e-06
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 5340,
+          "above_top_code": 5360,
+          "encoded_zero": 5648011,
+          "squared_error": 12058.600635158258,
+          "signal_energy": 20901031502.401825,
+          "out_of_fullscale_fraction": 6.873458862401225e-07,
+          "quantization_nmse": 5.769380632612584e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 2298,
+          "above_top_code": 2305,
+          "encoded_zero": 8023537,
+          "squared_error": 4557.238347894205,
+          "signal_energy": 6117780119.789348,
+          "out_of_fullscale_fraction": 2.9579042070782797e-07,
+          "quantization_nmse": 7.449169892773334e-07
+        }
+      }
+    },
+    "20": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 1628,
+          "above_top_code": 1628,
+          "encoded_zero": 282002,
+          "squared_error": 18088.97972737043,
+          "signal_energy": 344313209.7055604,
+          "out_of_fullscale_fraction": 1.3650711366407364e-05,
+          "quantization_nmse": 5.253640934322337e-05
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 19723,
+          "above_top_code": 19778,
+          "encoded_zero": 5887298,
+          "squared_error": 27468.558836276337,
+          "signal_energy": 21504450749.010384,
+          "out_of_fullscale_fraction": 2.538674703055044e-06,
+          "quantization_nmse": 1.2773429629464225e-06
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 2378,
+          "above_top_code": 2391,
+          "encoded_zero": 9358406,
+          "squared_error": 6445.372448664503,
+          "signal_energy": 8184911401.869588,
+          "out_of_fullscale_fraction": 3.0608773735562007e-07,
+          "quantization_nmse": 7.874700326251862e-07
+        }
+      }
+    },
+    "21": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 542,
+          "above_top_code": 542,
+          "encoded_zero": 437743,
+          "squared_error": 5169.130572234855,
+          "signal_energy": 285717872.5265124,
+          "out_of_fullscale_fraction": 4.544647150241272e-06,
+          "quantization_nmse": 1.8091729882089192e-05
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 2273,
+          "above_top_code": 2276,
+          "encoded_zero": 8474792,
+          "squared_error": 19322.109364839907,
+          "signal_energy": 18483816089.286495,
+          "out_of_fullscale_fraction": 2.9257250925539295e-07,
+          "quantization_nmse": 1.0453528249525973e-06
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 9835,
+          "above_top_code": 9867,
+          "encoded_zero": 12300809,
+          "squared_error": 18839.7158620732,
+          "signal_energy": 7674982423.964122,
+          "out_of_fullscale_fraction": 1.265926365387941e-06,
+          "quantization_nmse": 2.4546917271430708e-06
+        }
+      }
+    },
+    "22": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 11,
+          "above_top_code": 11,
+          "encoded_zero": 423947,
+          "squared_error": 349.8372874226483,
+          "signal_energy": 265441496.16089955,
+          "out_of_fullscale_fraction": 9.223453625950922e-08,
+          "quantization_nmse": 1.3179449802776561e-06
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 5586,
+          "above_top_code": 5593,
+          "encoded_zero": 9675386,
+          "squared_error": 14014.00760429271,
+          "signal_energy": 13744509671.826187,
+          "out_of_fullscale_fraction": 7.190101349320831e-07,
+          "quantization_nmse": 1.0196076789133442e-06
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 3794,
+          "above_top_code": 3808,
+          "encoded_zero": 9234024,
+          "squared_error": 9943.74616260864,
+          "signal_energy": 7408972921.631049,
+          "out_of_fullscale_fraction": 4.883502420215402e-07,
+          "quantization_nmse": 1.3421220819389326e-06
+        }
+      }
+    },
+    "23": {
+      "forward_calls": 516,
+      "signals": {
+        "x": {
+          "count": 119261184,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 474326,
+          "squared_error": 715.4788517961572,
+          "signal_energy": 360530673.8206666,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 1.9845158921264136e-06
+        },
+        "g": {
+          "count": 7769014272,
+          "out_of_fullscale": 884,
+          "above_top_code": 893,
+          "encoded_zero": 8689575,
+          "squared_error": 15552.674943612816,
+          "signal_energy": 28373481183.65039,
+          "out_of_fullscale_fraction": 1.1378534895810267e-07,
+          "quantization_nmse": 5.481412324045282e-07
+        },
+        "u": {
+          "count": 7769014272,
+          "out_of_fullscale": 1951,
+          "above_top_code": 1959,
+          "encoded_zero": 12910727,
+          "squared_error": 16113.740774862965,
+          "signal_energy": 14377471240.491974,
+          "out_of_fullscale_fraction": 2.5112580974802977e-07,
+          "quantization_nmse": 1.1207632069178515e-06
+        }
+      }
+    }
+  },
+  "attention_stats": [
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    },
+    {
+      "calls": 516,
+      "prefill_calls": 4,
+      "decode_calls": 512,
+      "selected_token_fraction": 1.0,
+      "padded_qk_fraction": 1.0,
+      "unique_V_fraction": 1.0,
+      "V_vector_events_fraction": 1.0,
+      "selector_MAC_ratio_to_dense_QK_PV": 0.0,
+      "GQA_union_fraction": 1.0,
+      "selected_token_rows": 236701696.0,
+      "possible_token_rows": 236701696.0,
+      "scope": "decode only; sampled V events are gathers/additions, not weighted MACs; no hardware cost claim"
+    }
+  ],
+  "training": false,
+  "scales_unchanged": true,
+  "prefill_attention": "original SDPA",
+  "decode_attention": "all_exact",
+  "ffn_scope": "all24 prefill AND decode",
+  "calibration_sha256": {
+    "calibration_ffn.json": "1f5e262e234914c45da1da3b0fe92839143afd475157f8f0662fc568b6a28324",
+    "moment.pt": "fefbb90c4f38c5f7a6d51a672550bd684ffe3a1415d36dc115a8ca5e05c5db0b"
+  },
+  "limits": [
+    "WT2 suffix subset, not full corpus PPL",
+    "old train-calibrated selector; no combined retraining",
+    "QK compacted before multiplication with ragged padding; padded positions charged separately",
+    "sampled PV gathers512 values then averages; no exact weighted PV in that path",
+    "score summaries initialized on first decode; included in timing",
+    "no hardware energy or latency measurement"
+  ]
+}

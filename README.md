@@ -7,7 +7,25 @@ This repository contains the baseline code and measured results used before any
 p-bit modification. Model weights and benchmark datasets are intentionally not
 committed.
 
-## Latest: all-layer fixed-scale stochastic FFN + attention
+## Latest: block screening before QK, with exact or sampled PV
+
+[`experiments/joint_router_ffn_20261009/`](experiments/joint_router_ffn_20261009/)
+adds two variants using the current stochastic FFN: `screen_exact` and `screen_sampled`.
+Both use accurate Q/K projections and candidate Softmax; the second samples 512 V vectors.
+Screening retains about 28%-30% of tokens in all 24 decode layers; prefill attention remains original SDPA.
+The FFN replacement covers both prefill and decode. Three-seed suffix PPL:
+
+| Configuration | 2K PPL | 8K PPL |
+|---|---:|---:|
+| Same FFN, no screening, exact PV | 12.313 | 11.120 |
+| Screening + exact PV | 12.829 | 11.220 |
+| Screening + sampled PV | 12.976 | 11.238 |
+
+26 evaluations, four GPU unit tests and 94 archive checks are included.
+These are matched suffix tests, not full-corpus PPL; GPU speedups or hardware energy savings are not established.
+See the [report](experiments/joint_router_ffn_20261009/results/RESULTS_ZH.md) and reproducible presets.
+
+## Earlier: all-layer fixed-scale stochastic FFN + attention
 
 Three jointly evaluated presets are published in
 [`experiments/joint_ffn_attention_20261009/`](experiments/joint_ffn_attention_20261009/):

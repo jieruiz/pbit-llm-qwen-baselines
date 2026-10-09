@@ -1,0 +1,27 @@
+{
+  "status": "complete",
+  "returncode": 0,
+  "gpu": 2,
+  "command": [
+    "<PYTHON>",
+    "-u",
+    "<RUN_ROOT>/evaluate.py",
+    "--ffn",
+    "original",
+    "--mode",
+    "sdpa",
+    "--context",
+    "8192",
+    "--seed",
+    "0",
+    "--examples",
+    "16",
+    "--decode",
+    "128",
+    "--batch",
+    "4",
+    "--output",
+    "<RUN_ROOT>/results/test/original_sdpa_c8192_s0.json"
+  ],
+  "seconds": 18.274736166000366
+}

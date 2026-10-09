@@ -1,0 +1,27 @@
+{
+  "status": "complete",
+  "returncode": 0,
+  "gpu": 1,
+  "command": [
+    "<PYTHON>",
+    "-u",
+    "<RUN_ROOT>/evaluate.py",
+    "--ffn",
+    "fixed",
+    "--mode",
+    "all_sampled",
+    "--context",
+    "8192",
+    "--seed",
+    "1",
+    "--examples",
+    "16",
+    "--decode",
+    "128",
+    "--batch",
+    "4",
+    "--output",
+    "<RUN_ROOT>/results/test/fixed_all_sampled_c8192_s1.json"
+  ],
+  "seconds": 219.91886973381042
+}
