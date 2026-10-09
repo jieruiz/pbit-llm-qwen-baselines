@@ -1,0 +1,2428 @@
+{
+  "args": {
+    "ffn": "fixed",
+    "qcycles": 256,
+    "attn": "iid",
+    "samples": 512,
+    "seed": 0,
+    "context": 512,
+    "decode": 64,
+    "examples": 8,
+    "split": "validation",
+    "batch": 4,
+    "chunk": 32,
+    "output": "<RUN_ROOT>/results/validation/fixed_q256_iid_s0.json"
+  },
+  "perplexity": 19.195052770695217,
+  "scored_tokens": 512,
+  "source_tokens": 2518423,
+  "records": [
+    {
+      "offset": 0,
+      "nll": 215.68460083007812,
+      "tokens": 64,
+      "ids_sha256": "022cb34e5c74b496a7a2961b4fccbc4e9ba4735c08883424f1c650a78ec6e9ae"
+    },
+    {
+      "offset": 9280,
+      "nll": 215.72549438476562,
+      "tokens": 64,
+      "ids_sha256": "1760938feccdf0a65bc76ba512daa372058fcb801fe4ceae3d778161e99ca076"
+    },
+    {
+      "offset": 18560,
+      "nll": 179.01019287109375,
+      "tokens": 64,
+      "ids_sha256": "a2cb409a539b41d890679d7ef984a15a3e167f2d0006636e1cfe28a46597b842"
+    },
+    {
+      "offset": 27840,
+      "nll": 147.1350555419922,
+      "tokens": 64,
+      "ids_sha256": "17094b57f1e9927a904edb8d892b06b94b65be8723a318cc122b61e892eb166c"
+    },
+    {
+      "offset": 37120,
+      "nll": 197.29489135742188,
+      "tokens": 64,
+      "ids_sha256": "b0fee03461224b540fe914561e93616c09e7709a1ef4afc288aa52d013c5bef1"
+    },
+    {
+      "offset": 46400,
+      "nll": 194.29518127441406,
+      "tokens": 64,
+      "ids_sha256": "0966549d956f4a68ad7ea2a96a9966c6cfaf65e4f31aa3313621db64fd9b23e7"
+    },
+    {
+      "offset": 55680,
+      "nll": 148.80252075195312,
+      "tokens": 64,
+      "ids_sha256": "6effbef91e517f9207066d6c2bde0f89167626c521efbaa913c27b275ab56ba2"
+    },
+    {
+      "offset": 64960,
+      "nll": 214.8341827392578,
+      "tokens": 64,
+      "ids_sha256": "306ae027b6f946fa3240ac271330fe2ec8949140c7ce58852cee82e926ad0fc8"
+    }
+  ],
+  "prefill_seconds": 2.9849489321932197,
+  "decode_seconds": 29.739304897142574,
+  "seconds": 33.24739976390265,
+  "peak_allocated_bytes": 2366411776,
+  "protected_sha256_before": "cd2a925bc3fd84799c906296266d63b4b1653db1ee712210aeb1876df6fb32af",
+  "protected_sha256_after": "cd2a925bc3fd84799c906296266d63b4b1653db1ee712210aeb1876df6fb32af",
+  "ffn_layers": 24,
+  "projection_count": 48,
+  "attention_layers": 24,
+  "attention_stats": [
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.21971429649758453,
+      "GQA_union_V_fraction": 0.771081672705314,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.2871995233781919,
+      "GQA_union_V_fraction": 0.7549184782608696,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.2059925487405107,
+      "GQA_union_V_fraction": 0.5417051630434783,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.14086983479986198,
+      "GQA_union_V_fraction": 0.4875562349033816,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.2163303355762595,
+      "GQA_union_V_fraction": 0.5898241243961353,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.21343987232574188,
+      "GQA_union_V_fraction": 0.6276826690821256,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.219700386042098,
+      "GQA_union_V_fraction": 0.6325490640096618,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.08334929261559697,
+      "GQA_union_V_fraction": 0.26772569444444444,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.10468917141131814,
+      "GQA_union_V_fraction": 0.3218549969806763,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.09949291537267081,
+      "GQA_union_V_fraction": 0.34061330012077295,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.2016191662353347,
+      "GQA_union_V_fraction": 0.5641964824879228,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.13380353907867495,
+      "GQA_union_V_fraction": 0.40699728260869567,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.21694590018978607,
+      "GQA_union_V_fraction": 0.5612764190821256,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.1535639880952381,
+      "GQA_union_V_fraction": 0.4598180857487923,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.17313545979986197,
+      "GQA_union_V_fraction": 0.4676754981884058,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.187579742494824,
+      "GQA_union_V_fraction": 0.5267112016908213,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.11720076345755694,
+      "GQA_union_V_fraction": 0.40106355676328503,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.19572663259144238,
+      "GQA_union_V_fraction": 0.5760250603864734,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.1359858630952381,
+      "GQA_union_V_fraction": 0.42063443538647344,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.12977182539682539,
+      "GQA_union_V_fraction": 0.43503208031400964,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.1944294556590752,
+      "GQA_union_V_fraction": 0.5604804498792271,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.19837220712560386,
+      "GQA_union_V_fraction": 0.593942859299517,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.36143816856452726,
+      "GQA_union_V_fraction": 0.7434476902173913,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    },
+    {
+      "calls": 130,
+      "prefill_calls": 2,
+      "decode_calls": 128,
+      "head_queries": 64400,
+      "unique_V_fraction": 0.3299480784161491,
+      "GQA_union_V_fraction": 0.7379978109903381,
+      "adjacent_repeat": 0.0,
+      "scope": "prefill AND decode; logical addresses, not physical memory traffic"
+    }
+  ],
+  "ffn_diagnostics": {
+    "0": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 1,
+          "above_top_code": 1,
+          "encoded_zero": 5883,
+          "squared_error": 0.8400484796706706,
+          "signal_energy": 1681644.4378650964,
+          "out_of_fullscale_fraction": 2.426242236024845e-07,
+          "quantization_nmse": 4.995398912847118e-07
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 24,
+          "above_top_code": 24,
+          "encoded_zero": 471625,
+          "squared_error": 85.628013721029,
+          "signal_energy": 102109498.44046654,
+          "out_of_fullscale_fraction": 8.938787185354691e-08,
+          "quantization_nmse": 8.385900922914941e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 405884,
+          "squared_error": 23.022486008638854,
+          "signal_energy": 24922379.94460106,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 9.237675559001426e-07
+        }
+      }
+    },
+    "1": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 11423,
+          "squared_error": 1.4397625500222078,
+          "signal_energy": 2372253.92604925,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 6.069175538977766e-07
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 150,
+          "above_top_code": 150,
+          "encoded_zero": 307350,
+          "squared_error": 95.7850476800012,
+          "signal_energy": 150733437.83344916,
+          "out_of_fullscale_fraction": 5.586741990846682e-07,
+          "quantization_nmse": 6.354598492329059e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 355786,
+          "squared_error": 30.601190460307457,
+          "signal_energy": 35930747.087242536,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 8.516714218606555e-07
+        }
+      }
+    },
+    "2": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 12841,
+          "squared_error": 7.810182191579455,
+          "signal_energy": 3117533.381839374,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 2.5052441257169067e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 50,
+          "above_top_code": 50,
+          "encoded_zero": 284979,
+          "squared_error": 132.90825253523124,
+          "signal_energy": 196750761.8810701,
+          "out_of_fullscale_fraction": 1.8622473302822274e-07,
+          "quantization_nmse": 6.75515821461318e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 36,
+          "above_top_code": 36,
+          "encoded_zero": 466060,
+          "squared_error": 362.9235894695534,
+          "signal_energy": 48366340.92427281,
+          "out_of_fullscale_fraction": 1.3408180778032038e-07,
+          "quantization_nmse": 7.50363956698281e-06
+        }
+      }
+    },
+    "3": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 14,
+          "above_top_code": 14,
+          "encoded_zero": 28933,
+          "squared_error": 396.913849378962,
+          "signal_energy": 5056532.287285886,
+          "out_of_fullscale_fraction": 3.3967391304347827e-06,
+          "quantization_nmse": 7.849526648469343e-05
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 52,
+          "above_top_code": 54,
+          "encoded_zero": 436571,
+          "squared_error": 385.416835326859,
+          "signal_energy": 270834269.26510394,
+          "out_of_fullscale_fraction": 1.9367372234935163e-07,
+          "quantization_nmse": 1.423072628041752e-06
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 192,
+          "above_top_code": 194,
+          "encoded_zero": 478816,
+          "squared_error": 190.15648941936723,
+          "signal_energy": 61499717.18690285,
+          "out_of_fullscale_fraction": 7.151029748283753e-07,
+          "quantization_nmse": 3.091989656496558e-06
+        }
+      }
+    },
+    "4": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 13953,
+          "squared_error": 10.443528206037293,
+          "signal_energy": 4269883.917947683,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 2.445857640799043e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 92,
+          "above_top_code": 92,
+          "encoded_zero": 206603,
+          "squared_error": 128.4079099724247,
+          "signal_energy": 339500236.97840554,
+          "out_of_fullscale_fraction": 3.426535087719298e-07,
+          "quantization_nmse": 3.782262749365689e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 119,
+          "above_top_code": 119,
+          "encoded_zero": 276581,
+          "squared_error": 41.80555137906085,
+          "signal_energy": 67658476.64130127,
+          "out_of_fullscale_fraction": 4.432148646071701e-07,
+          "quantization_nmse": 6.178908165594313e-07
+        }
+      }
+    },
+    "5": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 19,
+          "above_top_code": 19,
+          "encoded_zero": 13182,
+          "squared_error": 26.387331206938192,
+          "signal_energy": 7033712.023730981,
+          "out_of_fullscale_fraction": 4.609860248447205e-06,
+          "quantization_nmse": 3.7515512602606134e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 287,
+          "above_top_code": 289,
+          "encoded_zero": 142077,
+          "squared_error": 234.5324572334059,
+          "signal_energy": 914490408.4134649,
+          "out_of_fullscale_fraction": 1.0689299675819985e-06,
+          "quantization_nmse": 2.564624572064048e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 141,
+          "above_top_code": 141,
+          "encoded_zero": 275034,
+          "squared_error": 83.1955199565902,
+          "signal_energy": 87273633.17826498,
+          "out_of_fullscale_fraction": 5.251537471395881e-07,
+          "quantization_nmse": 9.532721043783657e-07
+        }
+      }
+    },
+    "6": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 11,
+          "above_top_code": 11,
+          "encoded_zero": 13346,
+          "squared_error": 11.724045003240331,
+          "signal_energy": 4608363.521596636,
+          "out_of_fullscale_fraction": 2.668866459627329e-06,
+          "quantization_nmse": 2.5440798991435386e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 13,
+          "above_top_code": 13,
+          "encoded_zero": 175489,
+          "squared_error": 88.81274521969694,
+          "signal_energy": 314408686.0257212,
+          "out_of_fullscale_fraction": 4.841843058733791e-08,
+          "quantization_nmse": 2.8247548228496247e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 161,
+          "above_top_code": 161,
+          "encoded_zero": 301402,
+          "squared_error": 65.51812260071308,
+          "signal_energy": 70850638.15407804,
+          "out_of_fullscale_fraction": 5.996436403508772e-07,
+          "quantization_nmse": 9.247358147746194e-07
+        }
+      }
+    },
+    "7": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 10,
+          "above_top_code": 10,
+          "encoded_zero": 14528,
+          "squared_error": 16.247738529310677,
+          "signal_energy": 4593454.028567275,
+          "out_of_fullscale_fraction": 2.426242236024845e-06,
+          "quantization_nmse": 3.537150568670966e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 197316,
+          "squared_error": 102.19791731403735,
+          "signal_energy": 316151863.0486786,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 3.232557807141618e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 84,
+          "above_top_code": 84,
+          "encoded_zero": 332484,
+          "squared_error": 63.13971336445764,
+          "signal_energy": 72473413.8374535,
+          "out_of_fullscale_fraction": 3.1285755148741417e-07,
+          "quantization_nmse": 8.712120765563786e-07
+        }
+      }
+    },
+    "8": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 15128,
+          "squared_error": 10.444794151703714,
+          "signal_energy": 3888736.9365073764,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 2.685909158227757e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 48,
+          "above_top_code": 48,
+          "encoded_zero": 215788,
+          "squared_error": 128.2674045199791,
+          "signal_energy": 288535571.70967597,
+          "out_of_fullscale_fraction": 1.7877574370709382e-07,
+          "quantization_nmse": 4.4454624350110133e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 82,
+          "above_top_code": 82,
+          "encoded_zero": 282290,
+          "squared_error": 46.49216721321057,
+          "signal_energy": 64109602.3328011,
+          "out_of_fullscale_fraction": 3.054085621662853e-07,
+          "quantization_nmse": 7.251981843821744e-07
+        }
+      }
+    },
+    "9": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 15225,
+          "squared_error": 10.499353193104792,
+          "signal_energy": 3597328.758272225,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 2.91865267219768e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 95,
+          "above_top_code": 96,
+          "encoded_zero": 252761,
+          "squared_error": 123.61154983453235,
+          "signal_energy": 211865285.64946136,
+          "out_of_fullscale_fraction": 3.538269927536232e-07,
+          "quantization_nmse": 5.834440949380072e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 108,
+          "above_top_code": 108,
+          "encoded_zero": 296385,
+          "squared_error": 66.55762885628917,
+          "signal_energy": 60401227.17113422,
+          "out_of_fullscale_fraction": 4.022454233409611e-07,
+          "quantization_nmse": 1.1019251093642861e-06
+        }
+      }
+    },
+    "10": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 9284,
+          "squared_error": 4.297332854335345,
+          "signal_energy": 3320726.0745466365,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 1.2940943510138939e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 324,
+          "above_top_code": 325,
+          "encoded_zero": 258727,
+          "squared_error": 110.69634098885487,
+          "signal_energy": 219731715.35631275,
+          "out_of_fullscale_fraction": 1.2067362700228833e-06,
+          "quantization_nmse": 5.037795331882419e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 26,
+          "above_top_code": 26,
+          "encoded_zero": 285875,
+          "squared_error": 32.46641952148598,
+          "signal_energy": 57063157.92363237,
+          "out_of_fullscale_fraction": 9.683686117467582e-08,
+          "quantization_nmse": 5.689558850727433e-07
+        }
+      }
+    },
+    "11": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 9282,
+          "squared_error": 5.448537104565927,
+          "signal_energy": 3392371.439920181,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 1.6061145428974977e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 77,
+          "above_top_code": 78,
+          "encoded_zero": 278858,
+          "squared_error": 95.82598062161887,
+          "signal_energy": 166901981.5360345,
+          "out_of_fullscale_fraction": 2.86786088863463e-07,
+          "quantization_nmse": 5.7414525423672e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 36,
+          "above_top_code": 36,
+          "encoded_zero": 332642,
+          "squared_error": 52.68828528139281,
+          "signal_energy": 59253514.15299417,
+          "out_of_fullscale_fraction": 1.3408180778032038e-07,
+          "quantization_nmse": 8.892010209782703e-07
+        }
+      }
+    },
+    "12": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 10464,
+          "squared_error": 5.8508444745818515,
+          "signal_energy": 3311738.7208837904,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 1.7666986944611562e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 55,
+          "above_top_code": 57,
+          "encoded_zero": 267072,
+          "squared_error": 84.35349108349368,
+          "signal_energy": 183437835.0615415,
+          "out_of_fullscale_fraction": 2.04847206331045e-07,
+          "quantization_nmse": 4.5984783376446826e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 91,
+          "above_top_code": 91,
+          "encoded_zero": 312523,
+          "squared_error": 51.64059483282155,
+          "signal_energy": 61727072.6089975,
+          "out_of_fullscale_fraction": 3.3892901411136535e-07,
+          "quantization_nmse": 8.365955592926382e-07
+        }
+      }
+    },
+    "13": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 10334,
+          "squared_error": 7.0037437083938485,
+          "signal_energy": 3694535.3607513914,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 1.895703525481871e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 43,
+          "above_top_code": 43,
+          "encoded_zero": 284900,
+          "squared_error": 116.7886022290033,
+          "signal_energy": 200738904.9459186,
+          "out_of_fullscale_fraction": 1.6015327040427156e-07,
+          "quantization_nmse": 5.817935604484219e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 197,
+          "above_top_code": 197,
+          "encoded_zero": 326869,
+          "squared_error": 169.79262148795516,
+          "signal_energy": 69478725.7553534,
+          "out_of_fullscale_fraction": 7.337254481311975e-07,
+          "quantization_nmse": 2.4438073617789753e-06
+        }
+      }
+    },
+    "14": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 6,
+          "above_top_code": 6,
+          "encoded_zero": 10518,
+          "squared_error": 16.360305363219172,
+          "signal_energy": 3956730.588403429,
+          "out_of_fullscale_fraction": 1.4557453416149069e-06,
+          "quantization_nmse": 4.134803974566457e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 143,
+          "above_top_code": 144,
+          "encoded_zero": 256890,
+          "squared_error": 127.90743935052656,
+          "signal_energy": 222909942.70809445,
+          "out_of_fullscale_fraction": 5.32602736460717e-07,
+          "quantization_nmse": 5.738076902115766e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 477,
+          "above_top_code": 480,
+          "encoded_zero": 307966,
+          "squared_error": 136.8292847943579,
+          "signal_energy": 77502035.97669427,
+          "out_of_fullscale_fraction": 1.7765839530892449e-06,
+          "quantization_nmse": 1.765492777963975e-06
+        }
+      }
+    },
+    "15": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 10129,
+          "squared_error": 7.306827783214812,
+          "signal_energy": 4881307.118823584,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 1.4968998273101465e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 32,
+          "above_top_code": 32,
+          "encoded_zero": 204821,
+          "squared_error": 90.63145249424839,
+          "signal_energy": 284407968.55972874,
+          "out_of_fullscale_fraction": 1.1918382913806255e-07,
+          "quantization_nmse": 3.1866706461571876e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 838,
+          "above_top_code": 840,
+          "encoded_zero": 317251,
+          "squared_error": 272.91085072081785,
+          "signal_energy": 97754748.3731797,
+          "out_of_fullscale_fraction": 3.121126525553013e-06,
+          "quantization_nmse": 2.7917912455666913e-06
+        }
+      }
+    },
+    "16": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 3,
+          "above_top_code": 3,
+          "encoded_zero": 10105,
+          "squared_error": 8.252461190304176,
+          "signal_energy": 6517321.69405827,
+          "out_of_fullscale_fraction": 7.278726708074534e-07,
+          "quantization_nmse": 1.266235054474571e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 109,
+          "above_top_code": 109,
+          "encoded_zero": 218547,
+          "squared_error": 325.3845571458367,
+          "signal_energy": 403818348.38651067,
+          "out_of_fullscale_fraction": 4.0596991800152555e-07,
+          "quantization_nmse": 8.057696200431144e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 34,
+          "above_top_code": 34,
+          "encoded_zero": 348760,
+          "squared_error": 81.58850419832197,
+          "signal_energy": 116296084.27048114,
+          "out_of_fullscale_fraction": 1.2663281845919146e-07,
+          "quantization_nmse": 7.015584807530031e-07
+        }
+      }
+    },
+    "17": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 15,
+          "above_top_code": 15,
+          "encoded_zero": 11041,
+          "squared_error": 28.082072564040065,
+          "signal_energy": 9536649.703747937,
+          "out_of_fullscale_fraction": 3.639363354037267e-06,
+          "quantization_nmse": 2.9446475897089635e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 192,
+          "above_top_code": 192,
+          "encoded_zero": 190918,
+          "squared_error": 258.71442380859446,
+          "signal_energy": 701026951.242488,
+          "out_of_fullscale_fraction": 7.151029748283753e-07,
+          "quantization_nmse": 3.690506097519553e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 326570,
+          "squared_error": 88.71649303157363,
+          "signal_energy": 140579887.296912,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 6.310752891997971e-07
+        }
+      }
+    },
+    "18": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 4,
+          "above_top_code": 4,
+          "encoded_zero": 11265,
+          "squared_error": 19.182412780303277,
+          "signal_energy": 8223257.165226854,
+          "out_of_fullscale_fraction": 9.70496894409938e-07,
+          "quantization_nmse": 2.332702528314289e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 79,
+          "above_top_code": 79,
+          "encoded_zero": 212958,
+          "squared_error": 206.94725175073916,
+          "signal_energy": 494397707.19572175,
+          "out_of_fullscale_fraction": 2.9423507818459194e-07,
+          "quantization_nmse": 4.1858457015216914e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 84,
+          "above_top_code": 84,
+          "encoded_zero": 318393,
+          "squared_error": 97.58411829457056,
+          "signal_energy": 136339728.1945667,
+          "out_of_fullscale_fraction": 3.1285755148741417e-07,
+          "quantization_nmse": 7.157423561480989e-07
+        }
+      }
+    },
+    "19": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 11232,
+          "squared_error": 19.983029901590275,
+          "signal_energy": 11552381.492045105,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 1.7297757969082358e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 255,
+          "above_top_code": 255,
+          "encoded_zero": 200943,
+          "squared_error": 388.4938839342728,
+          "signal_energy": 718645366.8712397,
+          "out_of_fullscale_fraction": 9.49746138443936e-07,
+          "quantization_nmse": 5.405919273168842e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 42,
+          "above_top_code": 44,
+          "encoded_zero": 274618,
+          "squared_error": 101.63357146433387,
+          "signal_energy": 215286989.53982887,
+          "out_of_fullscale_fraction": 1.5642877574370709e-07,
+          "quantization_nmse": 4.7208413142648964e-07
+        }
+      }
+    },
+    "20": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 93,
+          "above_top_code": 93,
+          "encoded_zero": 10153,
+          "squared_error": 206.45211296557528,
+          "signal_energy": 11982999.950451901,
+          "out_of_fullscale_fraction": 2.2564052795031055e-05,
+          "quantization_nmse": 1.7228750214406e-05
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 778,
+          "above_top_code": 779,
+          "encoded_zero": 210048,
+          "squared_error": 1082.6981371135626,
+          "signal_energy": 742370517.8493905,
+          "out_of_fullscale_fraction": 2.897656845919146e-06,
+          "quantization_nmse": 1.458433640724424e-06
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 69,
+          "above_top_code": 70,
+          "encoded_zero": 319847,
+          "squared_error": 228.90115509364793,
+          "signal_energy": 288834195.59569365,
+          "out_of_fullscale_fraction": 2.5699013157894736e-07,
+          "quantization_nmse": 7.925001907117009e-07
+        }
+      }
+    },
+    "21": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 16,
+          "above_top_code": 16,
+          "encoded_zero": 15367,
+          "squared_error": 120.35490251480134,
+          "signal_energy": 10451787.292044293,
+          "out_of_fullscale_fraction": 3.881987577639752e-06,
+          "quantization_nmse": 1.1515246067666652e-05
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 27,
+          "above_top_code": 27,
+          "encoded_zero": 295016,
+          "squared_error": 560.2988259264777,
+          "signal_energy": 655261393.1813701,
+          "out_of_fullscale_fraction": 1.0056135583524028e-07,
+          "quantization_nmse": 8.550768163009907e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 107,
+          "above_top_code": 108,
+          "encoded_zero": 421217,
+          "squared_error": 368.4027578576018,
+          "signal_energy": 273746627.1950121,
+          "out_of_fullscale_fraction": 3.9852092868039666e-07,
+          "quantization_nmse": 1.3457800800415284e-06
+        }
+      }
+    },
+    "22": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 14549,
+          "squared_error": 12.046415150018433,
+          "signal_energy": 9137999.243421849,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 1.3182771008314821e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 168,
+          "above_top_code": 168,
+          "encoded_zero": 339677,
+          "squared_error": 440.29124723484097,
+          "signal_energy": 468439137.7176723,
+          "out_of_fullscale_fraction": 6.257151029748283e-07,
+          "quantization_nmse": 9.399113177861838e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 187,
+          "above_top_code": 187,
+          "encoded_zero": 319319,
+          "squared_error": 228.31603664877977,
+          "signal_energy": 257672867.3492065,
+          "out_of_fullscale_fraction": 6.96480501525553e-07,
+          "quantization_nmse": 8.860693754742854e-07
+        }
+      }
+    },
+    "23": {
+      "forward_calls": 130,
+      "signals": {
+        "x": {
+          "count": 4121600,
+          "out_of_fullscale": 0,
+          "above_top_code": 0,
+          "encoded_zero": 16061,
+          "squared_error": 24.64506958924025,
+          "signal_energy": 12635818.167226786,
+          "out_of_fullscale_fraction": 0.0,
+          "quantization_nmse": 1.950413440829781e-06
+        },
+        "g": {
+          "count": 268492800,
+          "out_of_fullscale": 36,
+          "above_top_code": 36,
+          "encoded_zero": 302682,
+          "squared_error": 522.8141028698158,
+          "signal_energy": 975001174.0518461,
+          "out_of_fullscale_fraction": 1.3408180778032038e-07,
+          "quantization_nmse": 5.362189469958678e-07
+        },
+        "u": {
+          "count": 268492800,
+          "out_of_fullscale": 51,
+          "above_top_code": 51,
+          "encoded_zero": 445681,
+          "squared_error": 445.22810756317415,
+          "signal_energy": 499630151.66959876,
+          "out_of_fullscale_fraction": 1.899492276887872e-07,
+          "quantization_nmse": 8.911153701900676e-07
+        }
+      }
+    }
+  },
+  "projection_diagnostics": {
+    "L0.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.035651203416149066,
+      "mean_probability": 0.03165136538677334,
+      "input_quantization_nmse": 0.00015075231659169092,
+      "sampling_vs_quantized_input_nmse": 0.0367791079288762,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 29523457978.5,
+      "expected_active_magnitude_bitplane_events": 82118943670.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.25,
+        "scale_max": 2.0,
+        "zero_fraction": 0.015583894215524197,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L0.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.035651203416149066,
+      "mean_probability": 0.03165136538677334,
+      "input_quantization_nmse": 0.00015075231659169092,
+      "sampling_vs_quantized_input_nmse": 0.03671997928258536,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 4214139319.0,
+      "expected_active_magnitude_bitplane_events": 11476491835.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.5,
+        "scale_max": 2.0,
+        "zero_fraction": 0.014351981692016125,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L1.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.020249417701863354,
+      "mean_probability": 0.04143275148379877,
+      "input_quantization_nmse": 0.00011374700556380572,
+      "sampling_vs_quantized_input_nmse": 0.041534594086165624,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 38870131836.5,
+      "expected_active_magnitude_bitplane_events": 116645062774.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.5,
+        "zero_fraction": 0.0074898856692016125,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L1.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.020249417701863354,
+      "mean_probability": 0.04143275148379877,
+      "input_quantization_nmse": 0.00011374700556380572,
+      "sampling_vs_quantized_input_nmse": 0.041557237573825886,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 5558789818.5,
+      "expected_active_magnitude_bitplane_events": 17420802257.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.25,
+        "scale_max": 0.5,
+        "zero_fraction": 0.006678990088403225,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L2.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 2.426242236024845e-07,
+      "encoded_zero_fraction": 0.026042798913043477,
+      "mean_probability": 0.035646253313337053,
+      "input_quantization_nmse": 0.0001437899379657196,
+      "sampling_vs_quantized_input_nmse": 0.0438861510639117,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 33402052914.5,
+      "expected_active_magnitude_bitplane_events": 99146560410.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.0625,
+        "scale_max": 0.5,
+        "zero_fraction": 0.007938306778669357,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L2.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 2.426242236024845e-07,
+      "encoded_zero_fraction": 0.026042798913043477,
+      "mean_probability": 0.035646253313337053,
+      "input_quantization_nmse": 0.0001437899379657196,
+      "sampling_vs_quantized_input_nmse": 0.04380911228100311,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 4781439322.5,
+      "expected_active_magnitude_bitplane_events": 14632548850.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.25,
+        "scale_max": 0.5,
+        "zero_fraction": 0.0066353934817016125,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L3.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.02634462344720497,
+      "mean_probability": 0.035481501988002234,
+      "input_quantization_nmse": 0.0001148562850768327,
+      "sampling_vs_quantized_input_nmse": 0.036399431890179655,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 33070915979.5,
+      "expected_active_magnitude_bitplane_events": 94419153594.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.0625,
+        "scale_max": 0.5,
+        "zero_fraction": 0.011310188099741936,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L3.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.02634462344720497,
+      "mean_probability": 0.035481501988002234,
+      "input_quantization_nmse": 0.0001148562850768327,
+      "sampling_vs_quantized_input_nmse": 0.036327550288552585,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 4739428969.5,
+      "expected_active_magnitude_bitplane_events": 13684886344.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.25,
+        "scale_max": 0.25,
+        "zero_fraction": 0.00927734375,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L4.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.03307720302795031,
+      "mean_probability": 0.03638401339513175,
+      "input_quantization_nmse": 0.0002443092176929454,
+      "sampling_vs_quantized_input_nmse": 0.04730353395560331,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 34130496882.5,
+      "expected_active_magnitude_bitplane_events": 103271545492.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.007372797466814518,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L4.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.03307720302795031,
+      "mean_probability": 0.03638401339513175,
+      "input_quantization_nmse": 0.0002443092176929454,
+      "sampling_vs_quantized_input_nmse": 0.04730417698148424,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 4876219107.5,
+      "expected_active_magnitude_bitplane_events": 14543033019.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.007952009327709675,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L5.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.028938033773291925,
+      "mean_probability": 0.03515675988996991,
+      "input_quantization_nmse": 0.0001993574294077512,
+      "sampling_vs_quantized_input_nmse": 0.049311713880418315,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 32965220840.5,
+      "expected_active_magnitude_bitplane_events": 98542989105.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.5,
+        "zero_fraction": 0.008280850946903229,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L5.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.028938033773291925,
+      "mean_probability": 0.03515675988996991,
+      "input_quantization_nmse": 0.0001993574294077512,
+      "sampling_vs_quantized_input_nmse": 0.04919389908308753,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 4707032221.5,
+      "expected_active_magnitude_bitplane_events": 13799094839.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.00897216796875,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L6.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.03248811141304348,
+      "mean_probability": 0.038401371262828755,
+      "input_quantization_nmse": 0.0002706161004372517,
+      "sampling_vs_quantized_input_nmse": 0.052504754382931555,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 35974895855.0,
+      "expected_active_magnitude_bitplane_events": 105912404153.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.0625,
+        "scale_max": 0.5,
+        "zero_fraction": 0.008977150544524193,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L6.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.03248811141304348,
+      "mean_probability": 0.038401371262828755,
+      "input_quantization_nmse": 0.0002706161004372517,
+      "sampling_vs_quantized_input_nmse": 0.05244989254573934,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 5137372555.5,
+      "expected_active_magnitude_bitplane_events": 15068871270.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.008937290869653225,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L7.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.029688227872670808,
+      "mean_probability": 0.03494136170570895,
+      "input_quantization_nmse": 0.0001574021270654865,
+      "sampling_vs_quantized_input_nmse": 0.03773230702897768,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 32741038145.5,
+      "expected_active_magnitude_bitplane_events": 98365342285.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.5,
+        "zero_fraction": 0.007710359524935484,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L7.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.029688227872670808,
+      "mean_probability": 0.03494136170570895,
+      "input_quantization_nmse": 0.0001574021270654865,
+      "sampling_vs_quantized_input_nmse": 0.037703368022433806,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 4672384829.5,
+      "expected_active_magnitude_bitplane_events": 13589830971.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.00914655439555645,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L8.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 4.85248447204969e-07,
+      "encoded_zero_fraction": 0.03191163625776398,
+      "mean_probability": 0.03847530009583657,
+      "input_quantization_nmse": 0.00019327581006482972,
+      "sampling_vs_quantized_input_nmse": 0.04068920426357794,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 36087896061.0,
+      "expected_active_magnitude_bitplane_events": 109321585107.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.0625,
+        "scale_max": 2.0,
+        "zero_fraction": 0.007109972648322582,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L8.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 4.85248447204969e-07,
+      "encoded_zero_fraction": 0.03191163625776398,
+      "mean_probability": 0.03847530009583657,
+      "input_quantization_nmse": 0.00019327581006482972,
+      "sampling_vs_quantized_input_nmse": 0.04071453663446008,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 5151528634.5,
+      "expected_active_magnitude_bitplane_events": 15194805127.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.25,
+        "scale_max": 0.25,
+        "zero_fraction": 0.0077950619161129,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L9.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 4.85248447204969e-07,
+      "encoded_zero_fraction": 0.04296802212732919,
+      "mean_probability": 0.026197001297281395,
+      "input_quantization_nmse": 0.00014482966698920965,
+      "sampling_vs_quantized_input_nmse": 0.034136987094997504,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 24121294065.0,
+      "expected_active_magnitude_bitplane_events": 63822588508.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.01291204895824194,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L9.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 4.85248447204969e-07,
+      "encoded_zero_fraction": 0.04296802212732919,
+      "mean_probability": 0.026197001297281395,
+      "input_quantization_nmse": 0.00014482966698920965,
+      "sampling_vs_quantized_input_nmse": 0.03404594319944863,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 3433446561.5,
+      "expected_active_magnitude_bitplane_events": 9129109404.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.5,
+        "zero_fraction": 0.01329694502055645,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L10.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 2.426242236024845e-07,
+      "encoded_zero_fraction": 0.03469113936335404,
+      "mean_probability": 0.03579615148698321,
+      "input_quantization_nmse": 0.0002040218797077072,
+      "sampling_vs_quantized_input_nmse": 0.04753623970014862,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 33568797181.5,
+      "expected_active_magnitude_bitplane_events": 101053658601.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.0625,
+        "scale_max": 0.5,
+        "zero_fraction": 0.0077078682370483875,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L10.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 2.426242236024845e-07,
+      "encoded_zero_fraction": 0.03469113936335404,
+      "mean_probability": 0.03579615148698321,
+      "input_quantization_nmse": 0.0002040218797077072,
+      "sampling_vs_quantized_input_nmse": 0.047570775748499015,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 4797522958.5,
+      "expected_active_magnitude_bitplane_events": 14365340389.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.007158552296459675,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L11.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.04082322399068323,
+      "mean_probability": 0.027069416875424593,
+      "input_quantization_nmse": 0.0001429433257356856,
+      "sampling_vs_quantized_input_nmse": 0.03646647765482527,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 24858800829.0,
+      "expected_active_magnitude_bitplane_events": 64357285733.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.01596256159245968,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L11.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.04082322399068323,
+      "mean_probability": 0.027069416875424593,
+      "input_quantization_nmse": 0.0001429433257356856,
+      "sampling_vs_quantized_input_nmse": 0.03651690198231575,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 3533786147.0,
+      "expected_active_magnitude_bitplane_events": 9056450743.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.0165056511759758,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L12.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.03431507181677019,
+      "mean_probability": 0.033804220353594476,
+      "input_quantization_nmse": 0.00021736146061562082,
+      "sampling_vs_quantized_input_nmse": 0.05243748398230912,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 31689498430.0,
+      "expected_active_magnitude_bitplane_events": 94491990243.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.5,
+        "zero_fraction": 0.007996850647032261,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L12.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.03431507181677019,
+      "mean_probability": 0.033804220353594476,
+      "input_quantization_nmse": 0.00021736146061562082,
+      "sampling_vs_quantized_input_nmse": 0.05240081340227107,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 4526856069.5,
+      "expected_active_magnitude_bitplane_events": 13671836154.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.00823102705180645,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L13.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.03464043090062112,
+      "mean_probability": 0.028731026501389024,
+      "input_quantization_nmse": 0.000187394079351009,
+      "sampling_vs_quantized_input_nmse": 0.04789851622771557,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 26760884855.0,
+      "expected_active_magnitude_bitplane_events": 75341066260.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.5,
+        "zero_fraction": 0.012412557378411293,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L13.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.03464043090062112,
+      "mean_probability": 0.028731026501389024,
+      "input_quantization_nmse": 0.000187394079351009,
+      "sampling_vs_quantized_input_nmse": 0.04784721196781346,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 3818805239.0,
+      "expected_active_magnitude_bitplane_events": 10273295786.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.5,
+        "zero_fraction": 0.013488770462572575,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L14.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.031787655279503106,
+      "mean_probability": 0.03229717941758055,
+      "input_quantization_nmse": 0.0001864462446391486,
+      "sampling_vs_quantized_input_nmse": 0.05068258203136397,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 30241564246.5,
+      "expected_active_magnitude_bitplane_events": 87888647952.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.5,
+        "zero_fraction": 0.008987114764750004,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L14.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.031787655279503106,
+      "mean_probability": 0.03229717941758055,
+      "input_quantization_nmse": 0.0001864462446391486,
+      "sampling_vs_quantized_input_nmse": 0.05061853373300719,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 4322016130.0,
+      "expected_active_magnitude_bitplane_events": 12749935117.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.00914655439555645,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L15.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.030637373835403728,
+      "mean_probability": 0.03471016830539111,
+      "input_quantization_nmse": 0.00017817239515820066,
+      "sampling_vs_quantized_input_nmse": 0.0475051887481302,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 32529895358.5,
+      "expected_active_magnitude_bitplane_events": 97236972100.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.008310746401548386,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L15.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.030637373835403728,
+      "mean_probability": 0.03471016830539111,
+      "input_quantization_nmse": 0.00017817239515820066,
+      "sampling_vs_quantized_input_nmse": 0.04749407277962182,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 4652151161.5,
+      "expected_active_magnitude_bitplane_events": 13941457703.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.0077950619161129,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L16.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.034008394798136644,
+      "mean_probability": 0.029463033261506455,
+      "input_quantization_nmse": 0.00019071856398416464,
+      "sampling_vs_quantized_input_nmse": 0.04595466838789117,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 27261556991.5,
+      "expected_active_magnitude_bitplane_events": 72079739931.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.5,
+        "zero_fraction": 0.01608961448073387,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L16.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.034008394798136644,
+      "mean_probability": 0.029463033261506455,
+      "input_quantization_nmse": 0.00019071856398416464,
+      "sampling_vs_quantized_input_nmse": 0.04587735180464319,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 3916805413.5,
+      "expected_active_magnitude_bitplane_events": 10439103658.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.013305664993822575,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L17.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 9.70496894409938e-07,
+      "encoded_zero_fraction": 0.024024650621118013,
+      "mean_probability": 0.03988941832358793,
+      "input_quantization_nmse": 0.0001316493918825616,
+      "sampling_vs_quantized_input_nmse": 0.03973471063879806,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 37366109192.0,
+      "expected_active_magnitude_bitplane_events": 110294939984.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.5,
+        "zero_fraction": 0.008299535140395164,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L17.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 9.70496894409938e-07,
+      "encoded_zero_fraction": 0.024024650621118013,
+      "mean_probability": 0.03988941832358793,
+      "input_quantization_nmse": 0.0001316493918825616,
+      "sampling_vs_quantized_input_nmse": 0.039754029314636015,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 5332532544.5,
+      "expected_active_magnitude_bitplane_events": 15518485717.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.009599958546459675,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L18.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 7.278726708074534e-07,
+      "encoded_zero_fraction": 0.021405522127329192,
+      "mean_probability": 0.04248188611143124,
+      "input_quantization_nmse": 0.00010784400887422382,
+      "sampling_vs_quantized_input_nmse": 0.03804979866847793,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 39776393801.0,
+      "expected_active_magnitude_bitplane_events": 116548328470.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.5,
+        "zero_fraction": 0.009525220841169357,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L18.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 7.278726708074534e-07,
+      "encoded_zero_fraction": 0.021405522127329192,
+      "mean_probability": 0.04248188611143124,
+      "input_quantization_nmse": 0.00010784400887422382,
+      "sampling_vs_quantized_input_nmse": 0.03806394994299285,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 5683672847.5,
+      "expected_active_magnitude_bitplane_events": 16550552796.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.00967843271791935,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L19.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.03699946622670808,
+      "mean_probability": 0.02925730355778096,
+      "input_quantization_nmse": 0.0001888962547908256,
+      "sampling_vs_quantized_input_nmse": 0.04465744622397609,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 27386763466.5,
+      "expected_active_magnitude_bitplane_events": 81055768561.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.00911915022879839,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L19.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.03699946622670808,
+      "mean_probability": 0.02925730355778096,
+      "input_quantization_nmse": 0.0001888962547908256,
+      "sampling_vs_quantized_input_nmse": 0.044742139027352835,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 3919757649.0,
+      "expected_active_magnitude_bitplane_events": 11747710527.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.007838658057153225,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L20.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.03921777950310559,
+      "mean_probability": 0.02585093006584215,
+      "input_quantization_nmse": 0.0002451345341061254,
+      "sampling_vs_quantized_input_nmse": 0.05493297129853635,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 24106861046.0,
+      "expected_active_magnitude_bitplane_events": 67228771592.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.01094148587435484,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L20.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.03921777950310559,
+      "mean_probability": 0.02585093006584215,
+      "input_quantization_nmse": 0.0002451345341061254,
+      "sampling_vs_quantized_input_nmse": 0.054991718474263096,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 3451185935.5,
+      "expected_active_magnitude_bitplane_events": 10008667221.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.010035923682153225,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L21.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.04765722049689441,
+      "mean_probability": 0.02393500760475301,
+      "input_quantization_nmse": 0.0002020007939959484,
+      "sampling_vs_quantized_input_nmse": 0.044687028108348396,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 22119280289.5,
+      "expected_active_magnitude_bitplane_events": 56884698446.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.015096859075129032,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L21.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.04765722049689441,
+      "mean_probability": 0.02393500760475301,
+      "input_quantization_nmse": 0.0002020007939959484,
+      "sampling_vs_quantized_input_nmse": 0.04453523075493575,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 3178823805.5,
+      "expected_active_magnitude_bitplane_events": 8542421398.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.011910575442016125,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L22.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.04783385093167702,
+      "mean_probability": 0.023393420580751407,
+      "input_quantization_nmse": 0.00018253787055060532,
+      "sampling_vs_quantized_input_nmse": 0.0402129983363492,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 21740482435.5,
+      "expected_active_magnitude_bitplane_events": 58164627289.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.5,
+        "zero_fraction": 0.0113089419901371,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L22.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.04783385093167702,
+      "mean_probability": 0.023393420580751407,
+      "input_quantization_nmse": 0.00018253787055060532,
+      "sampling_vs_quantized_input_nmse": 0.04017490080843793,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 3112458811.0,
+      "expected_active_magnitude_bitplane_events": 8557520146.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.011125837452709675,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L23.q": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 4121600,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.04835597826086956,
+      "mean_probability": 0.02350850928644216,
+      "input_quantization_nmse": 0.00019953043695666262,
+      "sampling_vs_quantized_input_nmse": 0.04289293288053734,
+      "original_macs": 3692953600,
+      "expected_selected_weight_word_adds": 21835304585.5,
+      "expected_active_magnitude_bitplane_events": 58773753299.5,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 802816,
+        "code_bits": 10,
+        "scale_count": 196,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.01083685364574194,
+        "bias_elements": 896
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    },
+    "L23.k": {
+      "calls": 130,
+      "input_values": 4121600,
+      "output_values": 588800,
+      "tokens_including_overlapping_windows": 4600,
+      "outside_code_range_fraction": 0.0,
+      "encoded_zero_fraction": 0.04835597826086956,
+      "mean_probability": 0.02350850928644216,
+      "input_quantization_nmse": 0.00019953043695666262,
+      "sampling_vs_quantized_input_nmse": 0.042941382468213544,
+      "original_macs": 527564800,
+      "expected_selected_weight_word_adds": 3108900410.5,
+      "expected_active_magnitude_bitplane_events": 8512902722.0,
+      "bernoulli_decisions": 1055129600,
+      "weight": {
+        "codes": 114688,
+        "code_bits": 10,
+        "scale_count": 28,
+        "scale_min": 0.125,
+        "scale_max": 0.25,
+        "zero_fraction": 0.0142647884786129,
+        "bias_elements": 128
+      },
+      "samples_per_projection": 256,
+      "count_accumulator_worst_same_scale_bits": 28
+    }
+  },
+  "scales_unchanged": true,
+  "all_prefill_and_decode_verified": true,
+  "training": false,
+  "ffn_config": "fixed group_max, W8, magnitude12+sign, input4096/output3072, interval256,burn25%,ideal sigmoid",
+  "attention_config": "Ising hard-exclusion CTMC burn16 spacing4; exact QK; q/k fixed projections W10 sign+9 magnitude if enabled",
+  "calibration_sha256": {
+    "calibration_ffn.json": "1f5e262e234914c45da1da3b0fe92839143afd475157f8f0662fc568b6a28324",
+    "calibration_projection.json": "ed47360322dbb6357d2a26dfef16dc480f867083dbdad3404f91d155887aae81"
+  },
+  "limits": [
+    "WT2 cached suffix subset, NOT full corpus PPL",
+    "all sampled prefill is included",
+    "FP32 counts and matmuls, not sparse CUDA",
+    "Ising hard penalty limit, not finite device",
+    "no energy/area/native latency claim"
+  ]
+}

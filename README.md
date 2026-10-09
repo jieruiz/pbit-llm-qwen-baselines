@@ -7,6 +7,18 @@ This repository contains the baseline code and measured results used before any
 p-bit modification. Model weights and benchmark datasets are intentionally not
 committed.
 
+## Latest: all-layer fixed-scale stochastic FFN + attention
+
+Three jointly evaluated presets are published in
+[`experiments/joint_ffn_attention_20261009/`](experiments/joint_ffn_attention_20261009/):
+`pv_only` (exact Q/K + exact Softmax + sampled PV), `qk_ising` (stochastic Q/K + Ising/V sampling),
+and `qk_softmax_pv` (stochastic Q/K + exact Softmax + sampled PV).
+All use the current fixed-scale stochastic FFN in all 24 layers, including prefill and decode.
+Matched suffix PPL: **12.490 / 13.216 / 13.238**, versus 12.343 for this FFN with exact attention
+and 10.381 for the original model. These are 4096 scored suffix tokens, not full-corpus PPL.
+See the [full report](experiments/joint_ffn_attention_20261009/results/RESULTS_ZH.md)
+for three-seed results, controls, source hashes and hardware limitations.
+
 ## Reference results
 
 The measurements below used one NVIDIA GeForce RTX 5090 (32 GB), PyTorch

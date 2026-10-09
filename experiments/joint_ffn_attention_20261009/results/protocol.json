@@ -1,0 +1,96 @@
+{
+  "model": "Qwen2.5-0.5B Base",
+  "training": false,
+  "ffn": "CURRENT fixed group_max all24,W8,12magnitude+sign,T4096,interval256,burn25%; BF16 residual/interface",
+  "qk": "fixed learned q_proj/k_proj ONLY; W10,input9magnitude+sign,dyadic scales; QK dot remains deterministic",
+  "attention": "all24 layers, BOTH prefill and decode sampled, causal mask, physical K/V cache from modified prefix",
+  "ising": "hard-exclusion continuous-time heat-bath,reference maximum score,burn16,spacing4,samples512; sigmoid birth rates, no softmax probabilities drive Ising",
+  "iid": "exact numerical softmax then512 IID categorical positions, sparse mathematical PV via dense counts@V reference",
+  "validation": "last65536 train tokens,8evenly-spaced spans,context512,decode64,batch4,512scored; disjoint old calibration first8192",
+  "test": "WT2 test,32evenly-spaced spans,context2048,decode128,batch4,4096scored; NOT full WT2 PPL",
+  "selection": "choose q256 if joint Ising validation <=1.05*fixedFFN+dense validation; else q1024 if passes; else lower joint Ising validation PPL. Budget diagnostic only.",
+  "fallback": "always measure same-Q exactsoftmax+sampledPV and no-Q exactsoftmax+sampledPV; recommend fallback if Ising adds>5% beyond FFN-only, report total loss separately",
+  "validation_specs": [
+    {
+      "ffn": "original",
+      "qcycles": 0,
+      "attn": "sdpa",
+      "seed": 0
+    },
+    {
+      "ffn": "original",
+      "qcycles": 0,
+      "attn": "dense",
+      "seed": 0
+    },
+    {
+      "ffn": "fixed",
+      "qcycles": 0,
+      "attn": "sdpa",
+      "seed": 0
+    },
+    {
+      "ffn": "fixed",
+      "qcycles": 0,
+      "attn": "dense",
+      "seed": 0
+    },
+    {
+      "ffn": "fixed",
+      "qcycles": 256,
+      "attn": "dense",
+      "seed": 0
+    },
+    {
+      "ffn": "original",
+      "qcycles": 0,
+      "attn": "ising",
+      "seed": 0
+    },
+    {
+      "ffn": "fixed",
+      "qcycles": 0,
+      "attn": "ising",
+      "seed": 0
+    },
+    {
+      "ffn": "fixed",
+      "qcycles": 0,
+      "attn": "iid",
+      "seed": 0
+    },
+    {
+      "ffn": "fixed",
+      "qcycles": 256,
+      "attn": "ising",
+      "seed": 0
+    },
+    {
+      "ffn": "fixed",
+      "qcycles": 256,
+      "attn": "iid",
+      "seed": 0
+    },
+    {
+      "ffn": "fixed",
+      "qcycles": 1024,
+      "attn": "ising",
+      "seed": 0
+    },
+    {
+      "ffn": "fixed",
+      "qcycles": 1024,
+      "attn": "iid",
+      "seed": 0
+    }
+  ],
+  "repeats": "test seeds1/2 for fixedFFN sdpa, selected jointIsing, selected jointIID, fixedFFN IID without Q",
+  "generation": "baseline,FFN-only,jointIsing,jointIID,no-Q IID fixed prompts48tokens",
+  "limits": [
+    "FFN ideal sigmoid; Ising ideal hard constraint not finite circuitry",
+    "original RMSNorm/RoPE/residual maintained",
+    "IID and Ising software count compression, not bit-level RTL or sparse CUDA",
+    "no energy/area claim",
+    "subset cached PPL cannot compare to full11.6527baseline"
+  ]
+}
