@@ -1,0 +1,235 @@
+{
+  "metadata": {
+    "task": "winogrande",
+    "model": {
+      "repo_id": "Qwen/Qwen3.5-0.8B",
+      "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "endpoint": "https://hf-mirror.com",
+      "files": [
+        {
+          "path": ".gitattributes",
+          "bytes": 1570,
+          "sha256": "34448b82c17d60fec9b65b1f093c115ddbaadc04beb1b0140b6bfed2e012a930"
+        },
+        {
+          "path": "LICENSE",
+          "bytes": 11544,
+          "sha256": "bbedc3fda3305820b977265f01b8619d87570a6739de3a5582c3464840f1e57a"
+        },
+        {
+          "path": "README.md",
+          "bytes": 61705,
+          "sha256": "87a163af54f32fa608a0f8d3ac67945c53dd2b4a7c96740b3d7fdc28e8458864"
+        },
+        {
+          "path": "chat_template.jinja",
+          "bytes": 7755,
+          "sha256": "273d8e0e683b885071fb17e08d71e5f2a5ddfb5309756181681de4f5a1822d80"
+        },
+        {
+          "path": "config.json",
+          "bytes": 2907,
+          "sha256": "b90b86f35c8e6925ef74ee04d0e758f0a845c83a42089ad82bbaa948de9b4204"
+        },
+        {
+          "path": "merges.txt",
+          "bytes": 3353259,
+          "sha256": "a9d356d7bdf1ef4949e3e748e95b8e10ad9d4e2e838eddc38a0a7b6b94d1db8d"
+        },
+        {
+          "path": "model.safetensors-00001-of-00001.safetensors",
+          "bytes": 1746942600,
+          "sha256": "04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696"
+        },
+        {
+          "path": "model.safetensors.index.json",
+          "bytes": 50900,
+          "sha256": "d8a08838a613b025eb7952ed9db11696213e57e76a375661ef5c12f9dd5dcf4e"
+        },
+        {
+          "path": "preprocessor_config.json",
+          "bytes": 390,
+          "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516"
+        },
+        {
+          "path": "tokenizer.json",
+          "bytes": 12807982,
+          "sha256": "5f9e4d4901a92b997e463c1f46055088b6cca5ca61a6522d1b9f64c4bb81cb42"
+        },
+        {
+          "path": "tokenizer_config.json",
+          "bytes": 16709,
+          "sha256": "49e2b6e395f959f077f1e992b338919c0d4a9732fc6e613995e06557f843500c"
+        },
+        {
+          "path": "video_preprocessor_config.json",
+          "bytes": 385,
+          "sha256": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13"
+        },
+        {
+          "path": "vocab.json",
+          "bytes": 6722759,
+          "sha256": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003"
+        }
+      ],
+      "versions": {
+        "torch": "2.7.1+cu128",
+        "transformers": "5.19.0",
+        "lm_eval": "0.4.13",
+        "datasets": "4.8.5",
+        "peft": "0.21.2",
+        "huggingface-hub": "1.33.0"
+      },
+      "scope": "Official post-trained checkpoint; text-only inference; original weights; no p-bit replacement"
+    },
+    "slurm_job_id": "1232",
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "cuda_visible_devices": "3",
+    "source_sha256": "d6ba220e12815dde7f475486a77d49760b4cc9890cb2164ea010d42132a985f9",
+    "context": 2048,
+    "stride": 1024,
+    "batch_size": 1,
+    "dtype": "BF16 weights/activations; native FP32 internals retained",
+    "attention_backend": "sdpa",
+    "zero_shot": true,
+    "apply_chat_template_for_scoring": false,
+    "scope": "All original 24 layers; no random FFN/attention; raw text likelihood; vision encoder unused",
+    "loading_info": {
+      "missing_keys": "set()",
+      "unexpected_keys": "set()",
+      "mismatched_keys": "set()",
+      "error_msgs": []
+    },
+    "seconds": 110.94824677100405
+  },
+  "result": {
+    "dataset": {
+      "split": "validation",
+      "files": [
+        {
+          "path": "/home/Hongjie_Zeng/joint_ffn_attention_20261009/data/full_benchmarks/winogrande/0000.parquet",
+          "source": "https://hf-mirror.com/datasets/allenai/winogrande/resolve/refs%2Fconvert%2Fparquet/winogrande_xl/validation/0000.parquet",
+          "sha256": "f9d914d1818c0aba98cabdf8af2bc4bd943c462b9c5e7062647e05c2ce3315d1"
+        }
+      ]
+    },
+    "dataset_rows": 1267,
+    "harness_result": {
+      "results": {
+        "winogrande": {
+          "name": "winogrande",
+          "alias": "winogrande",
+          "sample_len": 1267,
+          "acc,none": 0.5872138910812944,
+          "acc_stderr,none": 0.013837060648682153
+        }
+      },
+      "group_subtasks": {},
+      "configs": {
+        "winogrande": {
+          "task": "winogrande",
+          "dataset_path": "parquet",
+          "dataset_kwargs": {
+            "data_files": {
+              "validation": [
+                "/home/Hongjie_Zeng/joint_ffn_attention_20261009/data/full_benchmarks/winogrande/0000.parquet"
+              ]
+            }
+          },
+          "validation_split": "validation",
+          "doc_to_text": "def doc_to_text(doc):\n    answer_to_num = {\"1\": 0, \"2\": 1}\n    return answer_to_num[doc[\"answer\"]]\n",
+          "doc_to_target": "def doc_to_target(doc):\n    idx = doc[\"sentence\"].index(\"_\") + 1\n    return doc[\"sentence\"][idx:].strip()\n",
+          "unsafe_code": false,
+          "doc_to_choice": "def doc_to_choice(doc):\n    idx = doc[\"sentence\"].index(\"_\")\n    options = [doc[\"option1\"], doc[\"option2\"]]\n    return [doc[\"sentence\"][:idx] + opt for opt in options]\n",
+          "description": "",
+          "target_delimiter": " ",
+          "fewshot_delimiter": "\n\n",
+          "fewshot_config": {
+            "sampler": "default",
+            "split": null,
+            "process_docs": null,
+            "fewshot_indices": null,
+            "doc_to_text": "<function doc_to_text at 0x7af2c410f420>",
+            "doc_to_choice": "<function doc_to_choice at 0x7af2c410fce0>",
+            "doc_to_target": "<function doc_to_target at 0x7af2c410e7a0>",
+            "gen_prefix": null,
+            "fewshot_delimiter": "\n\n",
+            "target_delimiter": " "
+          },
+          "num_fewshot": 0,
+          "metric_list": [
+            {
+              "metric": "acc",
+              "aggregation": "mean",
+              "higher_is_better": true
+            }
+          ],
+          "output_type": "multiple_choice",
+          "repeats": 1,
+          "should_decontaminate": true,
+          "doc_to_decontamination_query": "sentence",
+          "metadata": {
+            "version": 1.0,
+            "config_source": "inline"
+          }
+        }
+      },
+      "versions": {
+        "winogrande": 1.0
+      },
+      "n-shot": {
+        "winogrande": 0
+      },
+      "higher_is_better": {
+        "winogrande": {
+          "acc": true
+        }
+      },
+      "n-samples": {
+        "winogrande": {
+          "original": 1267,
+          "effective": 1267
+        }
+      },
+      "config": {
+        "model": "/home/Hongjie_Zeng/qwen35_baseline_20261013/models/Qwen3.5-0.8B",
+        "model_args": null,
+        "model_num_parameters": 852985920,
+        "model_dtype": "torch.bfloat16",
+        "model_revision": "main",
+        "model_sha": "",
+        "batch_size": null,
+        "batch_sizes": [],
+        "device": null,
+        "use_cache": null,
+        "limit": null,
+        "bootstrap_iters": 1000,
+        "gen_kwargs": null,
+        "random_seed": 0,
+        "numpy_seed": 0,
+        "torch_seed": 0,
+        "fewshot_seed": 0
+      },
+      "git_hash": null,
+      "date": 1791868798.1766963,
+      "pretty_env_info": "PyTorch version: 2.7.1+cu128\nIs debug build: False\nCUDA used to build PyTorch: 12.8\nROCM used to build PyTorch: N/A\n\nOS: Ubuntu 24.04.3 LTS (x86_64)\nGCC version: (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nClang version: Could not collect\nCMake version: version 3.28.3\nLibc version: glibc-2.39\n\nPython version: 3.12.14 | packaged by Anaconda, Inc. | (main, Aug 27 2026, 14:46:43) [GCC 14.3.0] (64-bit runtime)\nPython platform: Linux-6.14.0-33-generic-x86_64-with-glibc2.39\nIs CUDA available: True\nCUDA runtime version: Could not collect\nCUDA_MODULE_LOADING set to: LAZY\nGPU models and configuration: \nGPU 0: NVIDIA GeForce RTX 5090\nGPU 1: NVIDIA GeForce RTX 5090\nGPU 2: NVIDIA GeForce RTX 5090\nGPU 3: NVIDIA GeForce RTX 5090\nGPU 4: NVIDIA GeForce RTX 5090\nGPU 5: NVIDIA GeForce RTX 5090\nGPU 6: NVIDIA GeForce RTX 5090\nGPU 7: NVIDIA GeForce RTX 5090\n\nNvidia driver version: 570.172.08\ncuDNN version: Probably one of the following:\n/usr/local/cuda-12.8/targets/x86_64-linux/lib/libcudnn.so.9\n/usr/local/cuda-12.8/targets/x86_64-linux/lib/libcudnn_adv.so.9\n/usr/local/cuda-12.8/targets/x86_64-linux/lib/libcudnn_cnn.so.9\n/usr/local/cuda-12.8/targets/x86_64-linux/lib/libcudnn_engines_precompiled.so.9\n/usr/local/cuda-12.8/targets/x86_64-linux/lib/libcudnn_engines_runtime_compiled.so.9\n/usr/local/cuda-12.8/targets/x86_64-linux/lib/libcudnn_graph.so.9\n/usr/local/cuda-12.8/targets/x86_64-linux/lib/libcudnn_heuristic.so.9\n/usr/local/cuda-12.8/targets/x86_64-linux/lib/libcudnn_ops.so.9\nHIP runtime version: N/A\nMIOpen runtime version: N/A\nIs XNNPACK available: True\n\nCPU:\nArchitecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           52 bits physical, 57 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  64\nOn-line CPU(s) list:                     0-63\nVendor ID:                               GenuineIntel\nModel name:                              INTEL(R) XEON(R) GOLD 6530\nCPU family:                              6\nModel:                                   207\nThread(s) per core:                      1\nCore(s) per socket:                      32\nSocket(s):                               2\nStepping:                                2\nCPU(s) scaling MHz:                      24%\nCPU max MHz:                             4000.0000\nCPU min MHz:                             800.0000\nBogoMIPS:                                4200.00\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cat_l2 cdp_l3 intel_ppin cdp_l2 ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb intel_pt avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local split_lock_detect user_shstk avx_vnni avx512_bf16 wbnoinvd dtherm ida arat pln pts hwp hwp_act_window hwp_epp hwp_pkg_req vnmi avx512vbmi umip pku ospke waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57 rdpid bus_lock_detect cldemote movdiri movdir64b enqcmd fsrm md_clear serialize tsxldtrk pconfig arch_lbr ibt amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d arch_capabilities\nVirtualization:                          VT-x\nL1d cache:                               3 MiB (64 instances)\nL1i cache:                               2 MiB (64 instances)\nL2 cache:                                128 MiB (64 instances)\nL3 cache:                                320 MiB (2 instances)\nNUMA node(s):                            2\nNUMA node0 CPU(s):                       0-31\nNUMA node1 CPU(s):                       32-63\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S\nVulnerability Srbds:                     Not affected\nVulnerability Tsx async abort:           Not affected\n\nVersions of relevant libraries:\n[pip3] mypy_extensions==1.1.0\n[pip3] numpy==2.2.6\n[pip3] nvidia-cublas==13.1.0.3\n[pip3] nvidia-cublas-cu12==12.8.3.14\n[pip3] nvidia-cuda-cupti==13.0.85\n[pip3] nvidia-cuda-cupti-cu12==12.8.57\n[pip3] nvidia-cuda-nvrtc==13.0.88\n[pip3] nvidia-cuda-nvrtc-cu12==12.8.61\n[pip3] nvidia-cuda-runtime==13.0.96\n[pip3] nvidia-cuda-runtime-cu12==12.8.57\n[pip3] nvidia-cudnn-cu12==9.7.1.26\n[pip3] nvidia-cudnn-cu13==9.19.0.56\n[pip3] nvidia-cufft==12.0.0.61\n[pip3] nvidia-cufft-cu12==11.3.3.41\n[pip3] nvidia-curand==10.4.0.35\n[pip3] nvidia-curand-cu12==10.3.9.55\n[pip3] nvidia-cusolver==12.0.4.66\n[pip3] nvidia-cusolver-cu12==11.7.2.55\n[pip3] nvidia-cusparse==12.6.3.3\n[pip3] nvidia-cusparse-cu12==12.5.7.53\n[pip3] nvidia-cusparselt-cu12==0.6.3\n[pip3] nvidia-cusparselt-cu13==0.8.0\n[pip3] nvidia-nccl-cu12==2.26.2\n[pip3] nvidia-nccl-cu13==2.28.9\n[pip3] nvidia-nvjitlink==13.0.88\n[pip3] nvidia-nvjitlink-cu12==12.8.61\n[pip3] nvidia-nvtx==13.0.85\n[pip3] nvidia-nvtx-cu12==12.8.55\n[pip3] torch==2.7.1+cu128\n[pip3] torchcodec==0.11.1\n[pip3] torchvision==0.22.1+cu128\n[pip3] triton==3.3.1\n[conda] Could not collect",
+      "transformers_version": "5.19.0",
+      "lm_eval_version": "0.4.13",
+      "upper_git_hash": null,
+      "tokenizer_pad_token": [
+        "<|endoftext|>",
+        "248044"
+      ],
+      "tokenizer_eos_token": [
+        "<|im_end|>",
+        "248046"
+      ],
+      "tokenizer_bos_token": [
+        null,
+        "None"
+      ],
+      "eot_token_id": 248046,
+      "max_length": 2048
+    }
+  }
+}

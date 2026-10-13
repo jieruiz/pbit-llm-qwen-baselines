@@ -1,0 +1,117 @@
+{
+  "timestamp_utc": "2026-10-13T07:48:46.170341+00:00",
+  "completed": [
+    {
+      "file": "dynamic_ffn_seed0.json",
+      "args": {
+        "variant": "dynamic_ffn",
+        "seed": 0,
+        "smoke": false
+      },
+      "perplexity": 15.841270570768511,
+      "scored_tokens": 297192,
+      "seconds": 459.52121916459873
+    },
+    {
+      "file": "dynamic_ffn_seed1.json",
+      "args": {
+        "variant": "dynamic_ffn",
+        "seed": 1,
+        "smoke": false
+      },
+      "perplexity": 15.835136115529602,
+      "scored_tokens": 297192,
+      "seconds": 460.4251261171885
+    },
+    {
+      "file": "dynamic_ffn_seed2.json",
+      "args": {
+        "variant": "dynamic_ffn",
+        "seed": 2,
+        "smoke": false
+      },
+      "perplexity": 15.844804614203992,
+      "scored_tokens": 297192,
+      "seconds": 460.4391413917765
+    },
+    {
+      "file": "dynamic_joint_seed0.json",
+      "args": {
+        "variant": "dynamic_joint",
+        "seed": 0,
+        "smoke": false
+      },
+      "perplexity": 15.92467487301114,
+      "scored_tokens": 297192,
+      "seconds": 501.4898531991057
+    },
+    {
+      "file": "dynamic_joint_seed1.json",
+      "args": {
+        "variant": "dynamic_joint",
+        "seed": 1,
+        "smoke": false
+      },
+      "perplexity": 15.920034361984168,
+      "scored_tokens": 297192,
+      "seconds": 501.7513625151478
+    },
+    {
+      "file": "dynamic_joint_seed2.json",
+      "args": {
+        "variant": "dynamic_joint",
+        "seed": 2,
+        "smoke": false
+      },
+      "perplexity": 15.925733209275581,
+      "scored_tokens": 297192,
+      "seconds": 502.3445126148872
+    },
+    {
+      "file": "int8_dense_seed0.json",
+      "args": {
+        "variant": "int8_dense",
+        "seed": 0,
+        "smoke": false
+      },
+      "perplexity": 15.651730278009977,
+      "scored_tokens": 297192,
+      "seconds": 24.235178349073976
+    }
+  ],
+  "gate_profile": {
+    "alpha": {
+      "observations": 2359296,
+      "mean": 0.8658678569051572,
+      "fraction_gt_0p9": 0.7331080966525607,
+      "fraction_gt_0p99": 0.5362277560763888,
+      "fraction_gt_0p999": 0.37618043687608504
+    },
+    "beta": {
+      "observations": 2359296,
+      "mean": 0.39618763747230845,
+      "fraction_gt_0p9": 0.06586117214626735,
+      "fraction_gt_0p99": 0.005017174614800347,
+      "fraction_gt_0p999": 0.0016873677571614583
+    }
+  },
+  "progress": {
+    "profile-1254.log": [
+      "  }",
+      "}"
+    ],
+    "slurm-1246_0.log": [
+      "{\"window\": 290, \"scored_tokens\": 297192, \"ppl\": 15.651730278009977, \"seconds\": 21.805886789225042}",
+      "COMPLETE /home/Hongjie_Zeng/qwen35_dynamic_ffn_20261013/results/formal/int8_dense_seed0.json"
+    ],
+    "slurm-1246_1.log": [
+      "{\"window\": 290, \"scored_tokens\": 297192, \"ppl\": 15.844804614203992, \"seconds\": 457.97761757299304}",
+      "COMPLETE /home/Hongjie_Zeng/qwen35_dynamic_ffn_20261013/results/formal/dynamic_ffn_seed2.json"
+    ],
+    "slurm-1246_2.log": [
+      "{\"window\": 290, \"scored_tokens\": 297192, \"ppl\": 15.925733209275581, \"seconds\": 499.91591754881665}",
+      "COMPLETE /home/Hongjie_Zeng/qwen35_dynamic_ffn_20261013/results/formal/dynamic_joint_seed2.json"
+    ]
+  },
+  "queue": "             JOBID                      NAME      STATE       TIME             NODELIST(REASON)\n              1259           qwen35-delta-8k    PENDING       0:00                 (Dependency)\n            1257_0     qwen35-delta-stepwise    RUNNING       3:44                          gpu\n            1257_1     qwen35-delta-stepwise    RUNNING       3:44                          gpu\n"
+}

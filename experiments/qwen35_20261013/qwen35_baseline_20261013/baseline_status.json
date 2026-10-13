@@ -1,0 +1,213 @@
+{
+  "timestamp_utc": "2026-10-13T05:44:50.669483+00:00",
+  "completed": [
+    {
+      "task": "arc_challenge",
+      "seconds": 189.30261717829853,
+      "path": "/home/Hongjie_Zeng/qwen35_baseline_20261013/results/arc_challenge.json",
+      "metrics": {
+        "arc_challenge": {
+          "name": "arc_challenge",
+          "alias": "arc_challenge",
+          "sample_len": 1172,
+          "acc,none": 0.3293515358361775,
+          "acc_stderr,none": 0.013734057652635537,
+          "acc_norm,none": 0.3728668941979522,
+          "acc_norm_stderr,none": 0.014131176760131044
+        }
+      },
+      "n_samples": {
+        "arc_challenge": {
+          "original": 1172,
+          "effective": 1172
+        }
+      },
+      "dataset_rows": 1172
+    },
+    {
+      "task": "arc_easy",
+      "seconds": 368.4428730341606,
+      "path": "/home/Hongjie_Zeng/qwen35_baseline_20261013/results/arc_easy.json",
+      "metrics": {
+        "arc_easy": {
+          "name": "arc_easy",
+          "alias": "arc_easy",
+          "sample_len": 2376,
+          "acc,none": 0.6578282828282829,
+          "acc_stderr,none": 0.009735236771958602,
+          "acc_norm,none": 0.6174242424242424,
+          "acc_norm_stderr,none": 0.009972837790531318
+        }
+      },
+      "n_samples": {
+        "arc_easy": {
+          "original": 2376,
+          "effective": 2376
+        }
+      },
+      "dataset_rows": 2376
+    },
+    {
+      "task": "generation_performance",
+      "seconds": 26.55798878800124,
+      "path": "/home/Hongjie_Zeng/qwen35_baseline_20261013/results/generation_performance.json",
+      "examples": [
+        {
+          "prompt": "请简要解释什么是随机计算。",
+          "output": "**随机计算**（Random Calculation）是指在进行数学运算时，**不遵循任何预设的数学规则或顺序**，而是完全由**随机数**（如随机数表、随机数器）决定运算结果的过程。\n\n其核心特点包括：\n1.  **无规则性**：运算结果完全取决于随机数生成器的输出，无法通过逻辑推导或固定步骤得到。\n2.  **不可预测性**：对于初学者或需要精确结果的场景，随机计算无法提供确定的答案。\n3.  **应用场景**：常用于需要生成随机数据、模拟随机事件、验证算法",
+          "new_tokens": 128,
+          "seconds": 8.953651334159076
+        },
+        {
+          "prompt": "What is the difference between a probability and a random sample?",
+          "output": "The fundamental difference between a **probability** and a **random sample** lies in their relationship to the underlying population and the nature of the data they represent.\n\nHere is a step-by-step breakdown of the distinction:\n\n### 1. Probability: A Measure of Uncertainty\nA **probability** is a numerical value (between 0 and 1) that quantifies the likelihood of an event occurring within a specific population.\n\n*   **Definition**: It represents the proportion of the entire population that possesses a specific characteristic (e.g., \"50% of the population has a height of 175 cm\").\n*",
+          "new_tokens": 128,
+          "seconds": 2.65139494324103
+        },
+        {
+          "prompt": "Write a Python function to add two integers.",
+          "output": "Here’s a simple Python function to add two integers:\n\n```python\ndef add_integers(a: int, b: int) -> int:\n    \"\"\"\n    Add two integers and return the result.\n\n    Parameters:\n        a (int): First integer.\n        b (int): Second integer.\n\n    Returns:\n        int: The sum of a and b.\n\n    Raises:\n        ValueError: If either argument is not an integer.\n    \"\"\"\n    if not isinstance(a, int) or not isinstance(b, int):\n        raise ValueError(\"Both arguments must be integers.\")\n   ",
+          "new_tokens": 128,
+          "seconds": 2.620337092317641
+        }
+      ],
+      "timing": [
+        {
+          "context": 2048,
+          "prefill_seconds": 0.0382769457064569,
+          "decode_tokens": 64,
+          "decode_seconds": 1.3381024822592735,
+          "decode_ms_per_token": 20.90785128530115,
+          "peak_allocated_bytes": 1931638272,
+          "peak_reserved_bytes": 2118123520
+        },
+        {
+          "context": 8192,
+          "prefill_seconds": 8.236822628881782,
+          "decode_tokens": 64,
+          "decode_seconds": 1.2925143246538937,
+          "decode_ms_per_token": 20.19553632271709,
+          "peak_allocated_bytes": 2424240128,
+          "peak_reserved_bytes": 2539651072
+        }
+      ],
+      "timing_scope": "One warm run; single GPU, batch 1; not a power/energy measurement"
+    },
+    {
+      "task": "hellaswag",
+      "seconds": 1506.4351575016044,
+      "path": "/home/Hongjie_Zeng/qwen35_baseline_20261013/results/hellaswag.json",
+      "metrics": {
+        "hellaswag": {
+          "name": "hellaswag",
+          "alias": "hellaswag",
+          "sample_len": 10042,
+          "acc,none": 0.38986257717586137,
+          "acc_stderr,none": 0.0048672216344610745,
+          "acc_norm,none": 0.4962158932483569,
+          "acc_norm_stderr,none": 0.004989638507409855
+        }
+      },
+      "n_samples": {
+        "hellaswag": {
+          "original": 10042,
+          "effective": 10042
+        }
+      },
+      "dataset_rows": 10042
+    },
+    {
+      "task": "piqa",
+      "seconds": 159.53881295165047,
+      "path": "/home/Hongjie_Zeng/qwen35_baseline_20261013/results/piqa.json",
+      "metrics": {
+        "piqa": {
+          "name": "piqa",
+          "alias": "piqa",
+          "sample_len": 1838,
+          "acc,none": 0.6806311207834603,
+          "acc_stderr,none": 0.010877964076613867,
+          "acc_norm,none": 0.691512513601741,
+          "acc_norm_stderr,none": 0.010776164678037265
+        }
+      },
+      "n_samples": {
+        "piqa": {
+          "original": 1838,
+          "effective": 1838
+        }
+      },
+      "dataset_rows": 1838
+    },
+    {
+      "task": "smoke",
+      "seconds": 49.15747908782214,
+      "path": "/home/Hongjie_Zeng/qwen35_baseline_20261013/results/smoke.json",
+      "cache_check": {
+        "cosine": 0.9999574422836304,
+        "max_absolute_logit_difference": 0.14794921875
+      }
+    },
+    {
+      "task": "wikitext2",
+      "seconds": 20.257527977693826,
+      "path": "/home/Hongjie_Zeng/qwen35_baseline_20261013/results/wikitext2.json",
+      "perplexity": 15.661097804818592,
+      "scored_tokens": 297192,
+      "corpus_tokens": 297193,
+      "corpus_sha256": "173c87a53759e0201f33e0ccf978e510c2042d7f2cb78229d9a50d79b9e7dd08"
+    },
+    {
+      "task": "winogrande",
+      "seconds": 110.94824677100405,
+      "path": "/home/Hongjie_Zeng/qwen35_baseline_20261013/results/winogrande.json",
+      "metrics": {
+        "winogrande": {
+          "name": "winogrande",
+          "alias": "winogrande",
+          "sample_len": 1267,
+          "acc,none": 0.5872138910812944,
+          "acc_stderr,none": 0.013837060648682153
+        }
+      },
+      "n_samples": {
+        "winogrande": {
+          "original": 1267,
+          "effective": 1267
+        }
+      },
+      "dataset_rows": 1267
+    }
+  ],
+  "progress": {
+    "baseline-1227_0.log": [
+      "{\"window\": 290, \"scored_tokens\": 297192, \"ppl\": 15.661097804818592, \"seconds\": 19.076554097700864}",
+      "COMPLETE /home/Hongjie_Zeng/qwen35_baseline_20261013/results/wikitext2.json"
+    ],
+    "baseline-1227_1.log": [
+      "Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).",
+      "COMPLETE /home/Hongjie_Zeng/qwen35_baseline_20261013/results/hellaswag.json"
+    ],
+    "baseline-1227_2.log": [
+      "Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).",
+      "COMPLETE /home/Hongjie_Zeng/qwen35_baseline_20261013/results/piqa.json"
+    ],
+    "baseline-1227_3.log": [
+      "Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).",
+      "COMPLETE /home/Hongjie_Zeng/qwen35_baseline_20261013/results/winogrande.json"
+    ],
+    "baseline-1227_4.log": [
+      "Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).",
+      "COMPLETE /home/Hongjie_Zeng/qwen35_baseline_20261013/results/arc_easy.json"
+    ],
+    "baseline-1227_5.log": [
+      "Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).",
+      "COMPLETE /home/Hongjie_Zeng/qwen35_baseline_20261013/results/arc_challenge.json"
+    ],
+    "baseline-1227_6.log": [
+      "[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (297193 > 262144). Running this sequence through the model will result in indexing errors",
+      "COMPLETE /home/Hongjie_Zeng/qwen35_baseline_20261013/results/generation_performance.json"
+    ]
+  },
+  "queue": "             JOBID                   NAME      STATE       TIME          NODELIST(REASON)\n      1236_[0-4%2]        qwen35-pbit-ppl    PENDING       0:00              (Dependency)\n            1179_6         pbit-full-eval    RUNNING   12:04:36                       gpu\n"
+}

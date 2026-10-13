@@ -1,0 +1,2652 @@
+{
+  "metadata": {
+    "args": {
+      "scope": "out_z_qkv",
+      "mode": "iid",
+      "scenario": "solo",
+      "cycles": 4096,
+      "seed": 0,
+      "context": 2048,
+      "smoke": false
+    },
+    "seconds": 47.52201935928315,
+    "job": "1258",
+    "context": 2048,
+    "stride": 1024,
+    "batch_size": 1,
+    "source_sha256": {
+      "/home/Hongjie_Zeng/qwen35_deltanet_projection_20261013/experiment.py": "f884b9bca6242c9f80b497a3beff827c332c7eb15933a5162396090fb9f252c9",
+      "/home/Hongjie_Zeng/qwen35_deltanet_projection_20261013/projection.py": "7f16f37120084813806aa50b62f8f0f37891bf23a9d42da001ac576ab58dbb44",
+      "/home/Hongjie_Zeng/qwen35_deltanet_projection_20261013/streaming_ffn.py": "ca04aad6e873d103105644047a6f6618beb129e5ee682f3fedd978b65508a682",
+      "/home/Hongjie_Zeng/qwen35_baseline_20261013/baseline.py": "d6ba220e12815dde7f475486a77d49760b4cc9890cb2164ea010d42132a985f9",
+      "/home/Hongjie_Zeng/qwen35_pbit_20261013/pv_sampling.py": "7b17d8ddb80d2e1a8964c4332a36e1598f1f4ec115aeef2b1f80d5e104404e21"
+    },
+    "model_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "projection_spec": "All18 DeltaNet layers; fixed INT8 tile64; dynamic group64 input probability; T4096; exact Binomial count compression; shared input stream for QKV/z in combined scope; BF16 I/O, FP32 reference accumulation.",
+    "state_spec": "Original alpha/beta, Conv1d+SiLU, Q/K L2 norm, recurrent/chunked update, RMSNormGated, original state precision; one model update per token, no update per sampling bit.",
+    "combined_spec": "If combined: all24 dynamic INT8 FFN input4096/output3072 update256 burn25%, plus six full-attention PV512; otherwise all FFNs and full attention original.",
+    "protected_parameters_sha256": "75b41af0c518f0f2dece6af95ec07e392801cd6a614bacc9861f073909b1d87f",
+    "projection_diagnostics": {
+      "L0.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.1317105714618052,
+        "sampling_input_nmse": 0.00036520154764906087,
+        "weight_quantization_nmse": 0.00016756067634560168,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L0.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.31495588413152326,
+        "sampling_input_nmse": 0.00027405579601807615,
+        "weight_quantization_nmse": 0.00018428808834869415,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L0.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.31495588413152326,
+        "sampling_input_nmse": 0.00027405579601807615,
+        "weight_quantization_nmse": 0.0002710135595407337,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L1.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.1025614755260455,
+        "sampling_input_nmse": 0.0002129177373881156,
+        "weight_quantization_nmse": 0.00015750955208204687,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L1.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.2728939133525378,
+        "sampling_input_nmse": 0.00036590543978280926,
+        "weight_quantization_nmse": 0.000123263627756387,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L1.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.2728939133525378,
+        "sampling_input_nmse": 0.00036590543978280926,
+        "weight_quantization_nmse": 0.00017982842109631747,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L2.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.11539348994916417,
+        "sampling_input_nmse": 0.0002497525132540497,
+        "weight_quantization_nmse": 0.00016112237062770873,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L2.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27824165044415006,
+        "sampling_input_nmse": 0.00037919362032464826,
+        "weight_quantization_nmse": 0.00013368509826250374,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L2.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27824165044415006,
+        "sampling_input_nmse": 0.00037919362032464826,
+        "weight_quantization_nmse": 0.00017667296924628317,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L4.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.1294375839599057,
+        "sampling_input_nmse": 0.0003745269090860959,
+        "weight_quantization_nmse": 0.00015097220602910966,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L4.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27083111046743896,
+        "sampling_input_nmse": 0.00037845984134383574,
+        "weight_quantization_nmse": 0.00015585402434226125,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L4.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27083111046743896,
+        "sampling_input_nmse": 0.00037845984134383574,
+        "weight_quantization_nmse": 0.00018195059965364635,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L5.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.1269228867805918,
+        "sampling_input_nmse": 0.0003711432121447672,
+        "weight_quantization_nmse": 0.00014981688582338393,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L5.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.2749267963018257,
+        "sampling_input_nmse": 0.00037535877238950355,
+        "weight_quantization_nmse": 0.00016560613585170358,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L5.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.2749267963018257,
+        "sampling_input_nmse": 0.00037535877238950355,
+        "weight_quantization_nmse": 0.00018131321121472865,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L6.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.1405807631441159,
+        "sampling_input_nmse": 0.0003613828010212626,
+        "weight_quantization_nmse": 0.00013826784561388195,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L6.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.275172692601321,
+        "sampling_input_nmse": 0.00037909510375143765,
+        "weight_quantization_nmse": 0.00016939321358222514,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L6.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.275172692601321,
+        "sampling_input_nmse": 0.00037909510375143765,
+        "weight_quantization_nmse": 0.00017542019486427307,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L8.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.14983452321539772,
+        "sampling_input_nmse": 0.00036601743357931536,
+        "weight_quantization_nmse": 0.0001327682111877948,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L8.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.2739362240905944,
+        "sampling_input_nmse": 0.00039264148626571465,
+        "weight_quantization_nmse": 0.00022341686417348683,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L8.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.2739362240905944,
+        "sampling_input_nmse": 0.00039264148626571465,
+        "weight_quantization_nmse": 0.0001839646720327437,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L9.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.1368158951068038,
+        "sampling_input_nmse": 0.0003853870157672312,
+        "weight_quantization_nmse": 0.0001443310611648485,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L9.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27250242025758276,
+        "sampling_input_nmse": 0.00038505001927363,
+        "weight_quantization_nmse": 0.00016917831089813262,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L9.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27250242025758276,
+        "sampling_input_nmse": 0.00038505001927363,
+        "weight_quantization_nmse": 0.0001922017545439303,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L10.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.1725191452129193,
+        "sampling_input_nmse": 0.0003952179338578328,
+        "weight_quantization_nmse": 0.00013484757801052183,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L10.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27004511147848215,
+        "sampling_input_nmse": 0.00040426959392136084,
+        "weight_quantization_nmse": 0.00015780697867739946,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L10.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27004511147848215,
+        "sampling_input_nmse": 0.00040426959392136084,
+        "weight_quantization_nmse": 0.00019405405328143388,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L12.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.12909157741917118,
+        "sampling_input_nmse": 0.000375374622827567,
+        "weight_quantization_nmse": 0.00013331169611774385,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L12.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27120364044159834,
+        "sampling_input_nmse": 0.00038531561857514153,
+        "weight_quantization_nmse": 0.00019543177040759474,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L12.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27120364044159834,
+        "sampling_input_nmse": 0.00038531561857514153,
+        "weight_quantization_nmse": 0.0001925566466525197,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L13.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.1360474721591857,
+        "sampling_input_nmse": 0.0003835124493827306,
+        "weight_quantization_nmse": 0.00014079254469834268,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L13.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.267693438242304,
+        "sampling_input_nmse": 0.0004028136354535662,
+        "weight_quantization_nmse": 0.0002058501122519374,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L13.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.267693438242304,
+        "sampling_input_nmse": 0.0004028136354535662,
+        "weight_quantization_nmse": 0.00020687203505076468,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L14.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.16384104311140524,
+        "sampling_input_nmse": 0.00036571827475894293,
+        "weight_quantization_nmse": 0.00014221182209439576,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L14.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27148058960297616,
+        "sampling_input_nmse": 0.0004079007173456295,
+        "weight_quantization_nmse": 0.00020160566782578826,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L14.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27148058960297616,
+        "sampling_input_nmse": 0.0004079007173456295,
+        "weight_quantization_nmse": 0.00020089407917112112,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L16.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.14042417660986106,
+        "sampling_input_nmse": 0.0003335552291559339,
+        "weight_quantization_nmse": 0.00018297336646355689,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L16.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.2708060893954192,
+        "sampling_input_nmse": 0.0003618105064897771,
+        "weight_quantization_nmse": 0.0001946880656760186,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L16.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.2708060893954192,
+        "sampling_input_nmse": 0.0003618105064897771,
+        "weight_quantization_nmse": 0.00018900606664828956,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L17.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.15385764751999637,
+        "sampling_input_nmse": 0.00035342717533144995,
+        "weight_quantization_nmse": 0.00015527362120337784,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L17.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.2716260750707764,
+        "sampling_input_nmse": 0.00037255467081003066,
+        "weight_quantization_nmse": 0.00016672098718117923,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L17.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.2716260750707764,
+        "sampling_input_nmse": 0.00037255467081003066,
+        "weight_quantization_nmse": 0.00019191337923984975,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L18.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.15668185372769228,
+        "sampling_input_nmse": 0.0003804763191394561,
+        "weight_quantization_nmse": 0.00018806671141646802,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L18.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.2697524516821188,
+        "sampling_input_nmse": 0.00038236916771272616,
+        "weight_quantization_nmse": 0.00017959310207515955,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L18.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.2697524516821188,
+        "sampling_input_nmse": 0.00038236916771272616,
+        "weight_quantization_nmse": 0.0001671269565122202,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L20.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.13868690399172015,
+        "sampling_input_nmse": 0.00035379245103632674,
+        "weight_quantization_nmse": 0.00019099173368886113,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L20.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27366894040499873,
+        "sampling_input_nmse": 0.0003813085262865383,
+        "weight_quantization_nmse": 0.0001817925221985206,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L20.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27366894040499873,
+        "sampling_input_nmse": 0.0003813085262865383,
+        "weight_quantization_nmse": 0.0001986265560844913,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L21.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.13757982862153897,
+        "sampling_input_nmse": 0.0003696875269353915,
+        "weight_quantization_nmse": 0.00015031045768409967,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L21.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27202509724131363,
+        "sampling_input_nmse": 0.00039148806367448653,
+        "weight_quantization_nmse": 0.00015797554806340486,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L21.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.27202509724131363,
+        "sampling_input_nmse": 0.00039148806367448653,
+        "weight_quantization_nmse": 0.00020342566131148487,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L22.out_proj": {
+        "calls": 290,
+        "input_values": 1214728192,
+        "mean_probability": 0.14715176159279728,
+        "sampling_input_nmse": 0.0003306573311882067,
+        "weight_quantization_nmse": 0.0002105098683387041,
+        "shape": [
+          1024,
+          2048
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": null
+      },
+      "L22.in_proj_z": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.2746650630150892,
+        "sampling_input_nmse": 0.0004019783346005721,
+        "weight_quantization_nmse": 0.00021129194647073746,
+        "shape": [
+          2048,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      },
+      "L22.in_proj_qkv": {
+        "calls": 290,
+        "input_values": 607364096,
+        "mean_probability": 0.2746650630150892,
+        "sampling_input_nmse": 0.0004019783346005721,
+        "weight_quantization_nmse": 0.0002095425734296441,
+        "shape": [
+          6144,
+          1024
+        ],
+        "cycles": 4096,
+        "mode": "iid",
+        "shared_input_cache": {
+          "hits": 290,
+          "draws": 290
+        }
+      }
+    },
+    "ffn_layers": [],
+    "attention_diagnostics": [],
+    "versions": {
+      "torch": "2.7.1+cu128",
+      "transformers": "5.19.0",
+      "flash-linear-attention": "0.5.2"
+    }
+  },
+  "result": {
+    "perplexity": 15.859992244605369,
+    "nll_sum": 821379.1685307026,
+    "scored_tokens": 297192,
+    "corpus_tokens": 297193,
+    "corpus_sha256": "173c87a53759e0201f33e0ccf978e510c2042d7f2cb78229d9a50d79b9e7dd08",
+    "windows": [
+      {
+        "begin": 0,
+        "end": 2048,
+        "scored": 2047,
+        "nll_sum": 5214.057197570801
+      },
+      {
+        "begin": 1024,
+        "end": 3072,
+        "scored": 1024,
+        "nll_sum": 3023.018768310547
+      },
+      {
+        "begin": 2048,
+        "end": 4096,
+        "scored": 1024,
+        "nll_sum": 3009.20849609375
+      },
+      {
+        "begin": 3072,
+        "end": 5120,
+        "scored": 1024,
+        "nll_sum": 3268.392044067383
+      },
+      {
+        "begin": 4096,
+        "end": 6144,
+        "scored": 1024,
+        "nll_sum": 3002.1409759521484
+      },
+      {
+        "begin": 5120,
+        "end": 7168,
+        "scored": 1024,
+        "nll_sum": 3356.4536514282227
+      },
+      {
+        "begin": 6144,
+        "end": 8192,
+        "scored": 1024,
+        "nll_sum": 2947.310775756836
+      },
+      {
+        "begin": 7168,
+        "end": 9216,
+        "scored": 1024,
+        "nll_sum": 2262.5172233581543
+      },
+      {
+        "begin": 8192,
+        "end": 10240,
+        "scored": 1024,
+        "nll_sum": 3129.6649169921875
+      },
+      {
+        "begin": 9216,
+        "end": 11264,
+        "scored": 1024,
+        "nll_sum": 2533.7611541748047
+      },
+      {
+        "begin": 10240,
+        "end": 12288,
+        "scored": 1024,
+        "nll_sum": 1994.5378723144531
+      },
+      {
+        "begin": 11264,
+        "end": 13312,
+        "scored": 1024,
+        "nll_sum": 1935.3687477111816
+      },
+      {
+        "begin": 12288,
+        "end": 14336,
+        "scored": 1024,
+        "nll_sum": 1935.2698650360107
+      },
+      {
+        "begin": 13312,
+        "end": 15360,
+        "scored": 1024,
+        "nll_sum": 2623.2246627807617
+      },
+      {
+        "begin": 14336,
+        "end": 16384,
+        "scored": 1024,
+        "nll_sum": 2563.857597351074
+      },
+      {
+        "begin": 15360,
+        "end": 17408,
+        "scored": 1024,
+        "nll_sum": 2691.0920333862305
+      },
+      {
+        "begin": 16384,
+        "end": 18432,
+        "scored": 1024,
+        "nll_sum": 3150.5812225341797
+      },
+      {
+        "begin": 17408,
+        "end": 19456,
+        "scored": 1024,
+        "nll_sum": 3026.2872314453125
+      },
+      {
+        "begin": 18432,
+        "end": 20480,
+        "scored": 1024,
+        "nll_sum": 2879.2884979248047
+      },
+      {
+        "begin": 19456,
+        "end": 21504,
+        "scored": 1024,
+        "nll_sum": 2877.8438110351562
+      },
+      {
+        "begin": 20480,
+        "end": 22528,
+        "scored": 1024,
+        "nll_sum": 2832.718246459961
+      },
+      {
+        "begin": 21504,
+        "end": 23552,
+        "scored": 1024,
+        "nll_sum": 2608.4777908325195
+      },
+      {
+        "begin": 22528,
+        "end": 24576,
+        "scored": 1024,
+        "nll_sum": 3232.647186279297
+      },
+      {
+        "begin": 23552,
+        "end": 25600,
+        "scored": 1024,
+        "nll_sum": 2689.2089614868164
+      },
+      {
+        "begin": 24576,
+        "end": 26624,
+        "scored": 1024,
+        "nll_sum": 2807.4241943359375
+      },
+      {
+        "begin": 25600,
+        "end": 27648,
+        "scored": 1024,
+        "nll_sum": 3055.835647583008
+      },
+      {
+        "begin": 26624,
+        "end": 28672,
+        "scored": 1024,
+        "nll_sum": 2862.8133850097656
+      },
+      {
+        "begin": 27648,
+        "end": 29696,
+        "scored": 1024,
+        "nll_sum": 2892.9894638061523
+      },
+      {
+        "begin": 28672,
+        "end": 30720,
+        "scored": 1024,
+        "nll_sum": 2835.702407836914
+      },
+      {
+        "begin": 29696,
+        "end": 31744,
+        "scored": 1024,
+        "nll_sum": 2787.6685180664062
+      },
+      {
+        "begin": 30720,
+        "end": 32768,
+        "scored": 1024,
+        "nll_sum": 3239.8580780029297
+      },
+      {
+        "begin": 31744,
+        "end": 33792,
+        "scored": 1024,
+        "nll_sum": 3335.1444091796875
+      },
+      {
+        "begin": 32768,
+        "end": 34816,
+        "scored": 1024,
+        "nll_sum": 2918.5662994384766
+      },
+      {
+        "begin": 33792,
+        "end": 35840,
+        "scored": 1024,
+        "nll_sum": 2779.869094848633
+      },
+      {
+        "begin": 34816,
+        "end": 36864,
+        "scored": 1024,
+        "nll_sum": 3109.634490966797
+      },
+      {
+        "begin": 35840,
+        "end": 37888,
+        "scored": 1024,
+        "nll_sum": 3117.452102661133
+      },
+      {
+        "begin": 36864,
+        "end": 38912,
+        "scored": 1024,
+        "nll_sum": 2525.3523864746094
+      },
+      {
+        "begin": 37888,
+        "end": 39936,
+        "scored": 1024,
+        "nll_sum": 2583.8878021240234
+      },
+      {
+        "begin": 38912,
+        "end": 40960,
+        "scored": 1024,
+        "nll_sum": 2371.513303756714
+      },
+      {
+        "begin": 39936,
+        "end": 41984,
+        "scored": 1024,
+        "nll_sum": 2817.2306518554688
+      },
+      {
+        "begin": 40960,
+        "end": 43008,
+        "scored": 1024,
+        "nll_sum": 2849.0443954467773
+      },
+      {
+        "begin": 41984,
+        "end": 44032,
+        "scored": 1024,
+        "nll_sum": 3250.9244384765625
+      },
+      {
+        "begin": 43008,
+        "end": 45056,
+        "scored": 1024,
+        "nll_sum": 3155.7811737060547
+      },
+      {
+        "begin": 44032,
+        "end": 46080,
+        "scored": 1024,
+        "nll_sum": 2613.742919921875
+      },
+      {
+        "begin": 45056,
+        "end": 47104,
+        "scored": 1024,
+        "nll_sum": 3127.6800384521484
+      },
+      {
+        "begin": 46080,
+        "end": 48128,
+        "scored": 1024,
+        "nll_sum": 3104.645797729492
+      },
+      {
+        "begin": 47104,
+        "end": 49152,
+        "scored": 1024,
+        "nll_sum": 2907.0747985839844
+      },
+      {
+        "begin": 48128,
+        "end": 50176,
+        "scored": 1024,
+        "nll_sum": 2899.101707458496
+      },
+      {
+        "begin": 49152,
+        "end": 51200,
+        "scored": 1024,
+        "nll_sum": 3061.677276611328
+      },
+      {
+        "begin": 50176,
+        "end": 52224,
+        "scored": 1024,
+        "nll_sum": 3214.339668273926
+      },
+      {
+        "begin": 51200,
+        "end": 53248,
+        "scored": 1024,
+        "nll_sum": 2805.2887954711914
+      },
+      {
+        "begin": 52224,
+        "end": 54272,
+        "scored": 1024,
+        "nll_sum": 3026.0428771972656
+      },
+      {
+        "begin": 53248,
+        "end": 55296,
+        "scored": 1024,
+        "nll_sum": 3501.119857788086
+      },
+      {
+        "begin": 54272,
+        "end": 56320,
+        "scored": 1024,
+        "nll_sum": 3417.844009399414
+      },
+      {
+        "begin": 55296,
+        "end": 57344,
+        "scored": 1024,
+        "nll_sum": 3075.6831436157227
+      },
+      {
+        "begin": 56320,
+        "end": 58368,
+        "scored": 1024,
+        "nll_sum": 3125.8328399658203
+      },
+      {
+        "begin": 57344,
+        "end": 59392,
+        "scored": 1024,
+        "nll_sum": 2827.558006286621
+      },
+      {
+        "begin": 58368,
+        "end": 60416,
+        "scored": 1024,
+        "nll_sum": 2826.243927001953
+      },
+      {
+        "begin": 59392,
+        "end": 61440,
+        "scored": 1024,
+        "nll_sum": 2700.0338134765625
+      },
+      {
+        "begin": 60416,
+        "end": 62464,
+        "scored": 1024,
+        "nll_sum": 2610.1996536254883
+      },
+      {
+        "begin": 61440,
+        "end": 63488,
+        "scored": 1024,
+        "nll_sum": 2348.050361633301
+      },
+      {
+        "begin": 62464,
+        "end": 64512,
+        "scored": 1024,
+        "nll_sum": 2486.785804748535
+      },
+      {
+        "begin": 63488,
+        "end": 65536,
+        "scored": 1024,
+        "nll_sum": 2399.556781768799
+      },
+      {
+        "begin": 64512,
+        "end": 66560,
+        "scored": 1024,
+        "nll_sum": 1961.268684387207
+      },
+      {
+        "begin": 65536,
+        "end": 67584,
+        "scored": 1024,
+        "nll_sum": 2428.9377670288086
+      },
+      {
+        "begin": 66560,
+        "end": 68608,
+        "scored": 1024,
+        "nll_sum": 2670.992874145508
+      },
+      {
+        "begin": 67584,
+        "end": 69632,
+        "scored": 1024,
+        "nll_sum": 2614.0664978027344
+      },
+      {
+        "begin": 68608,
+        "end": 70656,
+        "scored": 1024,
+        "nll_sum": 2408.464714050293
+      },
+      {
+        "begin": 69632,
+        "end": 71680,
+        "scored": 1024,
+        "nll_sum": 2762.957061767578
+      },
+      {
+        "begin": 70656,
+        "end": 72704,
+        "scored": 1024,
+        "nll_sum": 2275.4300191402435
+      },
+      {
+        "begin": 71680,
+        "end": 73728,
+        "scored": 1024,
+        "nll_sum": 2760.5528869628906
+      },
+      {
+        "begin": 72704,
+        "end": 74752,
+        "scored": 1024,
+        "nll_sum": 2229.1321411132812
+      },
+      {
+        "begin": 73728,
+        "end": 75776,
+        "scored": 1024,
+        "nll_sum": 2191.307861328125
+      },
+      {
+        "begin": 74752,
+        "end": 76800,
+        "scored": 1024,
+        "nll_sum": 2077.3874320983887
+      },
+      {
+        "begin": 75776,
+        "end": 77824,
+        "scored": 1024,
+        "nll_sum": 2316.5264434814453
+      },
+      {
+        "begin": 76800,
+        "end": 78848,
+        "scored": 1024,
+        "nll_sum": 2298.367721557617
+      },
+      {
+        "begin": 77824,
+        "end": 79872,
+        "scored": 1024,
+        "nll_sum": 2439.6627655029297
+      },
+      {
+        "begin": 78848,
+        "end": 80896,
+        "scored": 1024,
+        "nll_sum": 2170.012336730957
+      },
+      {
+        "begin": 79872,
+        "end": 81920,
+        "scored": 1024,
+        "nll_sum": 2143.706916809082
+      },
+      {
+        "begin": 80896,
+        "end": 82944,
+        "scored": 1024,
+        "nll_sum": 2563.638931274414
+      },
+      {
+        "begin": 81920,
+        "end": 83968,
+        "scored": 1024,
+        "nll_sum": 2480.4949264526367
+      },
+      {
+        "begin": 82944,
+        "end": 84992,
+        "scored": 1024,
+        "nll_sum": 2665.814121246338
+      },
+      {
+        "begin": 83968,
+        "end": 86016,
+        "scored": 1024,
+        "nll_sum": 3109.61092376709
+      },
+      {
+        "begin": 84992,
+        "end": 87040,
+        "scored": 1024,
+        "nll_sum": 3287.1492309570312
+      },
+      {
+        "begin": 86016,
+        "end": 88064,
+        "scored": 1024,
+        "nll_sum": 3591.176559448242
+      },
+      {
+        "begin": 87040,
+        "end": 89088,
+        "scored": 1024,
+        "nll_sum": 3382.512466430664
+      },
+      {
+        "begin": 88064,
+        "end": 90112,
+        "scored": 1024,
+        "nll_sum": 3431.9905700683594
+      },
+      {
+        "begin": 89088,
+        "end": 91136,
+        "scored": 1024,
+        "nll_sum": 3582.023681640625
+      },
+      {
+        "begin": 90112,
+        "end": 92160,
+        "scored": 1024,
+        "nll_sum": 3111.818161010742
+      },
+      {
+        "begin": 91136,
+        "end": 93184,
+        "scored": 1024,
+        "nll_sum": 3516.0677947998047
+      },
+      {
+        "begin": 92160,
+        "end": 94208,
+        "scored": 1024,
+        "nll_sum": 3321.7484283447266
+      },
+      {
+        "begin": 93184,
+        "end": 95232,
+        "scored": 1024,
+        "nll_sum": 3153.0577697753906
+      },
+      {
+        "begin": 94208,
+        "end": 96256,
+        "scored": 1024,
+        "nll_sum": 3035.034713745117
+      },
+      {
+        "begin": 95232,
+        "end": 97280,
+        "scored": 1024,
+        "nll_sum": 3191.7675399780273
+      },
+      {
+        "begin": 96256,
+        "end": 98304,
+        "scored": 1024,
+        "nll_sum": 3038.8219299316406
+      },
+      {
+        "begin": 97280,
+        "end": 99328,
+        "scored": 1024,
+        "nll_sum": 3210.0174560546875
+      },
+      {
+        "begin": 98304,
+        "end": 100352,
+        "scored": 1024,
+        "nll_sum": 2965.498062133789
+      },
+      {
+        "begin": 99328,
+        "end": 101376,
+        "scored": 1024,
+        "nll_sum": 2782.4689407348633
+      },
+      {
+        "begin": 100352,
+        "end": 102400,
+        "scored": 1024,
+        "nll_sum": 2676.3690643310547
+      },
+      {
+        "begin": 101376,
+        "end": 103424,
+        "scored": 1024,
+        "nll_sum": 3196.060089111328
+      },
+      {
+        "begin": 102400,
+        "end": 104448,
+        "scored": 1024,
+        "nll_sum": 3010.2894134521484
+      },
+      {
+        "begin": 103424,
+        "end": 105472,
+        "scored": 1024,
+        "nll_sum": 2627.777671813965
+      },
+      {
+        "begin": 104448,
+        "end": 106496,
+        "scored": 1024,
+        "nll_sum": 2266.4754371643066
+      },
+      {
+        "begin": 105472,
+        "end": 107520,
+        "scored": 1024,
+        "nll_sum": 2728.185836791992
+      },
+      {
+        "begin": 106496,
+        "end": 108544,
+        "scored": 1024,
+        "nll_sum": 2507.1808700561523
+      },
+      {
+        "begin": 107520,
+        "end": 109568,
+        "scored": 1024,
+        "nll_sum": 2334.217971801758
+      },
+      {
+        "begin": 108544,
+        "end": 110592,
+        "scored": 1024,
+        "nll_sum": 2406.4541206359863
+      },
+      {
+        "begin": 109568,
+        "end": 111616,
+        "scored": 1024,
+        "nll_sum": 2182.8376998901367
+      },
+      {
+        "begin": 110592,
+        "end": 112640,
+        "scored": 1024,
+        "nll_sum": 2234.7420234680176
+      },
+      {
+        "begin": 111616,
+        "end": 113664,
+        "scored": 1024,
+        "nll_sum": 2332.1212310791016
+      },
+      {
+        "begin": 112640,
+        "end": 114688,
+        "scored": 1024,
+        "nll_sum": 2379.415328979492
+      },
+      {
+        "begin": 113664,
+        "end": 115712,
+        "scored": 1024,
+        "nll_sum": 2407.5389709472656
+      },
+      {
+        "begin": 114688,
+        "end": 116736,
+        "scored": 1024,
+        "nll_sum": 2041.6686096191406
+      },
+      {
+        "begin": 115712,
+        "end": 117760,
+        "scored": 1024,
+        "nll_sum": 1942.1225128173828
+      },
+      {
+        "begin": 116736,
+        "end": 118784,
+        "scored": 1024,
+        "nll_sum": 2453.919288635254
+      },
+      {
+        "begin": 117760,
+        "end": 119808,
+        "scored": 1024,
+        "nll_sum": 2536.248146057129
+      },
+      {
+        "begin": 118784,
+        "end": 120832,
+        "scored": 1024,
+        "nll_sum": 2548.225196838379
+      },
+      {
+        "begin": 119808,
+        "end": 121856,
+        "scored": 1024,
+        "nll_sum": 2039.9899826049805
+      },
+      {
+        "begin": 120832,
+        "end": 122880,
+        "scored": 1024,
+        "nll_sum": 2360.4258193969727
+      },
+      {
+        "begin": 121856,
+        "end": 123904,
+        "scored": 1024,
+        "nll_sum": 2715.447952270508
+      },
+      {
+        "begin": 122880,
+        "end": 124928,
+        "scored": 1024,
+        "nll_sum": 3021.066360473633
+      },
+      {
+        "begin": 123904,
+        "end": 125952,
+        "scored": 1024,
+        "nll_sum": 3131.093795776367
+      },
+      {
+        "begin": 124928,
+        "end": 126976,
+        "scored": 1024,
+        "nll_sum": 3052.2180938720703
+      },
+      {
+        "begin": 125952,
+        "end": 128000,
+        "scored": 1024,
+        "nll_sum": 3063.4002227783203
+      },
+      {
+        "begin": 126976,
+        "end": 129024,
+        "scored": 1024,
+        "nll_sum": 3036.3790740966797
+      },
+      {
+        "begin": 128000,
+        "end": 130048,
+        "scored": 1024,
+        "nll_sum": 3176.312545776367
+      },
+      {
+        "begin": 129024,
+        "end": 131072,
+        "scored": 1024,
+        "nll_sum": 3442.850845336914
+      },
+      {
+        "begin": 130048,
+        "end": 132096,
+        "scored": 1024,
+        "nll_sum": 2420.0093154907227
+      },
+      {
+        "begin": 131072,
+        "end": 133120,
+        "scored": 1024,
+        "nll_sum": 2534.753646850586
+      },
+      {
+        "begin": 132096,
+        "end": 134144,
+        "scored": 1024,
+        "nll_sum": 2727.2120208740234
+      },
+      {
+        "begin": 133120,
+        "end": 135168,
+        "scored": 1024,
+        "nll_sum": 2986.4322814941406
+      },
+      {
+        "begin": 134144,
+        "end": 136192,
+        "scored": 1024,
+        "nll_sum": 3079.0289306640625
+      },
+      {
+        "begin": 135168,
+        "end": 137216,
+        "scored": 1024,
+        "nll_sum": 2707.6847381591797
+      },
+      {
+        "begin": 136192,
+        "end": 138240,
+        "scored": 1024,
+        "nll_sum": 2541.151924133301
+      },
+      {
+        "begin": 137216,
+        "end": 139264,
+        "scored": 1024,
+        "nll_sum": 2805.3064575195312
+      },
+      {
+        "begin": 138240,
+        "end": 140288,
+        "scored": 1024,
+        "nll_sum": 2768.896583557129
+      },
+      {
+        "begin": 139264,
+        "end": 141312,
+        "scored": 1024,
+        "nll_sum": 2523.332206726074
+      },
+      {
+        "begin": 140288,
+        "end": 142336,
+        "scored": 1024,
+        "nll_sum": 2760.4583740234375
+      },
+      {
+        "begin": 141312,
+        "end": 143360,
+        "scored": 1024,
+        "nll_sum": 2598.678726196289
+      },
+      {
+        "begin": 142336,
+        "end": 144384,
+        "scored": 1024,
+        "nll_sum": 2612.607551574707
+      },
+      {
+        "begin": 143360,
+        "end": 145408,
+        "scored": 1024,
+        "nll_sum": 2586.995407104492
+      },
+      {
+        "begin": 144384,
+        "end": 146432,
+        "scored": 1024,
+        "nll_sum": 2049.642807006836
+      },
+      {
+        "begin": 145408,
+        "end": 147456,
+        "scored": 1024,
+        "nll_sum": 2919.893913269043
+      },
+      {
+        "begin": 146432,
+        "end": 148480,
+        "scored": 1024,
+        "nll_sum": 3064.445098876953
+      },
+      {
+        "begin": 147456,
+        "end": 149504,
+        "scored": 1024,
+        "nll_sum": 3221.501174926758
+      },
+      {
+        "begin": 148480,
+        "end": 150528,
+        "scored": 1024,
+        "nll_sum": 3465.8831939697266
+      },
+      {
+        "begin": 149504,
+        "end": 151552,
+        "scored": 1024,
+        "nll_sum": 3256.748794555664
+      },
+      {
+        "begin": 150528,
+        "end": 152576,
+        "scored": 1024,
+        "nll_sum": 2660.3726959228516
+      },
+      {
+        "begin": 151552,
+        "end": 153600,
+        "scored": 1024,
+        "nll_sum": 2426.7484588623047
+      },
+      {
+        "begin": 152576,
+        "end": 154624,
+        "scored": 1024,
+        "nll_sum": 2510.9536056518555
+      },
+      {
+        "begin": 153600,
+        "end": 155648,
+        "scored": 1024,
+        "nll_sum": 2804.1236267089844
+      },
+      {
+        "begin": 154624,
+        "end": 156672,
+        "scored": 1024,
+        "nll_sum": 2703.650848388672
+      },
+      {
+        "begin": 155648,
+        "end": 157696,
+        "scored": 1024,
+        "nll_sum": 2567.7620697021484
+      },
+      {
+        "begin": 156672,
+        "end": 158720,
+        "scored": 1024,
+        "nll_sum": 2935.8727264404297
+      },
+      {
+        "begin": 157696,
+        "end": 159744,
+        "scored": 1024,
+        "nll_sum": 2720.107681274414
+      },
+      {
+        "begin": 158720,
+        "end": 160768,
+        "scored": 1024,
+        "nll_sum": 2623.763282775879
+      },
+      {
+        "begin": 159744,
+        "end": 161792,
+        "scored": 1024,
+        "nll_sum": 3237.4688720703125
+      },
+      {
+        "begin": 160768,
+        "end": 162816,
+        "scored": 1024,
+        "nll_sum": 2761.145528793335
+      },
+      {
+        "begin": 161792,
+        "end": 163840,
+        "scored": 1024,
+        "nll_sum": 2852.4287643432617
+      },
+      {
+        "begin": 162816,
+        "end": 164864,
+        "scored": 1024,
+        "nll_sum": 2908.189552307129
+      },
+      {
+        "begin": 163840,
+        "end": 165888,
+        "scored": 1024,
+        "nll_sum": 3232.2179565429688
+      },
+      {
+        "begin": 164864,
+        "end": 166912,
+        "scored": 1024,
+        "nll_sum": 2385.9124183654785
+      },
+      {
+        "begin": 165888,
+        "end": 167936,
+        "scored": 1024,
+        "nll_sum": 2046.3009567260742
+      },
+      {
+        "begin": 166912,
+        "end": 168960,
+        "scored": 1024,
+        "nll_sum": 1892.7311820983887
+      },
+      {
+        "begin": 167936,
+        "end": 169984,
+        "scored": 1024,
+        "nll_sum": 2527.5344581604004
+      },
+      {
+        "begin": 168960,
+        "end": 171008,
+        "scored": 1024,
+        "nll_sum": 2307.0440673828125
+      },
+      {
+        "begin": 169984,
+        "end": 172032,
+        "scored": 1024,
+        "nll_sum": 2301.808246612549
+      },
+      {
+        "begin": 171008,
+        "end": 173056,
+        "scored": 1024,
+        "nll_sum": 2593.450942993164
+      },
+      {
+        "begin": 172032,
+        "end": 174080,
+        "scored": 1024,
+        "nll_sum": 2458.722702026367
+      },
+      {
+        "begin": 173056,
+        "end": 175104,
+        "scored": 1024,
+        "nll_sum": 3070.2492065429688
+      },
+      {
+        "begin": 174080,
+        "end": 176128,
+        "scored": 1024,
+        "nll_sum": 2995.6219482421875
+      },
+      {
+        "begin": 175104,
+        "end": 177152,
+        "scored": 1024,
+        "nll_sum": 2630.0801696777344
+      },
+      {
+        "begin": 176128,
+        "end": 178176,
+        "scored": 1024,
+        "nll_sum": 2706.2603607177734
+      },
+      {
+        "begin": 177152,
+        "end": 179200,
+        "scored": 1024,
+        "nll_sum": 3171.355697631836
+      },
+      {
+        "begin": 178176,
+        "end": 180224,
+        "scored": 1024,
+        "nll_sum": 2758.4076919555664
+      },
+      {
+        "begin": 179200,
+        "end": 181248,
+        "scored": 1024,
+        "nll_sum": 3263.921844482422
+      },
+      {
+        "begin": 180224,
+        "end": 182272,
+        "scored": 1024,
+        "nll_sum": 2960.297637939453
+      },
+      {
+        "begin": 181248,
+        "end": 183296,
+        "scored": 1024,
+        "nll_sum": 2887.7177200317383
+      },
+      {
+        "begin": 182272,
+        "end": 184320,
+        "scored": 1024,
+        "nll_sum": 2917.7177124023438
+      },
+      {
+        "begin": 183296,
+        "end": 185344,
+        "scored": 1024,
+        "nll_sum": 3211.3372497558594
+      },
+      {
+        "begin": 184320,
+        "end": 186368,
+        "scored": 1024,
+        "nll_sum": 3464.955612182617
+      },
+      {
+        "begin": 185344,
+        "end": 187392,
+        "scored": 1024,
+        "nll_sum": 3692.002899169922
+      },
+      {
+        "begin": 186368,
+        "end": 188416,
+        "scored": 1024,
+        "nll_sum": 3508.598846435547
+      },
+      {
+        "begin": 187392,
+        "end": 189440,
+        "scored": 1024,
+        "nll_sum": 3574.1149139404297
+      },
+      {
+        "begin": 188416,
+        "end": 190464,
+        "scored": 1024,
+        "nll_sum": 3475.0357513427734
+      },
+      {
+        "begin": 189440,
+        "end": 191488,
+        "scored": 1024,
+        "nll_sum": 3189.494918823242
+      },
+      {
+        "begin": 190464,
+        "end": 192512,
+        "scored": 1024,
+        "nll_sum": 3487.7423706054688
+      },
+      {
+        "begin": 191488,
+        "end": 193536,
+        "scored": 1024,
+        "nll_sum": 3456.422821044922
+      },
+      {
+        "begin": 192512,
+        "end": 194560,
+        "scored": 1024,
+        "nll_sum": 3438.063919067383
+      },
+      {
+        "begin": 193536,
+        "end": 195584,
+        "scored": 1024,
+        "nll_sum": 3538.0530548095703
+      },
+      {
+        "begin": 194560,
+        "end": 196608,
+        "scored": 1024,
+        "nll_sum": 3466.377265930176
+      },
+      {
+        "begin": 195584,
+        "end": 197632,
+        "scored": 1024,
+        "nll_sum": 2425.3031158447266
+      },
+      {
+        "begin": 196608,
+        "end": 198656,
+        "scored": 1024,
+        "nll_sum": 3577.64453125
+      },
+      {
+        "begin": 197632,
+        "end": 199680,
+        "scored": 1024,
+        "nll_sum": 3337.543876647949
+      },
+      {
+        "begin": 198656,
+        "end": 200704,
+        "scored": 1024,
+        "nll_sum": 2970.970932006836
+      },
+      {
+        "begin": 199680,
+        "end": 201728,
+        "scored": 1024,
+        "nll_sum": 3007.7928619384766
+      },
+      {
+        "begin": 200704,
+        "end": 202752,
+        "scored": 1024,
+        "nll_sum": 2963.8658599853516
+      },
+      {
+        "begin": 201728,
+        "end": 203776,
+        "scored": 1024,
+        "nll_sum": 3281.3580322265625
+      },
+      {
+        "begin": 202752,
+        "end": 204800,
+        "scored": 1024,
+        "nll_sum": 3016.1944427490234
+      },
+      {
+        "begin": 203776,
+        "end": 205824,
+        "scored": 1024,
+        "nll_sum": 2749.6958923339844
+      },
+      {
+        "begin": 204800,
+        "end": 206848,
+        "scored": 1024,
+        "nll_sum": 2547.7803344726562
+      },
+      {
+        "begin": 205824,
+        "end": 207872,
+        "scored": 1024,
+        "nll_sum": 2973.9515686035156
+      },
+      {
+        "begin": 206848,
+        "end": 208896,
+        "scored": 1024,
+        "nll_sum": 2819.7960662841797
+      },
+      {
+        "begin": 207872,
+        "end": 209920,
+        "scored": 1024,
+        "nll_sum": 3234.966896057129
+      },
+      {
+        "begin": 208896,
+        "end": 210944,
+        "scored": 1024,
+        "nll_sum": 3025.0274963378906
+      },
+      {
+        "begin": 209920,
+        "end": 211968,
+        "scored": 1024,
+        "nll_sum": 2857.861572265625
+      },
+      {
+        "begin": 210944,
+        "end": 212992,
+        "scored": 1024,
+        "nll_sum": 3244.3605041503906
+      },
+      {
+        "begin": 211968,
+        "end": 214016,
+        "scored": 1024,
+        "nll_sum": 3015.902198791504
+      },
+      {
+        "begin": 212992,
+        "end": 215040,
+        "scored": 1024,
+        "nll_sum": 2857.7136993408203
+      },
+      {
+        "begin": 214016,
+        "end": 216064,
+        "scored": 1024,
+        "nll_sum": 3058.094528198242
+      },
+      {
+        "begin": 215040,
+        "end": 217088,
+        "scored": 1024,
+        "nll_sum": 2914.2711181640625
+      },
+      {
+        "begin": 216064,
+        "end": 218112,
+        "scored": 1024,
+        "nll_sum": 3498.192672729492
+      },
+      {
+        "begin": 217088,
+        "end": 219136,
+        "scored": 1024,
+        "nll_sum": 3124.5282287597656
+      },
+      {
+        "begin": 218112,
+        "end": 220160,
+        "scored": 1024,
+        "nll_sum": 3091.723678588867
+      },
+      {
+        "begin": 219136,
+        "end": 221184,
+        "scored": 1024,
+        "nll_sum": 2768.8162155151367
+      },
+      {
+        "begin": 220160,
+        "end": 222208,
+        "scored": 1024,
+        "nll_sum": 2755.160171508789
+      },
+      {
+        "begin": 221184,
+        "end": 223232,
+        "scored": 1024,
+        "nll_sum": 3106.3189544677734
+      },
+      {
+        "begin": 222208,
+        "end": 224256,
+        "scored": 1024,
+        "nll_sum": 2930.1972885131836
+      },
+      {
+        "begin": 223232,
+        "end": 225280,
+        "scored": 1024,
+        "nll_sum": 3026.6887969970703
+      },
+      {
+        "begin": 224256,
+        "end": 226304,
+        "scored": 1024,
+        "nll_sum": 2969.172821044922
+      },
+      {
+        "begin": 225280,
+        "end": 227328,
+        "scored": 1024,
+        "nll_sum": 2681.309684753418
+      },
+      {
+        "begin": 226304,
+        "end": 228352,
+        "scored": 1024,
+        "nll_sum": 2893.682289123535
+      },
+      {
+        "begin": 227328,
+        "end": 229376,
+        "scored": 1024,
+        "nll_sum": 2855.945022583008
+      },
+      {
+        "begin": 228352,
+        "end": 230400,
+        "scored": 1024,
+        "nll_sum": 2674.093879699707
+      },
+      {
+        "begin": 229376,
+        "end": 231424,
+        "scored": 1024,
+        "nll_sum": 2260.325897216797
+      },
+      {
+        "begin": 230400,
+        "end": 232448,
+        "scored": 1024,
+        "nll_sum": 3010.824447631836
+      },
+      {
+        "begin": 231424,
+        "end": 233472,
+        "scored": 1024,
+        "nll_sum": 3177.167549133301
+      },
+      {
+        "begin": 232448,
+        "end": 234496,
+        "scored": 1024,
+        "nll_sum": 2817.1061935424805
+      },
+      {
+        "begin": 233472,
+        "end": 235520,
+        "scored": 1024,
+        "nll_sum": 3068.233932495117
+      },
+      {
+        "begin": 234496,
+        "end": 236544,
+        "scored": 1024,
+        "nll_sum": 3016.7156982421875
+      },
+      {
+        "begin": 235520,
+        "end": 237568,
+        "scored": 1024,
+        "nll_sum": 2908.5013580322266
+      },
+      {
+        "begin": 236544,
+        "end": 238592,
+        "scored": 1024,
+        "nll_sum": 3233.58251953125
+      },
+      {
+        "begin": 237568,
+        "end": 239616,
+        "scored": 1024,
+        "nll_sum": 3162.7433013916016
+      },
+      {
+        "begin": 238592,
+        "end": 240640,
+        "scored": 1024,
+        "nll_sum": 2564.337043762207
+      },
+      {
+        "begin": 239616,
+        "end": 241664,
+        "scored": 1024,
+        "nll_sum": 2484.449592590332
+      },
+      {
+        "begin": 240640,
+        "end": 242688,
+        "scored": 1024,
+        "nll_sum": 2695.494697570801
+      },
+      {
+        "begin": 241664,
+        "end": 243712,
+        "scored": 1024,
+        "nll_sum": 2403.5740966796875
+      },
+      {
+        "begin": 242688,
+        "end": 244736,
+        "scored": 1024,
+        "nll_sum": 3046.754348754883
+      },
+      {
+        "begin": 243712,
+        "end": 245760,
+        "scored": 1024,
+        "nll_sum": 3015.776985168457
+      },
+      {
+        "begin": 244736,
+        "end": 246784,
+        "scored": 1024,
+        "nll_sum": 2875.583984375
+      },
+      {
+        "begin": 245760,
+        "end": 247808,
+        "scored": 1024,
+        "nll_sum": 2591.596221923828
+      },
+      {
+        "begin": 246784,
+        "end": 248832,
+        "scored": 1024,
+        "nll_sum": 2384.0004272460938
+      },
+      {
+        "begin": 247808,
+        "end": 249856,
+        "scored": 1024,
+        "nll_sum": 2527.812484741211
+      },
+      {
+        "begin": 248832,
+        "end": 250880,
+        "scored": 1024,
+        "nll_sum": 2377.9897537231445
+      },
+      {
+        "begin": 249856,
+        "end": 251904,
+        "scored": 1024,
+        "nll_sum": 2591.2284545898438
+      },
+      {
+        "begin": 250880,
+        "end": 252928,
+        "scored": 1024,
+        "nll_sum": 2804.0539932250977
+      },
+      {
+        "begin": 251904,
+        "end": 253952,
+        "scored": 1024,
+        "nll_sum": 2919.9350051879883
+      },
+      {
+        "begin": 252928,
+        "end": 254976,
+        "scored": 1024,
+        "nll_sum": 2551.8042755126953
+      },
+      {
+        "begin": 253952,
+        "end": 256000,
+        "scored": 1024,
+        "nll_sum": 3328.7925415039062
+      },
+      {
+        "begin": 254976,
+        "end": 257024,
+        "scored": 1024,
+        "nll_sum": 2990.6986389160156
+      },
+      {
+        "begin": 256000,
+        "end": 258048,
+        "scored": 1024,
+        "nll_sum": 2589.083740234375
+      },
+      {
+        "begin": 257024,
+        "end": 259072,
+        "scored": 1024,
+        "nll_sum": 2674.0712966918945
+      },
+      {
+        "begin": 258048,
+        "end": 260096,
+        "scored": 1024,
+        "nll_sum": 3062.0203399658203
+      },
+      {
+        "begin": 259072,
+        "end": 261120,
+        "scored": 1024,
+        "nll_sum": 2747.3602752685547
+      },
+      {
+        "begin": 260096,
+        "end": 262144,
+        "scored": 1024,
+        "nll_sum": 2602.1861724853516
+      },
+      {
+        "begin": 261120,
+        "end": 263168,
+        "scored": 1024,
+        "nll_sum": 2446.5763626098633
+      },
+      {
+        "begin": 262144,
+        "end": 264192,
+        "scored": 1024,
+        "nll_sum": 2738.439971923828
+      },
+      {
+        "begin": 263168,
+        "end": 265216,
+        "scored": 1024,
+        "nll_sum": 2837.6939544677734
+      },
+      {
+        "begin": 264192,
+        "end": 266240,
+        "scored": 1024,
+        "nll_sum": 2631.144058227539
+      },
+      {
+        "begin": 265216,
+        "end": 267264,
+        "scored": 1024,
+        "nll_sum": 2994.7637100219727
+      },
+      {
+        "begin": 266240,
+        "end": 268288,
+        "scored": 1024,
+        "nll_sum": 2748.9626026153564
+      },
+      {
+        "begin": 267264,
+        "end": 269312,
+        "scored": 1024,
+        "nll_sum": 2537.5120239257812
+      },
+      {
+        "begin": 268288,
+        "end": 270336,
+        "scored": 1024,
+        "nll_sum": 2760.036994934082
+      },
+      {
+        "begin": 269312,
+        "end": 271360,
+        "scored": 1024,
+        "nll_sum": 2841.736228942871
+      },
+      {
+        "begin": 270336,
+        "end": 272384,
+        "scored": 1024,
+        "nll_sum": 2973.6283416748047
+      },
+      {
+        "begin": 271360,
+        "end": 273408,
+        "scored": 1024,
+        "nll_sum": 2990.3959884643555
+      },
+      {
+        "begin": 272384,
+        "end": 274432,
+        "scored": 1024,
+        "nll_sum": 3154.354248046875
+      },
+      {
+        "begin": 273408,
+        "end": 275456,
+        "scored": 1024,
+        "nll_sum": 3275.189163208008
+      },
+      {
+        "begin": 274432,
+        "end": 276480,
+        "scored": 1024,
+        "nll_sum": 2640.1580963134766
+      },
+      {
+        "begin": 275456,
+        "end": 277504,
+        "scored": 1024,
+        "nll_sum": 3118.369827270508
+      },
+      {
+        "begin": 276480,
+        "end": 278528,
+        "scored": 1024,
+        "nll_sum": 2422.2264862060547
+      },
+      {
+        "begin": 277504,
+        "end": 279552,
+        "scored": 1024,
+        "nll_sum": 2372.614875793457
+      },
+      {
+        "begin": 278528,
+        "end": 280576,
+        "scored": 1024,
+        "nll_sum": 1704.1506042480469
+      },
+      {
+        "begin": 279552,
+        "end": 281600,
+        "scored": 1024,
+        "nll_sum": 1353.203824520111
+      },
+      {
+        "begin": 280576,
+        "end": 282624,
+        "scored": 1024,
+        "nll_sum": 2956.891403198242
+      },
+      {
+        "begin": 281600,
+        "end": 283648,
+        "scored": 1024,
+        "nll_sum": 2976.021514892578
+      },
+      {
+        "begin": 282624,
+        "end": 284672,
+        "scored": 1024,
+        "nll_sum": 3123.6554260253906
+      },
+      {
+        "begin": 283648,
+        "end": 285696,
+        "scored": 1024,
+        "nll_sum": 3297.6168670654297
+      },
+      {
+        "begin": 284672,
+        "end": 286720,
+        "scored": 1024,
+        "nll_sum": 3541.1324005126953
+      },
+      {
+        "begin": 285696,
+        "end": 287744,
+        "scored": 1024,
+        "nll_sum": 3264.2619018554688
+      },
+      {
+        "begin": 286720,
+        "end": 288768,
+        "scored": 1024,
+        "nll_sum": 2759.1529235839844
+      },
+      {
+        "begin": 287744,
+        "end": 289792,
+        "scored": 1024,
+        "nll_sum": 2695.1259384155273
+      },
+      {
+        "begin": 288768,
+        "end": 290816,
+        "scored": 1024,
+        "nll_sum": 2952.781982421875
+      },
+      {
+        "begin": 289792,
+        "end": 291840,
+        "scored": 1024,
+        "nll_sum": 3113.657669067383
+      },
+      {
+        "begin": 290816,
+        "end": 292864,
+        "scored": 1024,
+        "nll_sum": 3035.3121337890625
+      },
+      {
+        "begin": 291840,
+        "end": 293888,
+        "scored": 1024,
+        "nll_sum": 3012.938735961914
+      },
+      {
+        "begin": 292864,
+        "end": 294912,
+        "scored": 1024,
+        "nll_sum": 3233.3473205566406
+      },
+      {
+        "begin": 293888,
+        "end": 295936,
+        "scored": 1024,
+        "nll_sum": 3309.1544036865234
+      },
+      {
+        "begin": 294912,
+        "end": 296960,
+        "scored": 1024,
+        "nll_sum": 2942.259796142578
+      },
+      {
+        "begin": 295936,
+        "end": 297193,
+        "scored": 233,
+        "nll_sum": 749.5230865478516
+      }
+    ]
+  }
+}

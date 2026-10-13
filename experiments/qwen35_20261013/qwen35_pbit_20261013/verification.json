@@ -1,0 +1,78 @@
+{
+  "literal_signed_bitplane_counts_exact": true,
+  "pv_mean_error": 7.05718994140625e-05,
+  "pv_mean_standard_error": 0.0016179727390408516,
+  "masked_rows_correct": true,
+  "variant_checks": [
+    {
+      "variant": "ffn_mean",
+      "seconds": 11.891812018118799,
+      "ffn_layers": 24,
+      "attention_layers": [],
+      "prefill_decode_finite": true,
+      "protected_parameters_unchanged": true
+    },
+    {
+      "variant": "attention_dense_control",
+      "seconds": 5.806647446937859,
+      "ffn_layers": 0,
+      "attention_layers": [
+        3,
+        7,
+        11,
+        15,
+        19,
+        23
+      ],
+      "prefill_decode_finite": true,
+      "protected_parameters_unchanged": true
+    },
+    {
+      "variant": "ffn_exact",
+      "seconds": 5.817976057995111,
+      "ffn_layers": 24,
+      "attention_layers": [],
+      "prefill_decode_finite": true,
+      "protected_parameters_unchanged": true
+    },
+    {
+      "variant": "attention_pv",
+      "seconds": 5.760308970697224,
+      "ffn_layers": 0,
+      "attention_layers": [
+        3,
+        7,
+        11,
+        15,
+        19,
+        23
+      ],
+      "prefill_decode_finite": true,
+      "protected_parameters_unchanged": true
+    },
+    {
+      "variant": "joint_pv",
+      "seconds": 6.010373866651207,
+      "ffn_layers": 24,
+      "attention_layers": [
+        3,
+        7,
+        11,
+        15,
+        19,
+        23
+      ],
+      "prefill_decode_finite": true,
+      "protected_parameters_unchanged": true
+    }
+  ],
+  "source_sha256": {
+    "/home/Hongjie_Zeng/qwen35_pbit_20261013/common.py": "0320aca976d99e49a5659c63980509d57e64cec67615b5806da3073430b176d5",
+    "/home/Hongjie_Zeng/qwen35_pbit_20261013/exact_ffn.py": "e175e2fdc59c5eac34729a7ddf42860a3aebbee2790bfaa881e99e729e815e9e",
+    "/home/Hongjie_Zeng/qwen35_pbit_20261013/pv_sampling.py": "7b17d8ddb80d2e1a8964c4332a36e1598f1f4ec115aeef2b1f80d5e104404e21",
+    "/home/Hongjie_Zeng/qwen35_pbit_20261013/calibrate.py": "4aea0b9da0510633c3bc9b1e959659316a83042678fbb30fe93fc59ffad057cf",
+    "/home/Hongjie_Zeng/qwen35_pbit_20261013/experiment.py": "921db0b2a53e2ff7202ef1167f823030fb00f26faf4c9dbd1257f30f00a4e705",
+    "/home/Hongjie_Zeng/qwen35_pbit_20261013/verify.py": "435e89a8e1f733a1d23e5fa7e93e8574a773b83ce239a0afbe75dac523ca42d6",
+    "/home/Hongjie_Zeng/qwen35_baseline_20261013/baseline.py": "d6ba220e12815dde7f475486a77d49760b4cc9890cb2164ea010d42132a985f9"
+  }
+}

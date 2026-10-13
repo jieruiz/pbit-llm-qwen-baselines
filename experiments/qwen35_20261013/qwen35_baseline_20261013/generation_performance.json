@@ -1,0 +1,148 @@
+{
+  "metadata": {
+    "task": "generation_performance",
+    "model": {
+      "repo_id": "Qwen/Qwen3.5-0.8B",
+      "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "endpoint": "https://hf-mirror.com",
+      "files": [
+        {
+          "path": ".gitattributes",
+          "bytes": 1570,
+          "sha256": "34448b82c17d60fec9b65b1f093c115ddbaadc04beb1b0140b6bfed2e012a930"
+        },
+        {
+          "path": "LICENSE",
+          "bytes": 11544,
+          "sha256": "bbedc3fda3305820b977265f01b8619d87570a6739de3a5582c3464840f1e57a"
+        },
+        {
+          "path": "README.md",
+          "bytes": 61705,
+          "sha256": "87a163af54f32fa608a0f8d3ac67945c53dd2b4a7c96740b3d7fdc28e8458864"
+        },
+        {
+          "path": "chat_template.jinja",
+          "bytes": 7755,
+          "sha256": "273d8e0e683b885071fb17e08d71e5f2a5ddfb5309756181681de4f5a1822d80"
+        },
+        {
+          "path": "config.json",
+          "bytes": 2907,
+          "sha256": "b90b86f35c8e6925ef74ee04d0e758f0a845c83a42089ad82bbaa948de9b4204"
+        },
+        {
+          "path": "merges.txt",
+          "bytes": 3353259,
+          "sha256": "a9d356d7bdf1ef4949e3e748e95b8e10ad9d4e2e838eddc38a0a7b6b94d1db8d"
+        },
+        {
+          "path": "model.safetensors-00001-of-00001.safetensors",
+          "bytes": 1746942600,
+          "sha256": "04b1c301231dd422b8860db31311ab2721511346a32cb1e079c4c4e5f1fe4696"
+        },
+        {
+          "path": "model.safetensors.index.json",
+          "bytes": 50900,
+          "sha256": "d8a08838a613b025eb7952ed9db11696213e57e76a375661ef5c12f9dd5dcf4e"
+        },
+        {
+          "path": "preprocessor_config.json",
+          "bytes": 390,
+          "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516"
+        },
+        {
+          "path": "tokenizer.json",
+          "bytes": 12807982,
+          "sha256": "5f9e4d4901a92b997e463c1f46055088b6cca5ca61a6522d1b9f64c4bb81cb42"
+        },
+        {
+          "path": "tokenizer_config.json",
+          "bytes": 16709,
+          "sha256": "49e2b6e395f959f077f1e992b338919c0d4a9732fc6e613995e06557f843500c"
+        },
+        {
+          "path": "video_preprocessor_config.json",
+          "bytes": 385,
+          "sha256": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13"
+        },
+        {
+          "path": "vocab.json",
+          "bytes": 6722759,
+          "sha256": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003"
+        }
+      ],
+      "versions": {
+        "torch": "2.7.1+cu128",
+        "transformers": "5.19.0",
+        "lm_eval": "0.4.13",
+        "datasets": "4.8.5",
+        "peft": "0.21.2",
+        "huggingface-hub": "1.33.0"
+      },
+      "scope": "Official post-trained checkpoint; text-only inference; original weights; no p-bit replacement"
+    },
+    "slurm_job_id": "1227",
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "cuda_visible_devices": "3",
+    "source_sha256": "d6ba220e12815dde7f475486a77d49760b4cc9890cb2164ea010d42132a985f9",
+    "context": 2048,
+    "stride": 1024,
+    "batch_size": 1,
+    "dtype": "BF16 weights/activations; native FP32 internals retained",
+    "attention_backend": "sdpa",
+    "zero_shot": true,
+    "apply_chat_template_for_scoring": false,
+    "scope": "All original 24 layers; no random FFN/attention; raw text likelihood; vision encoder unused",
+    "loading_info": {
+      "missing_keys": "set()",
+      "unexpected_keys": "set()",
+      "mismatched_keys": "set()",
+      "error_msgs": []
+    },
+    "seconds": 26.55798878800124
+  },
+  "result": {
+    "examples": [
+      {
+        "prompt": "请简要解释什么是随机计算。",
+        "output": "**随机计算**（Random Calculation）是指在进行数学运算时，**不遵循任何预设的数学规则或顺序**，而是完全由**随机数**（如随机数表、随机数器）决定运算结果的过程。\n\n其核心特点包括：\n1.  **无规则性**：运算结果完全取决于随机数生成器的输出，无法通过逻辑推导或固定步骤得到。\n2.  **不可预测性**：对于初学者或需要精确结果的场景，随机计算无法提供确定的答案。\n3.  **应用场景**：常用于需要生成随机数据、模拟随机事件、验证算法",
+        "new_tokens": 128,
+        "seconds": 8.953651334159076
+      },
+      {
+        "prompt": "What is the difference between a probability and a random sample?",
+        "output": "The fundamental difference between a **probability** and a **random sample** lies in their relationship to the underlying population and the nature of the data they represent.\n\nHere is a step-by-step breakdown of the distinction:\n\n### 1. Probability: A Measure of Uncertainty\nA **probability** is a numerical value (between 0 and 1) that quantifies the likelihood of an event occurring within a specific population.\n\n*   **Definition**: It represents the proportion of the entire population that possesses a specific characteristic (e.g., \"50% of the population has a height of 175 cm\").\n*",
+        "new_tokens": 128,
+        "seconds": 2.65139494324103
+      },
+      {
+        "prompt": "Write a Python function to add two integers.",
+        "output": "Here’s a simple Python function to add two integers:\n\n```python\ndef add_integers(a: int, b: int) -> int:\n    \"\"\"\n    Add two integers and return the result.\n\n    Parameters:\n        a (int): First integer.\n        b (int): Second integer.\n\n    Returns:\n        int: The sum of a and b.\n\n    Raises:\n        ValueError: If either argument is not an integer.\n    \"\"\"\n    if not isinstance(a, int) or not isinstance(b, int):\n        raise ValueError(\"Both arguments must be integers.\")\n   ",
+        "new_tokens": 128,
+        "seconds": 2.620337092317641
+      }
+    ],
+    "timing": [
+      {
+        "context": 2048,
+        "prefill_seconds": 0.0382769457064569,
+        "decode_tokens": 64,
+        "decode_seconds": 1.3381024822592735,
+        "decode_ms_per_token": 20.90785128530115,
+        "peak_allocated_bytes": 1931638272,
+        "peak_reserved_bytes": 2118123520
+      },
+      {
+        "context": 8192,
+        "prefill_seconds": 8.236822628881782,
+        "decode_tokens": 64,
+        "decode_seconds": 1.2925143246538937,
+        "decode_ms_per_token": 20.19553632271709,
+        "peak_allocated_bytes": 2424240128,
+        "peak_reserved_bytes": 2539651072
+      }
+    ],
+    "timing_scope": "One warm run; single GPU, batch 1; not a power/energy measurement"
+  }
+}

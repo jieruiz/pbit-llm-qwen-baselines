@@ -1,4 +1,18 @@
-# p-bit LLM: Qwen2.5-0.5B baselines
+# p-bit LLM: Qwen2.5 and Qwen3.5 experiments
+
+## Qwen3.5-0.8B results — 2026-10-13
+
+[完整中文汇总：基线、随机FFN、PV采样与DeltaNet投影](experiments/qwen35_20261013/README_ZH.md)
+
+This branch adds frozen evaluation code, Slurm scripts and 43 full-WikiText-2
+replacement/control PPL records. Original Qwen3.5 PPL is **15.6611**; dynamic
+stochastic FFN + PV512 is **15.9235**; adding stochastic output/z/QKV projections
+in all 18 DeltaNet layers gives **16.1244** (+2.96%). Random configurations use
+three seeds. The original model's five zero-shot task summaries are included;
+replacement models were evaluated on PPL only. Model weights and datasets are
+not included. These are numerical evaluations, not measured hardware energy gains.
+
+The Qwen2.5 material below remains the earlier experiment history.
 
 Reproducible BF16 reference measurements and inspection utilities for studying
 p-bit replacements inside the feed-forward network of Qwen2.5-0.5B Base.

@@ -1,0 +1,52 @@
+{
+  "dimensions": {
+    "hidden": 1024,
+    "ffn_intermediate": 3584,
+    "heads": 16,
+    "key_dim": 128,
+    "value_dim": 128,
+    "delta_layers": 18
+  },
+  "per_delta_layer_projection_MAC": {
+    "qkv": 6291456,
+    "z": 2097152,
+    "a_and_b": 32768,
+    "out": 2097152
+  },
+  "all18": {
+    "projection_MAC": 189333504,
+    "state_read_update_MAC": 14155776,
+    "state_decay_scalar_MUL": 4718592,
+    "conv_MAC": 442368,
+    "delta_total_MAC": 203931648,
+    "state_elements": 4718592,
+    "state_MiB_FP32": 18.0
+  },
+  "scope": "One decoded token, batch1, direct recurrent formulation. MAC=one multiplication and addition. Decay MUL separate. Excludes activation/norm/softmax/residual/control and memory-access energy. Prefill chunkwise overhead differs.",
+  "decode_comparisons": [
+    {
+      "context": 2048,
+      "ffn_MAC": 264241152,
+      "delta_total_MAC": 203931648,
+      "full_attention_projection_MAC": 44040192,
+      "full_attention_QK_PV_MAC": 50331648,
+      "body_MAC": 562544640,
+      "delta_body_MAC_fraction": 0.3625163826998689,
+      "delta_state_core_body_MAC_fraction": 0.025163826998689385,
+      "LM_head_MAC": 254279680,
+      "full_attention_KV_MiB_BF16": 24.0
+    },
+    {
+      "context": 8192,
+      "ffn_MAC": 264241152,
+      "delta_total_MAC": 203931648,
+      "full_attention_projection_MAC": 44040192,
+      "full_attention_QK_PV_MAC": 201326592,
+      "body_MAC": 713539584,
+      "delta_body_MAC_fraction": 0.28580285182889026,
+      "delta_state_core_body_MAC_fraction": 0.019838809671419714,
+      "LM_head_MAC": 254279680,
+      "full_attention_KV_MiB_BF16": 96.0
+    }
+  ]
+}
