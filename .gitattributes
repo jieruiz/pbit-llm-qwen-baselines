@@ -1,3 +1,7 @@
 .gitattributes text eol=lf
 architecture_tlm/** text eol=lf
 architecture_tlm/evidence/** -text -diff -merge
+architecture_tlm/results/dramsys/*.gz -text -diff -merge
+architecture_tlm/results/dramsys/*.log -text -whitespace
+architecture_tlm/dramsys/*.json -text whitespace=cr-at-eol
+architecture_tlm/results/dramsys_diagnostics/bad_row_mapping/bad_mapping_configuration.json -text whitespace=cr-at-eol

@@ -1,0 +1,320 @@
+{
+  "variant": "digital_bf16",
+  "scope": "batch1 decode, full24 layers and lm_head; no prefill",
+  "implementation": "Python macro compute scheduler + real SystemC/TLM2 DRAMSys external memory",
+  "config": {
+    "description": "Parametric batch1 steady decode; all coefficients replaceable; not measured full-chip results",
+    "context_tokens": 8192,
+    "decode_tokens": 2,
+    "frequency_hz": 100000000,
+    "samples": 4096,
+    "sc_engines": 8,
+    "tile_inputs": 64,
+    "tile_outputs": 64,
+    "sc_profile": "g1_case3",
+    "share_frontend_per_tile": true,
+    "double_buffer": true,
+    "weight_macro": {
+      "cache_MiB": 16,
+      "cache_line_bytes": 4096,
+      "load_bandwidth_GBs": 64,
+      "load_latency_ns": 20,
+      "read_pJ_per_byte": 2,
+      "write_pJ_per_byte": 3,
+      "leakage_W_per_MiB": 0.001,
+      "area_mm2_per_MiB": 0.5,
+      "active_tile_hold_W": 0.0001,
+      "active_tile_area_mm2": 0.02,
+      "local_resident_bits_per_tile": 36864,
+      "resident_read_pJ_per_tile": 50
+    },
+    "scratchpad": {
+      "capacity_MiB": 1,
+      "bandwidth_GBs": 64,
+      "read_pJ_per_byte": 2,
+      "write_pJ_per_byte": 3,
+      "leakage_W_per_MiB": 0.001,
+      "area_mm2_per_MiB": 0.5
+    },
+    "external_memory": {
+      "bandwidth_GBs": 32,
+      "burst_bytes": 256,
+      "latency_ns": 80,
+      "read_pJ_per_byte": 64,
+      "write_pJ_per_byte": 64,
+      "background_W": 0.05,
+      "backend": "dramsys",
+      "bridge_executable": "build/pbit_dram_bridge",
+      "configuration": "architecture_tlm/dramsys/ddr4_2ch_NoPowerDown.json",
+      "max_pending": 32,
+      "output_prefix": "architecture_tlm/results/dramsys/digital_bf16_8192_NoPowerDown"
+    },
+    "digital": {
+      "macs_per_cycle": 512,
+      "vector_ops_per_cycle": 64,
+      "nonlinear_ops_per_cycle": 16,
+      "mac_pJ": 2,
+      "mixed_fp_int8_mac_pJ": 2,
+      "vector_op_pJ": 1,
+      "nonlinear_op_pJ": 10,
+      "vector_interface_bytes_per_op": 4,
+      "nonlinear_interface_bytes_per_op": 8,
+      "idle_W": 0.02,
+      "area_mm2": 1,
+      "weight_chunk_bytes": 65536
+    },
+    "rng": {
+      "sources": 32,
+      "source_clock_hz": 450000000,
+      "raw_bits_per_source_cycle": 16,
+      "source_power_W": 0.0001208,
+      "input_bits_per_decision": 12,
+      "weight_bits_per_decision": 8.062992125984252,
+      "area_mm2_per_source": 0.001,
+      "fifo_distribution_W": 0.001,
+      "always_running": true
+    },
+    "sc_cost": {
+      "core_multiplier": 1,
+      "dual_core_multiplier": 1,
+      "wait_W_per_engine": 0.005,
+      "idle_W_per_engine": 0.0005,
+      "logic_area_mm2_per_engine": 1,
+      "input_encode_vector_ops": 6,
+      "finalize_vector_ops_per_partial": 2
+    },
+    "control_interconnect_W": 0.01,
+    "area_budget_mm2": 100
+  },
+  "quality_reference_ppl": 11.652735,
+  "stochastic_core_power_provenance": "no stochastic core",
+  "stochastic_activity_case": null,
+  "sample_power_extrapolated": false,
+  "quality_warning": "numerical reference only; timing/storage/cost assumptions do not validate hardware precision or correlation",
+  "metrics": {
+    "mean_TPOT_ms": 78.762154216,
+    "first_decode_ms": 78.76370088,
+    "subsequent_decode_ms": 78.76060755200001,
+    "tokens_per_second": 12.696453137347742,
+    "scenario_mJ_per_token": 171.560129873624,
+    "parameterized_area_mm2": 9.5,
+    "area_budget_feasible": true,
+    "TTFT_ms": null
+  },
+  "energy_J": {
+    "weight_sram_access": 0.009879265280006285,
+    "digital_vector": 3.4442975999998106e-05,
+    "digital_nonlinear": 5.739058000000013e-05,
+    "scratch_access": 0.0010305821840000476,
+    "digital_MAC": 0.0033852170240017613,
+    "external_DRAMPower_core": 0.31570738646193586,
+    "external_DRAMPower_interface": 0.005622332745,
+    "weight_sram_leakage": 0.0025203889349120004,
+    "weight_macro_hold": 0.0,
+    "scratch_leakage": 0.00015752430843200002,
+    "digital_idle": 0.0031504861686400005,
+    "control_interconnect": 0.0015752430843200002
+  },
+  "time_ns": {
+    "embedding": 688.0799999998808,
+    "norm_rope_residual": 109828.49799998189,
+    "QKV_projection": 6766588.687999971,
+    "QK_softmax_PV": 22473568.66400005,
+    "output_projection": 5256150.295999958,
+    "FFN_gate_up": 57022340.52800002,
+    "FFN_SwiGLU": 218880.0,
+    "FFN_down": 28533216.992000006,
+    "lm_head": 37095566.68600003,
+    "token_select": 47480.0
+  },
+  "actions": {
+    "vector_ops": 1410816,
+    "nonlinear_ops": 233698,
+    "digital_MAC": 1692608512,
+    "attention_QK_PV_MAC": 704686080,
+    "softmax_logits": 5505360
+  },
+  "traffic": {
+    "external_weights_read_logical_bytes": 1975853056,
+    "external_weights_read_burst_bytes": 1975853056,
+    "external_weights_read_requests": 30200,
+    "weight_sram_write_bytes": 1975853056,
+    "weight_sram_read_bytes": 1975853056,
+    "scratch_vector_interface_bytes": 7512848,
+    "scratch_matrix_interface_bytes": 2552832,
+    "external_KV_write_logical_bytes": 24576,
+    "external_KV_write_burst_bytes": 24576,
+    "external_KV_write_requests": 48,
+    "external_KV_read_logical_bytes": 201338880,
+    "external_KV_read_burst_bytes": 201338880,
+    "external_KV_read_requests": 3096,
+    "scratch_KV_tile_bytes": 402677760
+  },
+  "external_memory_model": {
+    "backend": "DRAMSys 5.6.0 / SystemC3 / DRAMPower6.3.1",
+    "coupling": "closed-loop nonblocking TLM bursts, DMA-level barrier",
+    "macro_requests": 33344,
+    "capacity_bytes": 8589934592,
+    "configuration_sha256": "02513fe6c8194333576138ac946f6e082ee823f4ebc6e043238bec5ae8dd75eb",
+    "service_ms": 79.02618034199799,
+    "max_DMA_latency_ns": 2568.880000002682,
+    "burst_count": 34019008,
+    "dram_end_cycle": 146944317,
+    "end_ns": 157524308.43199998,
+    "peak_pending": 32,
+    "power_at_system_end": {
+      "drampoweradapter0": {
+        "core_J": 0.15785433974312635,
+        "interface_J": 0.002811102423,
+        "total_J": 0.16066544216612635
+      },
+      "drampoweradapter1": {
+        "core_J": 0.15785304671880954,
+        "interface_J": 0.002811230322,
+        "total_J": 0.16066427704080954
+      }
+    },
+    "read_bursts": 34018624,
+    "stats": {
+      "dram": {
+        "arbiter": {
+          "AverageBandwidthPerChannel": [
+            6854776451.63651,
+            6848639900.334541
+          ],
+          "AverageBandwidthPerThread": [
+            13821463707.233856
+          ],
+          "NumberOfRequestsPerThread": [
+            34019008
+          ]
+        },
+        "controller0": {
+          "AverageAccessesPerActivate": 23.238646408424632,
+          "AverageAccessesPerReadWriteSwitch": 175355.71134020618,
+          "AverageBandwidth": 6910731853.616927,
+          "AverageBandwidthWithoutIdle": 13795676442.548653,
+          "AverageUtilization": 0.46301903419233414,
+          "AverageUtilizationWithoutIdle": 0.9243103216507598,
+          "MaximumTheoreticalBandwidth": 14925373134.328358,
+          "NumberOfReadRequests": 17009312,
+          "NumberOfRequests": 17009504,
+          "NumberOfWriteRequests": 192,
+          "ra0": {
+            "AverageBandwidth": 6910731853.616927,
+            "AverageUtilization": 0.46301903419233414
+          }
+        },
+        "controller1": {
+          "AverageAccessesPerActivate": 23.23893215290871,
+          "AverageAccessesPerReadWriteSwitch": 175355.71134020618,
+          "AverageBandwidth": 6910731853.616927,
+          "AverageBandwidthWithoutIdle": 13794534417.4235,
+          "AverageUtilization": 0.46301903419233414,
+          "AverageUtilizationWithoutIdle": 0.9242338059673746,
+          "MaximumTheoreticalBandwidth": 14925373134.328358,
+          "NumberOfReadRequests": 17009312,
+          "NumberOfRequests": 17009504,
+          "NumberOfWriteRequests": 192,
+          "ra0": {
+            "AverageBandwidth": 6910731853.616927,
+            "AverageUtilization": 0.46301903419233414
+          }
+        },
+        "drampoweradapter0": {
+          "AveragePower": 1.0199407064558856,
+          "CoreEnergy": 0.15785433283258554,
+          "InterfaceEnergy": 0.002811102386,
+          "TotalEnergy": 0.16066543521858553
+        },
+        "drampoweradapter1": {
+          "AveragePower": 1.0199333099755095,
+          "CoreEnergy": 0.15785303980826873,
+          "InterfaceEnergy": 0.002811230285,
+          "TotalEnergy": 0.16066427009326872
+        }
+      }
+    },
+    "status": "finished",
+    "write_bursts": 384
+  },
+  "weight_cache": {
+    "hits": 0,
+    "misses": 482386,
+    "peak_bytes": 16777216
+  },
+  "bounds": {
+    "SC_wave_compute_ms": 0.0,
+    "RNG_service_ms": 0.0,
+    "replay_service_ms": 0.0,
+    "raw_rng_bits": 0.0,
+    "source_nominal_capacity_bits": 0.0,
+    "scratch_peak_bytes": 609536,
+    "local_weight_resident_bits": 0
+  },
+  "energy_complete_measured": false,
+  "scenario_cost_coverage": "DRAMPower core at full system horizon; bundled IO voltage zero, interface energy uncalibrated; controller/PHY ASIC cost, CTS/startup/host/prefill excluded",
+  "source_hashes": {
+    "system_decode.py": "78b7b92c755d85189115b2e83e07dd27a96e9e8b73997c0f8b6296f6bdca8810",
+    "evidence_contract.json": "649accada44fc7a9518ada7b4c72f1f0d4cabc33711f7ab3e45a594a03a2da5c"
+  },
+  "verification": {
+    "compute_actions_unchanged": true,
+    "logical_and_burst_traffic_unchanged": true,
+    "byte_burst_conservation": true,
+    "full_horizon_energy": true,
+    "no_double_external_charge": true,
+    "finite_queue_bound": true,
+    "energy_sum": true,
+    "phase_time_sum": true,
+    "numerical_inference_run": false,
+    "quality_reference_only": true
+  },
+  "dramsys_provenance": {
+    "upstream_commit": "9f15aaf1fe6f05ff16a2e521a20a96f3bfe29d52",
+    "dramsys_version": "5.6.0",
+    "dramutils_version": "1.16.0",
+    "drampower_version": "6.3.1",
+    "systemc_version": "3.0.2",
+    "memspec_origin": "configs/memspec/MICRON_4Gb_DDR4-1866_8bit_A.json",
+    "memspec_source_sha256": "3fcfb7f38f37f0e75b0b6e194fe823e22e3e994e88aef37ca70d43413dc6a380",
+    "channels": 2,
+    "capacity_bytes": 8589934592,
+    "peak_bandwidth_GBs": 29.850746268656714,
+    "power_warning": "Bundled vddq is zero and impedance fields are examples: interface energy is NOT calibrated. Core uses bundled current coefficients; not measured full system.",
+    "address_mapping": "64B channel interleave, 128B bank interleave; fixed complete 33-bit mapping",
+    "bridge_sha256": "02ee4ad744e70b22df32c7cfef870d2fa26857c4d2bce9fa0231009b64a99e34",
+    "simulation_wall_seconds": 250.04861794691533
+  },
+  "comparison": {
+    "original_simplified": {
+      "mean_TPOT_ms": 75.023197125,
+      "first_decode_ms": 75.022514625,
+      "subsequent_decode_ms": 75.023879625,
+      "tokens_per_second": 13.32921067511757,
+      "scenario_mJ_per_token": 84.14162752715926,
+      "parameterized_area_mm2": 9.5,
+      "area_budget_feasible": true,
+      "TTFT_ms": null
+    },
+    "bandwidth_matched_simplified": {
+      "mean_TPOT_ms": 77.24959840500341,
+      "first_decode_ms": 77.24891590500336,
+      "subsequent_decode_ms": 77.25028090500348,
+      "tokens_per_second": 12.945051115440238,
+      "scenario_mJ_per_token": 84.35758845131959,
+      "parameterized_area_mm2": 9.5,
+      "area_budget_feasible": true,
+      "TTFT_ms": null
+    },
+    "original_external_mJ_per_token": 73.4220882402802,
+    "matched_external_mJ_per_token": 73.53340830428037,
+    "dramsys_external_mJ_per_token": 160.66485960346793
+  },
+  "scenario_name": "digital_bf16_8192_NoPowerDown",
+  "publication": {
+    "raw_artifacts_omitted": true,
+    "private_artifacts": "raw request traces, build/runtime logs and scheduler identities retained locally",
+    "scope": "synthetic public Qwen shape model; no weights, prompts, KV contents or private dataset"
+  }
+}

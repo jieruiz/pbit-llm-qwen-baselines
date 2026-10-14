@@ -1,0 +1,305 @@
+{
+  "passed": true,
+  "checks": [
+    "real_4phase_TLM_read_write",
+    "burst_counts",
+    "finite_outstanding",
+    "full_horizon_energy",
+    "background_scales_with_idle_duration",
+    "closed_loop_24_shape_scheduler_smallcase",
+    "warm_weight_cache_reuse",
+    "unchanged_compute_and_traffic",
+    "no_external_energy_double_count"
+  ],
+  "horizon_runs": [
+    {
+      "horizon_ns": 100000,
+      "energy_J": 7.689008824319998e-05,
+      "diagnostic": {
+        "backend": "DRAMSys 5.6.0 / SystemC3 / DRAMPower6.3.1",
+        "coupling": "closed-loop nonblocking TLM bursts, DMA-level barrier",
+        "macro_requests": 2,
+        "capacity_bytes": 8589934592,
+        "configuration_sha256": "02513fe6c8194333576138ac946f6e082ee823f4ebc6e043238bec5ae8dd75eb",
+        "service_ms": 0.00026907200000000003,
+        "max_DMA_latency_ns": 232.624,
+        "burst_count": 72,
+        "dram_end_cycle": 93283,
+        "end_ns": 99999.99999999999,
+        "peak_pending": 8,
+        "power_at_system_end": {
+          "drampoweradapter0": {
+            "core_J": 3.825270170879997e-05,
+            "interface_J": 1.9237200000000002e-07,
+            "total_J": 3.844507370879997e-05
+          },
+          "drampoweradapter1": {
+            "core_J": 3.8252642534400014e-05,
+            "interface_J": 1.9237200000000002e-07,
+            "total_J": 3.844501453440001e-05
+          }
+        },
+        "read_bursts": 64,
+        "stats": {
+          "dram": {
+            "arbiter": {
+              "AverageBandwidthPerChannel": [
+                23040000.000000004,
+                23040000.000000004
+              ],
+              "AverageBandwidthPerThread": [
+                46080000.00000001
+              ],
+              "NumberOfRequestsPerThread": [
+                72
+              ]
+            },
+            "controller0": {
+              "AverageAccessesPerActivate": 2.25,
+              "AverageAccessesPerReadWriteSwitch": 18.0,
+              "AverageBandwidth": 23040000.0,
+              "AverageBandwidthWithoutIdle": 8772464209.564423,
+              "AverageUtilization": 0.00154368,
+              "AverageUtilizationWithoutIdle": 0.5877551020408164,
+              "MaximumTheoreticalBandwidth": 14925373134.328358,
+              "NumberOfReadRequests": 32,
+              "NumberOfRequests": 36,
+              "NumberOfWriteRequests": 4,
+              "ra0": {
+                "AverageBandwidth": 23040000.0,
+                "AverageUtilization": 0.00154368
+              }
+            },
+            "controller1": {
+              "AverageAccessesPerActivate": 2.25,
+              "AverageAccessesPerReadWriteSwitch": 18.0,
+              "AverageBandwidth": 23040000.0,
+              "AverageBandwidthWithoutIdle": 8736803785.948307,
+              "AverageUtilization": 0.00154368,
+              "AverageUtilizationWithoutIdle": 0.5853658536585366,
+              "MaximumTheoreticalBandwidth": 14925373134.328358,
+              "NumberOfReadRequests": 32,
+              "NumberOfRequests": 36,
+              "NumberOfWriteRequests": 4,
+              "ra0": {
+                "AverageBandwidth": 23040000.0,
+                "AverageUtilization": 0.00154368
+              }
+            },
+            "drampoweradapter0": {
+              "AveragePower": 0.3857097775283839,
+              "CoreEnergy": 3.7480105305599954e-05,
+              "InterfaceEnergy": 1.8800300000000002e-07,
+              "TotalEnergy": 3.7668108305599954e-05
+            },
+            "drampoweradapter1": {
+              "AveragePower": 0.3857091716008328,
+              "CoreEnergy": 3.748004613120005e-05,
+              "InterfaceEnergy": 1.8800300000000002e-07,
+              "TotalEnergy": 3.766804913120005e-05
+            }
+          }
+        },
+        "status": "finished",
+        "write_bursts": 8
+      }
+    },
+    {
+      "horizon_ns": 1000000,
+      "energy_J": 0.0007603665261631994,
+      "diagnostic": {
+        "backend": "DRAMSys 5.6.0 / SystemC3 / DRAMPower6.3.1",
+        "coupling": "closed-loop nonblocking TLM bursts, DMA-level barrier",
+        "macro_requests": 2,
+        "capacity_bytes": 8589934592,
+        "configuration_sha256": "02513fe6c8194333576138ac946f6e082ee823f4ebc6e043238bec5ae8dd75eb",
+        "service_ms": 0.00026907200000000003,
+        "max_DMA_latency_ns": 232.624,
+        "burst_count": 72,
+        "dram_end_cycle": 932835,
+        "end_ns": 1000000.0,
+        "peak_pending": 8,
+        "power_at_system_end": {
+          "drampoweradapter0": {
+            "core_J": 0.00037831112666879984,
+            "interface_J": 1.872166e-06,
+            "total_J": 0.00038018329266879987
+          },
+          "drampoweradapter1": {
+            "core_J": 0.0003783110674943996,
+            "interface_J": 1.872166e-06,
+            "total_J": 0.0003801832334943996
+          }
+        },
+        "read_bursts": 64,
+        "stats": {
+          "dram": {
+            "arbiter": {
+              "AverageBandwidthPerChannel": [
+                2304000.0,
+                2304000.0
+              ],
+              "AverageBandwidthPerThread": [
+                4608000.0
+              ],
+              "NumberOfRequestsPerThread": [
+                72
+              ]
+            },
+            "controller0": {
+              "AverageAccessesPerActivate": 2.25,
+              "AverageAccessesPerReadWriteSwitch": 18.0,
+              "AverageBandwidth": 2304000.0,
+              "AverageBandwidthWithoutIdle": 8772464209.564423,
+              "AverageUtilization": 0.000154368,
+              "AverageUtilizationWithoutIdle": 0.5877551020408164,
+              "MaximumTheoreticalBandwidth": 14925373134.328358,
+              "NumberOfReadRequests": 32,
+              "NumberOfRequests": 36,
+              "NumberOfWriteRequests": 4,
+              "ra0": {
+                "AverageBandwidth": 2304000.0,
+                "AverageUtilization": 0.000154368
+              }
+            },
+            "controller1": {
+              "AverageAccessesPerActivate": 2.25,
+              "AverageAccessesPerReadWriteSwitch": 18.0,
+              "AverageBandwidth": 2304000.0,
+              "AverageBandwidthWithoutIdle": 8736803785.948307,
+              "AverageUtilization": 0.000154368,
+              "AverageUtilizationWithoutIdle": 0.5853658536585366,
+              "MaximumTheoreticalBandwidth": 14925373134.328358,
+              "NumberOfReadRequests": 32,
+              "NumberOfRequests": 36,
+              "NumberOfWriteRequests": 4,
+              "ra0": {
+                "AverageBandwidth": 2304000.0,
+                "AverageUtilization": 0.000154368
+              }
+            },
+            "drampoweradapter0": {
+              "AveragePower": 0.3803805052689031,
+              "CoreEnergy": 0.0003770411565696,
+              "InterfaceEnergy": 1.864933e-06,
+              "TotalEnergy": 0.0003789060895696
+            },
+            "drampoweradapter1": {
+              "AveragePower": 0.38038044586424086,
+              "CoreEnergy": 0.0003770410973951997,
+              "InterfaceEnergy": 1.864933e-06,
+              "TotalEnergy": 0.0003789060303951997
+            }
+          }
+        },
+        "status": "finished",
+        "write_bursts": 8
+      }
+    }
+  ],
+  "small_decode": {
+    "metrics": {
+      "mean_TPOT_ms": 1.3502670465000002,
+      "first_decode_ms": 2.1761128640000003,
+      "subsequent_decode_ms": 0.5244212290000003,
+      "tokens_per_second": 740.5942421479363,
+      "scenario_mJ_per_token": 2.7550116210983027,
+      "parameterized_area_mm2": 33.5,
+      "area_budget_feasible": true,
+      "TTFT_ms": null
+    },
+    "external_memory_model": {
+      "backend": "DRAMSys 5.6.0 / SystemC3 / DRAMPower6.3.1",
+      "coupling": "closed-loop nonblocking TLM bursts, DMA-level barrier",
+      "macro_requests": 491,
+      "capacity_bytes": 8589934592,
+      "configuration_sha256": "02513fe6c8194333576138ac946f6e082ee823f4ebc6e043238bec5ae8dd75eb",
+      "service_ms": 1.1528309879999998,
+      "max_DMA_latency_ns": 2544.1120000001974,
+      "burst_count": 496664,
+      "dram_end_cycle": 2519154,
+      "end_ns": 2700534.0930000003,
+      "peak_pending": 32,
+      "power_at_system_end": {
+        "drampoweradapter0": {
+          "core_J": 0.0024411450771839975,
+          "interface_J": 4.1789496e-05,
+          "total_J": 0.0024829345731839977
+        },
+        "drampoweradapter1": {
+          "core_J": 0.0024411284491775978,
+          "interface_J": 4.1793076999999995e-05,
+          "total_J": 0.002482921526177598
+        }
+      },
+      "read_bursts": 496648,
+      "stats": {
+        "dram": {
+          "arbiter": {
+            "AverageBandwidthPerChannel": [
+              5842162867.299153,
+              5835835230.094241
+            ],
+            "AverageBandwidthPerThread": [
+              11770447957.829206
+            ],
+            "NumberOfRequestsPerThread": [
+              496664
+            ]
+          },
+          "controller0": {
+            "AverageAccessesPerActivate": 25.95443143812709,
+            "AverageAccessesPerReadWriteSwitch": 49666.4,
+            "AverageBandwidth": 5885223978.914603,
+            "AverageBandwidthWithoutIdle": 13806717244.927982,
+            "AverageUtilization": 0.39431000658727844,
+            "AverageUtilizationWithoutIdle": 0.9250500554101749,
+            "MaximumTheoreticalBandwidth": 14925373134.328358,
+            "NumberOfReadRequests": 248324,
+            "NumberOfRequests": 248332,
+            "NumberOfWriteRequests": 8,
+            "ra0": {
+              "AverageBandwidth": 5885223978.914603,
+              "AverageUtilization": 0.39431000658727844
+            }
+          },
+          "controller1": {
+            "AverageAccessesPerActivate": 25.95443143812709,
+            "AverageAccessesPerReadWriteSwitch": 49666.4,
+            "AverageBandwidth": 5885223978.914603,
+            "AverageBandwidthWithoutIdle": 13805418740.264435,
+            "AverageUtilization": 0.39431000658727844,
+            "AverageUtilizationWithoutIdle": 0.9249630555977172,
+            "MaximumTheoreticalBandwidth": 14925373134.328358,
+            "NumberOfReadRequests": 248324,
+            "NumberOfRequests": 248332,
+            "NumberOfWriteRequests": 8,
+            "ra0": {
+              "AverageBandwidth": 5885223978.914603,
+              "AverageUtilization": 0.39431000658727844
+            }
+          },
+          "drampoweradapter0": {
+            "AveragePower": 0.9196896227667121,
+            "CoreEnergy": 0.0024407312706047975,
+            "InterfaceEnergy": 4.1787193e-05,
+            "TotalEnergy": 0.0024825184636047973
+          },
+          "drampoweradapter1": {
+            "AveragePower": 0.9196847892895114,
+            "CoreEnergy": 0.0024407146425983977,
+            "InterfaceEnergy": 4.1790773999999995e-05,
+            "TotalEnergy": 0.0024825054165983976
+          }
+        }
+      },
+      "status": "finished",
+      "write_bursts": 16
+    }
+  },
+  "publication": {
+    "raw_artifacts_omitted": true,
+    "private_artifacts": "raw request traces, build/runtime logs and scheduler identities retained locally",
+    "scope": "synthetic public Qwen shape model; no weights, prompts, KV contents or private dataset"
+  }
+}

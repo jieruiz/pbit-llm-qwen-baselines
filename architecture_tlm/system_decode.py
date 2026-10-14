@@ -60,7 +60,8 @@ class WeightMacro:
             else:runs.append([key])
         for run in runs:
             n=len(run)*self.line
-            done=self.ext.access(done,n,'weights',False)
+            address=self.ext.layout.address(tensor,run[0][1]*self.line,n)
+            done=self.ext.access(done,n,'weights',False,address=address)
             done=self.link.transfer(done,n)
             self.energy['weight_sram_access']+=n*self.cfg['write_pJ_per_byte']*1e-12
             self.traffic['weight_sram_write_bytes']+=n
@@ -88,7 +89,7 @@ class External:
         self.traffic=traffic
         self.link=Link(cfg['bandwidth_GBs'],cfg['latency_ns'])
 
-    def access(self,ready,size,kind,write):
+    def access(self,ready,size,kind,write,address=None):
         n=math.ceil(size/self.cfg['burst_bytes'])*self.cfg['burst_bytes']
         direction='write' if write else 'read'
         self.traffic[f'external_{kind}_{direction}_logical_bytes']+=size
@@ -107,7 +108,14 @@ class DecodeModel:
         self.energy=defaultdict(float)
         self.traffic=defaultdict(int)
         self.actions=defaultdict(int)
-        self.ext=External(cfg['external_memory'],self.energy,self.traffic)
+        from dramsys_backend import AddressSpace
+        layout=AddressSpace(shape,variant,cfg['context_tokens'],cfg['decode_tokens'])
+        if cfg['external_memory'].get('backend')=='dramsys':
+            from dramsys_backend import DRAMSysExternal
+            self.ext=DRAMSysExternal(cfg['external_memory'],self.energy,self.traffic,layout)
+        else:
+            self.ext=External(cfg['external_memory'],self.energy,self.traffic)
+            self.ext.layout=layout
         self.weights=WeightMacro(cfg['weight_macro'],self.ext,self.energy,self.traffic)
         self.digital_free=0.
         self.rng_free=0.
@@ -266,7 +274,8 @@ class DecodeModel:
         for offset in range(0,L,128):
             n=min(128,L-offset)
             size=2*kv*d*2*n # K and V, BF16, fused streaming
-            loaded=self.ext.access(fetch_at,size,'KV',False)
+            address=self.ext.layout.address(f'L{layer}/KV',offset*self.ext.layout.kv_token_bytes,size)
+            loaded=self.ext.access(fetch_at,size,'KV',False,address=address)
             start=max(loaded,self.digital_free)
             macs=2*q*d*n
             ops=6*q*n
@@ -304,7 +313,8 @@ class DecodeModel:
                 t=self.digital_matrix(f'L{layer}/qkv',h,h+2*kv_dim,cursor)
                 cursor=self.stamp('QKV_projection',cursor,t,layer,token)
                 t=self.vectors(cursor,3*(h+kv_dim)+(h+2*kv_dim)) # RoPE plus QKV biases
-                t=self.ext.access(t,2*kv_dim*2,'KV',True)
+                address=self.ext.layout.address(f'L{layer}/KV',(L-1)*self.ext.layout.kv_token_bytes,2*kv_dim*2)
+                t=self.ext.access(t,2*kv_dim*2,'KV',True,address=address)
                 cursor=self.stamp('norm_rope_residual',cursor,t,layer,token)
                 t=self.attention(cursor,L,layer)
                 cursor=self.stamp('QK_softmax_PV',cursor,t,layer,token)
@@ -338,13 +348,15 @@ class DecodeModel:
             cursor=self.stamp('token_select',cursor,t,token=token)
             token_times.append(cursor-begin)
         seconds=cursor*1e-9
+        external_diagnostic=self.ext.finish(cursor) if hasattr(self.ext,'finish') else {'backend':'simplified Link'}
         # All standby terms are explicit parameters. No weight DFF added here.
         w=self.cfg['weight_macro'];sp=self.cfg['scratchpad'];r=self.cfg['rng'];sc=self.cfg['sc_cost']
         self.energy['weight_sram_leakage']+=w['cache_MiB']*w['leakage_W_per_MiB']*seconds
         self.energy['weight_macro_hold']+=self.engines*w['active_tile_hold_W']*seconds
         self.energy['scratch_leakage']+=sp['capacity_MiB']*sp['leakage_W_per_MiB']*seconds
         self.energy['digital_idle']+=self.cfg['digital']['idle_W']*seconds
-        self.energy['external_background']+=self.cfg['external_memory']['background_W']*seconds
+        if not hasattr(self.ext,'finish'):
+            self.energy['external_background']+=self.cfg['external_memory']['background_W']*seconds
         self.energy['control_interconnect']+=self.cfg['control_interconnect_W']*seconds
         if self.engines:
             rate=r['sources']*r['source_clock_hz']*r['raw_bits_per_source_cycle']
@@ -374,6 +386,7 @@ class DecodeModel:
                 tokens_per_second=count/seconds,scenario_mJ_per_token=sum(self.energy.values())/count*1e3,
                 parameterized_area_mm2=area,area_budget_feasible=area<=self.cfg['area_budget_mm2'],TTFT_ms=None),
             energy_J=dict(self.energy),time_ns=dict(self.time_categories),actions=dict(self.actions),traffic=dict(self.traffic),
+            external_memory_model=external_diagnostic,
             weight_cache=dict(hits=self.weights.hits,misses=self.weights.misses,peak_bytes=self.weights.peak),
             bounds=dict(SC_wave_compute_ms=self.sc_compute_ns/1e6,RNG_service_ms=self.rng_service_ns/1e6,
                 replay_service_ms=self.replay_ns/1e6,raw_rng_bits=self.raw_bits,

@@ -1,6 +1,11 @@
 完整decode模型：入口与使用方法
 2026-10-14
 
+最新：外存已新增真实DRAMSys/SystemC闭环接口，计算调度仍用Python宏模型。
+新入口run_dramsys.py；完整新汇总见results/dramsys/RESULTS_ZH.md。
+后面的run_system_sweep.py及96项结果是保留的简化外存对照，不代表DRAMSys结果。
+构建及运行方法见README.md和dramsys/下的CMake、Slurm脚本。
+
 现已把权重存储抽象成宏模块，扩展为Qwen2.5-0.5B全部24层、batch1的decode模型。
 完整结论请读results/system_decode/完整decode宏模型与瓶颈分析.txt。
 旧run_workbench.py的单核心结果保留，下面是新系统模型。
