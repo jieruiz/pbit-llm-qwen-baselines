@@ -1,0 +1,471 @@
+{
+  "upstream_checks": [
+    {
+      "script": "import_evidence.py",
+      "exit_code": 0,
+      "log": "checks/import_evidence.log"
+    },
+    {
+      "script": "checks/test_model.py",
+      "exit_code": 0,
+      "log": "checks/checks_test_model.log"
+    },
+    {
+      "script": "checks/test_system_decode.py",
+      "exit_code": 0,
+      "log": "checks/checks_test_system_decode.log"
+    }
+  ],
+  "base_scenarios_reproduced": 8,
+  "base_scenarios": [
+    {
+      "variant": "digital_bf16",
+      "context_tokens": 2048,
+      "metrics": {
+        "mean_TPOT_ms": 66.636637125,
+        "first_decode_ms": 66.635954625,
+        "subsequent_decode_ms": 66.637319625,
+        "tokens_per_second": 15.006759691731666,
+        "scenario_mJ_per_token": 77.55729319115905,
+        "parameterized_area_mm2": 9.5,
+        "area_budget_feasible": true,
+        "TTFT_ms": null
+      },
+      "phase_ms": {
+        "embedding": 0.000376,
+        "norm_rope_residual": 0.052374625,
+        "QKV_projection": 3.196416,
+        "QK_softmax_PV": 2.8472745,
+        "output_projection": 2.488128,
+        "FFN_gate_up": 26.930304,
+        "FFN_SwiGLU": 0.10944,
+        "FFN_down": 13.472832,
+        "lm_head": 17.515752,
+        "token_select": 0.02374
+      },
+      "attention_core_time_fraction": 0.04272836419789545,
+      "speedup_if_attention_core_were_free": 1.0446355690483746,
+      "traffic": {
+        "external_weights_read_logical_bytes": 1975853056,
+        "external_weights_read_burst_bytes": 1975853056,
+        "external_weights_read_requests": 30200,
+        "weight_sram_write_bytes": 1975853056,
+        "weight_sram_read_bytes": 1975853056,
+        "scratch_vector_interface_bytes": 7512848,
+        "scratch_matrix_interface_bytes": 2552832,
+        "external_KV_write_logical_bytes": 24576,
+        "external_KV_write_burst_bytes": 24576,
+        "external_KV_write_requests": 48,
+        "external_KV_read_logical_bytes": 50343936,
+        "external_KV_read_burst_bytes": 50343936,
+        "external_KV_read_requests": 792,
+        "scratch_KV_tile_bytes": 100687872
+      },
+      "bounds": {
+        "SC_wave_compute_ms": 0.0,
+        "RNG_service_ms": 0.0,
+        "replay_service_ms": 0.0,
+        "raw_rng_bits": 0.0,
+        "source_nominal_capacity_bits": 0.0,
+        "scratch_peak_bytes": 609536,
+        "local_weight_resident_bits": 0
+      }
+    },
+    {
+      "variant": "digital_int8_ffn",
+      "context_tokens": 2048,
+      "metrics": {
+        "mean_TPOT_ms": 46.467229125,
+        "first_decode_ms": 46.466546625,
+        "subsequent_decode_ms": 46.467911625,
+        "tokens_per_second": 21.520542946727726,
+        "scenario_mJ_per_token": 53.9496012231342,
+        "parameterized_area_mm2": 9.5,
+        "area_budget_feasible": true,
+        "TTFT_ms": null
+      },
+      "phase_ms": {
+        "embedding": 0.000376,
+        "norm_rope_residual": 0.052374625,
+        "QKV_projection": 3.196416,
+        "QK_softmax_PV": 2.8472745,
+        "output_projection": 2.488128,
+        "FFN_gate_up": 13.488192,
+        "FFN_SwiGLU": 0.10944,
+        "FFN_down": 6.745536,
+        "lm_head": 17.515752,
+        "token_select": 0.02374
+      },
+      "attention_core_time_fraction": 0.061274893158372715,
+      "speedup_if_attention_core_were_free": 1.065274586470297,
+      "traffic": {
+        "external_weights_read_logical_bytes": 1348280320,
+        "external_weights_read_burst_bytes": 1348280320,
+        "external_weights_read_requests": 20648,
+        "weight_sram_write_bytes": 1348280320,
+        "weight_sram_read_bytes": 1348280320,
+        "scratch_vector_interface_bytes": 7512848,
+        "scratch_matrix_interface_bytes": 2552832,
+        "external_KV_write_logical_bytes": 24576,
+        "external_KV_write_burst_bytes": 24576,
+        "external_KV_write_requests": 48,
+        "external_KV_read_logical_bytes": 50343936,
+        "external_KV_read_burst_bytes": 50343936,
+        "external_KV_read_requests": 792,
+        "scratch_KV_tile_bytes": 100687872
+      },
+      "bounds": {
+        "SC_wave_compute_ms": 0.0,
+        "RNG_service_ms": 0.0,
+        "replay_service_ms": 0.0,
+        "raw_rng_bits": 0.0,
+        "source_nominal_capacity_bits": 0.0,
+        "scratch_peak_bytes": 609536,
+        "local_weight_resident_bits": 0
+      }
+    },
+    {
+      "variant": "fixed_sc_exact",
+      "context_tokens": 2048,
+      "metrics": {
+        "mean_TPOT_ms": 486.35142112503013,
+        "first_decode_ms": 486.3507386249859,
+        "subsequent_decode_ms": 486.3521036250743,
+        "tokens_per_second": 2.056126406882488,
+        "scenario_mJ_per_token": 175.9868302994946,
+        "parameterized_area_mm2": 17.692,
+        "area_budget_feasible": true,
+        "TTFT_ms": null
+      },
+      "phase_ms": {
+        "embedding": 0.000376,
+        "norm_rope_residual": 0.052374625,
+        "QKV_projection": 3.196416,
+        "QK_softmax_PV": 2.8472745,
+        "output_projection": 2.488128,
+        "FFN_gate_up": 269.9744320000044,
+        "FFN_SwiGLU": 0.10944,
+        "FFN_down": 190.14348800002566,
+        "lm_head": 17.515752,
+        "token_select": 0.02374
+      },
+      "attention_core_time_fraction": 0.005854356287093133,
+      "speedup_if_attention_core_were_free": 1.005888831605426,
+      "traffic": {
+        "external_weights_read_logical_bytes": 1348280320,
+        "external_weights_read_burst_bytes": 1348280320,
+        "external_weights_read_requests": 31112,
+        "weight_sram_write_bytes": 1348280320,
+        "weight_sram_read_bytes": 1348280320,
+        "scratch_vector_interface_bytes": 92594960,
+        "scratch_matrix_interface_bytes": 979968,
+        "external_KV_write_logical_bytes": 24576,
+        "external_KV_write_burst_bytes": 24576,
+        "external_KV_write_requests": 48,
+        "external_KV_read_logical_bytes": 50343936,
+        "external_KV_read_burst_bytes": 50343936,
+        "external_KV_read_requests": 792,
+        "scratch_KV_tile_bytes": 100687872,
+        "random_replay_write_bytes": 1698693120,
+        "random_replay_read_bytes": 7889485824,
+        "scratch_partial_bytes": 78446592
+      },
+      "bounds": {
+        "SC_wave_compute_ms": 822.02208,
+        "RNG_service_ms": 58.9824000000034,
+        "replay_service_ms": 123.273216,
+        "raw_rng_bits": 13589544960.0,
+        "source_nominal_capacity_bits": 224110734854.41388,
+        "scratch_peak_bytes": 609536,
+        "local_weight_resident_bits": 294912
+      }
+    },
+    {
+      "variant": "dual_sc_sz",
+      "context_tokens": 2048,
+      "metrics": {
+        "mean_TPOT_ms": 45054.131748675165,
+        "first_decode_ms": 45054.13106617914,
+        "subsequent_decode_ms": 45054.13243117118,
+        "tokens_per_second": 0.022195522612183185,
+        "scenario_mJ_per_token": 6477.118640302085,
+        "parameterized_area_mm2": 17.692,
+        "area_budget_feasible": true,
+        "TTFT_ms": null
+      },
+      "phase_ms": {
+        "embedding": 0.000376,
+        "norm_rope_residual": 0.052374625,
+        "QKV_projection": 3.196416,
+        "QK_softmax_PV": 2.8472745,
+        "output_projection": 2.488128,
+        "FFN_gate_up": 29994.282863700824,
+        "FFN_SwiGLU": 0.10944,
+        "FFN_down": 15033.61538384934,
+        "lm_head": 17.515752,
+        "token_select": 0.02374
+      },
+      "attention_core_time_fraction": 6.319674554784257e-05,
+      "speedup_if_attention_core_were_free": 1.000063200739629,
+      "traffic": {
+        "external_weights_read_logical_bytes": 1348280320,
+        "external_weights_read_burst_bytes": 1348280320,
+        "external_weights_read_requests": 31112,
+        "weight_sram_write_bytes": 1348280320,
+        "weight_sram_read_bytes": 1348280320,
+        "scratch_vector_interface_bytes": 92594960,
+        "scratch_matrix_interface_bytes": 979968,
+        "external_KV_write_logical_bytes": 24576,
+        "external_KV_write_burst_bytes": 24576,
+        "external_KV_write_requests": 48,
+        "external_KV_read_logical_bytes": 50343936,
+        "external_KV_read_burst_bytes": 50343936,
+        "external_KV_read_requests": 792,
+        "scratch_KV_tile_bytes": 100687872,
+        "random_replay_write_bytes": 1698693120,
+        "random_replay_read_bytes": 7889485824,
+        "scratch_partial_bytes": 78446592
+      },
+      "bounds": {
+        "SC_wave_compute_ms": 822.02208,
+        "RNG_service_ms": 90016.56513510035,
+        "replay_service_ms": 123.273216,
+        "raw_rng_bits": 20739816607127.867,
+        "source_nominal_capacity_bits": 20760943909789.516,
+        "scratch_peak_bytes": 609536,
+        "local_weight_resident_bits": 294912
+      }
+    },
+    {
+      "variant": "digital_bf16",
+      "context_tokens": 8192,
+      "metrics": {
+        "mean_TPOT_ms": 75.023197125,
+        "first_decode_ms": 75.022514625,
+        "subsequent_decode_ms": 75.023879625,
+        "tokens_per_second": 13.32921067511757,
+        "scenario_mJ_per_token": 84.14162752715926,
+        "parameterized_area_mm2": 9.5,
+        "area_budget_feasible": true,
+        "TTFT_ms": null
+      },
+      "phase_ms": {
+        "embedding": 0.000376,
+        "norm_rope_residual": 0.052374625,
+        "QKV_projection": 3.196416,
+        "QK_softmax_PV": 11.2338345,
+        "output_projection": 2.488128,
+        "FFN_gate_up": 26.930304,
+        "FFN_SwiGLU": 0.10944,
+        "FFN_down": 13.472832,
+        "lm_head": 17.515752,
+        "token_select": 0.02374
+      },
+      "attention_core_time_fraction": 0.1497381467399041,
+      "speedup_if_attention_core_were_free": 1.1761082731934571,
+      "traffic": {
+        "external_weights_read_logical_bytes": 1975853056,
+        "external_weights_read_burst_bytes": 1975853056,
+        "external_weights_read_requests": 30200,
+        "weight_sram_write_bytes": 1975853056,
+        "weight_sram_read_bytes": 1975853056,
+        "scratch_vector_interface_bytes": 7512848,
+        "scratch_matrix_interface_bytes": 2552832,
+        "external_KV_write_logical_bytes": 24576,
+        "external_KV_write_burst_bytes": 24576,
+        "external_KV_write_requests": 48,
+        "external_KV_read_logical_bytes": 201338880,
+        "external_KV_read_burst_bytes": 201338880,
+        "external_KV_read_requests": 3096,
+        "scratch_KV_tile_bytes": 402677760
+      },
+      "bounds": {
+        "SC_wave_compute_ms": 0.0,
+        "RNG_service_ms": 0.0,
+        "replay_service_ms": 0.0,
+        "raw_rng_bits": 0.0,
+        "source_nominal_capacity_bits": 0.0,
+        "scratch_peak_bytes": 609536,
+        "local_weight_resident_bits": 0
+      }
+    },
+    {
+      "variant": "digital_int8_ffn",
+      "context_tokens": 8192,
+      "metrics": {
+        "mean_TPOT_ms": 54.853789125,
+        "first_decode_ms": 54.853106625,
+        "subsequent_decode_ms": 54.854471625,
+        "tokens_per_second": 18.230281188437406,
+        "scenario_mJ_per_token": 60.53393555913459,
+        "parameterized_area_mm2": 9.5,
+        "area_budget_feasible": true,
+        "TTFT_ms": null
+      },
+      "phase_ms": {
+        "embedding": 0.000376,
+        "norm_rope_residual": 0.052374625,
+        "QKV_projection": 3.196416,
+        "QK_softmax_PV": 11.2338345,
+        "output_projection": 2.488128,
+        "FFN_gate_up": 13.488192,
+        "FFN_SwiGLU": 0.10944,
+        "FFN_down": 6.745536,
+        "lm_head": 17.515752,
+        "token_select": 0.02374
+      },
+      "attention_core_time_fraction": 0.20479596175936918,
+      "speedup_if_attention_core_were_free": 1.2575388855072658,
+      "traffic": {
+        "external_weights_read_logical_bytes": 1348280320,
+        "external_weights_read_burst_bytes": 1348280320,
+        "external_weights_read_requests": 20648,
+        "weight_sram_write_bytes": 1348280320,
+        "weight_sram_read_bytes": 1348280320,
+        "scratch_vector_interface_bytes": 7512848,
+        "scratch_matrix_interface_bytes": 2552832,
+        "external_KV_write_logical_bytes": 24576,
+        "external_KV_write_burst_bytes": 24576,
+        "external_KV_write_requests": 48,
+        "external_KV_read_logical_bytes": 201338880,
+        "external_KV_read_burst_bytes": 201338880,
+        "external_KV_read_requests": 3096,
+        "scratch_KV_tile_bytes": 402677760
+      },
+      "bounds": {
+        "SC_wave_compute_ms": 0.0,
+        "RNG_service_ms": 0.0,
+        "replay_service_ms": 0.0,
+        "raw_rng_bits": 0.0,
+        "source_nominal_capacity_bits": 0.0,
+        "scratch_peak_bytes": 609536,
+        "local_weight_resident_bits": 0
+      }
+    },
+    {
+      "variant": "fixed_sc_exact",
+      "context_tokens": 8192,
+      "metrics": {
+        "mean_TPOT_ms": 494.7379811250301,
+        "first_decode_ms": 494.7372986249853,
+        "subsequent_decode_ms": 494.7386636250749,
+        "tokens_per_second": 2.0212719422228473,
+        "scenario_mJ_per_token": 182.65222576983098,
+        "parameterized_area_mm2": 17.692,
+        "area_budget_feasible": true,
+        "TTFT_ms": null
+      },
+      "phase_ms": {
+        "embedding": 0.000376,
+        "norm_rope_residual": 0.052374625,
+        "QKV_projection": 3.196416,
+        "QK_softmax_PV": 11.2338345,
+        "output_projection": 2.488128,
+        "FFN_gate_up": 269.97443200000464,
+        "FFN_SwiGLU": 0.10944,
+        "FFN_down": 190.14348800002543,
+        "lm_head": 17.515752,
+        "token_select": 0.02374
+      },
+      "attention_core_time_fraction": 0.02270663447842503,
+      "speedup_if_attention_core_were_free": 1.0232342050805867,
+      "traffic": {
+        "external_weights_read_logical_bytes": 1348280320,
+        "external_weights_read_burst_bytes": 1348280320,
+        "external_weights_read_requests": 31112,
+        "weight_sram_write_bytes": 1348280320,
+        "weight_sram_read_bytes": 1348280320,
+        "scratch_vector_interface_bytes": 92594960,
+        "scratch_matrix_interface_bytes": 979968,
+        "external_KV_write_logical_bytes": 24576,
+        "external_KV_write_burst_bytes": 24576,
+        "external_KV_write_requests": 48,
+        "external_KV_read_logical_bytes": 201338880,
+        "external_KV_read_burst_bytes": 201338880,
+        "external_KV_read_requests": 3096,
+        "scratch_KV_tile_bytes": 402677760,
+        "random_replay_write_bytes": 1698693120,
+        "random_replay_read_bytes": 7889485824,
+        "scratch_partial_bytes": 78446592
+      },
+      "bounds": {
+        "SC_wave_compute_ms": 822.02208,
+        "RNG_service_ms": 58.9824000000034,
+        "replay_service_ms": 123.273216,
+        "raw_rng_bits": 13589544960.0,
+        "source_nominal_capacity_bits": 227975261702.41388,
+        "scratch_peak_bytes": 609536,
+        "local_weight_resident_bits": 294912
+      }
+    },
+    {
+      "variant": "dual_sc_sz",
+      "context_tokens": 8192,
+      "metrics": {
+        "mean_TPOT_ms": 45062.518308675164,
+        "first_decode_ms": 45062.51762617915,
+        "subsequent_decode_ms": 45062.51899117118,
+        "tokens_per_second": 0.02219139181592268,
+        "scenario_mJ_per_token": 6483.784035772422,
+        "parameterized_area_mm2": 17.692,
+        "area_budget_feasible": true,
+        "TTFT_ms": null
+      },
+      "phase_ms": {
+        "embedding": 0.000376,
+        "norm_rope_residual": 0.052374625,
+        "QKV_projection": 3.196416,
+        "QK_softmax_PV": 11.2338345,
+        "output_projection": 2.488128,
+        "FFN_gate_up": 29994.282863700824,
+        "FFN_SwiGLU": 0.10944,
+        "FFN_down": 15033.61538384934,
+        "lm_head": 17.515752,
+        "token_select": 0.02374
+      },
+      "attention_core_time_fraction": 0.00024929442298472987,
+      "speedup_if_attention_core_were_free": 1.000249356586191,
+      "traffic": {
+        "external_weights_read_logical_bytes": 1348280320,
+        "external_weights_read_burst_bytes": 1348280320,
+        "external_weights_read_requests": 31112,
+        "weight_sram_write_bytes": 1348280320,
+        "weight_sram_read_bytes": 1348280320,
+        "scratch_vector_interface_bytes": 92594960,
+        "scratch_matrix_interface_bytes": 979968,
+        "external_KV_write_logical_bytes": 24576,
+        "external_KV_write_burst_bytes": 24576,
+        "external_KV_write_requests": 48,
+        "external_KV_read_logical_bytes": 201338880,
+        "external_KV_read_burst_bytes": 201338880,
+        "external_KV_read_requests": 3096,
+        "scratch_KV_tile_bytes": 402677760,
+        "random_replay_write_bytes": 1698693120,
+        "random_replay_read_bytes": 7889485824,
+        "scratch_partial_bytes": 78446592
+      },
+      "bounds": {
+        "SC_wave_compute_ms": 822.02208,
+        "RNG_service_ms": 90016.56513510035,
+        "replay_service_ms": 123.273216,
+        "raw_rng_bits": 20739816607127.867,
+        "source_nominal_capacity_bits": 20764808436637.516,
+        "scratch_peak_bytes": 609536,
+        "local_weight_resident_bits": 294912
+      }
+    }
+  ],
+  "attention_scratch_bandwidth_probe": [
+    {
+      "scratch_bandwidth_GBs": 64,
+      "end_ns": 468048.0,
+      "scratch_KV_tile_bytes": 8388608
+    },
+    {
+      "scratch_bandwidth_GBs": 0.064,
+      "end_ns": 468048.0,
+      "scratch_KV_tile_bytes": 8388608
+    }
+  ],
+  "statement": "Upstream bookkeeping checks and review probes only; no numerical LLM, RTL or hardware validation."
+}
