@@ -1,0 +1,84 @@
+完整decode模型：入口与使用方法
+2026-10-14
+
+现已把权重存储抽象成宏模块，扩展为Qwen2.5-0.5B全部24层、batch1的decode模型。
+完整结论请读results/system_decode/完整decode宏模型与瓶颈分析.txt。
+旧run_workbench.py的单核心结果保留，下面是新系统模型。
+
+运行：
+  python checks/test_system_decode.py
+  python run_system_sweep.py
+  python report_system.py
+
+模型文件：system_decode.py；扫描脚本：run_system_sweep.py。
+默认参数：configs/system_decode_default.json。
+成本来源与边界：configs/cost_provenance.json。
+核心成本依据：configs/evidence_contract.json及原项目功耗分项。
+默认模型读取随分支附带的configs/model_config.json和evidence功耗CSV，不依赖GPU、权重或远程服务器。
+
+一、模型里保留正常LLM的部分
+
+词嵌入；两次RMSNorm；准确Q/K/V与输出投影；QKV偏置；共享RoPE sin/cos准备及旋转；准确稠密QK、online softmax和PV；GQA组内KV读取复用；准确SiLU(g)*u；BF16残差；最终RMSNorm；稠密lm_head；greedy argmax。
+不使用注意力筛选、PV稀疏采样或Ising。KV全上下文扫描，正常精度/算法保留，具体数字电路吞吐与能量是可调代理。
+数字BF16与FFN仅权重INT8数字对照均有；INT8对照未假定整个LLM输入都变成INT8。
+
+二、随机FFN的硬件映射
+
+矩阵按64输入×64输出划分，有限E个阵列。gate/up完成后再算准确SiLU(g)*u，再执行down。
+当前按输入tile优先调度，让同一输入流跨输出tile复用；不能认为每个输出都可以随意重新生成输入随机流。
+每个64输入tile的12位随机字×T形成raw-word replay缓存，T4096时384KiB；每波共享给多个阵列。读写及scratch容量已计入。
+tile权重准备一次，采样期间由权重宏保持可见。宏内部使用SRAM、latch还是其他结构不在系统模型中展开，也不会额外按576个DFF收费。
+权重cache使用有限容量LRU，先检查加载/读响应，采用两套活动tile的预取抽象；不假设全模型权重永远常驻。
+默认shared frontend是架构假设：概率与符号寄存器保留每64输出tile一份；复制与广播的真实负载尚需标定。
+
+固定权重精确SC：从已定标G1固定权重核心分项扣掉权重DFF成本，权重改由宏单独计费。
+双随机Sz：权重事件也随机，逐连接独立权重流；这条核心尚未定标，sc_cost.dual_core_multiplier为可调代理。
+双随机权重|code|/127的均匀字实现，以8位字接受0..253、映射为0..126；平均原始位8*256/254。其拒绝/比较逻辑具体成本仍在代理误差范围内。
+原生可调概率p-bit的输出率、驱动/配置与能量不同，不应直接套用16bit均匀源模型。当前仅建均匀字架构情景。
+
+三、权重宏的参数
+
+cache_MiB：容量；cache_line_bytes：cache粒度。
+load_bandwidth_GBs/load_latency_ns：宏装载/读取接口，不是逐寄存器写控制。
+read_pJ_per_byte/write_pJ_per_byte：宏读写动态成本。
+leakage_W_per_MiB：宏驻留保持成本；area_mm2_per_MiB：数据存储及其宏级外围的面积系数。
+active_tile_hold_W/active_tile_area_mm2：参与计算tile的保持成本和面积，与大型权重cache分开。
+resident_read_pJ_per_tile：tile准备动作；不要在提供真实IP数据时重复计入SRAM完整读成本。
+local_resident_bits_per_tile：物理容量记录，当前9位符号/幅度×4096权重；不由这个位数推导DFF功耗。
+
+宏的读/写/保持/面积参数都标为assumed adjustable。它们不是sc_weight_storage_or4压缩包已测功耗。
+核心G1实际定标是100MHz零延迟门级活动；64列、共享前端、实际LLM概率以及不同T都是需要明确标注的外推。
+默认数字MAC成本沿用历史算术代理，不是BF16融合MAC/同55nm工艺测量；其他普通算子也允许替换单价和吞吐。
+
+四、目前的时间精度与能量范围
+
+宏级LT：tensor/cache-line/输入tile/波次级任务，保留层内/层间数据依赖、带宽和预取。
+外存是有限带宽加固定事务延迟，不含bank/row命中、AT多请求详细争用。scratch与权重宏是不同带宽资源。
+计算MAC、向量、非线性吞吐独立配置；动态动作能量与整体期间背景/漏电分别收费。
+输出mean_TPOT、首个decode/第二decode时间、tokens/s、情景mJ/token、面积、流量和服务时间。
+两token平均不等于充分长的稳态测试；大cache下第二token只作为warm参考。prefill没有建模，所以TTFT留空。
+不包括DRAM PHY/封装、host/整板、真实CTS、源启动、全部编译器融合/转换细节。energy_complete_measured始终为false。
+不会用较低面积单价产生的虚构完整ASIC结果去声称相对GPU的真实能效倍率。
+
+五、如何判断瓶颈
+
+看总时间的阶段分解，再看单因素扫描：
+- 外存带宽提升明显改善时间：搬运受限。
+- 增加SC阵列明显改善、增加随机源改善小：采样阵列受限。
+- 增加阵列无效、增加随机源改善明显：随机源供给受限。
+- 总时间降低后能量也降低较多：等待/漏电/背景功耗不可忽略。
+- SRAM容量增大无明显命中改善：当前循环序列仍超出容量；需要常驻/分区/batch策略，而不只是加容量。
+
+bounds中的SC、RNG和replay服务时间可能重叠，不可相加后当作总时延。
+area_budget_feasible为false的情景仍保留作诊断，不参与可行设计排名。
+不同方案资源总量不同，当前不是严格同面积对照；所有资源、容量和面积单价均在JSON中明示。
+
+六、验证与数据文件
+
+11项模型检查通过，包含形状计数、GQA访存、随机位需求、cache复用、计费与时间守恒、宏参数和活动工况。
+96项参数情景完成。数据在results/system_decode/summary.csv、summary.json、sensitivity.json以及逐情景JSON。
+每情景保存模型代码hash和成本契约hash；源参数状态见cost_provenance.json。
+完整LLM数值没有在TLM中重跑，PPL仅作对应原数值实验的参考；固定权重直接Sz重编码变体尚无独立PPL，因此不填参考质量。
+数值质量/硬件精度与性能需要同时满足；256/1024节省成本的情景不自动意味着可用精度。
+
+SystemC/TLM-2.0版本尚未实现。本次使用Python继续验证宏接口、动作账本和瓶颈，再按相同契约迁移即可。

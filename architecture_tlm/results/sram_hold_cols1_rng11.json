@@ -1,0 +1,1127 @@
+{
+  "scope": "resident fixed-weight sampled dot workbench, not LLM inference",
+  "config": {
+    "samples": 4096,
+    "columns": 1,
+    "frames": 2,
+    "storage": "sram_hold",
+    "sources": 11,
+    "whole_rng_words": false,
+    "sram_banks": 8,
+    "sram_word_bytes": 2,
+    "sram_latency_cycles": 2,
+    "sram_outstanding": 8,
+    "sram_capacity_bytes": 65536,
+    "rng_fifo_bits": 65536
+  },
+  "cycles": 8354,
+  "elapsed_us": 83.54,
+  "core_active_cycles": 8194,
+  "rng_stall_cycles": 0,
+  "calibration_frequency_hz": 100000000.0,
+  "power_profile_extrapolated": false,
+  "rng": {
+    "generated_bits": 6616368.0,
+    "consumed_bits": 6291456.0,
+    "discarded_bits": 259376.0,
+    "fifo_final_bits": 65536,
+    "sources": 11,
+    "broadcast_across_columns": true,
+    "evidence": "user-reported RNG, not directly characterized in this package"
+  },
+  "storage": {
+    "weight_config_words": 64,
+    "sram_read_words": 64,
+    "sram_write_words": 64,
+    "sram_bytes_transferred": 256,
+    "sram_resident_weight_bytes": 128,
+    "local_weight_hold_bits": 576,
+    "retained_probability_sign_bits": 896,
+    "sram_valid_bits": 64,
+    "weight_reloads_between_frames": 0,
+    "per_sample_sram_reads": 0,
+    "active_weight_clock_edges_per_bit": 0
+  },
+  "energy": {
+    "total_J": null,
+    "energy_complete": false,
+    "covered_partial_J": 1.7787116792519036e-07,
+    "non_weight_core_active_J": 6.686321592519037e-08,
+    "weight_active_J": null,
+    "always_running_rng_J": 1.1100795200000001e-07,
+    "missing_components": [
+      "input/weight configuration energy",
+      "non-active core power and clock tree",
+      "RNG startup/distribution/FIFO retention and access",
+      "external scales/encoding/output conversion",
+      "real SRAM read/write/leakage",
+      "local hold load/retention",
+      "valid bits/masking and new control power"
+    ],
+    "warning": "partial sums across storage variants are not complete energy comparisons"
+  },
+  "transactions": [
+    {
+      "kind": "sram_write",
+      "address": 0,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 0,
+      "response_cycle": 2
+    },
+    {
+      "kind": "sram_write",
+      "address": 2,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 0,
+      "response_cycle": 2
+    },
+    {
+      "kind": "sram_write",
+      "address": 4,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 0,
+      "response_cycle": 2
+    },
+    {
+      "kind": "sram_write",
+      "address": 6,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 0,
+      "response_cycle": 2
+    },
+    {
+      "kind": "sram_write",
+      "address": 8,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 0,
+      "response_cycle": 2
+    },
+    {
+      "kind": "sram_write",
+      "address": 10,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 0,
+      "response_cycle": 2
+    },
+    {
+      "kind": "sram_write",
+      "address": 12,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 0,
+      "response_cycle": 2
+    },
+    {
+      "kind": "sram_write",
+      "address": 14,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 0,
+      "response_cycle": 2
+    },
+    {
+      "kind": "sram_write",
+      "address": 16,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 2,
+      "response_cycle": 4
+    },
+    {
+      "kind": "sram_write",
+      "address": 18,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 2,
+      "response_cycle": 4
+    },
+    {
+      "kind": "sram_write",
+      "address": 20,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 2,
+      "response_cycle": 4
+    },
+    {
+      "kind": "sram_write",
+      "address": 22,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 2,
+      "response_cycle": 4
+    },
+    {
+      "kind": "sram_write",
+      "address": 24,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 2,
+      "response_cycle": 4
+    },
+    {
+      "kind": "sram_write",
+      "address": 26,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 2,
+      "response_cycle": 4
+    },
+    {
+      "kind": "sram_write",
+      "address": 28,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 2,
+      "response_cycle": 4
+    },
+    {
+      "kind": "sram_write",
+      "address": 30,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 2,
+      "response_cycle": 4
+    },
+    {
+      "kind": "sram_write",
+      "address": 32,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 4,
+      "response_cycle": 6
+    },
+    {
+      "kind": "sram_write",
+      "address": 34,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 4,
+      "response_cycle": 6
+    },
+    {
+      "kind": "sram_write",
+      "address": 36,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 4,
+      "response_cycle": 6
+    },
+    {
+      "kind": "sram_write",
+      "address": 38,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 4,
+      "response_cycle": 6
+    },
+    {
+      "kind": "sram_write",
+      "address": 40,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 4,
+      "response_cycle": 6
+    },
+    {
+      "kind": "sram_write",
+      "address": 42,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 4,
+      "response_cycle": 6
+    },
+    {
+      "kind": "sram_write",
+      "address": 44,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 4,
+      "response_cycle": 6
+    },
+    {
+      "kind": "sram_write",
+      "address": 46,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 4,
+      "response_cycle": 6
+    },
+    {
+      "kind": "sram_write",
+      "address": 48,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 6,
+      "response_cycle": 8
+    },
+    {
+      "kind": "sram_write",
+      "address": 50,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 6,
+      "response_cycle": 8
+    },
+    {
+      "kind": "sram_write",
+      "address": 52,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 6,
+      "response_cycle": 8
+    },
+    {
+      "kind": "sram_write",
+      "address": 54,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 6,
+      "response_cycle": 8
+    },
+    {
+      "kind": "sram_write",
+      "address": 56,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 6,
+      "response_cycle": 8
+    },
+    {
+      "kind": "sram_write",
+      "address": 58,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 6,
+      "response_cycle": 8
+    },
+    {
+      "kind": "sram_write",
+      "address": 60,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 6,
+      "response_cycle": 8
+    },
+    {
+      "kind": "sram_write",
+      "address": 62,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 6,
+      "response_cycle": 8
+    },
+    {
+      "kind": "sram_write",
+      "address": 64,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 8,
+      "response_cycle": 10
+    },
+    {
+      "kind": "sram_write",
+      "address": 66,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 8,
+      "response_cycle": 10
+    },
+    {
+      "kind": "sram_write",
+      "address": 68,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 8,
+      "response_cycle": 10
+    },
+    {
+      "kind": "sram_write",
+      "address": 70,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 8,
+      "response_cycle": 10
+    },
+    {
+      "kind": "sram_write",
+      "address": 72,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 8,
+      "response_cycle": 10
+    },
+    {
+      "kind": "sram_write",
+      "address": 74,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 8,
+      "response_cycle": 10
+    },
+    {
+      "kind": "sram_write",
+      "address": 76,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 8,
+      "response_cycle": 10
+    },
+    {
+      "kind": "sram_write",
+      "address": 78,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 8,
+      "response_cycle": 10
+    },
+    {
+      "kind": "sram_write",
+      "address": 80,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 10,
+      "response_cycle": 12
+    },
+    {
+      "kind": "sram_write",
+      "address": 82,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 10,
+      "response_cycle": 12
+    },
+    {
+      "kind": "sram_write",
+      "address": 84,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 10,
+      "response_cycle": 12
+    },
+    {
+      "kind": "sram_write",
+      "address": 86,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 10,
+      "response_cycle": 12
+    },
+    {
+      "kind": "sram_write",
+      "address": 88,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 10,
+      "response_cycle": 12
+    },
+    {
+      "kind": "sram_write",
+      "address": 90,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 10,
+      "response_cycle": 12
+    },
+    {
+      "kind": "sram_write",
+      "address": 92,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 10,
+      "response_cycle": 12
+    },
+    {
+      "kind": "sram_write",
+      "address": 94,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 10,
+      "response_cycle": 12
+    },
+    {
+      "kind": "sram_write",
+      "address": 96,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 12,
+      "response_cycle": 14
+    },
+    {
+      "kind": "sram_write",
+      "address": 98,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 12,
+      "response_cycle": 14
+    },
+    {
+      "kind": "sram_write",
+      "address": 100,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 12,
+      "response_cycle": 14
+    },
+    {
+      "kind": "sram_write",
+      "address": 102,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 12,
+      "response_cycle": 14
+    },
+    {
+      "kind": "sram_write",
+      "address": 104,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 12,
+      "response_cycle": 14
+    },
+    {
+      "kind": "sram_write",
+      "address": 106,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 12,
+      "response_cycle": 14
+    },
+    {
+      "kind": "sram_write",
+      "address": 108,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 12,
+      "response_cycle": 14
+    },
+    {
+      "kind": "sram_write",
+      "address": 110,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 12,
+      "response_cycle": 14
+    },
+    {
+      "kind": "sram_write",
+      "address": 112,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 14,
+      "response_cycle": 16
+    },
+    {
+      "kind": "sram_write",
+      "address": 114,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 14,
+      "response_cycle": 16
+    },
+    {
+      "kind": "sram_write",
+      "address": 116,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 14,
+      "response_cycle": 16
+    },
+    {
+      "kind": "sram_write",
+      "address": 118,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 14,
+      "response_cycle": 16
+    },
+    {
+      "kind": "sram_write",
+      "address": 120,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 14,
+      "response_cycle": 16
+    },
+    {
+      "kind": "sram_write",
+      "address": 122,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 14,
+      "response_cycle": 16
+    },
+    {
+      "kind": "sram_write",
+      "address": 124,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 14,
+      "response_cycle": 16
+    },
+    {
+      "kind": "sram_write",
+      "address": 126,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 14,
+      "response_cycle": 16
+    },
+    {
+      "kind": "sram_read",
+      "address": 0,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 16,
+      "response_cycle": 18
+    },
+    {
+      "kind": "sram_read",
+      "address": 2,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 16,
+      "response_cycle": 18
+    },
+    {
+      "kind": "sram_read",
+      "address": 4,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 16,
+      "response_cycle": 18
+    },
+    {
+      "kind": "sram_read",
+      "address": 6,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 16,
+      "response_cycle": 18
+    },
+    {
+      "kind": "sram_read",
+      "address": 8,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 16,
+      "response_cycle": 18
+    },
+    {
+      "kind": "sram_read",
+      "address": 10,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 16,
+      "response_cycle": 18
+    },
+    {
+      "kind": "sram_read",
+      "address": 12,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 16,
+      "response_cycle": 18
+    },
+    {
+      "kind": "sram_read",
+      "address": 14,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 16,
+      "response_cycle": 18
+    },
+    {
+      "kind": "sram_read",
+      "address": 16,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 18,
+      "response_cycle": 20
+    },
+    {
+      "kind": "sram_read",
+      "address": 18,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 18,
+      "response_cycle": 20
+    },
+    {
+      "kind": "sram_read",
+      "address": 20,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 18,
+      "response_cycle": 20
+    },
+    {
+      "kind": "sram_read",
+      "address": 22,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 18,
+      "response_cycle": 20
+    },
+    {
+      "kind": "sram_read",
+      "address": 24,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 18,
+      "response_cycle": 20
+    },
+    {
+      "kind": "sram_read",
+      "address": 26,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 18,
+      "response_cycle": 20
+    },
+    {
+      "kind": "sram_read",
+      "address": 28,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 18,
+      "response_cycle": 20
+    },
+    {
+      "kind": "sram_read",
+      "address": 30,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 18,
+      "response_cycle": 20
+    },
+    {
+      "kind": "sram_read",
+      "address": 32,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 20,
+      "response_cycle": 22
+    },
+    {
+      "kind": "sram_read",
+      "address": 34,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 20,
+      "response_cycle": 22
+    },
+    {
+      "kind": "sram_read",
+      "address": 36,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 20,
+      "response_cycle": 22
+    },
+    {
+      "kind": "sram_read",
+      "address": 38,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 20,
+      "response_cycle": 22
+    },
+    {
+      "kind": "sram_read",
+      "address": 40,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 20,
+      "response_cycle": 22
+    },
+    {
+      "kind": "sram_read",
+      "address": 42,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 20,
+      "response_cycle": 22
+    },
+    {
+      "kind": "sram_read",
+      "address": 44,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 20,
+      "response_cycle": 22
+    },
+    {
+      "kind": "sram_read",
+      "address": 46,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 20,
+      "response_cycle": 22
+    },
+    {
+      "kind": "sram_read",
+      "address": 48,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 22,
+      "response_cycle": 24
+    },
+    {
+      "kind": "sram_read",
+      "address": 50,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 22,
+      "response_cycle": 24
+    },
+    {
+      "kind": "sram_read",
+      "address": 52,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 22,
+      "response_cycle": 24
+    },
+    {
+      "kind": "sram_read",
+      "address": 54,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 22,
+      "response_cycle": 24
+    },
+    {
+      "kind": "sram_read",
+      "address": 56,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 22,
+      "response_cycle": 24
+    },
+    {
+      "kind": "sram_read",
+      "address": 58,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 22,
+      "response_cycle": 24
+    },
+    {
+      "kind": "sram_read",
+      "address": 60,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 22,
+      "response_cycle": 24
+    },
+    {
+      "kind": "sram_read",
+      "address": 62,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 22,
+      "response_cycle": 24
+    },
+    {
+      "kind": "sram_read",
+      "address": 64,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 24,
+      "response_cycle": 26
+    },
+    {
+      "kind": "sram_read",
+      "address": 66,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 24,
+      "response_cycle": 26
+    },
+    {
+      "kind": "sram_read",
+      "address": 68,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 24,
+      "response_cycle": 26
+    },
+    {
+      "kind": "sram_read",
+      "address": 70,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 24,
+      "response_cycle": 26
+    },
+    {
+      "kind": "sram_read",
+      "address": 72,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 24,
+      "response_cycle": 26
+    },
+    {
+      "kind": "sram_read",
+      "address": 74,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 24,
+      "response_cycle": 26
+    },
+    {
+      "kind": "sram_read",
+      "address": 76,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 24,
+      "response_cycle": 26
+    },
+    {
+      "kind": "sram_read",
+      "address": 78,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 24,
+      "response_cycle": 26
+    },
+    {
+      "kind": "sram_read",
+      "address": 80,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 26,
+      "response_cycle": 28
+    },
+    {
+      "kind": "sram_read",
+      "address": 82,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 26,
+      "response_cycle": 28
+    },
+    {
+      "kind": "sram_read",
+      "address": 84,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 26,
+      "response_cycle": 28
+    },
+    {
+      "kind": "sram_read",
+      "address": 86,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 26,
+      "response_cycle": 28
+    },
+    {
+      "kind": "sram_read",
+      "address": 88,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 26,
+      "response_cycle": 28
+    },
+    {
+      "kind": "sram_read",
+      "address": 90,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 26,
+      "response_cycle": 28
+    },
+    {
+      "kind": "sram_read",
+      "address": 92,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 26,
+      "response_cycle": 28
+    },
+    {
+      "kind": "sram_read",
+      "address": 94,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 26,
+      "response_cycle": 28
+    },
+    {
+      "kind": "sram_read",
+      "address": 96,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 28,
+      "response_cycle": 30
+    },
+    {
+      "kind": "sram_read",
+      "address": 98,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 28,
+      "response_cycle": 30
+    },
+    {
+      "kind": "sram_read",
+      "address": 100,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 28,
+      "response_cycle": 30
+    },
+    {
+      "kind": "sram_read",
+      "address": 102,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 28,
+      "response_cycle": 30
+    },
+    {
+      "kind": "sram_read",
+      "address": 104,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 28,
+      "response_cycle": 30
+    },
+    {
+      "kind": "sram_read",
+      "address": 106,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 28,
+      "response_cycle": 30
+    },
+    {
+      "kind": "sram_read",
+      "address": 108,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 28,
+      "response_cycle": 30
+    },
+    {
+      "kind": "sram_read",
+      "address": 110,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 28,
+      "response_cycle": 30
+    },
+    {
+      "kind": "sram_read",
+      "address": 112,
+      "bytes": 2,
+      "bank": 0,
+      "issue_cycle": 30,
+      "response_cycle": 32
+    },
+    {
+      "kind": "sram_read",
+      "address": 114,
+      "bytes": 2,
+      "bank": 1,
+      "issue_cycle": 30,
+      "response_cycle": 32
+    },
+    {
+      "kind": "sram_read",
+      "address": 116,
+      "bytes": 2,
+      "bank": 2,
+      "issue_cycle": 30,
+      "response_cycle": 32
+    },
+    {
+      "kind": "sram_read",
+      "address": 118,
+      "bytes": 2,
+      "bank": 3,
+      "issue_cycle": 30,
+      "response_cycle": 32
+    },
+    {
+      "kind": "sram_read",
+      "address": 120,
+      "bytes": 2,
+      "bank": 4,
+      "issue_cycle": 30,
+      "response_cycle": 32
+    },
+    {
+      "kind": "sram_read",
+      "address": 122,
+      "bytes": 2,
+      "bank": 5,
+      "issue_cycle": 30,
+      "response_cycle": 32
+    },
+    {
+      "kind": "sram_read",
+      "address": 124,
+      "bytes": 2,
+      "bank": 6,
+      "issue_cycle": 30,
+      "response_cycle": 32
+    },
+    {
+      "kind": "sram_read",
+      "address": 126,
+      "bytes": 2,
+      "bank": 7,
+      "issue_cycle": 30,
+      "response_cycle": 32
+    }
+  ],
+  "events": [
+    {
+      "kind": "weight_sram_preload_to_hold",
+      "start": 0,
+      "end": 32,
+      "reads": 64,
+      "writes": 64,
+      "hold_bits": 576
+    },
+    {
+      "kind": "input_config",
+      "frame": 0,
+      "start": 32,
+      "end": 96
+    },
+    {
+      "kind": "sample_frame",
+      "frame": 0,
+      "start": 96,
+      "end": 4193,
+      "samples": 4096,
+      "weight_reloads": 0
+    },
+    {
+      "kind": "input_config",
+      "frame": 1,
+      "start": 4193,
+      "end": 4257
+    },
+    {
+      "kind": "sample_frame",
+      "frame": 1,
+      "start": 4257,
+      "end": 8354,
+      "samples": 4096,
+      "weight_reloads": 0
+    }
+  ]
+}

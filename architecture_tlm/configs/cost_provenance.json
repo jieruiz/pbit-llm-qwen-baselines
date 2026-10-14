@@ -1,0 +1,62 @@
+{
+  "scope": "Parameter scenarios for full decode, not a calibrated chip prediction or GPU comparison",
+  "stochastic_fixed_core": {
+    "status": "derived_from_mapped_zero_delay_standard_cell_power",
+    "job": "38015538",
+    "frequency_hz": 100000000,
+    "samples": 4096,
+    "profiles": ["g1_case1", "g1_case2", "g1_case3"],
+    "mapping": "64 single-output cores per 64x64 tile; remove measured weight-register block; shared frontend is architectural assumption",
+    "unknowns": ["actual LLM activity", "broadcast capacitance", "new integrated macro", "CTS and wire RC"]
+  },
+  "stochastic_dual_core": {
+    "status": "assumed_proxy",
+    "coefficient": "sc_cost.dual_core_multiplier",
+    "description": "Uses fixed-weight core cost as replaceable placeholder; no dual-stream synthesized power supplied"
+  },
+  "weight_macro": {
+    "status": "assumed_adjustable",
+    "description": "Area includes the selected cache implementation and its overhead; active tile prepare/hold area and energy are separate explicit macro parameters",
+    "no_per_bit_DFF_model": true,
+    "units": ["MiB", "decimal GB/s", "ns", "pJ/byte", "W/MiB", "mm2/MiB", "W/tile", "mm2/tile"]
+  },
+  "external_memory_and_scratchpad": {
+    "status": "assumed_adjustable",
+    "description": "Example coefficients only. No SRAM/DRAM compiler output, real memory part or PHY power supplied"
+  },
+  "digital_MAC": {
+    "status": "historical_arithmetic_proxy_adjustable",
+    "default_pJ": 2,
+    "description": "Inherited FP16 multiply plus FP32 add proxy from prior project ledger; not measured BF16 fused MAC or 55nm cost",
+    "project_source": "operation_counts_20261010/ENERGY_PREVIEW_ZH.txt",
+    "historical_primary_source": "https://gwern.net/doc/cs/hardware/2014-horowitz-2.pdf"
+  },
+  "digital_vector_nonlinear_idle_area": {"status": "assumed_adjustable"},
+  "rng": {
+    "status": "user_reported_source_profile",
+    "power_W": 0.0001208,
+    "clock_hz": 450000000,
+    "raw_bits_per_cycle": 16,
+    "description": "Uniform raw word source, not configurable-probability p-bit",
+    "weight_decision_raw_bits": "8*256/254 for byte rejection then uniform 0..126 to preserve |code|/127; ideal packing, rejection logic costs not calibrated",
+    "input_sharing": "one input-feature stream reused across output tiles via raw-word replay",
+    "weight_sharing": "independent per connection; any shared-weight sequence changes the quality contract",
+    "gating": "always-running default. active-only sensitivity is idealized and excludes wakeup/transition energy",
+    "area_and_distribution": "assumed_adjustable"
+  },
+  "quality": {
+    "digital_bf16": "Prior full WT2 Base PPL reference; not hardware validation",
+    "digital_int8_ffn": "Prior deterministic INT8 weight FFN numerical reference; mixed FP/INT MAC cost remains adjustable",
+    "fixed_sc_exact": "Exact SiLU*z recoding variant not yet independently quality-evaluated; no PPL attached",
+    "dual_sc_sz": "Full WT2 conditional Gaussian numerical PPL; hardware correlations and precision must be validated separately"
+  },
+  "unmodeled": [
+    "prefill and TTFT",
+    "HBM/DRAM PHY and package IO",
+    "exact bank/row/AT outstanding timing",
+    "RNG startup/calibration/correlation",
+    "new macro CTS/interconnect physical implementation",
+    "host CPU and whole board",
+    "full compiler-specific fusion/cast costs"
+  ]
+}

@@ -3,6 +3,15 @@
 Reproducible BF16 reference measurements and inspection utilities for studying
 p-bit replacements inside the feed-forward network of Qwen2.5-0.5B Base.
 
+## Macro-level transaction model snapshot
+
+[architecture_tlm/](architecture_tlm/README.md) contains the full 24-layer
+decode timing/energy scenario model, configurable weight-storage macros,
+96 parameter scenarios and their audits. It currently uses a global uniform
+random-word supply pool; distributed local probability-output p-bit modules
+are a separate future backend. The implementation is Python LT, not
+SystemC/TLM-2.0, and scenario energy/area values are not chip measurements.
+
 This repository contains the baseline code and measured results used before any
 p-bit modification. Model weights and benchmark datasets are intentionally not
 committed.

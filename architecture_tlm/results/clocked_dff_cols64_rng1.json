@@ -1,0 +1,97 @@
+{
+  "scope": "resident fixed-weight sampled dot workbench, not LLM inference",
+  "config": {
+    "samples": 4096,
+    "columns": 64,
+    "frames": 2,
+    "storage": "clocked_dff",
+    "sources": 1,
+    "whole_rng_words": false,
+    "sram_banks": 8,
+    "sram_word_bytes": 2,
+    "sram_latency_cycles": 2,
+    "sram_outstanding": 8,
+    "sram_capacity_bytes": 65536,
+    "rng_fifo_bits": 65536
+  },
+  "cycles": 87383,
+  "elapsed_us": 873.83,
+  "core_active_cycles": 8194,
+  "rng_stall_cycles": 78997,
+  "calibration_frequency_hz": 100000000.0,
+  "power_profile_extrapolated": true,
+  "rng": {
+    "generated_bits": 6291576.0,
+    "consumed_bits": 6291456.0,
+    "discarded_bits": 0.0,
+    "fifo_final_bits": 120.0,
+    "sources": 1,
+    "broadcast_across_columns": true,
+    "evidence": "user-reported RNG, not directly characterized in this package"
+  },
+  "storage": {
+    "weight_config_words": 4096,
+    "sram_read_words": 0,
+    "sram_write_words": 0,
+    "sram_bytes_transferred": 0,
+    "sram_resident_weight_bytes": 0,
+    "local_weight_hold_bits": 36864,
+    "retained_probability_sign_bits": 57344,
+    "sram_valid_bits": 0,
+    "weight_reloads_between_frames": 0,
+    "per_sample_sram_reads": 0,
+    "active_weight_clock_edges_per_bit": 8194
+  },
+  "energy": {
+    "total_J": null,
+    "energy_complete": false,
+    "covered_partial_J": 6.145305704332186e-06,
+    "non_weight_core_active_J": 4.279245819212183e-06,
+    "weight_active_J": 1.7605012211200025e-06,
+    "always_running_rng_J": 1.05558664e-07,
+    "missing_components": [
+      "input/weight configuration energy",
+      "non-active core power and clock tree",
+      "RNG startup/distribution/FIFO retention and access",
+      "external scales/encoding/output conversion"
+    ],
+    "warning": "partial sums across storage variants are not complete energy comparisons"
+  },
+  "transactions": [],
+  "events": [
+    {
+      "kind": "weight_config",
+      "start": 0,
+      "end": 64,
+      "configured_weight_words": 4096
+    },
+    {
+      "kind": "input_config",
+      "frame": 0,
+      "start": 64,
+      "end": 128
+    },
+    {
+      "kind": "sample_frame",
+      "frame": 0,
+      "start": 128,
+      "end": 43692,
+      "samples": 4096,
+      "weight_reloads": 0
+    },
+    {
+      "kind": "input_config",
+      "frame": 1,
+      "start": 43692,
+      "end": 43756
+    },
+    {
+      "kind": "sample_frame",
+      "frame": 1,
+      "start": 43756,
+      "end": 87383,
+      "samples": 4096,
+      "weight_reloads": 0
+    }
+  ]
+}
