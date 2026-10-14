@@ -1,0 +1,415 @@
+{
+  "metadata": {
+    "status": "complete",
+    "variant": "attention_pv",
+    "variant_config": [
+      "original",
+      "iid"
+    ],
+    "seed": 0,
+    "samples": 512,
+    "attention_chunk": 32,
+    "smoke": true,
+    "context": 2048,
+    "stride": 1024,
+    "batch_size": 1,
+    "precision": "BF16 interface; FP32 stochastic reference and CE",
+    "ffn_config": "all32 fixed group_max, W8, magnitude12+sign, input4096/output3072, interval256, burn25%, ideal sigmoid",
+    "attention_config": "exact Q/K/softmax; dense P@V or 512-sample IID P@V; all32 layers",
+    "model_path": "/home/Hongjie_Zeng/pbit_llm/models/LLaMA-7B",
+    "data_path": "/home/Hongjie_Zeng/pbit_llm/data/wikitext-2/wiki.test.raw",
+    "load_seconds": 34.59694468835369,
+    "original_parameter_count": 6738415616,
+    "live_parameter_count": 6738415616,
+    "peak_cuda_bytes": 13532440064,
+    "cuda_device": "NVIDIA GeForce RTX 5090",
+    "slurm_job_id": "1447",
+    "versions": {
+      "torch": "2.7.1+cu128",
+      "transformers": "4.45.2",
+      "tokenizers": "0.20.3",
+      "safetensors": "0.8.0"
+    },
+    "source_sha256": {
+      "evaluate.py": "150eab139c5fb27e487244c1f749ebb9c0b42070530f2430c7dcacb9ff34126a",
+      "model.py": "ce1f008a2681fb42d35b71c2cde652d4bf1e3ed2cc78f65baa0c8e173176b8a3",
+      "attention.py": "f7d54e910116e0f42aae609e3411f8c6dfa0139a1b905d15389f3cb620ecbc58",
+      "fixed_ffn.py": "814041b8aafba6eaa807e84037541d62a8a979d3d68df2c0594b55ebc2927598",
+      "streaming_ffn.py": "ca04aad6e873d103105644047a6f6618beb129e5ee682f3fedd978b65508a682",
+      "calibration_ffn.json": "73b7739f9a6a8f24f990966735112c0a121172a05bd71c4ebd8b5e1f8bf50d30"
+    },
+    "protected_sha256": "fcc861754c4db385e8d5f04ea0f1f2284f54b60a87da3e90009806bc2b43afbe",
+    "ffn_layers": 0,
+    "ffn_diagnostics": {},
+    "attention_diagnostics": [
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.8652684411337209,
+        "kv_group_union_v_fraction": 0.8652684411337209,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.7969014958817829,
+        "kv_group_union_v_fraction": 0.7969014958817829,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.7036662730135659,
+        "kv_group_union_v_fraction": 0.7036662730135659,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.3563506843507752,
+        "kv_group_union_v_fraction": 0.3563506843507752,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.33116067102713176,
+        "kv_group_union_v_fraction": 0.33116067102713176,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.36676735101744184,
+        "kv_group_union_v_fraction": 0.36676735101744184,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.38551129481589147,
+        "kv_group_union_v_fraction": 0.38551129481589147,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.3904243883236434,
+        "kv_group_union_v_fraction": 0.3904243883236434,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.44105044815891475,
+        "kv_group_union_v_fraction": 0.44105044815891475,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.4382305293120155,
+        "kv_group_union_v_fraction": 0.4382305293120155,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.4805482376453488,
+        "kv_group_union_v_fraction": 0.4805482376453488,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.47028297601744184,
+        "kv_group_union_v_fraction": 0.47028297601744184,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.519553960755814,
+        "kv_group_union_v_fraction": 0.519553960755814,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.459968507751938,
+        "kv_group_union_v_fraction": 0.459968507751938,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.4419891593992248,
+        "kv_group_union_v_fraction": 0.4419891593992248,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.40867626574612403,
+        "kv_group_union_v_fraction": 0.40867626574612403,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.4077640503875969,
+        "kv_group_union_v_fraction": 0.4077640503875969,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.3816353258236434,
+        "kv_group_union_v_fraction": 0.3816353258236434,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.3329245397286822,
+        "kv_group_union_v_fraction": 0.3329245397286822,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.32667529675387597,
+        "kv_group_union_v_fraction": 0.32667529675387597,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.29391881661821706,
+        "kv_group_union_v_fraction": 0.29391881661821706,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.3054180293120155,
+        "kv_group_union_v_fraction": 0.3054180293120155,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.31366203367248063,
+        "kv_group_union_v_fraction": 0.31366203367248063,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.35461709665697677,
+        "kv_group_union_v_fraction": 0.35461709665697677,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.29388853561046513,
+        "kv_group_union_v_fraction": 0.29388853561046513,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.2862917877906977,
+        "kv_group_union_v_fraction": 0.2862917877906977,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.2818139837693798,
+        "kv_group_union_v_fraction": 0.2818139837693798,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.2567943011143411,
+        "kv_group_union_v_fraction": 0.2567943011143411,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.3177764656007752,
+        "kv_group_union_v_fraction": 0.3177764656007752,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.31175054505813954,
+        "kv_group_union_v_fraction": 0.31175054505813954,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.33619488856589147,
+        "kv_group_union_v_fraction": 0.33619488856589147,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      },
+      {
+        "mode": "iid",
+        "samples": 512,
+        "calls": 1,
+        "prefill_calls": 1,
+        "decode_calls": 0,
+        "head_queries": 4096,
+        "unique_v_fraction": 0.44077413396317827,
+        "kv_group_union_v_fraction": 0.44077413396317827,
+        "scope": "prefill and decode; logical V addresses, not physical traffic"
+      }
+    ]
+  },
+  "result": {
+    "perplexity": 8.416240547943428,
+    "nll_sum": 270.5307312011719,
+    "scored_tokens": 127,
+    "corpus_tokens": 128,
+    "corpus_sha256": "173c87a53759e0201f33e0ccf978e510c2042d7f2cb78229d9a50d79b9e7dd08",
+    "seconds": 0.7613281598314643,
+    "windows": [
+      {
+        "begin": 0,
+        "end": 128,
+        "scored": 127,
+        "nll_sum": 270.5307312011719
+      }
+    ]
+  }
+}

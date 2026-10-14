@@ -1,0 +1,145 @@
+{
+  "variants": {
+    "original_dense": {
+      "seeds": 1,
+      "ppl": [
+        5.183384675169289
+      ],
+      "ppl_mean": 5.183384675169289,
+      "ppl_stdev": 0.0,
+      "seconds_mean": 345.2695484398864,
+      "peak_cuda_gib_max": 12.789745807647705
+    },
+    "attention_pv": {
+      "seeds": 3,
+      "ppl": [
+        5.292716925673048,
+        5.288302584493054,
+        5.287547121880731
+      ],
+      "ppl_mean": 5.289522210682278,
+      "ppl_stdev": 0.00279237064943814,
+      "seconds_mean": 423.78322578407824,
+      "peak_cuda_gib_max": 12.789745807647705,
+      "attention_diagnostics": {
+        "unique_v_fraction_mean": 0.06996188722268377,
+        "kv_group_union_v_fraction_mean": 0.06996188722268377
+      }
+    },
+    "ffn_dense": {
+      "seeds": 3,
+      "ppl": [
+        5.417590500653887,
+        5.412093180331469,
+        5.412252135967654
+      ],
+      "ppl_mean": 5.413978605651003,
+      "ppl_stdev": 0.0031290023741538456,
+      "seconds_mean": 2632.5538787832484,
+      "peak_cuda_gib_max": 22.11329174041748,
+      "ffn_diagnostics": {
+        "x": {
+          "count": 263262437376,
+          "out_of_fullscale_fraction": 2.4809084292841156e-07,
+          "above_top_code_fraction": 2.4809084292841156e-07,
+          "encoded_zero_fraction": 0.0011074760528164108,
+          "quantization_nmse": 5.726328934718607e-07
+        },
+        "g": {
+          "count": 8490213605376,
+          "out_of_fullscale_fraction": 4.890742675037925e-07,
+          "above_top_code_fraction": 4.904076850744448e-07,
+          "encoded_zero_fraction": 0.0012829660570733785,
+          "quantization_nmse": 1.36167273176704e-06
+        },
+        "u": {
+          "count": 8490213605376,
+          "out_of_fullscale_fraction": 7.084148031554308e-07,
+          "above_top_code_fraction": 7.100147629010136e-07,
+          "encoded_zero_fraction": 0.0013920422974418901,
+          "quantization_nmse": 2.4065148134099627e-06
+        }
+      }
+    },
+    "joint_pv": {
+      "seeds": 3,
+      "ppl": [
+        5.565851130488644,
+        5.56114504980301,
+        5.557365571844672
+      ],
+      "ppl_mean": 5.561453917378776,
+      "ppl_stdev": 0.004251202860319934,
+      "seconds_mean": 2695.1957404312366,
+      "peak_cuda_gib_max": 22.11329174041748,
+      "ffn_diagnostics": {
+        "x": {
+          "count": 263262437376,
+          "out_of_fullscale_fraction": 2.4159162482098255e-07,
+          "above_top_code_fraction": 2.4159162482098255e-07,
+          "encoded_zero_fraction": 0.0011081580224957524,
+          "quantization_nmse": 5.77564425836538e-07
+        },
+        "g": {
+          "count": 8490213605376,
+          "out_of_fullscale_fraction": 4.988188986574319e-07,
+          "above_top_code_fraction": 5.002142699108122e-07,
+          "encoded_zero_fraction": 0.0012856906782755296,
+          "quantization_nmse": 1.3779810974293088e-06
+        },
+        "u": {
+          "count": 8490213605376,
+          "out_of_fullscale_fraction": 6.891335450376912e-07,
+          "above_top_code_fraction": 6.907113616419187e-07,
+          "encoded_zero_fraction": 0.001393212502511137,
+          "quantization_nmse": 2.394156931453668e-06
+        }
+      },
+      "attention_diagnostics": {
+        "unique_v_fraction_mean": 0.07154501357073131,
+        "kv_group_union_v_fraction_mean": 0.07154501357073131
+      }
+    }
+  },
+  "comparisons": {
+    "attention_pv_vs_dense": {
+      "relative": 0.020476397351581355,
+      "bootstrap95": [
+        0.01965165481523829,
+        0.021289085026029508
+      ]
+    },
+    "ffn_dense_vs_dense": {
+      "relative": 0.04448701809050659,
+      "bootstrap95": [
+        0.04296789777046367,
+        0.04604469297770785
+      ]
+    },
+    "joint_pv_vs_dense": {
+      "relative": 0.07293847220460781,
+      "bootstrap95": [
+        0.07080887687270851,
+        0.07512885556013225
+      ]
+    },
+    "joint_pv_vs_ffn_dense": {
+      "relative": 0.027239643596638663,
+      "bootstrap95": [
+        0.026263865124207815,
+        0.028230050790781298
+      ]
+    },
+    "multiplicative_interaction": {
+      "relative": 0.0066275381406273315,
+      "bootstrap95": [
+        0.005964450494995855,
+        0.0072993894632379765
+      ]
+    }
+  },
+  "eager_reference_ppl": 5.182977018357682,
+  "dense_vs_eager_relative": 7.865302318776912e-05,
+  "calibration_sha256": "73b7739f9a6a8f24f990966735112c0a121172a05bd71c4ebd8b5e1f8bf50d30",
+  "analysis_sha256": "b1517387a89f7c3d0110fa819a514b1a79fd668e6f156ec89c48b628365d04e6"
+}
