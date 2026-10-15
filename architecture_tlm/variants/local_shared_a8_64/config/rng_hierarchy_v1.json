@@ -1,0 +1,28 @@
+{
+  "cost_status": "ILLUSTRATIVE UNCALIBRATED coefficients; replace with PDK/RTL measurements before PPA claims",
+  "entropy": {
+    "channels": 4, "sample_hz": 1000000, "raw_samples_per_block": 1024,
+    "output_bits_per_block": 256, "min_entropy_per_sample": 0.5, "safety_factor": 0.8,
+    "startup_ns": 10000, "conditioner_ns_per_block": 1000, "healthy": true,
+    "power_W_per_channel": 0.0001, "health_W": 0.00005,
+    "conditioner_pJ_per_block": 1000, "area_mm2_per_channel": 0.002,
+    "health_conditioner_area_mm2": 0.02
+  },
+  "seed": {
+    "root_bits": 256, "bus_bits": 32, "bus_hz": 100000000,
+    "expand_bits_per_cycle": 256, "expand_hz": 100000000,
+    "reseed_interval_ns": 1000000000, "expand_pJ_per_bit": 0.2,
+    "bus_pJ_per_bit": 0.1, "idle_W": 0.0001, "area_mm2": 0.03
+  },
+  "shared": {
+    "cores": 8, "output_bits": 160, "clock_hz": 100000000, "warmup_cycles": 5,
+    "update_pJ": 16, "distribution_pJ_per_bit": 0.1,
+    "leakage_W_per_core": 0.000001, "area_mm2_per_core": 0.006
+  },
+  "local": {
+    "inputs": 64, "columns": 64, "cores_per_column": 4, "output_bits": 160,
+    "warmup_cycles": 5, "update_pJ": 16, "bernoulli_pJ": 0.05,
+    "leakage_W_per_core": 0.000001, "area_mm2_per_core": 0.006,
+    "column_logic_area_mm2": 0.001
+  }
+}

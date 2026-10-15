@@ -1,5 +1,28 @@
 # Qwen2.5 transaction model with DRAMSys external memory
 
+## Directory layout
+
+- Shared decode, SRAM and accounting model: this directory.
+- External-memory integration: [`dramsys/`](dramsys/).
+- Architecture experiments: [`variants/`](variants/).
+- Current FFN-local A8/share64 experiment:
+  [`variants/local_shared_a8_64/`](variants/local_shared_a8_64/).
+
+## Local A8 share64 input RNG v2
+
+The current opt-in variant uses one FFN-local PRNG, an 8-bit uniform word
+shared by 64 input comparators, and a 32-bit state checkpoint for regeneration
+across output waves. The weight-side stochastic generator is unchanged.
+
+- [Design and seed semantics](variants/local_shared_a8_64/README_ZH.md)
+- [18-case result table](variants/local_shared_a8_64/results/RESULTS_ZH.md)
+- [Audit status](variants/local_shared_a8_64/results/verification.json)
+- [Code, configuration and tests](variants/local_shared_a8_64/)
+
+Run `python architecture_tlm/variants/local_shared_a8_64/run_local_shared_v2.py`
+from the repository root. Saved results use the simplified Link backend; local
+LFSR PPA and actual LFSR-driven full-model PPL are still uncharacterized.
+
 The new primary experiment is the **closed-loop DRAMSys backend**: actual
 nonblocking SystemC/TLM-2.0 DRAM requests return completion times to the Python
 compute scheduler. External energy uses DRAMPower at the complete decode

@@ -1,0 +1,23 @@
+{
+  "cost_status": "UNCHARACTERIZED input LFSR/seed/route parameters; inherited SRAM/digital assumptions and dual-core proxy; not measured PPA",
+  "input_bits": 8,
+  "share_group": 64,
+  "state_bits": 32,
+  "clock_hz": 100000000,
+  "warmup_cycles": 0,
+  "update_pJ": 1.0,
+  "area_mm2": 0.001,
+  "leakage_W": 0.000001,
+  "word_to_comparators_pJ_per_bit_sink": 0.01,
+  "mask_to_columns_pJ_per_bit_sink": 0.01,
+  "checkpoint_pJ_per_bit": 0.1,
+  "checkpoint_cycles": 1,
+  "restore_pJ_per_bit": 0.1,
+  "restore_cycles": 1,
+  "child_seed_policy": "per_tile",
+  "child_rekey_interval_ns": 1000000,
+  "frontend_area_credit_mm2_per_removed_bank": 0.0,
+  "frontend_power_proxy": "one retained legacy 13-bit threshold/sign/comparator frontend per synchronized wave; no precision-scaling or clock-gating benefit claimed",
+  "root_reseed_policy": "inherited hierarchy config, default 1 second; deferred to input-tile boundary",
+  "protocol": "one local input PRNG at the synchronous FFN array cluster; same 8-bit word to 64 thresholds; checkpoint/replay across output waves; independent persistent weight RNGs"
+}
