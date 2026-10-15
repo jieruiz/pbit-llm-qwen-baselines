@@ -1,0 +1,71 @@
+{
+  "status": "analytical_sensitivity_only_no_RTL_no_silicon_no_new_PPL",
+  "parameters": {
+    "categories": 2048,
+    "samples": 512,
+    "burn_process_units": 16,
+    "spacing_process_units": 4,
+    "head_dim": 64,
+    "query_heads": 14,
+    "kv_heads": 2,
+    "layers": 24,
+    "bias_bits": 16,
+    "score_bytes": 4,
+    "value_bytes": 2,
+    "digital_mac_pJ": 2,
+    "digital_add_pJ": 1,
+    "digital_vector_pJ": 1,
+    "digital_nonlinear_pJ": 10,
+    "scratch_read_pJ_byte": 2,
+    "scratch_write_pJ_byte": 3,
+    "scratch_GBs": 64,
+    "frequency_Hz": 100000000,
+    "digital_softmax_lanes": 16,
+    "digital_softmax_passes": 3,
+    "digital_fixed_cycles": 16
+  },
+  "physical_pbits": 2047,
+  "process_horizon": 2064,
+  "index_bits": 11,
+  "digital_example": {
+    "compute_nJ": 32.768,
+    "scratch_nJ": 98.304,
+    "dynamic_total_nJ": 131.072,
+    "service_us": 4.0,
+    "scratch_us": 0.64,
+    "fully_overlapped_us": 4.0,
+    "serialized_us": 4.64
+  },
+  "pv_scenarios": [
+    {
+      "mode": "single_head_no_dedup",
+      "dense_V_bytes_per_query_head": 262144.0,
+      "sample_V_bytes_per_query_head": 65536,
+      "dense_PV_nJ": 786.432,
+      "sampled_PV_nJ": 163.84,
+      "available_extra_sampler_nJ": 622.592
+    },
+    {
+      "mode": "gqa_ideal_union_cache",
+      "dense_V_bytes_per_query_head": 37449.142857142855,
+      "sample_V_bytes_per_query_head": 30944.23831826134,
+      "dense_PV_nJ": 337.0422857142857,
+      "sampled_PV_nJ": 94.65647663652268,
+      "available_extra_sampler_nJ": 242.385809077763
+    },
+    {
+      "mode": "gqa_no_cross_head_cache",
+      "dense_V_bytes_per_query_head": 37449.142857142855,
+      "sample_V_bytes_per_query_head": 65536,
+      "dense_PV_nJ": 337.0422857142857,
+      "sampled_PV_nJ": 163.84,
+      "available_extra_sampler_nJ": 173.2022857142857
+    }
+  ],
+  "area_anchor_ITA_softmax_mm2": 0.005709,
+  "power_anchor_ITA_softmax_mW": 0.847,
+  "hypothetical_all_in_cell_area_budget_um2": 2.7889594528578407,
+  "diagnostic_uniform_zero_dwell_in_tau": 0.0009770395701025891,
+  "finite_lambda_approx_1pct_invalid": 11.536153591089436,
+  "note": "ITA is INT8, 22nm post-layout estimate with different workload; anchors are NOT a scaled 2048-element Qwen baseline. Area budget excludes all peripherals and is only a yardstick."
+}

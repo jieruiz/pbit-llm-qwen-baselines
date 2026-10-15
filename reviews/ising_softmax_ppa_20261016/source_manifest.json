@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-16",
+  "method": "analytical sensitivity sweep; no new PPL, RTL, SPICE or hardware measurements",
+  "source_files": [
+    {
+      "commit": "03f0031b4c2952dae2775f01d6190105011ddaf1",
+      "path": "experiments/joint_ffn_attention_20261009/sampling.py",
+      "sha256": "ce3d86af52e6d16aacba6e871c89ea5bd24b94d35ee388ae35c6b5424ab4fce7",
+      "url": "https://github.com/jieruiz/pbit-llm-qwen-baselines/blob/03f0031b4c2952dae2775f01d6190105011ddaf1/experiments/joint_ffn_attention_20261009/sampling.py"
+    },
+    {
+      "commit": "03f0031b4c2952dae2775f01d6190105011ddaf1",
+      "path": "experiments/joint_ffn_attention_20261009/attention.py",
+      "sha256": "adf9e222ba9dadcc3ac7df60e04f92949e1f14ca12753537fdf90bd47fecb171",
+      "url": "https://github.com/jieruiz/pbit-llm-qwen-baselines/blob/03f0031b4c2952dae2775f01d6190105011ddaf1/experiments/joint_ffn_attention_20261009/attention.py"
+    },
+    {
+      "commit": "37cc1e2a3aa939c21be376a76913feae85a6b78a",
+      "path": "architecture_tlm/configs/system_decode_default.json",
+      "sha256": "56b7aca7fbd30db7e94a399b4f2e7cc09a00bbc610c739a670d96a677d9ffa84",
+      "url": "https://github.com/jieruiz/pbit-llm-qwen-baselines/blob/37cc1e2a3aa939c21be376a76913feae85a6b78a/architecture_tlm/configs/system_decode_default.json"
+    },
+    {
+      "commit": "37cc1e2a3aa939c21be376a76913feae85a6b78a",
+      "path": "architecture_tlm/configs/model_config.json",
+      "sha256": "479dcf0c5286339e41ad3992cd08ae88a467c4187587936248e2b7c96283484b",
+      "url": "https://github.com/jieruiz/pbit-llm-qwen-baselines/blob/37cc1e2a3aa939c21be376a76913feae85a6b78a/architecture_tlm/configs/model_config.json"
+    }
+  ],
+  "references": [
+    {
+      "title": "ITA: An Energy-Efficient Attention and Softmax Accelerator for Quantized Transformers",
+      "url": "https://arxiv.org/abs/2307.03493",
+      "doi": null,
+      "arxiv": "2307.03493"
+    },
+    {
+      "title": "CMOS plus stochastic nanomagnets enabling heterogeneous computers for probabilistic inference and learning",
+      "url": "https://www.nature.com/articles/s41467-024-46645-6",
+      "doi": "10.1038/s41467-024-46645-6",
+      "arxiv": null
+    },
+    {
+      "title": "Experimental Demonstration of an On-Chip CMOS-Integrated 3T-1MTJ Probabilistic Bit -- A P-Bit",
+      "url": "https://arxiv.org/abs/2604.05191",
+      "doi": null,
+      "arxiv": "2604.05191"
+    },
+    {
+      "title": "Hardware Design for Autonomous Bayesian Networks",
+      "url": "https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2021.584797/full",
+      "doi": "10.3389/fncom.2021.584797",
+      "arxiv": null
+    }
+  ],
+  "result_files": {
+    "REPORT_ZH.md": "0f4a0b99469c6947368c8b3d9c46012cb249455030a0c9b77badb7d92664c5d5",
+    "estimate.py": "1e13799e791415a4c2461ef5977078ebae000a8652a47dece89c1066ee8a69db",
+    "metrics.json": "dc00e1a95714051fe5e418053788eaa067c23ffaee3ecc1e7592ff44cf88075c",
+    "core_sensitivity.csv": "ec77fda12bc3e4fde3f1b0f8c4d6ce28a2e19e03a38e7324703d029864e7ccef",
+    "energy_break_even.csv": "c5a17b7c043b383cdb5277d81bc1b3452b41a6477c0db75fba6059b2459a7557",
+    "interface_cost.csv": "3ce6f377ea28957049d22c50cbaa5cb45075889225324b98e270d0ca8abf4722",
+    "pv_scenarios.csv": "5b555baabfee271fe35f56263025626952e56692e2d43abfa0e78a9ca109180d",
+    "checksums.json": "13cac0e58277ce721534c21ae8e2a2065240c3cae56e15bc3244be167a90cec0"
+  }
+}
