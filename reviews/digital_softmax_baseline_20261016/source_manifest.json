@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-16",
+  "evidence_scope": "published post-layout results; explicitly labelled length extrapolations; local synthetic numerical check; no local hardware synthesis",
+  "primary_references": [
+    {
+      "title": "VEXP: A Low-Cost RISC-V ISA Extension for Accelerated Softmax Computation in Transformers",
+      "url": "https://arxiv.org/abs/2504.11227v1",
+      "arxiv": "2504.11227",
+      "doi": null,
+      "downloaded_pdf_sha256": "68f3896b2ed3cdb8a2e4a08123cfd3cef2b1d3d5b5618ad5e2b3143e52a0758c"
+    },
+    {
+      "title": "Softermax: Hardware/Software Co-Design of an Efficient Softmax for Transformers",
+      "url": "https://arxiv.org/abs/2103.09301",
+      "arxiv": "2103.09301",
+      "doi": null,
+      "downloaded_pdf_sha256": "c11c9bbba96e3a461b49b5682539b2138483326b48ffff7748a5cac30b483b9e"
+    },
+    {
+      "title": "ConSmax: Hardware-Friendly Alternative Softmax with Learnable Parameters",
+      "url": "https://arxiv.org/abs/2402.10930",
+      "arxiv": "2402.10930",
+      "doi": null,
+      "downloaded_pdf_sha256": "2f0e67414358313e940e7b7820c1e38d5e8215efd8f9b75c6c319c76256e98ac"
+    },
+    {
+      "title": "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning",
+      "url": "https://arxiv.org/abs/2307.08691",
+      "arxiv": "2307.08691",
+      "doi": null,
+      "downloaded_pdf_sha256": "4aa8935dfacaf6ae8c68f772ca92f730154a0dd0e1bceeb59c7bc56c512d5868"
+    },
+    {
+      "title": "ITA: An Energy-Efficient Attention and Softmax Accelerator for Quantized Transformers",
+      "url": "https://arxiv.org/abs/2307.03493",
+      "arxiv": "2307.03493",
+      "doi": null,
+      "downloaded_pdf_sha256": null
+    }
+  ],
+  "implementation_documentation": "https://triton-lang.org/main/getting-started/tutorials/02-fused-softmax.html",
+  "reported_metrics_source": "VEXP arXiv:2504.11227v1, Table IV with footnote 6 and Section V-B/C",
+  "important_scope": "968um2 is added EXP only, while 7.1mW and 0.45Goutput/s cover the core running the entire softmax. No single full-system PPA is fabricated from these mismatched scopes.",
+  "results": {
+    "REPORT_ZH.md": "c43ffad58b57aea4c179cce06cfbb532ad67804861858958bc100487a7ced904",
+    "evaluate.py": "f70ef28e56701657f67989b99505131d93839d995234f3ebabbd196d54658aa2",
+    "metrics.json": "10823635107f334e3412fac12615479e8f919e96e125ab1d7bf59d4236b08fbb",
+    "numerical_rows.csv": "78956ed5f2d9c075227c7847643ec0ae30a64bc97357fa465adb8612bb07b592",
+    "numerical_summary.csv": "acbdafb2de2da74b6e74f45507f44b14a0fd91318adc7995a6387108dd53d412",
+    "schedule.csv": "500c3fdaaee6b9a58edaeaec1f451119f7a4e19ea926c88471d25644cf3a8c5d",
+    "ising_break_even.csv": "41cb7e1f647fb97966070f1d3f0ba6371795db936c51840e0f4e9263d8412c28",
+    "checksums.json": "23de13b872a6ffc5741fafe21027b19ea633d82278b2e9edf187cea2e75832cb",
+    "fp32_check.py": "ec493608d5e7b164dd4c88f72113b4316ece5a49da303f577b5f3886c192c289",
+    "fp32_rows.csv": "7073dfa600bb77f5995abc93e2452d3a363cfdd60ae4d9a3e0a78a0ff035cce8",
+    "fp32_summary.json": "b5f507bd655e954cf33df14452b84066bc27dece2626f0dde4e22b9ed3c385c3"
+  },
+  "precision_clarification": "Current custom QK/softmax/PV code uses FP32. Published VEXP BF16 PPA is a reference, not a precision-matched FP32 evaluation. Added 192 FP32 numerical rows; no FP32 hardware PPA is claimed.",
+  "current_attention_source": "https://github.com/jieruiz/pbit-llm-qwen-baselines/blob/03f0031b4c2952dae2775f01d6190105011ddaf1/experiments/joint_ffn_attention_20261009/attention.py"
+}
