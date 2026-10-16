@@ -4,6 +4,8 @@
 
 结论：数字 softmax 不需要 2048 个 exp/除法器。一个明确的 BF16 公开参照是 VEXP：单核运行整个 softmax 的平均吞吐约 0.45G 输出/s、功耗 7.1mW，据此线性换算 2048 元素约 **4.55µs、32.3nJ/行**。这是数字方案可用的有出处估计；之前的 32.768nJ 是未校准 TLM 算术代理，两者接近不构成对旧系数的验证。
 
+**精度边界：项目当前自定义 attention 在 FP32 中执行 QK、softmax 和 PV，最后才转回 hidden_states 的类型。VEXP 的 BF16 数字是文献参照，不能称为严格匹配当前代码的 FP32 硬件结果。** 本次另加了 FP32 输入/输出数值原型，见第 5 节；严格 FP32 硬件的功耗与面积仍待综合。[当前 attention 源码](https://github.com/jieruiz/pbit-llm-qwen-baselines/blob/03f0031b4c2952dae2775f01d6190105011ddaf1/experiments/joint_ffn_attention_20261009/attention.py)
+
 ## 1. “标准”首先是计算语义，不是一套固定电路
 
 稳定 softmax 对一行 logits 执行：
@@ -148,6 +150,17 @@ VEXP 在 RISC-V Snitch 的 FPU 中增加 BF16 EXP 单元。每核 4 路 BF16 SIM
 
 这个检查的作用是把“共享 LUT/插值/归约/倒数”落成可执行数值路径，证明它无需随机采样和重训练即可计算原 softmax 的近似；具体 Qwen 精度及 RTL PPA 还需单独验证。
 
+针对项目 FP32 score 路径，又实际运行了 `fp32_check.py`：同样 3 个种子、8 类压力分布、192 行、每行 2048 元素，输入和输出均为 FP32，保留相同指数近似与 FP32 归约。两种格式合计检查 384 行。
+
+| FP32 原型实跑结果，与同输入 FP64 参考比较 | 数值 |
+|---|---:|
+| 平均每行 half-L1 | 6.936×10^-5 |
+| 最差每行 half-L1 | 1.172×10^-4 |
+| 最差单个概率绝对误差 | 1.134×10^-4 |
+| 最差输出行和偏差 | 5.256×10^-7 |
+
+FP32 原型通过非负、有限、mask=0、行和偏差<10^-5 的检查。它证明了较匹配当前 score 精度的确定性数值路径，但不代表 FP32 EXP 完全正确舍入、真实 Qwen PPL 不变或已完成硬件实现。输入、输出行缓存各为 8KiB，而非 BF16 的各 4KiB；EXP/归约单元及 PPA 应按最终混合精度设计重新核验。不能将 VEXP 的 BF16 能耗直接套到这个 FP32 原型。
+
 ## 6. 与现有 Ising 数值重新对齐
 
 保持 M=2048、S=512，仍使用之前假设的 CTMC 映射 `t=2064τ`。下面每个 Ising 行仅包含 2047 个单元的核心持续功耗，没有配置、反馈和编码。
@@ -171,4 +184,4 @@ VEXP 在 RISC-V Snitch 的 FPU 中增加 BF16 EXP 单元。每核 4 路 BF16 SIM
 
 仍不能交付的是本项目芯片的完整 mm²、峰值/平均 mW 和 signoff 时钟，因为没有选定 PDK、存储宏、EXP/reciprocal RTL 和最终数据流，尚未综合。后续应先落定 BF16＋FP32 归约的确定性 RTL，然后在同一工艺、时钟约束和真实 Qwen logits 下与 p-bit 外围一起评估；不再以泛化的 nonlinear/op 常数替代数字硬件结果。
 
-运行：`python -X utf8 evaluate.py`。数值原始数据见 `numerical_rows.csv`，分组见 `numerical_summary.csv`，调度见 `schedule.csv`，来源与哈希见 `source_manifest.json`。公开来源在 Zotero 新增 4 篇、复用 ITA 1 篇，并核验托管 PDF；不上传论文全文到 GitHub。
+运行：`python -X utf8 evaluate.py` 和 `python -X utf8 fp32_check.py`。BF16 数值原始数据见 `numerical_rows.csv`，分组见 `numerical_summary.csv`；FP32 原始数据见 `fp32_rows.csv`，汇总见 `fp32_summary.json`；调度见 `schedule.csv`，来源与哈希见 `source_manifest.json`。公开来源在 Zotero 新增 4 篇、复用 ITA 1 篇，并核验托管 PDF；不上传论文全文到 GitHub。
