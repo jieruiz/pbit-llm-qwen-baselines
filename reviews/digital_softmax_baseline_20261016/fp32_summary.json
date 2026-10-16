@@ -1,0 +1,19 @@
+{
+  "status": "synthetic numerical prototype; not Qwen PPL, RTL or hardware PPA",
+  "input_output": "FP32",
+  "rows": 192,
+  "length": 2048,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "mean_half_L1": 6.936047223498252e-05,
+  "worst_half_L1": 0.00011724095871962479,
+  "worst_max_abs_error": 0.00011339917709496383,
+  "worst_row_sum_error": 5.255805746173792e-07,
+  "dependencies": {
+    "evaluate_sha256": "f70ef28e56701657f67989b99505131d93839d995234f3ebabbd196d54658aa2"
+  },
+  "implementation": "Q1.24 exp LUT/interpolation and FP32 accumulation/reciprocal/multiply; delta<-16 flushed to zero. Reference is FP64 stable softmax on the identical FP32 input."
+}
