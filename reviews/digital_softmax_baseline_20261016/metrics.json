@@ -1,0 +1,117 @@
+{
+  "status": "numerical prototype plus published-data extrapolation; no RTL synthesis, new model PPL or device power measurement",
+  "vector_length": 2048,
+  "numerical_rows": 192,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "numerical_definition": "Synthetic BF16 inputs. Reference: FP64 stable softmax on identical BF16 input. Candidate: unsigned Q1.24 exp LUT (step 1/16), 10-bit interpolation fraction, flush delta<-16 to zero, FP32 16-lane accumulation, FP32 reciprocal/multiply, BF16 output. Half-L1 is not called TV because BF16 outputs need not sum exactly to one.",
+  "vexp": {
+    "source": "VEXP arXiv:2504.11227v1 Table IV and footnote 6",
+    "technology_nm": 12,
+    "voltage_V": 0.8,
+    "frequency_GHz": 1,
+    "reported_average_softmax_Goutputs_s": 0.45,
+    "reported_whole_core_softmax_mW": 7.1,
+    "derived_2048_row_us": 4.551111111111111,
+    "derived_2048_row_core_nJ": 32.312888888888885,
+    "added_EXP_only_area_um2": 968,
+    "reported_EXP_pJ_output": 6.39,
+    "derived_2048_EXP_only_nJ": 13.08672,
+    "scope": "Reported post-layout results, not silicon measurements. Area is added EXP unit only; power covers whole core during softmax; shared cluster SRAM/interconnect and off-chip memory are not included as a full-system budget. 2048-row figures linearly extrapolate the reported average throughput; they are not a fresh N=2048 benchmark."
+  },
+  "operation_counts": {
+    "max_comparisons": 2047,
+    "subtracts": 2048,
+    "exp_evaluations": 2048,
+    "sum_adds": 2047,
+    "reciprocals": 1,
+    "normalize_multiplies": 2048,
+    "bf16_input_bytes": 4096,
+    "fp32_exp_buffer_bytes": 8192,
+    "bf16_output_bytes": 4096,
+    "lut_unique_payload_bytes": 804,
+    "lut_note": "Unsigned Q1.24 requires 25 bits to represent exp(0)=1. Unique packed payload is 804B; 32-bit coefficient words use 1028B. 16 lanes require multiport logic, banking or replication; this is not total physical memory/area."
+  },
+  "profiles": [
+    {
+      "profile": "large_offset",
+      "rows": 24,
+      "max_abs_vs_fp64": 0.0013190280910523322,
+      "mean_half_L1_vs_fp64": 0.0005587045375424847,
+      "max_half_L1_vs_fp64": 0.0012400909220640092,
+      "max_row_sum_error": 0.0021323850378394127,
+      "max_abs_vs_rounded_bf16_reference": 2.9802322387695312e-08
+    },
+    {
+      "profile": "masked",
+      "rows": 24,
+      "max_abs_vs_fp64": 0.0016212857009187953,
+      "mean_half_L1_vs_fp64": 0.0007134928464390586,
+      "max_half_L1_vs_fp64": 0.0010738803893610975,
+      "max_row_sum_error": 0.0013019433245062828,
+      "max_abs_vs_rounded_bf16_reference": 0.0009765625
+    },
+    {
+      "profile": "near_ties",
+      "rows": 24,
+      "max_abs_vs_fp64": 2.0786071840903086e-06,
+      "mean_half_L1_vs_fp64": 0.0007476107461960327,
+      "max_half_L1_vs_fp64": 0.0007665978138237069,
+      "max_row_sum_error": 0.000247955322265625,
+      "max_abs_vs_rounded_bf16_reference": 3.814697265625e-06
+    },
+    {
+      "profile": "normal_std1",
+      "rows": 24,
+      "max_abs_vs_fp64": 3.185493870896429e-05,
+      "mean_half_L1_vs_fp64": 0.0007054631813953074,
+      "max_half_L1_vs_fp64": 0.0007471648944004899,
+      "max_row_sum_error": 0.00015777349472045898,
+      "max_abs_vs_rounded_bf16_reference": 6.103515625e-05
+    },
+    {
+      "profile": "normal_std4",
+      "rows": 24,
+      "max_abs_vs_fp64": 0.0015265387460520197,
+      "mean_half_L1_vs_fp64": 0.0006917632991966793,
+      "max_half_L1_vs_fp64": 0.0010248200457745088,
+      "max_row_sum_error": 0.0015268661081790924,
+      "max_abs_vs_rounded_bf16_reference": 0.0009765625
+    },
+    {
+      "profile": "one_peak",
+      "rows": 24,
+      "max_abs_vs_fp64": 0.00040294679005659084,
+      "mean_half_L1_vs_fp64": 0.00022858655390327212,
+      "max_half_L1_vs_fp64": 0.00024149467103099263,
+      "max_row_sum_error": 0.00034308433532714844,
+      "max_abs_vs_rounded_bf16_reference": 1.126900315284729e-07
+    },
+    {
+      "profile": "tail_boundary",
+      "rows": 24,
+      "max_abs_vs_fp64": 0.00023383105845442564,
+      "mean_half_L1_vs_fp64": 0.00015588932478449732,
+      "max_half_L1_vs_fp64": 0.0001577836178274412,
+      "max_row_sum_error": 0.00016546249389648438,
+      "max_abs_vs_rounded_bf16_reference": 9.918585419654846e-08
+    },
+    {
+      "profile": "uniform",
+      "rows": 24,
+      "max_abs_vs_fp64": 0.0,
+      "mean_half_L1_vs_fp64": 0.0,
+      "max_half_L1_vs_fp64": 0.0,
+      "max_row_sum_error": 0.0,
+      "max_abs_vs_rounded_bf16_reference": 0.0
+    }
+  ],
+  "worst_max_abs_error": 0.0016212857009187953,
+  "worst_half_L1": 0.0012400909220640092,
+  "mean_half_L1": 0.0004751888111821665,
+  "worst_row_sum_error": 0.0021323850378394127,
+  "worst_additional_abs_error": 0.0009765625
+}
